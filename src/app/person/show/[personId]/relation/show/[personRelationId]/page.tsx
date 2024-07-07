@@ -3,10 +3,9 @@
 import { Show, TextField } from '@refinedev/antd';
 import { useShow, useTranslate } from '@refinedev/core';
 import { Typography } from 'antd';
-import { HttpError } from '@refinedev/core/src/interfaces';
+import { HttpError } from '@refinedev/core';
 import { ResourceEnum } from '@lib/enums/resource.enum';
 import { LangTag } from '@lib/enums/language.enum';
-import { RelationType } from '@lib/types/relation.type';
 
 const { Title } = Typography;
 
@@ -19,7 +18,7 @@ interface Props {
 export default function RelationShowPage({
   params: { personRelationId },
 }: Readonly<Props>) {
-  const { queryResult } = useShow<RelationType, HttpError>({
+  const { queryResult } = useShow<any, HttpError>({
     id: personRelationId,
     resource: ResourceEnum.personRelation,
   });

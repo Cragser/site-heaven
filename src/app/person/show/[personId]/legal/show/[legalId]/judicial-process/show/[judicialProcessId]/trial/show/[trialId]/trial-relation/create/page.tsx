@@ -1,7 +1,7 @@
 'use client';
 
 import { Create, useForm } from '@refinedev/antd';
-import { HttpError } from '@refinedev/core/src/interfaces';
+import { HttpError } from '@refinedev/core';
 import { ResourceEnum } from '@lib/enums/resource.enum';
 import { TrialRelationType } from '@lib/types/trial-relation.type';
 import TrialRelationForm from '@modules/forms/trial-relation-form';

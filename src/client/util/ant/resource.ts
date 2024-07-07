@@ -1,4 +1,4 @@
-import { ResourceProps } from '@refinedev/core/src/interfaces/bindings/resource';
+import {ResourceProps} from "@refinedev/core";
 
 export function generateRouteObject(
   entity: string,

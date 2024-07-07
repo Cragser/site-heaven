@@ -1,4 +1,4 @@
-import { OpenNotificationParams } from '@refinedev/core/dist/interfaces';
+import { OpenNotificationParams } from '@refinedev/core';
 
 export type NotificationType<TError, TVariables> =
   | OpenNotificationParams

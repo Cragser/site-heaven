@@ -1,5 +1,5 @@
 import { ResourceEnum } from '@lib/enums/resource.enum';
-import { ResourceProps } from '@refinedev/core/src/interfaces/bindings/resource';
+import {ResourceProps} from "@refinedev/core";
 import { camelCase } from 'case-anything';
 
 export function generateParentChild(

@@ -2,7 +2,7 @@
 
 import { Show } from '@refinedev/antd';
 import { useShow } from '@refinedev/core';
-import { HttpError } from '@refinedev/core/src/interfaces';
+import { HttpError } from '@refinedev/core';
 import { ResourceEnum } from '@lib/enums/resource.enum';
 import { AddressType } from '@lib/types/address.type';
 import AddressView from '@modules/views/address-view';

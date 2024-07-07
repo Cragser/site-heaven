@@ -2,7 +2,7 @@
 
 import { Edit, useForm } from '@refinedev/antd';
 import { PersonType } from '@lib/types/person.type';
-import { HttpError } from '@refinedev/core/src/interfaces';
+import { HttpError } from '@refinedev/core';
 import PersonForm from '@modules/forms/person-form';
 import { ResourceEnum } from '@lib/enums/resource.enum';
 

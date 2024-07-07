@@ -1,12 +1,11 @@
 'use client';
 
 import { Create, useForm } from '@refinedev/antd';
-import { HttpError } from '@refinedev/core/src/interfaces';
+import { HttpError } from '@refinedev/core';
 import { ResourceEnum } from '@lib/enums/resource.enum';
 import { PersonPageType } from '@page/types/pages/person/person-page.type';
 import { CompanyType } from '@lib/types/company.type';
 import { Form, Input, Select } from 'antd';
-import { useCompanySelect } from '@client/hooks/select/use-company-select';
 import { useResourceSelect } from '@client/util/hook/use-resource-select';
 
 export default function Page({
@@ -16,7 +15,8 @@ export default function Page({
     redirect: false,
     resource: ResourceEnum.personCompany,
   });
-  const { selectProps } = useResourceSelect<CompanyType>(ResourceEnum.company);
+  // @ts-ignore / TODO: Fix this
+  const { selectProps } = useResourceSelect(ResourceEnum.company);
 
   return (
     <Create saveButtonProps={saveButtonProps}>

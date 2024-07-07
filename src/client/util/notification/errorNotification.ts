@@ -1,10 +1,9 @@
-import { OpenNotificationParams } from '@refinedev/core/dist/interfaces';
 import { NotificationType } from './NotificationType';
 
 export const defaultErrorNotification: NotificationType<unknown, unknown> = (
-  data,
-  ids,
-  resource
+  data: any,
+  ids: any,
+  resource: any
 ) => {
   console.log(data, ids, resource);
   return {

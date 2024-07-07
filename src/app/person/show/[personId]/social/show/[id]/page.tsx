@@ -3,7 +3,7 @@
 import { Show, TextField } from '@refinedev/antd';
 import { useShow, useTranslate } from '@refinedev/core';
 import { Typography } from 'antd';
-import { HttpError } from '@refinedev/core/src/interfaces';
+import { HttpError } from '@refinedev/core';
 import { ResourceEnum } from '@lib/enums/resource.enum';
 import { LangTag } from '@lib/enums/language.enum';
 import { PersonAndChildPageType } from '@page/types/person-and-child-page.type';
@@ -45,7 +45,8 @@ export default function SocialShowPage({
       <TextField value={record.link} />
 
       <Title level={5}>{translate(LangTag[`social.fields.createdAt`])}</Title>
-      <TextField value={record.createdAt} />
+      {/*  TODO: Change to date field */}
+      <TextField value={record.createdAt.toDateString()} />
 
       <Title level={5}>
         {translate(LangTag[`social.fields.estimatedPeopleImpacted`])}

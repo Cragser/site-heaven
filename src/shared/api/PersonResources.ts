@@ -7,6 +7,5 @@ export const PersonResources: ResourceEnum[] = [
   ResourceEnum.social,
   ResourceEnum.address,
   ResourceEnum.notes,
-  ResourceEnum.assets,
   ResourceEnum.legal,
 ];

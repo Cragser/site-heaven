@@ -28,19 +28,22 @@ function replaceField(
 }
 
 function getFieldFromContext(
-  field: string,
-  context: Record<string, unknown>
+    field: string,
+    context: Record<string, any> // Aquí cambiamos 'unknown' a 'any'
 ): string {
   field = field.replace(/[()]/g, '');
   const [objectKey, property] = field.split('.');
+
   if (
-    objectKey &&
-    property &&
-    objectKey in context &&
-    context[objectKey] &&
-    context[objectKey][property] !== undefined
+      objectKey &&
+      property &&
+      objectKey in context &&
+      typeof context[objectKey] === 'object' && // Verificamos que sea un objeto
+      context[objectKey] !== null && // Verificamos que no sea null
+      context[objectKey][property] !== undefined
   ) {
-    return context[objectKey][property];
+    return context[objectKey][property] as string;
   }
+
   return `[${field}]`;
 }

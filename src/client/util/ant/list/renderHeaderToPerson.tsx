@@ -24,7 +24,7 @@ const Header = ({ customButtons, defaultButtons, personId, resourse }: any) => {
   return (
     <Space>
       <Button type={'link'} onClick={handleClick}>
-        <ArrowLeftOutlined />
+        <ArrowLeftOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
         Vista persona
       </Button>
       {customButtons}

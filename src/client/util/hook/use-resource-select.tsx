@@ -1,6 +1,6 @@
 import { useSelect } from '@refinedev/antd';
 import { ResourceEnum } from '@lib/enums/resource.enum';
-import { CrudFilters } from '@refinedev/core/dist/interfaces';
+import { CrudFilters } from '@refinedev/core';
 
 type Filter = (search: string) => {
   field: string;
@@ -42,21 +42,23 @@ export function useResourceSelect({
     }),
   ];
 
-  const { selectProps } = useSelect({
+  const propsToSelect = {
     filters: [...initialFilters, ...searchFilter],
-    onSearch: (search) => {
+    onSearch: (search: string) => {
       if (!search) return [];
       return filters.map((filter) => filter(search));
     },
-    optionLabel: (item) => {
+    optionLabel: (item: { name: any; }) => {
       return item.name;
     },
-    optionValue: (item) => item.id,
+    optionValue: (item: { i: any; }) => item.i,
     pagination: {
       mode: 'client',
     },
     resource,
-  });
+  }
+  // TODO: Arreglar los tipos
+  const { selectProps } = useSelect(propsToSelect as any);
 
   return {
     selectProps,

@@ -3,7 +3,6 @@
 import { DeleteButton, EditButton, ShowButton } from '@refinedev/antd';
 import { Space, Table } from 'antd';
 import { BaseRecord, useTranslate } from '@refinedev/core';
-import { LangTag } from '@lib/enums/language.enum';
 import { AntTableType } from '@page/types/ant-table.type';
 import { ResourceEnum } from '@lib/enums/resource.enum';
 
@@ -23,7 +22,7 @@ export default function NationalityTable({
     >
       <Table.Column
         dataIndex={['name']}
-        title={translate(LangTag[`nationality.fields.name`])}
+        // title={translate(LangTag[`nationality.fields.name`])}
       />
 
       <Table.Column

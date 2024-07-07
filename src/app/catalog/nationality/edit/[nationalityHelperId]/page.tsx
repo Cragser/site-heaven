@@ -1,7 +1,7 @@
 'use client';
 
 import { Edit, useForm } from '@refinedev/antd';
-import { HttpError } from '@refinedev/core/src/interfaces';
+import { HttpError } from '@refinedev/core';
 import { ResourceEnum } from '@lib/enums/resource.enum';
 import NationalityHelperForm from '@modules/forms/nationality-helper-form';
 

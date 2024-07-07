@@ -3,20 +3,18 @@
 import { Show, TextField } from '@refinedev/antd';
 import { useShow, useTranslate } from '@refinedev/core';
 import { Typography } from 'antd';
-import { HttpError } from '@refinedev/core/src/interfaces';
-import { ResourceEnum } from '@lib/enums/resource.enum';
+import { HttpError } from '@refinedev/core';
 import { LangTag } from '@lib/enums/language.enum';
-import { TrialAndChildPageType } from '@page/types/trial-and-child-page.type';
 import { TrialNotificationType } from '@lib/types/trial-notification.type';
 
 const { Title } = Typography;
 
 export default function TrialNotificationShowPage({
   params: { id },
-}: Readonly<TrialAndChildPageType>) {
+}: any) {
   const { queryResult } = useShow<TrialNotificationType, HttpError>({
     id,
-    resource: ResourceEnum.TrialNotification,
+    resource: '',
   });
 
   const { data, isError, isLoading } = queryResult;

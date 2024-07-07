@@ -1,7 +1,7 @@
 'use client';
 
 import { Create, useForm } from '@refinedev/antd';
-import { HttpError } from '@refinedev/core/src/interfaces';
+import { HttpError } from '@refinedev/core';
 import { ResourceEnum } from '@lib/enums/resource.enum';
 import { JudicialProcessType } from '@lib/types/judicial-process.type';
 import JudicialProcessForm from '@modules/forms/judicial-process-form';

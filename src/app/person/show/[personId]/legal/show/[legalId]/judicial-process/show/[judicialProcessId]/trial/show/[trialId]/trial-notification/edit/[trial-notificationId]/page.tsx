@@ -1,7 +1,7 @@
 'use client';
 
 import { Edit, useForm } from '@refinedev/antd';
-import { HttpError } from '@refinedev/core/src/interfaces';
+import { HttpError } from '@refinedev/core';
 import { ResourceEnum } from '@lib/enums/resource.enum';
 import { TrialType } from '@lib/types/trial.type';
 import TrialNotificationForm from '@modules/forms/trial-notification-form';

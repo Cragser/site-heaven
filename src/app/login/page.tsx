@@ -1,4 +1,4 @@
-import { AuthPage } from 'apps/site/src/client/pages/auth-page';
+import {AuthPage} from "@client/pages/auth-page";
 
 export default async function Login() {
   return <AuthPage type="login" />;

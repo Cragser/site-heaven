@@ -30,7 +30,7 @@ const SocialView = ({ record }: Props) => {
       <TextField value={record.link} />
 
       <Title level={5}>{translate(LangTag[`social.fields.createdAt`])}</Title>
-      <TextField value={record.createdAt} />
+      <TextField value={record.createdAt.toDateString()} />
 
       <Title level={5}>
         {translate(LangTag[`social.fields.estimatedPeopleImpacted`])}

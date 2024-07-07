@@ -3,7 +3,7 @@
 import { Show, TextField } from '@refinedev/antd';
 import { useShow, useTranslate } from '@refinedev/core';
 import { Typography } from 'antd';
-import { HttpError } from '@refinedev/core/src/interfaces';
+import { HttpError } from '@refinedev/core';
 import { ResourceEnum } from '@lib/enums/resource.enum';
 import { LangTag } from '@lib/enums/language.enum';
 import { CompanyType } from '@lib/types/company.type';

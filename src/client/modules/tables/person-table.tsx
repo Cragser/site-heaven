@@ -37,7 +37,7 @@ export default function PersonTable({
         <Table.Column
           key={key}
           dataIndex={dataIndex[key]}
-          title={translate(LangTag[`person.fields.${key}`])}
+          title={translate(LangTag[`person.fields.${key}` as keyof typeof LangTag])}
         />
       ))}
       <Table.Column
@@ -47,7 +47,7 @@ export default function PersonTable({
       />
       <Table.Column
         key="actions"
-        title={translate(LangTag['person.fields.actions'])}
+        // title={translate(LangTag['person.fields.actions'])}
         render={renderActions}
       />
     </Table>

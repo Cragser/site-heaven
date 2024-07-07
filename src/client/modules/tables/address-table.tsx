@@ -45,7 +45,7 @@ function AddressTable({ parent, parentResource, tableProps }: AntTableType) {
         <Table.Column
           key={key}
           dataIndex={dataIndex[key]}
-          title={translate(LangTag[`address.fields.${key}`])}
+          title={translate(LangTag[`address.fields.${key}` as keyof typeof LangTag])}
         />
       ))}
       <Table.Column

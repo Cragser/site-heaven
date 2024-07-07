@@ -4,7 +4,7 @@ import { Show } from '@refinedev/antd';
 import { useShow, useTranslate } from '@refinedev/core';
 import { DescriptionsProps } from 'antd';
 import { PersonResponse } from '@lib/types/person.type';
-import { HttpError } from '@refinedev/core/src/interfaces';
+import { HttpError } from '@refinedev/core';
 import { ResourceEnum } from '@lib/enums/resource.enum';
 import { LangTag } from '@lib/enums/language.enum';
 import CardList from '@modules/card-list';
@@ -45,7 +45,7 @@ export default function BlogPostShow({
     },
     ...['rfc', 'nss', 'curp'].map((key) => ({
       children: record?.[key],
-      label: translate(LangTag[`person.fields.${key}`]),
+      label: translate(LangTag[`person.fields.${key}` as keyof typeof LangTag ]),
     })),
     {
       children: tagRender(record?.nationality?.name),

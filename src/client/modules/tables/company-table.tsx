@@ -44,7 +44,7 @@ export default function CompanyTable({
         <Table.Column
           key={key}
           dataIndex={dataIndex[key]}
-          title={translate(LangTag[`company.fields.${key}`])}
+          title={translate(LangTag[`company.fields.${key}` as keyof typeof LangTag])}
         />
       ))}
 

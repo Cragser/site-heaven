@@ -60,17 +60,17 @@ export default function TrialList({
       >
         <Table.Column
           dataIndex={['name']}
-          title={translate(LangTag[`trial.fields.name`])}
+          // title={translate(LangTag[`trial.fields.name`])}
         />
 
         <Table.Column
           dataIndex={['courtName']}
-          title={translate(LangTag[`trial.fields.courtName`])}
+          // title={translate(LangTag[`trial.fields.courtName`])}
         />
 
         <Table.Column
           dataIndex={['summary']}
-          title={translate(LangTag[`trial.fields.summary`])}
+          // title={translate(LangTag[`trial.fields.summary`])}
         />
 
         <Table.Column
@@ -93,7 +93,7 @@ export default function TrialList({
 
         <Table.Column
           dataIndex={['scope']}
-          title={translate(LangTag[`trial.fields.scope`])}
+          // title={translate(LangTag[`trial.fields.scope`])}
           render={tagRender}
         />
 

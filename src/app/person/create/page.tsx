@@ -1,7 +1,7 @@
 'use client';
 
 import { Create, useForm } from '@refinedev/antd';
-import { HttpError } from '@refinedev/core/src/interfaces';
+import { HttpError } from '@refinedev/core';
 import { PersonType } from '@lib/types/person.type';
 import PersonForm from '@modules/forms/person-form';
 import { ResourceEnum } from '@lib/enums/resource.enum';

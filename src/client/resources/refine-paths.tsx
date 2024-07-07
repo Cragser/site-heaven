@@ -1,4 +1,4 @@
-import { ResourceProps } from '@refinedev/core/src/interfaces/bindings/resource';
+import {ResourceProps} from "@refinedev/core";
 import { generateCrudSimple } from '@client/util/ant/resources/generate-crud-simple';
 import { ResourceEnum } from '@lib/enums/resource.enum';
 import {
@@ -14,11 +14,11 @@ import { generateParentChild } from '@client/util/ant/resources/generate-parent-
 export const resourcePath: Partial<Record<ResourceEnum, ResourceProps>> = {
   [ResourceEnum.company]: generateCrudSimple(
     ResourceEnum.company,
-    <ShopOutlined />
+    <ShopOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
   ),
   [ResourceEnum.person]: generateCrudSimple(
     ResourceEnum.person,
-    <UserOutlined />
+    <UserOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
   ),
   [ResourceEnum.personAddress]: generateParentChild(
     ResourceEnum.person,
@@ -59,7 +59,7 @@ export function refinePaths(): ResourceProps[] {
     ...Object.values(resourcePath),
     {
       meta: {
-        icon: <BookOutlined />,
+        icon: <BookOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />,
       },
       name: 'catalog',
     },
@@ -148,7 +148,7 @@ export function refinePaths(): ResourceProps[] {
       edit: '/document/edit/:id',
       list: '/document',
       meta: {
-        icon: <ProjectOutlined />,
+        icon: <ProjectOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />,
       },
       name: 'document',
       show: '/document/show/:id',

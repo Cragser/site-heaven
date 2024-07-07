@@ -57,12 +57,12 @@ export default function TrialRelationList({
         {/*/>*/}
         <Table.Column
           dataIndex={['relatedTrial', 'name']}
-          title={translate(LangTag[`trial-relation.fields.name`])}
+          // title={translate(LangTag[`trial-relation.fields.name`])}
         />
 
         <Table.Column
           dataIndex={['relatedTrial', 'type']}
-          title={translate(LangTag[`trial-relation.fields.type`])}
+          // title={translate(LangTag[`trial-relation.fields.type`])}
           render={tagRender}
         />
 

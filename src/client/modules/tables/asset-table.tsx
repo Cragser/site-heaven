@@ -41,7 +41,7 @@ export default function AssetTable({
         <Table.Column
           key={key}
           dataIndex={dataIndex[key]}
-          title={translate(LangTag[`asset.fields.${key}`])}
+          title={translate(LangTag[`asset.fields.${key}` as keyof typeof LangTag])}
         />
       ))}
       <Table.Column

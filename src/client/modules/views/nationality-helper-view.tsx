@@ -15,17 +15,17 @@ const NationalityHelperView = ({ record }: Props) => {
   return (
     <>
       <Title level={5}>
-        {translate(LangTag[`nationality-helper.fields.id`])}
+        {/*{translate(LangTag[`nationality-helper.fields.id`])}*/}
       </Title>
       <TextField value={record.id} />
 
       <Title level={5}>
-        {translate(LangTag[`nationality-helper.fields.name`])}
+        {/*{translate(LangTag[`nationality-helper.fields.name`])}*/}
       </Title>
       <TextField value={record.name} />
 
       <Title level={5}>
-        {translate(LangTag[`nationality-helper.fields.language`])}
+        {/*{translate(LangTag[`nationality-helper.fields.language`])}*/}
       </Title>
       <TextField value={record.language} />
     </>

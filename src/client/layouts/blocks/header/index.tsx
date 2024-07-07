@@ -101,7 +101,7 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
             <Typography.Text>
               {languagesDict[currentLocale as languagesKeys]}
             </Typography.Text>
-            <DownOutlined />
+            <DownOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
           </Space>
         </Button>
       </Dropdown>

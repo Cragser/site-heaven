@@ -4,7 +4,7 @@ import { DeleteButton, EditButton, ShowButton } from '@refinedev/antd';
 import { ResourceEnum } from '@lib/enums/resource.enum';
 import { resourcePath } from '@client/resources/refine-paths';
 import React from 'react';
-import { Action } from '@refinedev/core/src/interfaces/actions';
+import { Action } from '@refinedev/core';
 
 interface Props {
   resource: ResourceEnum;

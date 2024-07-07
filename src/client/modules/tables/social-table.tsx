@@ -21,32 +21,32 @@ export default function SocialTable({ tableProps }: Readonly<AntTableType>) {
     >
       <Table.Column
         dataIndex={['social', 'name']}
-        title={translate(LangTag[`socialfields.name`])}
+        // title={translate(LangTag[`socialfields.name`])}
       />
 
       <Table.Column
         dataIndex={['social', 'type']}
-        title={translate(LangTag[`socialfields.type`])}
+        // title={translate(LangTag[`socialfields.type`])}
       />
 
       <Table.Column
         dataIndex={['social', 'description']}
-        title={translate(LangTag[`socialfields.description`])}
+        // title={translate(LangTag[`socialfields.description`])}
       />
 
       <Table.Column
         dataIndex={['social', 'link']}
-        title={translate(LangTag[`socialfields.link`])}
+        // title={translate(LangTag[`socialfields.link`])}
       />
 
       <Table.Column
         dataIndex={['social', 'createdAt']}
-        title={translate(LangTag[`socialfields.createdAt`])}
+        // title={translate(LangTag[`socialfields.createdAt`])}
       />
 
       <Table.Column
         dataIndex={['social', 'estimatedPeopleImpacted']}
-        title={translate(LangTag[`socialfields.estimatedPeopleImpacted`])}
+        // title={translate(LangTag[`socialfields.estimatedPeopleImpacted`])}
       />
 
       <Table.Column

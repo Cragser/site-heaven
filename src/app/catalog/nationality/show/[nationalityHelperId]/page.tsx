@@ -2,7 +2,7 @@
 
 import { Show } from '@refinedev/antd';
 import { useShow, useTranslate } from '@refinedev/core';
-import { HttpError } from '@refinedev/core/src/interfaces';
+import { HttpError } from '@refinedev/core';
 import { ResourceEnum } from '@lib/enums/resource.enum';
 import { NationalityType } from '@lib/types/helper/nationality.type';
 
