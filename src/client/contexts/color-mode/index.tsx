@@ -10,7 +10,7 @@ import React, {
   useLayoutEffect,
   useState,
 } from 'react';
-import esES from 'antd/locale/es_Es';
+// import esES from 'antd/locale/es_Es';
 type ColorModeContextType = {
   mode: string;
   setMode: (mode: string) => void;
@@ -66,7 +66,7 @@ export const ColorModeContextProvider: React.FC<
           ...RefineThemes.Blue,
           algorithm: mode === 'light' ? defaultAlgorithm : darkAlgorithm,
         }}
-        locale={esES}
+        // locale={esES}
       >
         <AntdApp>{children}</AntdApp>
       </ConfigProvider>
