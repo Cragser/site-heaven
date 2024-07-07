@@ -1,0 +1,524 @@
+{
+  "pages": {
+    "login": {
+      "title": "Inicia sesión en tu cuenta",
+      "signin": "Iniciar sesión",
+      "signup": "Registrarse",
+      "divider": "o",
+      "fields": {
+        "email": "Correo electrónico",
+        "password": "Contraseña"
+      },
+      "errors": {
+        "validEmail": "Dirección de correo electrónico inválida"
+      },
+      "buttons": {
+        "submit": "Iniciar sesión",
+        "forgotPassword": "¿Olvidaste tu contraseña?",
+        "noAccount": "¿No tienes una cuenta?",
+        "rememberMe": "Recuérdame"
+      }
+    },
+    "forgotPassword": {
+      "title": "¿Olvidaste tu contraseña?",
+      "fields": {
+        "email": "Correo electrónico"
+      },
+      "errors": {
+        "validEmail": "Dirección de correo electrónico inválida"
+      },
+      "buttons": {
+        "submit": "Enviar instrucciones de restablecimiento"
+      }
+    },
+    "register": {
+      "title": "Regístrate en tu cuenta",
+      "fields": {
+        "email": "Correo electrónico",
+        "password": "Contraseña"
+      },
+      "errors": {
+        "validEmail": "Dirección de correo electrónico inválida"
+      },
+      "buttons": {
+        "submit": "Registrarse",
+        "haveAccount": "¿Tienes una cuenta?"
+      }
+    },
+    "updatePassword": {
+      "title": "Actualizar contraseña",
+      "fields": {
+        "password": "Nueva Contraseña",
+        "confirmPassword": "Confirmar nueva contraseña"
+      },
+      "errors": {
+        "confirmPasswordNotMatch": "Las contraseñas no coinciden"
+      },
+      "buttons": {
+        "submit": "Actualizar"
+      }
+    },
+    "error": {
+      "info": "Puede que hayas olvidado añadir el componente {{action}} al recurso {{resource}}.",
+      "404": "Lo sentimos, la página que visitaste no existe.",
+      "resource404": "¿Estás seguro de que has creado el recurso {{resource}}?",
+      "backHome": "Volver al inicio"
+    }
+  },
+  "actions": {
+    "list": "Listar",
+    "create": "Crear",
+    "edit": "Editar",
+    "show": "Mostrar"
+  },
+  "buttons": {
+    "create": "Crear",
+    "save": "Guardar",
+    "logout": "Cerrar sesión",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "cancel": "Cancelar",
+    "confirm": "¿Estás seguro?",
+    "filter": "Filtrar",
+    "clear": "Limpiar",
+    "refresh": "Actualizar",
+    "show": "Mostrar",
+    "undo": "Deshacer",
+    "import": "Importar",
+    "clone": "Clonar",
+    "notAccessTitle": "No tienes permiso para acceder"
+  },
+  "warnWhenUnsavedChanges": "¿Estás seguro de que quieres salir? Tienes cambios sin guardar.",
+  "notifications": {
+    "success": "Exitoso",
+    "error": "Error (código de estado: {{statusCode}})",
+    "undoable": "Tienes {{seconds}} segundos para deshacer",
+    "createSuccess": "{{resource}} creado con éxito",
+    "createError": "Hubo un error al crear {{resource}} (código de estado: {{statusCode}})",
+    "deleteSuccess": "{{resource}} eliminado con éxito",
+    "deleteError": "Error al eliminar {{resource}} (código de estado: {{statusCode}})",
+    "editSuccess": "{{resource}} editado con éxito",
+    "editError": "Error al editar {{resource}} (código de estado: {{statusCode}})",
+    "importProgress": "Importando: {{processed}}/{{total}}"
+  },
+  "loading": "Cargando",
+  "tags": {
+    "clone": "Clonar"
+  },
+  "dashboard": {
+    "title": "Panel de control"
+  },
+  "table": {
+    "actions": "Acciones"
+  },
+  "documentTitle": {
+    "default": "refinar",
+    "suffix": " | Refinar",
+    "post": {
+      "list": "Publicaciones | Refinar",
+      "show": "#{{id}} Mostrar publicación | Refinar",
+      "edit": "#{{id}} Editar publicación | Refinar",
+      "create": "Crear nueva publicación | Refinar",
+      "clone": "#{{id}} Clonar publicación | Refinar"
+    }
+  },
+  "autoSave": {
+    "success": "guardado",
+    "error": "error en auto guardado",
+    "loading": "guardando...",
+    "idle": "esperando cambios"
+  },
+  "asset": {
+    "asset": "Activos",
+    "fields": {
+      "id": "id",
+      "name": "Nombre",
+      "description": "Descripción",
+      "date": "Fecha",
+      "type": "Tipo de activo"
+    }
+  },
+  "asset-value-history": {
+    "asset-value-history": "Movimientos del activo",
+    "fields": {
+      "id": "id_movimiento",
+      "assetId": "id_activo",
+      "value": "Valor (en unidades del activo) ",
+      "date": "Fecha del movimiento",
+      "type": "Tipo del movimiento"
+    },
+    "titles": {
+      "create": "Añadir movimientos de [asset.name (id asset.id)]",
+      "edit": "Editar movimientos de [asset.name]",
+      "list": "Historial de movimientos de [asset.name (id  asset.id)]",
+      "show": "Mostrar movimientos del activo"
+    }
+  },
+  "audit": {
+    "audit": "Audit",
+    "fields": {
+      "id": "id",
+      "notes": "notes"
+    }
+  },
+  "company": {
+    "company": "Sociedades",
+    "fields": {
+      "id": "id",
+      "name": "Nombre",
+      "creationUbication": "Lugar de constitución",
+      "goal": "Objeto social",
+      "nickname": "Apodo"
+    },
+    "titles": {
+      "create": "Crear empresa",
+      "edit": "Editar empresa",
+      "list": "Empresas",
+      "show": "Mostrar empresa"
+    }
+  },
+  "contract": {
+    "contract": "Contract",
+    "fields": {
+      "id": "id",
+      "concept": "concept",
+      "startDate": "startDate",
+      "contractor": "contractor",
+      "notes": "notes",
+      "value": "value"
+    }
+  },
+  "company-address": {
+    "company-address": "Domicilios relacionados",
+    "fields": {
+      "id": "id",
+      "companyId": "companyId",
+      "addressId": "addressId"
+    },
+    "titles": {
+      "create": "Añadir domicilio para [company.nickname], ([company.rfc])",
+      "edit": "Editar domicilio",
+      "list": "Domicilios relacionados",
+      "show": "Mostrar domicilio ([company.nickname])"
+    }
+  },
+  "company-asset": {
+    "company-asset": "Activos",
+    "fields": {
+      "id": "id",
+      "companyId": "companyId",
+      "assetId": "assetId"
+    }
+  },
+  "company-creation-details": {
+    "company-creation-details": "CompanyCreationDetails",
+    "fields": {
+      "companyId": "companyId",
+      "initial_capital": "initial_capital",
+      "initial_shares": "initial_shares"
+    }
+  },
+  "company-social": {
+    "company-social": "Redes sociales",
+    "fields": {
+      "id": "id",
+      "companyId": "companyId",
+      "socialId": "socialId"
+    },
+    "titles": {
+      "create": "Añadir red social asociada con [company.nickname (company.rfc)]",
+      "edit": "Editar red social",
+      "list": "Redes sociales y presencia web de [company.nickname (company.rfc)]",
+      "show": "Mostrar redes sociales"
+    }
+  },
+  "judicial-process": {
+    "judicial-process": "Causas legales",
+    "fields": {
+      "id": "id",
+      "name": "Nombre de la causa",
+      "comments": "Resumen del acto jurídico",
+      "legalId": "legalId"
+    },
+    "titles": {
+      "create": "Crear nueva causa en el grupo [legal.name]",
+      "edit": "Editar causa",
+      "list": "Causas del grupo [legal.name]",
+      "show": "Juicios de la causa {[judicial-process.name]}"
+    }
+  },
+  "legal": {
+    "legal": "Grupo de casos",
+    "fields": {
+      "id": "id",
+      "name": "Nombre del grupo",
+      "comments": "Comentarios o resumen"
+    }
+  },
+  "trial": {
+    "trial": "Juicios",
+    "fields": {
+      "id": "id",
+      "startDate": "Comienzo del juicio",
+      "endDate": "Final del juicio (si aplica)",
+      "type": "Jerarquía del juicio",
+      "judicialProcessId": "judicialProcessId"
+    },
+    "titles": {
+      "create": "Crear juicio en la causa",
+      "edit": "Editar juicio",
+      "list": "Relación de juicios en la causa",
+      "show": "Desahogo del juicio [trial.type] en la causa {[judicial-process.name]}"
+    }
+  },
+  "trial-notification": {
+    "trial-notification": "Movimientos del juicio",
+    "fields": {
+      "id": "id",
+      "name": "Resumen",
+      "type": "Tipo de movimiento",
+      "date": "Fecha adoptada",
+      "trialId": "trialId"
+    },
+    "titles": {
+      "create": "Crear movimiento en el juicio [trial.id]",
+      "edit": "Editar movimiento",
+      "list": "Movimientos del juicio [trial.id]",
+      "show": "Mostrar movimientos"
+    }
+  },
+  "trial-relation": {
+    "trial-relation": "Juicios relacionados",
+    "fields": {
+      "id": "id",
+      "trialId": "trialId",
+      "relatedTrialId": "Id del juicio relacionado (hacia abajo)",
+      "relation": "Relación"
+    },
+    "titles": {
+      "create": "Añadir relación entre juicios",
+      "edit": "Editar relación entre juicios",
+      "list": "Relación con otros juicios de la causa {[judicial_process.name]}",
+      "show": "Mostrar relaciones con otros juicios"
+    }
+  },
+  "career": {
+    "career": "Laborales",
+    "fields": {
+      "id": "id",
+      "role": "Nombre del puesto",
+      "startDate": "Fecha de inicio",
+      "endDate": "Fecha de término",
+      "contractType": "Régimen de contratación"
+    }
+  },
+  "education": {
+    "education": "Estudios",
+    "fields": {
+      "id": "Número de cédula",
+      "name": "Nombre del grado",
+      "institution": "Nombre de la institución",
+      "license": "Número de cédula",
+      "validated": "¿Estudios validados oficialmente?"
+    },
+    "titles": {
+      "create": "Añadir estudios",
+      "edit": "Editar estudio",
+      "list": "Estudios de [person.name person.lastName (person.rfc)]",
+      "show": "Mostrar estudios"
+    }
+  },
+  "person": {
+    "person": "Personas",
+    "fields": {
+      "id": "id_unica",
+      "rfc": "RFC",
+      "curp": "CURP",
+      "nss": "NSS",
+      "nationality": "Nacionalidad",
+      "name": "Nombre",
+      "lastName": "Apellido(s)"
+    },
+    "titles": {
+      "create": "Crear persona",
+      "edit": "Editar persona",
+      "list": "Personas",
+      "show": "Antecedentes de [person.name] [person.lastName]",
+      "table": "__TABLE__"
+    }
+  },
+  "person-address": {
+    "person-address": "Domicilios relacionados",
+    "fields": {
+      "id": "id",
+      "personId": "personId",
+      "addressId": "addressId"
+    },
+    "titles": {
+      "create": "Añadir domicilios para [person.name (person.rfc)]",
+      "edit": "Editar domicilio",
+      "list": "Domicilios relacionados",
+      "show": "Mostrar domicilios relacionados",
+      "add-relation-to-address": "Añadir a domicilio"
+    }
+  },
+  "person-asset": {
+    "person-asset": "Activos Personales",
+    "fields": {
+      "id": "id",
+      "personId": "personId",
+      "assetId": "assetId"
+    },
+    "titles": {
+      "create": "Añadir activo personal de [person.name person.lastName (person.rfc)]",
+      "edit": "Editar activo",
+      "list": "Activos personales de [person.name person.lastName (person.rfc)]",
+      "show": "Mostrar activos"
+    }
+  },
+  "person-career": {
+    "person-career": "Antecedentes laborales",
+    "fields": {
+      "id": "id",
+      "personId": "personId",
+      "careerId": "careerId"
+    },
+    "titles": {
+      "create": "Añadir empleos para [person.name person.lastName (person.rfc)]",
+      "edit": "Editar empleo",
+      "list": "Empleos de [person.name person.lastName (person.rfc)]",
+      "show": "Mostrar empleos"
+    }
+  },
+  "person-education": {
+    "person-education": "Antecedentes académicos",
+    "fields": {
+      "id": "id",
+      "personId": "personId",
+      "educationId": "educationId"
+    },
+    "titles": {
+      "create": "Añadir estudios para [person.name person.lastName (person.rfc)]",
+      "edit": "Editar estudio",
+      "list": "Estudios de [person.name person.lastName (person.rfc)]",
+      "show": "Mostrar estudios"
+    }
+  },
+  "person-legal": {
+    "person-legal": "Antecedentes judiciales",
+    "fields": {
+      "id": "id",
+      "personId": "personId",
+      "legalId": "legalId"
+    },
+    "titles": {
+      "create": "Añadir grupo de causas asociadas a [person.name person.lastName (person.rfc)]",
+      "edit": "Editar grupo de causas",
+      "list": "Legal [person.name person.lastName (person.rfc)]",
+      "show": "[person.name], grupo de causas"
+    }
+  },
+  "person-notes": {
+    "person-notes": "PersonNotes",
+    "fields": {
+      "personId": "personId",
+      "noteId": "noteId"
+    }
+  },
+  "person-relation": {
+    "person-relation": "Allegados",
+    "fields": {
+      "id": "id",
+      "personId": "personId",
+      "relatedPersonId": "relatedPersonId"
+    },
+    "titles": {
+      "create": "Añadir allegado",
+      "edit": "Editar allegado",
+      "list": "Allegados de [person.name] [person.lastName] ([person.rfc])",
+      "show": "Mostrar allegados"
+    }
+  },
+  "person-social": {
+    "person-social": "Redes sociales",
+    "fields": {
+      "id": "id",
+      "personId": "personId",
+      "socialId": "socialId"
+    },
+    "titles": {
+      "create": "Añadir red social",
+      "edit": "Editar red social",
+      "list": "Redes sociales y presencia web de [person.name] [person.lastName] ([person.rfc])",
+      "show": "Mostrar redes sociales"
+    }
+  },
+  "notes": {
+    "notes": "Notes",
+    "fields": {
+      "id": "id",
+      "content": "content",
+      "type": "type"
+    }
+  },
+  "person-company": {
+    "person-company": "Participación en sociedades",
+    "fields": {
+      "id": "id",
+      "personId": "personId",
+      "companyId": "companyId"
+    },
+    "titles": {
+      "add-relation-to-company": "Añadir a sociedad",
+      "create": "Añadir participación de [person.name person.lastName (person.rfc)] en una sociedad",
+      "edit": "Editar red social",
+      "list": "Redes sociales y presencia web de [person.name person.lastName (person.rfc)]",
+      "show": "Mostrar redes sociales"
+    }
+  },
+  "social": {
+    "social": "Social",
+    "fields": {
+      "id": "id",
+      "name": "Red social o web",
+      "type": "Tipo",
+      "description": "Descripción del hallazgo",
+      "link": "URL del sitio",
+      "createdAt": "Fecha del hallazgo",
+      "estimatedPeopleImpacted": "Tipo de elemento"
+    }
+  },
+  "company-partner": {
+    "company-partner": "CompanyPartner",
+    "fields": {
+      "personInCompanyId": "personInCompanyId",
+      "role": "role"
+    }
+  },
+  "company-partner-time-frame": {
+    "company-partner-time-frame": "CompanyPartnerTimeFrame",
+    "fields": {
+      "personInCompanyId": "personInCompanyId",
+      "date": "date",
+      "type": "type",
+      "share": "share",
+      "money": "money"
+    }
+  },
+  "address": {
+    "address": "Direción",
+    "fields": {
+      "id": "id",
+      "name": "Nombre",
+      "country": "País",
+      "state": "Entidad federativa/Provincia",
+      "city": "Ciudad/Localidad",
+      "postalCode": "Código postal",
+      "colony": "Colonia",
+      "street": "Calle",
+      "exteriorNumber": "Número exterior",
+      "interiorNumber": "Número interior",
+      "additionalInformation": "Información adicional para su localización"
+    }
+  }
+}
