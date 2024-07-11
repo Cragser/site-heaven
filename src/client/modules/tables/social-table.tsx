@@ -3,7 +3,6 @@
 import { DeleteButton, EditButton, ShowButton } from '@refinedev/antd';
 import { Space, Table } from 'antd';
 import { BaseRecord, useTranslate } from '@refinedev/core';
-import { LangTag } from '@lib/enums/language.enum';
 import { AntTableType } from '@page/types/ant-table.type';
 import React from 'react';
 
@@ -54,11 +53,11 @@ export default function SocialTable({ tableProps }: Readonly<AntTableType>) {
         dataIndex="actions"
         render={(_, record: BaseRecord) => (
           <Space>
-            <EditButton hideText size="small" recordItemId={record.socialId} />
-            <ShowButton hideText size="small" recordItemId={record.socialId} />
+            <EditButton hideText size="middle" recordItemId={record.socialId} />
+            <ShowButton hideText size="middle" recordItemId={record.socialId} />
             <DeleteButton
               hideText
-              size="small"
+              size="middle"
               recordItemId={record.socialId}
             />
           </Space>

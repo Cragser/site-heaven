@@ -84,15 +84,15 @@ export default function PersonList({
             <Space>
               <EditButton
                 hideText
-                size="small"
+                size="middle"
                 recordItemId={record.careerId}
               />
               <ShowButton
                 hideText
-                size="small"
+                size="middle"
                 recordItemId={record.careerId}
               />
-              <DeleteButton hideText size="small" recordItemId={record.id} />
+              <DeleteButton hideText size="middle" recordItemId={record.id} />
             </Space>
           )}
         />

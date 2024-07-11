@@ -107,14 +107,14 @@ export default function AddressList({ id }: Readonly<AddressListProps>) {
             <Space>
               <EditButton
                 hideText
-                size="small"
+                size="middle"
                 recordItemId={record.id}
                 resource={ResourceEnum.address}
               />
 
               <DeleteButton
                 hideText
-                size="small"
+                size="middle"
                 recordItemId={record.id}
                 resource={ResourceEnum.address}
               />

@@ -1,15 +1,16 @@
 'use client';
 
-import { Show, TextField } from '@refinedev/antd';
+import { Show } from '@refinedev/antd';
 import { useShow, useTranslate } from '@refinedev/core';
-import { Typography } from 'antd';
+import {DescriptionsProps, Typography} from 'antd';
 import { HttpError } from '@refinedev/core';
 import { ResourceEnum } from '@lib/enums/resource.enum';
 import { LangTag } from '@lib/enums/language.enum';
 import { CompanyType } from '@lib/types/company.type';
 import CardList from '@modules/card-list';
+import {StateManager} from "@components/feedback/state-manager/state-manager";
+import DescriptionSimple from "@components/data-display/description/description-simple";
 
-const { Title } = Typography;
 
 interface CompanyPage {
   params: {
@@ -28,41 +29,34 @@ export default function CompanyShowPage({
   const { data, isError, isLoading } = queryResult;
   const record = data?.data;
   const translate = useTranslate();
+  if(record === undefined || isError) return null;
 
-  if (isError || !record) {
-    return null;
-  }
+    const fields = ['name', 'creationUbication', 'rfc', 'goal', 'nickname'];
 
+    const items: DescriptionsProps['items'] = fields.map((field) => ({
+        children: record?.[field],
+        label: translate(LangTag[`company.fields.${field}` as keyof typeof LangTag]),
+        span: 2,
+    }));
   return (
+      <StateManager
+          isLoading={queryResult.isLoading}
+          isError={queryResult.isError}
+      >
     <Show isLoading={isLoading}>
-      <Title level={5}>{translate(LangTag[`company.fields.name`])}</Title>
-      <TextField value={record.name} />
-
-      <Title level={5}>
-        {translate(LangTag[`company.fields.creationUbication`])}
-      </Title>
-      <TextField value={record.creationUbication} />
-
-      {/*<Title level={5}>{translate(LangTag[`company.fields.rfc`])}</Title>*/}
-      <TextField value={record.rfc} />
-
-      <Title level={5}>{translate(LangTag[`company.fields.goal`])}</Title>
-      <TextField value={record.goal} />
-
-      <Title level={5}>{translate(LangTag[`company.fields.nickname`])}</Title>
-      <TextField value={record.nickname} />
-
-      <CardList
-        parent={'company'}
-        id={record?.id}
-        record={record}
-        resources={[
-          ResourceEnum.companyAddress,
-          ResourceEnum.companySocial,
-          ResourceEnum.companyAsset,
-          ResourceEnum.personCompany,
-        ]}
-      />
+        <DescriptionSimple items={items} />
+          <CardList
+            parent={'company'}
+            id={record?.id}
+            record={record}
+            resources={[
+              ResourceEnum.companyAddress,
+              ResourceEnum.companySocial,
+              ResourceEnum.companyAsset,
+              ResourceEnum.personCompany,
+            ]}
+          />
     </Show>
+      </StateManager>
   );
 }

@@ -97,6 +97,7 @@ export enum LangTag {
   'company.fields.id' = 'company.fields.id',
   'company.fields.name' = 'company.fields.name',
   'company.fields.creationUbication' = 'company.fields.creationUbication',
+    'company.fields.rfc' = 'company.fields.rfc',
   'company.fields.goal' = 'company.fields.goal',
   'company.fields.nickname' = 'company.fields.nickname',
   'company.titles.create' = 'company.titles.create',

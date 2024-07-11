@@ -17,6 +17,7 @@ import {
 import React, { useContext } from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import Cookies from 'js-cookie';
+import {isDev} from "@/shared/process/isDev";
 
 const { Text } = Typography;
 const { useToken } = theme;
@@ -86,6 +87,8 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
         Cookies.set('NEXT_LOCALE', lang);
       },
     }));
+
+  console.log({isDev})
 
   return (
     <AntdLayout.Header style={headerStyles}>

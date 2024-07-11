@@ -74,14 +74,14 @@ export function AssetValueHistoryList({
             <Space>
               <EditButton
                 hideText
-                size="small"
+                size="middle"
                 recordItemId={record.id}
                 resource={ResourceEnum.assetValueHistory}
               />
 
               <DeleteButton
                 hideText
-                size="small"
+                size="middle"
                 recordItemId={record.id}
                 resource={ResourceEnum.assetValueHistory}
               />

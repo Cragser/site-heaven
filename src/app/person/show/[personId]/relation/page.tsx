@@ -76,14 +76,14 @@ export default function PersonRelationList({
           dataIndex="actions"
           render={(_, record: BaseRecord) => (
             <Space>
-              <EditButton hideText size="small" recordItemId={record.id} />
+              <EditButton hideText size="middle" recordItemId={record.id} />
               <ShowButton
                 hideText
-                size="small"
+                size="middle"
                 recordItemId={record.id}
                 resource={ResourceEnum.personRelation}
               />
-              <DeleteButton hideText size="small" recordItemId={record.id} />
+              <DeleteButton hideText size="middle" recordItemId={record.id} />
             </Space>
           )}
         />

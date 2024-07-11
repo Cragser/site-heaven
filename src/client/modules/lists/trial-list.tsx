@@ -104,20 +104,20 @@ export default function TrialList({
             <Space>
               <EditButton
                 hideText
-                size="small"
+                size="a"
                 recordItemId={record.id}
                 resource={ResourceEnum.trial}
               />
               <ShowButton
                 hideText
-                size="small"
+                size="middle"
                 recordItemId={record.id}
                 resource={ResourceEnum.trial}
               />
 
               <DeleteButton
                 hideText
-                size="small"
+                size="middle"
                 recordItemId={record.id}
                 resource={ResourceEnum.trial}
               />

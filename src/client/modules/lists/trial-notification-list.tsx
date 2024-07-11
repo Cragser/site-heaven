@@ -74,14 +74,14 @@ export default function TrialNotificationList({
             <Space>
               <EditButton
                 hideText
-                size="small"
+                size="middle"
                 recordItemId={record.id}
                 resource={ResourceEnum.trialNotification}
               />
 
               <DeleteButton
                 hideText
-                size="small"
+                size="middle"
                 recordItemId={record.id}
                 resource={ResourceEnum.trialNotification}
               />

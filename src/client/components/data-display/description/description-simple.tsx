@@ -17,7 +17,7 @@ export default function DescriptionSimple({ items }: Readonly<Props>) {
         xxl: 2,
       }}
       items={items}
-      size="small"
+      size="middle"
     />
   );
 }

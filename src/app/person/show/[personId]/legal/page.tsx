@@ -73,17 +73,17 @@ export default function PersonLegalList({
             <Space>
               <EditButton
                 hideText
-                size="small"
+                size="middle"
                 recordItemId={record.legalId}
                 resource={ResourceEnum.personLegal}
               />
               <ShowButton
                 hideText
-                size="small"
+                size="middle"
                 recordItemId={record.legalId}
                 resource={ResourceEnum.personLegal}
               />
-              <DeleteButton hideText size="small" recordItemId={record.id} />
+              <DeleteButton hideText size="middle" recordItemId={record.id} />
             </Space>
           )}
         />

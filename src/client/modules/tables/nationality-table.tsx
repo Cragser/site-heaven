@@ -32,14 +32,14 @@ export default function NationalityTable({
           <Space>
             <EditButton
               hideText
-              size="small"
+              size="middle"
               recordItemId={record.id}
               resource={ResourceEnum.nationalityHelper}
             />
-            <ShowButton hideText size="small" recordItemId={record.id} />
+            <ShowButton hideText size="middle" recordItemId={record.id} />
             <DeleteButton
               hideText
-              size="small"
+              size="middle"
               recordItemId={record.id}
               resource={ResourceEnum.nationalityHelper}
             />

@@ -166,6 +166,7 @@
     "fields": {
       "id": "id",
       "name": "Nombre",
+      "rfc": "RFC",
       "creationUbication": "Lugar de constitución",
       "goal": "Objeto social",
       "nickname": "Apodo"

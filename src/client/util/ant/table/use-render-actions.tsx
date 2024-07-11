@@ -58,17 +58,17 @@ export default function useRenderActions({
     <Space>
       <EditButton
         hideText
-        size="small"
+        size="middle"
         onClick={() => handleClick(record, 'edit')}
       />
       <ShowButton
         hideText
-        size="small"
+        size="middle"
         onClick={() => handleClick(record, 'show')}
       />
       <DeleteButton
         hideText
-        size="small"
+        size="middle"
         recordItemId={record.id}
         resource={resourceToDelete}
       />

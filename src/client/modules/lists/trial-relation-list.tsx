@@ -78,14 +78,14 @@ export default function TrialRelationList({
             <Space>
               <EditButton
                 hideText
-                size="small"
+                size="middle"
                 recordItemId={record.id}
                 resource={ResourceEnum.trialRelation}
               />
 
               <DeleteButton
                 hideText
-                size="small"
+                size="middle"
                 recordItemId={record.id}
                 resource={ResourceEnum.trialRelation}
               />

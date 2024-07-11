@@ -14,6 +14,7 @@ import dayjs from 'dayjs';
 import { refinePaths } from '@client/resources/refine-paths';
 import { useAuthProvider } from '@providers/auth-provider';
 import { SessionProvider } from 'next-auth/react';
+import {isDev} from "@/shared/process/isDev";
 
 type RefineContextProps = {
   defaultMode?: string;
@@ -34,7 +35,6 @@ type Props = {
   themeMode?: string;
 };
 const App = ({ children, themeMode }: PropsWithChildren<Props>) => {
-    console.log(process.env.NODE_ENV)
   const { i18n, t } = useTranslation();
   const i18nProvider = {
     changeLocale: (lang: string) => i18n.changeLanguage(lang),

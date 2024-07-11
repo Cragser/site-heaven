@@ -88,15 +88,15 @@ export default function PersonEducationList({
             <Space>
               <EditButton
                 hideText
-                size="small"
+                size="middle"
                 recordItemId={record.educationId}
               />
               <ShowButton
                 hideText
-                size="small"
+                size="middle"
                 recordItemId={record.educationId}
               />
-              <DeleteButton hideText size="small" recordItemId={record.id} />
+              <DeleteButton hideText size="middle" recordItemId={record.id} />
             </Space>
           )}
         />
