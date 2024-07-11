@@ -104,7 +104,7 @@ export default function TrialList({
             <Space>
               <EditButton
                 hideText
-                size="a"
+                size="middle"
                 recordItemId={record.id}
                 resource={ResourceEnum.trial}
               />
