@@ -1,6 +1,6 @@
-import { useSelect } from '@refinedev/antd';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { CrudFilters } from '@refinedev/core';
+import { useSelect } from "@refinedev/antd";
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { CrudFilters } from "@refinedev/core";
 
 type Filter = (search: string) => {
   field: string;
@@ -27,17 +27,17 @@ export function useResourceSelect({
     excludeIds.length > 0
       ? [
           {
-            field: 'filter',
-            operator: 'nin',
-            value: `id||$notin||${excludeIds.join(',')}`,
+            field: "filter",
+            operator: "nin",
+            value: `id||$notin||${excludeIds.join(",")}`,
           },
         ]
       : [];
 
   const searchFilter = [
     (search: string) => ({
-      field: 'filter',
-      operator: 'eq',
+      field: "filter",
+      operator: "eq",
       value: `name||$cont||${search}`,
     }),
   ];
@@ -48,15 +48,18 @@ export function useResourceSelect({
       if (!search) return [];
       return filters.map((filter) => filter(search));
     },
-    optionLabel: (item: { name: any; }) => {
+    optionLabel: (item: { name: any }) => {
       return item.name;
     },
-    optionValue: (item: { i: any; }) => item.i,
+    optionValue: (item: { id: any }) => {
+      return item.id;
+    },
     pagination: {
-      mode: 'client',
+      mode: "client",
     },
     resource,
-  }
+  };
+
   // TODO: Arreglar los tipos
   const { selectProps } = useSelect(propsToSelect as any);
 
