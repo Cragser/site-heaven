@@ -452,7 +452,8 @@
       "create": "Añadir red social",
       "edit": "Editar red social",
       "list": "Redes sociales y presencia web de [person.name] [person.lastName] ([person.rfc])",
-      "show": "Mostrar redes sociales"
+      "show": "Mostrar redes sociales",
+      "add-relation-to-person": "Añadir a red social"
     }
   },
   "notes": {
