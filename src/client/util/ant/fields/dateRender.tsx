@@ -1,7 +1,7 @@
-import { DateField } from '@refinedev/antd';
+import { DateField } from "@refinedev/antd";
 
 export const dateRender = (value: unknown) => {
-	console.log(value)
-	if (!value) return null;
-	return <DateField value={value} format={'ll'} />;
+  if (!value) return null;
+  // @ts-ignore
+  return <DateField value={value} format={"ll"} />;
 };
