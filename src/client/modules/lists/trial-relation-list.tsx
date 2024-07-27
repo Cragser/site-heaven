@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { DeleteButton, EditButton, List, useTable } from '@refinedev/antd';
-import { Space, Table } from 'antd';
-import { BaseRecord, useTranslate } from '@refinedev/core';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { LangTag } from '@lib/enums/language.enum';
-import { tagRender } from '@client/util/ant/fields/tagRender';
+import { DeleteButton, EditButton, List, useTable } from "@refinedev/antd";
+import { Space, Table } from "antd";
+import { BaseRecord, useTranslate } from "@refinedev/core";
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { LangTag } from "@lib/enums/language.enum";
+import { tagRender } from "@client/util/ant/fields/tagRender";
 
 interface TrialRelationListProps {
   trialId: string;
@@ -19,15 +19,15 @@ export default function TrialRelationList({
     filters: {
       permanent: [
         {
-          field: 'filter',
-          operator: 'eq',
+          field: "filter",
+          operator: "eq",
           value: `trialId||$eq||${trialId}`,
         },
       ],
     },
     pagination: {
       current: 1,
-      mode: 'client',
+      mode: "client",
       pageSize: 10,
     },
     resource: ResourceEnum.trialRelation,
@@ -43,12 +43,12 @@ export default function TrialRelationList({
   return (
     <List resource={ResourceEnum.trialRelation} breadcrumb={false}>
       <Table
-        {...tableProps}
+        {...(tableProps as any)}
         rowKey="id"
         pagination={{
           ...tableProps.pagination,
-          position: ['bottomCenter'],
-          size: 'small',
+          position: ["bottomCenter"],
+          size: "small",
         }}
       >
         {/*<Table.Column*/}
@@ -56,23 +56,23 @@ export default function TrialRelationList({
         {/*  title={translate(LangTag[`trial-relation.fields.trialId`])}*/}
         {/*/>*/}
         <Table.Column
-          dataIndex={['relatedTrial', 'name']}
+          dataIndex={["relatedTrial", "name"]}
           // title={translate(LangTag[`trial-relation.fields.name`])}
         />
 
         <Table.Column
-          dataIndex={['relatedTrial', 'type']}
+          dataIndex={["relatedTrial", "type"]}
           // title={translate(LangTag[`trial-relation.fields.type`])}
           render={tagRender}
         />
 
         <Table.Column
-          dataIndex={['relation']}
+          dataIndex={["relation"]}
           title={translate(LangTag[`trial-relation.fields.relation`])}
         />
 
         <Table.Column
-          title={'Actions'}
+          title={"Actions"}
           dataIndex="actions"
           render={(_, record: BaseRecord) => (
             <Space>

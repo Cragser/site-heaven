@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { Create, useForm } from '@refinedev/antd';
-import { HttpError } from '@refinedev/core';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { PersonPageType } from '@page/types/pages/person/person-page.type';
-import { CompanyType } from '@lib/types/company.type';
-import { Form, Input, Select } from 'antd';
-import { useResourceSelect } from '@client/util/hook/use-resource-select';
+import { Create, useForm } from "@refinedev/antd";
+import { HttpError } from "@refinedev/core";
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { PersonPageType } from "@page/types/pages/person/person-page.type";
+import { CompanyType } from "@lib/types/company.type";
+import { Form, Input, Select } from "antd";
+import { useResourceSelect } from "@client/util/hook/use-resource-select";
 
 export default function Page({
   params: { personId },
@@ -25,7 +25,7 @@ export default function Page({
           <Input />
         </Form.Item>
         <Form.Item label="Name" name="companyId">
-          <Select {...selectProps} />
+          <Select {...(selectProps as any)} />
         </Form.Item>
       </Form>
     </Create>

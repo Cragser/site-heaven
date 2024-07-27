@@ -1,8 +1,8 @@
-import { Form, FormProps, Input, Select } from 'antd';
-import { useTranslate } from '@refinedev/core';
-import { trialRelationAntdValidation } from '@lib/schemas/trial-relation.schema';
-import { useResourceSelect } from '@client/util/hook/use-resource-select';
-import { ResourceEnum } from '@lib/enums/resource.enum';
+import { Form, FormProps, Input, Select } from "antd";
+import { useTranslate } from "@refinedev/core";
+import { trialRelationAntdValidation } from "@lib/schemas/trial-relation.schema";
+import { useResourceSelect } from "@client/util/hook/use-resource-select";
+import { ResourceEnum } from "@lib/enums/resource.enum";
 
 interface TrialRelationFormProps {
   formProps: FormProps;
@@ -27,21 +27,21 @@ export default function TrialRelationForm({
         <Input />
       </Form.Item>
       <Form.Item
-        label={translate('trialRelation.fields.trialId')}
+        label={translate("trialRelation.fields.trialId")}
         name="trialId"
         rules={trialRelationAntdValidation.trialId}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label={translate('trialRelation.fields.relatedTrialId')}
+        label={translate("trialRelation.fields.relatedTrialId")}
         name="relatedTrialId"
         rules={trialRelationAntdValidation.relatedTrialId}
       >
-        <Select {...selectProps} />
+        <Select {...(selectProps as any)} />
       </Form.Item>
       <Form.Item
-        label={translate('trialRelation.fields.relation')}
+        label={translate("trialRelation.fields.relation")}
         name="relation"
         rules={trialRelationAntdValidation.relation}
       >

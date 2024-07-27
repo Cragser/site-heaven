@@ -12,7 +12,7 @@ export default function CareerForm(formProps: Readonly<FormProps>) {
   return (
     <Form {...formProps} layout="vertical">
       <Form.Item label="Name" name={["companyId"]}>
-        <Select {...selectProps} />
+        <Select {...(selectProps as any)} />
       </Form.Item>
       <Form.Item
         label={translate(LangTag[`career.fields.role`])}

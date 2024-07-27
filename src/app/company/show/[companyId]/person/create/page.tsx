@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { Create, useForm } from '@refinedev/antd';
-import { HttpError } from '@refinedev/core';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { CompanyType } from '@lib/types/company.type';
-import { Form, Input, Select } from 'antd';
-import { useResourceSelect } from '@client/util/hook/use-resource-select';
+import { Create, useForm } from "@refinedev/antd";
+import { HttpError } from "@refinedev/core";
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { CompanyType } from "@lib/types/company.type";
+import { Form, Input, Select } from "antd";
+import { useResourceSelect } from "@client/util/hook/use-resource-select";
 
 export default function Page({ params: { companyId } }: any) {
   const { formProps, saveButtonProps } = useForm<CompanyType, HttpError>({
@@ -26,7 +26,7 @@ export default function Page({ params: { companyId } }: any) {
           <Input />
         </Form.Item>
         <Form.Item label="Name" name="personId">
-          <Select {...selectProps} />
+          <Select {...(selectProps as any)} />
         </Form.Item>
       </Form>
     </Create>

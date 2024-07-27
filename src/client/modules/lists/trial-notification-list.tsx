@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { DeleteButton, EditButton, List, useTable } from '@refinedev/antd';
-import { Space, Table } from 'antd';
-import { BaseRecord, useTranslate } from '@refinedev/core';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { LangTag } from '@lib/enums/language.enum';
-import { tagRender } from '@client/util/ant/fields/tagRender';
-import { dateRender } from '@client/util/ant/fields/dateRender';
+import { DeleteButton, EditButton, List, useTable } from "@refinedev/antd";
+import { Space, Table } from "antd";
+import { BaseRecord, useTranslate } from "@refinedev/core";
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { LangTag } from "@lib/enums/language.enum";
+import { tagRender } from "@client/util/ant/fields/tagRender";
+import { dateRender } from "@client/util/ant/fields/dateRender";
 
 interface TrialNotificationListProps {
   trialId: string;
@@ -20,15 +20,15 @@ export default function TrialNotificationList({
     filters: {
       permanent: [
         {
-          field: 'filter',
-          operator: 'eq',
+          field: "filter",
+          operator: "eq",
           value: `trialId||$eq||${trialId}`,
         },
       ],
     },
     pagination: {
       current: 1,
-      mode: 'client',
+      mode: "client",
       pageSize: 10,
     },
     resource: ResourceEnum.trialNotification,
@@ -42,33 +42,33 @@ export default function TrialNotificationList({
   return (
     <List resource={ResourceEnum.trialNotification} breadcrumb={false}>
       <Table
-        {...tableProps}
+        {...(tableProps as any)}
         rowKey="id"
         pagination={{
           ...tableProps.pagination,
-          position: ['bottomCenter'],
-          size: 'small',
+          position: ["bottomCenter"],
+          size: "small",
         }}
       >
         <Table.Column
-          dataIndex={['name']}
+          dataIndex={["name"]}
           title={translate(LangTag[`trial-notification.fields.name`])}
         />
 
         <Table.Column
-          dataIndex={['type']}
+          dataIndex={["type"]}
           title={translate(LangTag[`trial-notification.fields.type`])}
           render={tagRender}
         />
 
         <Table.Column
-          dataIndex={['date']}
+          dataIndex={["date"]}
           title={translate(LangTag[`trial-notification.fields.date`])}
           render={dateRender}
         />
 
         <Table.Column
-          title={'Actions'}
+          title={"Actions"}
           dataIndex="actions"
           render={(_, record: BaseRecord) => (
             <Space>

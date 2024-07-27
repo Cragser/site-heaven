@@ -52,7 +52,7 @@ function CreateTable({
 
   return (
     <Table
-      {...tableProps}
+      {...(tableProps as any)}
       rowKey="id"
       pagination={{
         ...tableProps.pagination,

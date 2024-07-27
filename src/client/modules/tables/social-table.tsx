@@ -1,55 +1,54 @@
-'use client';
+"use client";
 
-import { DeleteButton, EditButton, ShowButton } from '@refinedev/antd';
-import { Space, Table } from 'antd';
-import { BaseRecord, useTranslate } from '@refinedev/core';
-import { AntTableType } from '@page/types/ant-table.type';
-import React from 'react';
+import { DeleteButton, EditButton, ShowButton } from "@refinedev/antd";
+import { Space, Table } from "antd";
+import { BaseRecord, useTranslate } from "@refinedev/core";
+import React from "react";
 
-export default function SocialTable({ tableProps }: Readonly<AntTableType>) {
+export default function SocialTable({ tableProps }: any) {
   const translate = useTranslate();
   return (
     <Table
-      {...tableProps}
+      {...(tableProps as any)}
       rowKey="id"
       pagination={{
         ...tableProps.pagination,
-        position: ['bottomCenter'],
-        size: 'small',
+        position: ["bottomCenter"],
+        size: "small",
       }}
     >
       <Table.Column
-        dataIndex={['social', 'name']}
+        dataIndex={["social", "name"]}
         // title={translate(LangTag[`socialfields.name`])}
       />
 
       <Table.Column
-        dataIndex={['social', 'type']}
+        dataIndex={["social", "type"]}
         // title={translate(LangTag[`socialfields.type`])}
       />
 
       <Table.Column
-        dataIndex={['social', 'description']}
+        dataIndex={["social", "description"]}
         // title={translate(LangTag[`socialfields.description`])}
       />
 
       <Table.Column
-        dataIndex={['social', 'link']}
+        dataIndex={["social", "link"]}
         // title={translate(LangTag[`socialfields.link`])}
       />
 
       <Table.Column
-        dataIndex={['social', 'createdAt']}
+        dataIndex={["social", "createdAt"]}
         // title={translate(LangTag[`socialfields.createdAt`])}
       />
 
       <Table.Column
-        dataIndex={['social', 'estimatedPeopleImpacted']}
+        dataIndex={["social", "estimatedPeopleImpacted"]}
         // title={translate(LangTag[`socialfields.estimatedPeopleImpacted`])}
       />
 
       <Table.Column
-        title={'Actions'}
+        title={"Actions"}
         dataIndex="actions"
         render={(_, record: BaseRecord) => (
           <Space>

@@ -36,7 +36,7 @@ export default function EntityRelationForm({
         <Input />
       </Form.Item>
       <Form.Item label={entityLabelName} name={`${entityFieldName}Id`}>
-        <Select {...selectProps} />
+        <Select {...(selectProps as any)} />
       </Form.Item>
     </Form>
   );

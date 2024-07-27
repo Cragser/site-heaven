@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
   DeleteButton,
@@ -6,12 +6,12 @@ import {
   List,
   ShowButton,
   useTable,
-} from '@refinedev/antd';
-import { Space, Table } from 'antd';
-import { BaseRecord, useTranslate } from '@refinedev/core';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { LangTag } from '@lib/enums/language.enum';
-import { PersonPageType } from '@page/types/pages/person/person-page.type';
+} from "@refinedev/antd";
+import { Space, Table } from "antd";
+import { BaseRecord, useTranslate } from "@refinedev/core";
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { LangTag } from "@lib/enums/language.enum";
+import { PersonPageType } from "@page/types/pages/person/person-page.type";
 
 export default function PersonSocialList({
   params: { personId },
@@ -21,15 +21,15 @@ export default function PersonSocialList({
     filters: {
       permanent: [
         {
-          field: 'filter',
-          operator: 'eq',
+          field: "filter",
+          operator: "eq",
           value: `personId||$eq||${personId}`,
         },
       ],
     },
     pagination: {
       current: 1,
-      mode: 'client',
+      mode: "client",
       pageSize: 10,
     },
     resource: ResourceEnum.personSocial,
@@ -43,51 +43,51 @@ export default function PersonSocialList({
   return (
     <List>
       <Table
-        {...tableProps}
+        {...(tableProps as any)}
         rowKey="socialId"
         pagination={{
           ...tableProps.pagination,
-          position: ['bottomCenter'],
-          size: 'small',
+          position: ["bottomCenter"],
+          size: "small",
         }}
       >
         <Table.Column
-          dataIndex={['social', 'id']}
+          dataIndex={["social", "id"]}
           title={translate(LangTag[`social.fields.id`])}
         />
 
         <Table.Column
-          dataIndex={['social', 'name']}
+          dataIndex={["social", "name"]}
           title={translate(LangTag[`social.fields.name`])}
         />
 
         <Table.Column
-          dataIndex={['social', 'type']}
+          dataIndex={["social", "type"]}
           title={translate(LangTag[`social.fields.type`])}
         />
 
         <Table.Column
-          dataIndex={['social', 'description']}
+          dataIndex={["social", "description"]}
           title={translate(LangTag[`social.fields.description`])}
         />
 
         <Table.Column
-          dataIndex={['social', 'link']}
+          dataIndex={["social", "link"]}
           title={translate(LangTag[`social.fields.link`])}
         />
 
         <Table.Column
-          dataIndex={['social', 'createdAt']}
+          dataIndex={["social", "createdAt"]}
           title={translate(LangTag[`social.fields.createdAt`])}
         />
 
         <Table.Column
-          dataIndex={['social', 'estimatedPeopleImpacted']}
+          dataIndex={["social", "estimatedPeopleImpacted"]}
           title={translate(LangTag[`social.fields.estimatedPeopleImpacted`])}
         />
 
         <Table.Column
-          title={'Actions'}
+          title={"Actions"}
           dataIndex="actions"
           render={(_, record: BaseRecord) => (
             <Space>

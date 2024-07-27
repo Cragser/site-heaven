@@ -1,10 +1,10 @@
-import { Form, FormProps, Input, Select } from 'antd';
-import { useTranslate } from '@refinedev/core';
-import { personRelationAntdValidation } from '@lib/schemas/person-relation.schema';
-import { PersonRelationEnum } from '@lib/enums/person-relation.enum';
-import { useSelect } from '@refinedev/antd';
-import { PersonType } from '@lib/types/person.type';
-import { ResourceEnum } from '@lib/enums/resource.enum';
+import { Form, FormProps, Input, Select } from "antd";
+import { useTranslate } from "@refinedev/core";
+import { personRelationAntdValidation } from "@lib/schemas/person-relation.schema";
+import { PersonRelationEnum } from "@lib/enums/person-relation.enum";
+import { useSelect } from "@refinedev/antd";
+import { PersonType } from "@lib/types/person.type";
+import { ResourceEnum } from "@lib/enums/resource.enum";
 
 interface RelationFormProps {
   formProps: FormProps;
@@ -22,8 +22,8 @@ export default function RelationForm({
       if (!search) return [];
       return [
         {
-          field: 'filter',
-          operator: 'eq',
+          field: "filter",
+          operator: "eq",
           value: `name||$cont||${search}`,
         },
       ];
@@ -34,39 +34,39 @@ export default function RelationForm({
     },
     optionValue: (item) => item.id,
     pagination: {
-      mode: 'client',
+      mode: "client",
     },
     resource: ResourceEnum.person,
   });
   return (
     <Form {...formProps} layout="vertical">
       <Form.Item
-        label={'Persona'}
+        label={"Persona"}
         name="personId"
         rules={personRelationAntdValidation.personId}
         initialValue={personId}
         hidden={true}
       >
-        <Input type={'hidden'} />
+        <Input type={"hidden"} />
       </Form.Item>
       <Form.Item
-        label={'Persona relacionada'}
+        label={"Persona relacionada"}
         name="relatedPersonId"
         rules={personRelationAntdValidation.personId}
       >
         <Select
           placeholder="Selecciona una persona"
           style={{ width: 300 }}
-          {...selectProps}
+          {...(selectProps as any)}
         />
       </Form.Item>
-      <Form.Item label="Fecha de inicio" name={'startDate'}>
-        <Input type={'date'} />
+      <Form.Item label="Fecha de inicio" name={"startDate"}>
+        <Input type={"date"} />
       </Form.Item>
-      <Form.Item label="Fecha de fin" name={'endDate'}>
-        <Input type={'date'} />
+      <Form.Item label="Fecha de fin" name={"endDate"}>
+        <Input type={"date"} />
       </Form.Item>
-      <Form.Item label="Tipo de relación" name={'relation'}>
+      <Form.Item label="Tipo de relación" name={"relation"}>
         <Select>
           {Object.values(PersonRelationEnum).map((value) => (
             <Select.Option key={value} value={value}>

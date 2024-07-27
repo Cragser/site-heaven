@@ -1,19 +1,15 @@
-import { Table } from 'antd';
-import { tagRender } from '@client/util/ant/fields/tagRender';
-import { BaseRecord, useTranslate } from '@refinedev/core';
-import { AntTableType } from '@page/types/ant-table.type';
-import { LangTag } from '@lib/enums/language.enum';
-import React from 'react';
-import useRenderActions from '@client/util/ant/table/use-render-actions';
-import { createDataIndex } from '@client/util/table/create-data-index';
-import { ResourceEnum } from '@lib/enums/resource.enum';
+import { Table } from "antd";
+import { tagRender } from "@client/util/ant/fields/tagRender";
+import { BaseRecord, useTranslate } from "@refinedev/core";
+import { LangTag } from "@lib/enums/language.enum";
+import React from "react";
+import useRenderActions from "@client/util/ant/table/use-render-actions";
+import { createDataIndex } from "@client/util/table/create-data-index";
+import { ResourceEnum } from "@lib/enums/resource.enum";
 
-export default function PersonTable({
-  parent = '',
-  tableProps,
-}: Readonly<AntTableType>) {
+export default function PersonTable({ parent = "", tableProps }: any) {
   const translate = useTranslate();
-  const keys = ['name', 'lastName', 'rfc', 'curp', 'nss'];
+  const keys = ["name", "lastName", "rfc", "curp", "nss"];
   const dataIndex = createDataIndex(parent, keys);
   const { renderActions } = useRenderActions({
     metaCreate: (record: BaseRecord, getId) => ({
@@ -25,23 +21,25 @@ export default function PersonTable({
 
   return (
     <Table
-      {...tableProps}
+      {...(tableProps as any)}
       rowKey="id"
       pagination={{
         ...tableProps.pagination,
-        position: ['bottomCenter'],
-        size: 'small',
+        position: ["bottomCenter"],
+        size: "small",
       }}
     >
       {keys.map((key) => (
         <Table.Column
           key={key}
           dataIndex={dataIndex[key]}
-          title={translate(LangTag[`person.fields.${key}` as keyof typeof LangTag])}
+          title={translate(
+            LangTag[`person.fields.${key}` as keyof typeof LangTag]
+          )}
         />
       ))}
       <Table.Column
-        dataIndex={['nationality', 'name']}
+        dataIndex={["nationality", "name"]}
         title={translate(LangTag[`person.fields.nationality`])}
         render={tagRender}
       />

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
   DeleteButton,
@@ -6,16 +6,15 @@ import {
   List,
   ShowButton,
   useTable,
-} from '@refinedev/antd';
-import {Button, Space, Table} from 'antd';
-import { BaseRecord, useTranslate } from '@refinedev/core';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { PersonPageType } from '@page/types/pages/person/person-page.type';
-import {StateManager} from "@components/feedback/state-manager/state-manager";
-import {usePersonTitle} from "@client/hooks/titles/use-person-title";
-import {LangTag} from "@lib/enums/language.enum";
-import {renderHeaderToPerson} from "@client/util/ant/list/renderHeaderToPerson";
-import PersonTable from "@modules/tables/person-table";
+} from "@refinedev/antd";
+import { Space, Table } from "antd";
+import { BaseRecord, useTranslate } from "@refinedev/core";
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { PersonPageType } from "@page/types/pages/person/person-page.type";
+import { StateManager } from "@components/feedback/state-manager/state-manager";
+import { usePersonTitle } from "@client/hooks/titles/use-person-title";
+import { LangTag } from "@lib/enums/language.enum";
+import { renderHeaderToPerson } from "@client/util/ant/list/renderHeaderToPerson";
 
 export default function PersonRelationList({
   params: { personId },
@@ -26,82 +25,80 @@ export default function PersonRelationList({
     filters: {
       permanent: [
         {
-          field: 'filter',
-          operator: 'eq',
+          field: "filter",
+          operator: "eq",
           value: `personId||$eq||${personId}`,
         },
       ],
     },
     pagination: {
       current: 1,
-      mode: 'client',
+      mode: "client",
       pageSize: 10,
     },
     resource: ResourceEnum.personRelation,
     syncWithLocation: true,
   });
-    const { title } = usePersonTitle(
-        personId,
-        LangTag['person-relation.titles.list']
-    );
+  const { title } = usePersonTitle(
+    personId,
+    LangTag["person-relation.titles.list"]
+  );
 
   return (
-      <StateManager
-          isLoading={tableQueryResult?.isLoading}
-          isError={tableQueryResult.isError}
+    <StateManager
+      isLoading={tableQueryResult?.isLoading}
+      isError={tableQueryResult.isError}
+    >
+      <List
+        title={title}
+        headerButtons={renderHeaderToPerson(personId, ResourceEnum.person, [])}
       >
-          <List
-              title={title}
-              headerButtons={renderHeaderToPerson(personId, ResourceEnum.person, [])}
-
-          >
-
-      <Table
-        {...tableProps}
-        rowKey="relationId"
-        pagination={{
-          ...tableProps.pagination,
-          position: ['bottomCenter'],
-          size: 'small',
-        }}
-      >
-        <Table.Column
-          title={'Nombre persona relacionada'}
-          dataIndex={['relatedPerson', 'name']}
-        />
-        <Table.Column
-          title={'Nombre persona relacionada'}
-          dataIndex={['relatedPerson', 'lastName']}
-        />
-        <Table.Column
-          title={'Fecha de inicio'}
-          dataIndex="startDate"
-          render={(value) => value || '-'}
-        />
-        <Table.Column
-          title={'Fecha de fin'}
-          dataIndex="endDate"
-          render={(value) => value || '-'}
-        />
-        <Table.Column title={'Tipo de relación'} dataIndex="relation" />
-        <Table.Column
-          title={'Actions'}
-          dataIndex="actions"
-          render={(_, record: BaseRecord) => (
-            <Space>
-              <EditButton hideText size="middle" recordItemId={record.id} />
-              <ShowButton
-                hideText
-                size="middle"
-                recordItemId={record.id}
-                resource={ResourceEnum.personRelation}
-              />
-              <DeleteButton hideText size="middle" recordItemId={record.id} />
-            </Space>
-          )}
-        />
-      </Table>
-          </List>
-      </StateManager>
+        <Table
+          {...(tableProps as any)}
+          rowKey="relationId"
+          pagination={{
+            ...tableProps.pagination,
+            position: ["bottomCenter"],
+            size: "small",
+          }}
+        >
+          <Table.Column
+            title={"Nombre persona relacionada"}
+            dataIndex={["relatedPerson", "name"]}
+          />
+          <Table.Column
+            title={"Nombre persona relacionada"}
+            dataIndex={["relatedPerson", "lastName"]}
+          />
+          <Table.Column
+            title={"Fecha de inicio"}
+            dataIndex="startDate"
+            render={(value) => value || "-"}
+          />
+          <Table.Column
+            title={"Fecha de fin"}
+            dataIndex="endDate"
+            render={(value) => value || "-"}
+          />
+          <Table.Column title={"Tipo de relación"} dataIndex="relation" />
+          <Table.Column
+            title={"Actions"}
+            dataIndex="actions"
+            render={(_, record: BaseRecord) => (
+              <Space>
+                <EditButton hideText size="middle" recordItemId={record.id} />
+                <ShowButton
+                  hideText
+                  size="middle"
+                  recordItemId={record.id}
+                  resource={ResourceEnum.personRelation}
+                />
+                <DeleteButton hideText size="middle" recordItemId={record.id} />
+              </Space>
+            )}
+          />
+        </Table>
+      </List>
+    </StateManager>
   );
 }

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
   DeleteButton,
@@ -6,13 +6,13 @@ import {
   List,
   ShowButton,
   useTable,
-} from '@refinedev/antd';
-import { Space, Table } from 'antd';
-import { BaseRecord, useTranslate } from '@refinedev/core';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { LangTag } from '@lib/enums/language.enum';
-import { dateRender } from '@client/util/ant/fields/dateRender';
-import { tagRender } from '@client/util/ant/fields/tagRender';
+} from "@refinedev/antd";
+import { Space, Table } from "antd";
+import { BaseRecord, useTranslate } from "@refinedev/core";
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { LangTag } from "@lib/enums/language.enum";
+import { dateRender } from "@client/util/ant/fields/dateRender";
+import { tagRender } from "@client/util/ant/fields/tagRender";
 
 interface TrialListProps {
   params: {
@@ -28,15 +28,15 @@ export default function TrialList({
     filters: {
       permanent: [
         {
-          field: 'filter',
-          operator: 'eq',
+          field: "filter",
+          operator: "eq",
           value: `judicialProcessId||$eq||${id}`,
         },
       ],
     },
     pagination: {
       current: 1,
-      mode: 'client',
+      mode: "client",
       pageSize: 10,
     },
     resource: ResourceEnum.trial,
@@ -50,55 +50,55 @@ export default function TrialList({
   return (
     <List resource={ResourceEnum.trial} breadcrumb={false}>
       <Table
-        {...tableProps}
+        {...(tableProps as any)}
         rowKey="id"
         pagination={{
           ...tableProps.pagination,
-          position: ['bottomCenter'],
-          size: 'small',
+          position: ["bottomCenter"],
+          size: "small",
         }}
       >
         <Table.Column
-          dataIndex={['name']}
+          dataIndex={["name"]}
           // title={translate(LangTag[`trial.fields.name`])}
         />
 
         <Table.Column
-          dataIndex={['courtName']}
+          dataIndex={["courtName"]}
           // title={translate(LangTag[`trial.fields.courtName`])}
         />
 
         <Table.Column
-          dataIndex={['summary']}
+          dataIndex={["summary"]}
           // title={translate(LangTag[`trial.fields.summary`])}
         />
 
         <Table.Column
-          dataIndex={['startDate']}
+          dataIndex={["startDate"]}
           title={translate(LangTag[`trial.fields.startDate`])}
           render={dateRender}
         />
 
         <Table.Column
-          dataIndex={['endDate']}
+          dataIndex={["endDate"]}
           title={translate(LangTag[`trial.fields.endDate`])}
           render={dateRender}
         />
 
         <Table.Column
-          dataIndex={['type']}
+          dataIndex={["type"]}
           title={translate(LangTag[`trial.fields.type`])}
           render={tagRender}
         />
 
         <Table.Column
-          dataIndex={['scope']}
+          dataIndex={["scope"]}
           // title={translate(LangTag[`trial.fields.scope`])}
           render={tagRender}
         />
 
         <Table.Column
-          title={'Actions'}
+          title={"Actions"}
           dataIndex="actions"
           render={(_, record: BaseRecord) => (
             <Space>

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
   DeleteButton,
@@ -6,12 +6,12 @@ import {
   List,
   ShowButton,
   useTable,
-} from '@refinedev/antd';
-import { Space, Table } from 'antd';
-import { BaseRecord, useTranslate } from '@refinedev/core';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { LangTag } from '@lib/enums/language.enum';
-import { useLegalTitle } from '@client/hooks/titles/use-legal-title';
+} from "@refinedev/antd";
+import { Space, Table } from "antd";
+import { BaseRecord, useTranslate } from "@refinedev/core";
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { LangTag } from "@lib/enums/language.enum";
+import { useLegalTitle } from "@client/hooks/titles/use-legal-title";
 
 interface JudicialProcessListProps {
   params: {
@@ -27,15 +27,15 @@ export default function JudicialProcessList({
     filters: {
       permanent: [
         {
-          field: 'filter',
-          operator: 'eq',
+          field: "filter",
+          operator: "eq",
           value: `legalId||$eq||${legalId}`,
         },
       ],
     },
     pagination: {
       current: 1,
-      mode: 'client',
+      mode: "client",
       pageSize: 10,
     },
     resource: ResourceEnum.judicialProcess,
@@ -43,7 +43,7 @@ export default function JudicialProcessList({
   });
   const { title } = useLegalTitle(
     legalId,
-    LangTag['judicial-process.titles.create']
+    LangTag["judicial-process.titles.create"]
   );
   if (tableQueryResult?.isLoading) {
     return <div>Loading...</div>;
@@ -56,31 +56,31 @@ export default function JudicialProcessList({
       breadcrumb={false}
     >
       <Table
-        {...tableProps}
+        {...(tableProps as any)}
         rowKey="id"
         pagination={{
           ...tableProps.pagination,
-          position: ['bottomCenter'],
-          size: 'small',
+          position: ["bottomCenter"],
+          size: "small",
         }}
       >
         <Table.Column
-          dataIndex={['id']}
+          dataIndex={["id"]}
           title={translate(LangTag[`judicial-process.fields.id`])}
         />
 
         <Table.Column
-          dataIndex={['name']}
+          dataIndex={["name"]}
           title={translate(LangTag[`judicial-process.fields.name`])}
         />
 
         <Table.Column
-          dataIndex={['comments']}
+          dataIndex={["comments"]}
           title={translate(LangTag[`judicial-process.fields.comments`])}
         />
 
         <Table.Column
-          title={'Actions'}
+          title={"Actions"}
           dataIndex="actions"
           render={(_, record: BaseRecord) => (
             <Space>

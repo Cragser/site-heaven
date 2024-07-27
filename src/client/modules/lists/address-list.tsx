@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { DeleteButton, EditButton, List, useTable } from '@refinedev/antd';
-import { Space, Table } from 'antd';
-import { BaseRecord, useTranslate } from '@refinedev/core';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { renderHeaderToPerson } from '@client/util/ant/list/renderHeaderToPerson';
+import { DeleteButton, EditButton, List, useTable } from "@refinedev/antd";
+import { Space, Table } from "antd";
+import { BaseRecord, useTranslate } from "@refinedev/core";
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { renderHeaderToPerson } from "@client/util/ant/list/renderHeaderToPerson";
 
 interface AddressListProps {
   id: string;
@@ -16,15 +16,15 @@ export default function AddressList({ id }: Readonly<AddressListProps>) {
     filters: {
       permanent: [
         {
-          field: 'filter',
-          operator: 'eq',
+          field: "filter",
+          operator: "eq",
           value: `companyId||$eq||${id}`,
         },
       ],
     },
     pagination: {
       current: 1,
-      mode: 'client',
+      mode: "client",
       pageSize: 10,
     },
     resource: ResourceEnum.address,
@@ -42,66 +42,66 @@ export default function AddressList({ id }: Readonly<AddressListProps>) {
       headerButtons={renderHeaderToPerson(id, ResourceEnum.company)}
     >
       <Table
-        {...tableProps}
+        {...(tableProps as any)}
         rowKey="id"
         pagination={{
           ...tableProps.pagination,
-          position: ['bottomCenter'],
-          size: 'small',
+          position: ["bottomCenter"],
+          size: "small",
         }}
       >
         <Table.Column
-          dataIndex={['id']}
+          dataIndex={["id"]}
           // title={translate(LangTag[`addressfields.id`])}
         />
 
         <Table.Column
-          dataIndex={['country']}
+          dataIndex={["country"]}
           // title={translate(LangTag[`addressfields.country`])}
         />
 
         <Table.Column
-          dataIndex={['state']}
+          dataIndex={["state"]}
           // title={translate(LangTag[`addressfields.state`])}
         />
 
         <Table.Column
-          dataIndex={['city']}
+          dataIndex={["city"]}
           // title={translate(LangTag[`addressfields.city`])}
         />
 
         <Table.Column
-          dataIndex={['postalCode']}
+          dataIndex={["postalCode"]}
           // title={translate(LangTag[`addressfields.postalCode`])}
         />
 
         <Table.Column
-          dataIndex={['colony']}
+          dataIndex={["colony"]}
           // title={translate(LangTag[`addressfields.colony`])}
         />
 
         <Table.Column
-          dataIndex={['street']}
+          dataIndex={["street"]}
           // title={translate(LangTag[`addressfields.street`])}
         />
 
         <Table.Column
-          dataIndex={['exteriorNumber']}
+          dataIndex={["exteriorNumber"]}
           // title={translate(LangTag[`addressfields.exteriorNumber`])}
         />
 
         <Table.Column
-          dataIndex={['interiorNumber']}
+          dataIndex={["interiorNumber"]}
           // title={translate(LangTag[`addressfields.interiorNumber`])}
         />
 
         <Table.Column
-          dataIndex={['additionalInformation']}
+          dataIndex={["additionalInformation"]}
           // title={translate(LangTag[`addressfields.additionalInformation`])}
         />
 
         <Table.Column
-          title={'Actions'}
+          title={"Actions"}
           dataIndex="actions"
           render={(_, record: BaseRecord) => (
             <Space>

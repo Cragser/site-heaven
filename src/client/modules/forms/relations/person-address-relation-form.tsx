@@ -1,6 +1,6 @@
-import { Form, FormProps, Input, Select } from 'antd';
-import { useResourceSelect } from '@client/util/hook/use-resource-select';
-import { ResourceEnum } from '@lib/enums/resource.enum';
+import { Form, FormProps, Input, Select } from "antd";
+import { useResourceSelect } from "@client/util/hook/use-resource-select";
+import { ResourceEnum } from "@lib/enums/resource.enum";
 
 interface Props {
   personId: string;
@@ -24,7 +24,7 @@ export default function PersonAddressRelationForm({
         <Input />
       </Form.Item>
       <Form.Item label="Name" name="addressId">
-        <Select {...selectProps} />
+        <Select {...(selectProps as any)} />
       </Form.Item>
     </Form>
   );

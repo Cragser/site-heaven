@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { List, useTable } from '@refinedev/antd';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import NationalityTable from '@modules/tables/nationality-table';
+import { List, useTable } from "@refinedev/antd";
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import NationalityTable from "@modules/tables/nationality-table";
 
 export default function NationalityHelperList() {
   const { tableProps, tableQueryResult } = useTable({
     pagination: {
       current: 1,
-      mode: 'client',
+      mode: "client",
       pageSize: 10,
     },
     resource: ResourceEnum.nationalityHelper,
@@ -19,6 +19,7 @@ export default function NationalityHelperList() {
     return <div>Loading...</div>;
   }
 
+  // @ts-ignore
   return (
     <List>
       <NationalityTable tableProps={tableProps} />

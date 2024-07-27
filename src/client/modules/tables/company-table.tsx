@@ -1,25 +1,24 @@
-import { AntTableType } from '@page/types/ant-table.type';
-import { Table } from 'antd';
-import { LangTag } from '@lib/enums/language.enum';
-import { BaseRecord, useTranslate } from '@refinedev/core';
-import { createDataIndex } from '@client/util/table/create-data-index';
-import useRenderActions from '@client/util/ant/table/use-render-actions';
-import React from 'react';
-import { ResourceEnum } from '@lib/enums/resource.enum';
+import { Table } from "antd";
+import { LangTag } from "@lib/enums/language.enum";
+import { BaseRecord, useTranslate } from "@refinedev/core";
+import { createDataIndex } from "@client/util/table/create-data-index";
+import useRenderActions from "@client/util/ant/table/use-render-actions";
+import React from "react";
+import { ResourceEnum } from "@lib/enums/resource.enum";
 
 export default function CompanyTable({
-  parent = '',
+  parent = "",
   parentResource = ResourceEnum.company,
   tableProps,
-}: Readonly<AntTableType>) {
+}: any) {
   const translate = useTranslate();
   const keys = [
-    'name',
-    'creationUbication',
-    'rfc',
-    'goal',
-    'nickname',
-    'company',
+    "name",
+    "creationUbication",
+    "rfc",
+    "goal",
+    "nickname",
+    "company",
   ];
   const dataIndex = createDataIndex(parent, keys);
   const { renderActions } = useRenderActions({
@@ -32,19 +31,21 @@ export default function CompanyTable({
   });
   return (
     <Table
-      {...tableProps}
+      {...(tableProps as any)}
       rowKey="companyId"
       pagination={{
         ...tableProps.pagination,
-        position: ['bottomCenter'],
-        size: 'small',
+        position: ["bottomCenter"],
+        size: "small",
       }}
     >
       {keys.map((key) => (
         <Table.Column
           key={key}
           dataIndex={dataIndex[key]}
-          title={translate(LangTag[`company.fields.${key}` as keyof typeof LangTag])}
+          title={translate(
+            LangTag[`company.fields.${key}` as keyof typeof LangTag]
+          )}
         />
       ))}
 
