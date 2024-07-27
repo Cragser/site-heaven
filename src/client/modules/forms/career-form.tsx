@@ -1,9 +1,9 @@
-import { Form, FormProps, Input, Select } from 'antd';
-import { LangTag } from '@lib/enums/language.enum';
-import { useTranslate } from '@refinedev/core';
-import { careerAntdValidation } from '@lib/schemas/career.schema';
-import { useResourceSelect } from '@client/util/hook/use-resource-select';
-import { ResourceEnum } from '@lib/enums/resource.enum';
+import { Form, FormProps, Input, Select } from "antd";
+import { LangTag } from "@lib/enums/language.enum";
+import { useTranslate } from "@refinedev/core";
+import { careerAntdValidation } from "@lib/schemas/career.schema";
+import { useResourceSelect } from "@client/util/hook/use-resource-select";
+import { ResourceEnum } from "@lib/enums/resource.enum";
 
 export default function CareerForm(formProps: Readonly<FormProps>) {
   const translate = useTranslate();
@@ -11,33 +11,33 @@ export default function CareerForm(formProps: Readonly<FormProps>) {
 
   return (
     <Form {...formProps} layout="vertical">
-      <Form.Item label="Name" name={['companyId']}>
+      <Form.Item label="Name" name={["companyId"]}>
         <Select {...selectProps} />
       </Form.Item>
       <Form.Item
         label={translate(LangTag[`career.fields.role`])}
-        name={['role']}
+        name={["role"]}
         rules={careerAntdValidation.role}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label={translate('career.fields.startDate')}
-        name={['startDate']}
+        label={translate("career.fields.startDate")}
+        name={["startDate"]}
         rules={careerAntdValidation.startDate}
       >
-        <Input type={'date'} />
+        <Input type={"date"} />
       </Form.Item>
       <Form.Item
-        label={translate('career.fields.endDate')}
-        name={['endDate']}
+        label={translate("career.fields.endDate")}
+        name={["endDate"]}
         rules={careerAntdValidation.endDate}
       >
-        <Input type={'date'} />
+        <Input type={"date"} />
       </Form.Item>
       <Form.Item
-        label={translate('career.fields.contractType')}
-        name={['contractType']}
+        label={translate("career.fields.contractType")}
+        name={["contractType"]}
         rules={careerAntdValidation.contractType}
       >
         <Input />

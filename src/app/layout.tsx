@@ -3,7 +3,8 @@ import { cookies } from 'next/headers';
 import React, { Suspense } from 'react';
 
 import { AntdRegistry } from '@ant-design/nextjs-registry';
-import '@refinedev/antd/dist/reset.css';
+// TODO: Verificar
+// import '@refinedev/antd/dist/reset.css';
 
 import { RefineContext } from './_refine_context';
 import '../client/styles/global.css';

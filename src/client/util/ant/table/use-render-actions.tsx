@@ -27,9 +27,9 @@ export default function useRenderActions({
   parent = '',
   resource,
 }: Props) {
+
   const resourceToDelete =
     deleteResource === undefined ? resource : deleteResource;
-  console.log(resourceToDelete);
   const getToPath = useGetToPath();
   const go = useGo();
   const getId = (record: BaseRecord) => {
@@ -38,6 +38,7 @@ export default function useRenderActions({
     }
     return record[parent].id;
   };
+
 
   const actions = (record: BaseRecord, action: Action) => {
     const meta = metaCreate(record, getId);

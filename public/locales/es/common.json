@@ -388,7 +388,8 @@
       "create": "Añadir empleos para [person.name person.lastName (person.rfc)]",
       "edit": "Editar empleo",
       "list": "Empleos de [person.name person.lastName (person.rfc)]",
-      "show": "Mostrar empleos"
+      "show": "Mostrar empleos",
+      "add-relation-to-person": "Agregar empleo"
     }
   },
   "person-education": {

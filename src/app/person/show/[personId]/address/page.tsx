@@ -10,10 +10,12 @@ import { Button, Drawer } from 'antd';
 import PersonAddressRelationForm from '@modules/forms/relations/person-address-relation-form';
 import { LangTag } from '@lib/enums/language.enum';
 import { useTranslate } from '@refinedev/core';
+import CreateEntityPage from "@modules/page/create-parent-entity.page";
 
 export default function PersonAddressList({
   params: { personId },
 }: Readonly<PersonPageType>) {
+
   const translate = useTranslate();
   const { tableProps, tableQueryResult } = useTable({
     filters: {

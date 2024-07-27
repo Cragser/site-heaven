@@ -7,10 +7,15 @@ import {
   ShowButton,
   useTable,
 } from '@refinedev/antd';
-import { Space, Table } from 'antd';
+import {Button, Space, Table} from 'antd';
 import { BaseRecord, useTranslate } from '@refinedev/core';
 import { ResourceEnum } from '@lib/enums/resource.enum';
 import { PersonPageType } from '@page/types/pages/person/person-page.type';
+import {StateManager} from "@components/feedback/state-manager/state-manager";
+import {usePersonTitle} from "@client/hooks/titles/use-person-title";
+import {LangTag} from "@lib/enums/language.enum";
+import {renderHeaderToPerson} from "@client/util/ant/list/renderHeaderToPerson";
+import PersonTable from "@modules/tables/person-table";
 
 export default function PersonRelationList({
   params: { personId },
@@ -35,14 +40,22 @@ export default function PersonRelationList({
     resource: ResourceEnum.personRelation,
     syncWithLocation: true,
   });
-
-  if (tableQueryResult?.isLoading) {
-    return <div>Loading...</div>;
-  }
-  console.log(tableQueryResult.data);
+    const { title } = usePersonTitle(
+        personId,
+        LangTag['person-relation.titles.list']
+    );
 
   return (
-    <List>
+      <StateManager
+          isLoading={tableQueryResult?.isLoading}
+          isError={tableQueryResult.isError}
+      >
+          <List
+              title={title}
+              headerButtons={renderHeaderToPerson(personId, ResourceEnum.person, [])}
+
+          >
+
       <Table
         {...tableProps}
         rowKey="relationId"
@@ -88,6 +101,7 @@ export default function PersonRelationList({
           )}
         />
       </Table>
-    </List>
+          </List>
+      </StateManager>
   );
 }

@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { ColorModeContext } from '@contexts/color-mode';
-import type { RefineThemedLayoutV2HeaderProps } from '@refinedev/antd';
-import { useGetIdentity, useGetLocale, useSetLocale } from '@refinedev/core';
+import { ColorModeContext } from "@contexts/color-mode";
+import type { RefineThemedLayoutV2HeaderProps } from "@refinedev/antd";
+import { useGetIdentity, useGetLocale, useSetLocale } from "@refinedev/core";
 import {
   Avatar,
   Button,
@@ -13,11 +13,10 @@ import {
   Switch,
   theme,
   Typography,
-} from 'antd';
-import React, { useContext } from 'react';
-import { DownOutlined } from '@ant-design/icons';
-import Cookies from 'js-cookie';
-import {isDev} from "@/shared/process/isDev";
+} from "antd";
+import React, { useContext } from "react";
+import { DownOutlined } from "@ant-design/icons";
+import Cookies from "js-cookie";
 
 const { Text } = Typography;
 const { useToken } = theme;
@@ -36,16 +35,16 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
   const { mode, setMode } = useContext(ColorModeContext);
 
   const headerStyles: React.CSSProperties = {
-    alignItems: 'center',
+    alignItems: "center",
     backgroundColor: token.colorBgElevated,
-    display: 'flex',
-    height: '64px',
-    justifyContent: 'flex-end',
-    padding: '0px 24px',
+    display: "flex",
+    height: "64px",
+    justifyContent: "flex-end",
+    padding: "0px 24px",
   };
 
   if (sticky) {
-    headerStyles.position = 'sticky';
+    headerStyles.position = "sticky";
     headerStyles.top = 0;
     headerStyles.zIndex = 1;
   }
@@ -56,13 +55,13 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
   const changeLanguage = useSetLocale();
 
   enum languagesKeys {
-    en = 'en',
-    es = 'es',
+    en = "en",
+    es = "es",
   }
 
   enum languagesValues {
-    en = 'English',
-    es = 'Español',
+    en = "English",
+    es = "Español",
   }
 
   const languagesDict: Record<languagesKeys, languagesValues> = {
@@ -72,7 +71,7 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
 
   const languages = Object.keys(languagesDict) as languagesKeys[];
 
-  const languageMenuItems: MenuProps['items'] = [...(languages || [])]
+  const languageMenuItems: MenuProps["items"] = [...(languages || [])]
     .sort()
     .map((lang) => ({
       icon: (
@@ -84,11 +83,9 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
       label: languagesDict[lang],
       onClick: () => {
         changeLanguage(lang);
-        Cookies.set('NEXT_LOCALE', lang);
+        Cookies.set("NEXT_LOCALE", lang);
       },
     }));
-
-  console.log({isDev})
 
   return (
     <AntdLayout.Header style={headerStyles}>
@@ -104,7 +101,10 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
             <Typography.Text>
               {languagesDict[currentLocale as languagesKeys]}
             </Typography.Text>
-            <DownOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
+            <DownOutlined
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
+            />
           </Space>
         </Button>
       </Dropdown>
@@ -112,11 +112,11 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
         <Switch
           checkedChildren="🌛"
           unCheckedChildren="🔆"
-          onChange={() => setMode(mode === 'light' ? 'dark' : 'light')}
-          defaultChecked={mode === 'dark'}
+          onChange={() => setMode(mode === "light" ? "dark" : "light")}
+          defaultChecked={mode === "dark"}
         />
         {(user?.name || user?.avatar) && (
-          <Space style={{ marginLeft: '8px' }} size="middle">
+          <Space style={{ marginLeft: "8px" }} size="middle">
             {user?.name && <Text strong>{user.name}</Text>}
             {user?.avatar && <Avatar src={user?.avatar} alt={user?.name} />}
           </Space>

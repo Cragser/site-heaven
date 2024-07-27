@@ -1,3 +1,53 @@
 {
-  "extends": "next/core-web-vitals"
+  "root": true,
+  "ignorePatterns": ["**/*"],
+  "extends": [
+    "next/core-web-vitals",
+    "airbnb",
+    "airbnb/hooks",
+    "airbnb-typescript"
+  ],
+  "plugins": ["perfectionist", "@typescript-eslint", "filenames-simple", "import", "react", "jsx-a11y"],
+  "overrides": [
+    {
+      "files": "*.json",
+      "parser": "jsonc-eslint-parser",
+      "rules": {}
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "rules": {}
+    }
+  ],
+  "rules": {
+    "max-len": [
+      "error",
+      {
+        "code": 80
+      }
+    ],
+    "perfectionist/sort-objects": [
+      "error",
+      {
+        "type": "natural",
+        "order": "asc"
+      }
+    ],
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "property",
+        "format": ["camelCase"]
+      }
+    ],
+    "filenames-simple/extension": "error",
+    "filenames-simple/naming-convention": ["error", { "rule": "kebab-case" }],
+    "filenames-simple/pluralize": [
+      "error",
+      {
+        "parentDir": "plural",
+        "file": "singular"
+      }
+    ]
+  }
 }

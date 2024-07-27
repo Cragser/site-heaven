@@ -18,6 +18,7 @@ export default function PersonCompanyRelation({
     resource: ResourceEnum.company,
   });
 
+
   return (
     <Form {...formProps}>
       <Form.Item name="personId" initialValue={personId} hidden={true}>

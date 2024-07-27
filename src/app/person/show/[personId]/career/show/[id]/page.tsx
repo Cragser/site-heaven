@@ -15,12 +15,14 @@ const { Title } = Typography;
 export default function JobShowPage({
   params: { id },
 }: Readonly<PersonAndChildPageType>) {
+    console.log("JOB SHOW PAGE")
   const { queryResult } = useShow<CareerType, HttpError>({
     id,
     resource: ResourceEnum.career,
   });
 
   const { data, isError, isLoading } = queryResult;
+  console.log({data})
   const record = data?.data;
   const translate = useTranslate();
 

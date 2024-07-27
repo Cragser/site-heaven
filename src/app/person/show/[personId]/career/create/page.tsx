@@ -1,12 +1,11 @@
-'use client';
+"use client";
 
-import { Create, useForm } from '@refinedev/antd';
-import { HttpError } from '@refinedev/core';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { useCreate } from '@refinedev/core';
-import { PersonPageType } from '@page/types/pages/person/person-page.type';
-import { CareerType } from '@lib/types/career.type';
-import CareerForm from '@modules/forms/career-form';
+import { Create, useForm } from "@refinedev/antd";
+import { HttpError, useCreate } from "@refinedev/core";
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { PersonPageType } from "@page/types/pages/person/person-page.type";
+import { CareerType } from "@lib/types/career.type";
+import CareerForm from "@modules/forms/career-form";
 
 export default function Page({
   params: { personId },

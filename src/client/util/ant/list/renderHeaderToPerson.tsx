@@ -1,30 +1,31 @@
-import { Button, Space } from 'antd';
-import { ArrowLeftOutlined } from '@ant-design/icons';
-import { useGetToPath, useGo, useResource } from '@refinedev/core';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { resourcePath } from '@client/resources/refine-paths';
+import { Button, Space } from "antd";
+import { ArrowLeftOutlined } from "@ant-design/icons";
+import { useGetToPath, useGo, useResource } from "@refinedev/core";
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { resourcePath } from "@client/resources/refine-paths";
 
 const Header = ({ customButtons, defaultButtons, personId, resourse }: any) => {
   // TODO: useResource as an object returns url with personId instead of id
   const { resource: resourceEntity } = useResource(resourse);
-  console.log({ resourceEntity });
 
   const getToPath = useGetToPath();
   const go = useGo();
   const url: string = getToPath({
-    action: 'show',
+    action: "show",
     meta: { id: personId },
     resource: resourcePath[ResourceEnum.person],
   }) as string;
 
-  console.log(url);
   const handleClick = () => {
     go({ to: url });
   };
   return (
     <Space>
-      <Button type={'link'} onClick={handleClick}>
-        <ArrowLeftOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
+      <Button type={"link"} onClick={handleClick}>
+        <ArrowLeftOutlined
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
+        />
         Vista persona
       </Button>
       {customButtons}

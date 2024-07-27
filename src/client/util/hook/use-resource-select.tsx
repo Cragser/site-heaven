@@ -48,8 +48,8 @@ export function useResourceSelect({
       if (!search) return [];
       return filters.map((filter) => filter(search));
     },
-    optionLabel: (item: { name: any }) => {
-      return item.name;
+    optionLabel: (item: any) => {
+      return item.name ?? item.role;
     },
     optionValue: (item: { id: any }) => {
       return item.id;
