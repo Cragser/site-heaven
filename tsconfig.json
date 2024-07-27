@@ -24,7 +24,7 @@
       "@components/*": ["src/client/components/*"],
       "@contexts/*": ["src/client/contexts/*"],
       "@providers/*": ["src/shared/providers/*"],
-      "@lib/*": ["src/formel-domain/*"],
+      "@lib/*": ["src/domain/*"],
       "@modules/*": ["src/client/modules/*"],
       "@page/types/*": ["src/client/types/*"],
     }
