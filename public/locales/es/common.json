@@ -421,7 +421,8 @@
       "create": "Añadir grupo de causas asociadas a [person.name person.lastName (person.rfc)]",
       "edit": "Editar grupo de causas",
       "list": "Legal [person.name person.lastName (person.rfc)]",
-      "show": "[person.name], grupo de causas"
+      "show": "[person.name], grupo de causas",
+        "add-relation-to-person": "Añadir grupo de causas"
     }
   },
   "person-notes": {

@@ -254,6 +254,8 @@ export enum LangTag {
   "person-legal.titles.edit" = "person-legal.titles.edit",
   "person-legal.titles.list" = "person-legal.titles.list",
   "person-legal.titles.show" = "person-legal.titles.show",
+  "person-legal.titles.add-relation-to-person" = "person-legal.titles.add-relation-to-person",
+
   "person-notes.person-notes" = "person-notes.person-notes",
   "person-notes.fields.personId" = "person-notes.fields.personId",
   "person-notes.fields.noteId" = "person-notes.fields.noteId",

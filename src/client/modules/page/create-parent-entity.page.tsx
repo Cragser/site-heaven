@@ -69,7 +69,6 @@ function CreateParentEntityPage({
       `${kebabCaseResource}.titles.add-relation-to-${parent}` as keyof typeof LangTag
     ]
   );
-  console.log({ titleToAdd, t: kebabCaseResource });
 
   const headerButtons = renderHeaderToPerson(parentId, parentResource, [
     <Button
