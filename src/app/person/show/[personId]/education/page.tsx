@@ -1,108 +1,37 @@
 "use client";
 
-import {
-  DeleteButton,
-  EditButton,
-  List,
-  ShowButton,
-  useTable,
-} from "@refinedev/antd";
-import { Space, Table } from "antd";
-import { BaseRecord, useTranslate } from "@refinedev/core";
 import { ResourceEnum } from "@lib/enums/resource.enum";
-import { LangTag } from "@lib/enums/language.enum";
 import { PersonPageType } from "@page/types/pages/person/person-page.type";
+import CreateParentEntityPage from "@modules/page/create-parent-entity.page";
+import { dateRender } from "@client/util/ant/fields/dateRender";
 
 export default function PersonEducationList({
   params: { personId },
 }: Readonly<PersonPageType>) {
-  return;
-  const translate = useTranslate();
-  const { tableProps, tableQueryResult } = useTable({
-    filters: {
-      permanent: [
-        {
-          field: "filter",
-          operator: "eq",
-          value: `personId||$eq||${personId}`,
-        },
-      ],
-    },
-    pagination: {
-      current: 1,
-      mode: "client",
-      pageSize: 10,
-    },
-    resource: ResourceEnum.personEducation,
-    syncWithLocation: true,
-  });
+  const columns = ["name", "institution", "license", "validated"];
 
-  if (tableQueryResult?.isLoading) {
-    return <div>Loading...</div>;
-  }
-  const pagination = {
-    ...tableProps.pagination,
-    position: ["bottomCenter"],
-    size: "small",
-  };
+  const formatedColumns = [
+    ...columns.map((column) => ({
+      dataIndex: [column],
+    })),
+    {
+      dataIndex: ["initialDate"],
+      render: dateRender,
+    },
+    {
+      dataIndex: ["endDate"],
+      render: dateRender,
+    },
+  ];
 
   return (
-    <List>
-      <Table
-        {...(tableProps as any)}
-        rowKey="educationId"
-        pagination={pagination as any}
-      >
-        <Table.Column
-          dataIndex={["education", "name"]}
-          title={translate(LangTag[`education.fields.name`])}
-        />
-
-        <Table.Column
-          dataIndex={["education", "institution"]}
-          title={translate(LangTag[`education.fields.institution`])}
-        />
-
-        <Table.Column
-          dataIndex={["education", "license"]}
-          title={translate(LangTag[`education.fields.license`])}
-        />
-
-        <Table.Column
-          dataIndex={["education", "validated"]}
-          title={translate(LangTag[`education.fields.validated`])}
-        />
-
-        <Table.Column
-          dataIndex={["education", "initialDate"]}
-          // title={translate(LangTag[`education.fields.initialDate`])}
-        />
-
-        <Table.Column
-          dataIndex={["education", "endDate"]}
-          // title={translate(LangTag[`education.fields.endDate`])}
-        />
-
-        <Table.Column
-          title={"Actions"}
-          dataIndex="actions"
-          render={(_, record: BaseRecord) => (
-            <Space>
-              <EditButton
-                hideText
-                size="middle"
-                recordItemId={record.educationId}
-              />
-              <ShowButton
-                hideText
-                size="middle"
-                recordItemId={record.educationId}
-              />
-              <DeleteButton hideText size="middle" recordItemId={record.id} />
-            </Space>
-          )}
-        />
-      </Table>
-    </List>
+    <CreateParentEntityPage
+      parentId={personId}
+      entityResource={ResourceEnum.education}
+      relationResource={ResourceEnum.personEducation}
+      parentResource={ResourceEnum.person}
+      parent="person"
+      columns={formatedColumns}
+    />
   );
 }

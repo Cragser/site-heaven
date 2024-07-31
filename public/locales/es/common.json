@@ -320,7 +320,9 @@
       "name": "Nombre del grado",
       "institution": "Nombre de la institución",
       "license": "Número de cédula",
-      "validated": "¿Estudios validados oficialmente?"
+      "validated": "¿Estudios validados oficialmente?",
+      "initialDate": "Fecha de inicio",
+        "endDate": "Fecha de término"
     },
     "titles": {
       "create": "Añadir estudios",
@@ -374,7 +376,8 @@
       "create": "Añadir activo personal de [person.name person.lastName (person.rfc)]",
       "edit": "Editar activo",
       "list": "Activos personales de [person.name person.lastName (person.rfc)]",
-      "show": "Mostrar activos"
+      "show": "Mostrar activos",
+      "add-relation-to-person": "Añadir activo"
     }
   },
   "person-career": {
@@ -403,7 +406,8 @@
       "create": "Añadir estudios para [person.name person.lastName (person.rfc)]",
       "edit": "Editar estudio",
       "list": "Estudios de [person.name person.lastName (person.rfc)]",
-      "show": "Mostrar estudios"
+      "show": "Mostrar estudios",
+        "add-relation-to-person": "Añadir estudio"
     }
   },
   "person-legal": {
