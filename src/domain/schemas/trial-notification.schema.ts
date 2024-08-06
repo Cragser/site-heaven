@@ -1,11 +1,12 @@
-import { z, ZodType } from 'zod';
-import { extendApi } from '@anatine/zod-openapi';
-import { Rule } from '../types/@antd/rules.types';
-import { TrialNotificationTypeEnum } from '../enums/trial-notification-type.enum';
-import { TrialNotificationType } from '../types/trial-notification.type';
+import { z, ZodType } from "zod";
+import { extendApi } from "@anatine/zod-openapi";
+import { Rule } from "../types/@antd/rules.types";
+import { TrialNotificationTypeEnum } from "../enums/trial-notification-type.enum";
+import { TrialNotificationType } from "../types/trial-notification.type";
+import { requiredValidation } from "@lib/schemas/config/optional-required";
 
 export const trialNotificationSchema: ZodType<
-  Omit<TrialNotificationType, 'id'>
+  Omit<TrialNotificationType, "id">
 > = z.object({
   date: z.string(),
 
@@ -19,20 +20,20 @@ export const trialNotificationSchema: ZodType<
 export const trialNotificationSchemaExtended = extendApi(
   trialNotificationSchema,
   {
-    description: 'TODO: Add description',
-    title: ' TrialNotification Schema',
+    description: "TODO: Add description",
+    title: " TrialNotification Schema",
   }
 );
 
 export const trialNotificationAntdValidation: Record<
-  keyof Omit<TrialNotificationType, 'id'>,
+  keyof Omit<TrialNotificationType, "id">,
   Rule[]
 > = {
-  date: [{ required: true }],
+  date: [requiredValidation],
 
-  id: [{ required: true }],
+  id: [requiredValidation],
 
-  name: [{ required: true }],
+  name: [requiredValidation],
 
-  type: [{ required: true }],
+  type: [requiredValidation],
 };

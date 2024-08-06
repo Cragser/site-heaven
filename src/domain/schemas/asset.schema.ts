@@ -1,9 +1,10 @@
-import { z, ZodType } from 'zod';
-import { AssetType } from '../types/asset.type';
-import { extendApi } from '@anatine/zod-openapi';
-import { Rule } from '../types/@antd/rules.types';
+import { z, ZodType } from "zod";
+import { AssetType } from "../types/asset.type";
+import { extendApi } from "@anatine/zod-openapi";
+import { Rule } from "../types/@antd/rules.types";
+import { requiredValidation } from "@lib/schemas/config/optional-required";
 
-export const assetSchema: ZodType<Omit<AssetType, 'id'>> = z.object({
+export const assetSchema: ZodType<Omit<AssetType, "id">> = z.object({
   id: z.string(),
 
   name: z.string(),
@@ -16,19 +17,19 @@ export const assetSchema: ZodType<Omit<AssetType, 'id'>> = z.object({
 });
 
 export const assetSchemaExtended = extendApi(assetSchema, {
-  description: 'TODO: Add description',
-  title: ' Asset Schema',
+  description: "TODO: Add description",
+  title: " Asset Schema",
 });
 
-export const assetAntdValidation: Record<keyof Omit<AssetType, 'id'>, Rule[]> =
+export const assetAntdValidation: Record<keyof Omit<AssetType, "id">, Rule[]> =
   {
-    id: [{ required: true }],
+    id: [requiredValidation],
 
-    name: [{ required: true }],
+    name: [requiredValidation],
 
-    description: [{ required: true }],
+    description: [requiredValidation],
 
-    date: [{ required: true }],
+    date: [requiredValidation],
 
-    type: [{ required: true }],
+    type: [requiredValidation],
   };
