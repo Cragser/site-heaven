@@ -494,7 +494,7 @@
       "description": "Descripción del hallazgo",
       "link": "URL del sitio",
       "createdAt": "Fecha del hallazgo",
-      "estimatedPeopleImpacted": "Tipo de elemento"
+      "estimatedPeopleImpacted": "Cantidad de personas afectadas"
     }
   },
   "company-partner": {

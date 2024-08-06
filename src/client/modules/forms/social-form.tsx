@@ -1,13 +1,13 @@
-import { Form, FormProps, Input } from 'antd';
-import { useTranslate } from '@refinedev/core';
-import { socialAntdValidation } from '@lib/schemas/social.schema';
+import { Form, FormProps, Input } from "antd";
+import { useTranslate } from "@refinedev/core";
+import { socialAntdValidation } from "@lib/schemas/social.schema";
 
 export default function SocialForm(formProps: Readonly<FormProps>) {
   const translate = useTranslate();
   return (
     <Form {...formProps} layout="vertical">
       <Form.Item
-        label={translate('social.fields.name')}
+        label={translate("social.fields.name")}
         name="name"
         rules={socialAntdValidation.name}
       >
@@ -15,7 +15,7 @@ export default function SocialForm(formProps: Readonly<FormProps>) {
       </Form.Item>
 
       <Form.Item
-        label={translate('social.fields.type')}
+        label={translate("social.fields.type")}
         name="type"
         rules={socialAntdValidation.type}
       >
@@ -23,7 +23,7 @@ export default function SocialForm(formProps: Readonly<FormProps>) {
       </Form.Item>
 
       <Form.Item
-        label={translate('social.fields.description')}
+        label={translate("social.fields.description")}
         name="description"
         rules={socialAntdValidation.description}
       >
@@ -31,7 +31,7 @@ export default function SocialForm(formProps: Readonly<FormProps>) {
       </Form.Item>
 
       <Form.Item
-        label={translate('social.fields.link')}
+        label={translate("social.fields.link")}
         name="link"
         rules={socialAntdValidation.link}
       >
@@ -39,19 +39,19 @@ export default function SocialForm(formProps: Readonly<FormProps>) {
       </Form.Item>
 
       <Form.Item
-        label={translate('social.fields.createdAt')}
+        label={translate("social.fields.createdAt")}
         name="createdAt"
         rules={socialAntdValidation.createdAt}
       >
-        <Input type={'date'} />
+        <Input type={"date"} />
       </Form.Item>
 
       <Form.Item
-        label={translate('social.fields.estimatedPeopleImpacted')}
+        label={translate("social.fields.estimatedPeopleImpacted")}
         name="estimatedPeopleImpacted"
         rules={socialAntdValidation.estimatedPeopleImpacted}
       >
-        <Input />
+        <Input type={"number"} />
       </Form.Item>
     </Form>
   );
