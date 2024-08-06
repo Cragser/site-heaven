@@ -3,11 +3,11 @@
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import { useTranslate } from "@refinedev/core";
 import { Create, List, useDrawerForm, useTable } from "@refinedev/antd";
-import { usePersonTitle } from "@client/hooks/titles/use-person-title";
+import { useEntityTitle } from "@client/hooks/titles/use-person-title";
 import { LangTag } from "@lib/enums/language.enum";
 import { kebabCase } from "lodash";
 import { StateManager } from "@components/feedback/state-manager/state-manager";
-import { renderHeaderToPerson } from "@client/util/ant/list/renderHeaderToPerson";
+import { renderHeaderToEntity } from "@client/util/ant/list/renderHeaderToPerson";
 import { Button, Drawer } from "antd";
 import CreateTable from "@modules/tables/create-table-relation";
 import CreateRelationForm from "@modules/forms/relations/create-relation-form";
@@ -54,9 +54,10 @@ function CreateParentEntityPage({
     syncWithLocation: true,
   });
   const kebabCaseResource = kebabCase(relationResource);
-  const { title } = usePersonTitle(
+  const { title } = useEntityTitle(
     parentId,
-    LangTag[`${kebabCaseResource}.titles.list` as keyof typeof LangTag]
+    LangTag[`${kebabCaseResource}.titles.list` as keyof typeof LangTag],
+    parent
   );
 
   const { drawerProps, formProps, saveButtonProps, show } = useDrawerForm({
@@ -70,16 +71,20 @@ function CreateParentEntityPage({
     ]
   );
 
-  const headerButtons = renderHeaderToPerson(parentId, parentResource, [
-    <Button
-      key="1"
-      onClick={() => {
-        show();
-      }}
-    >
-      {titleToAdd}
-    </Button>,
-  ]);
+  const headerButtons = renderHeaderToEntity({
+    id: parentId,
+    parent,
+    customButtons: [
+      <Button
+        key="1"
+        onClick={() => {
+          show();
+        }}
+      >
+        {titleToAdd}
+      </Button>,
+    ],
+  });
 
   return (
     <StateManager

@@ -119,6 +119,7 @@ export enum LangTag {
   "company-address.titles.edit" = "company-address.titles.edit",
   "company-address.titles.list" = "company-address.titles.list",
   "company-address.titles.show" = "company-address.titles.show",
+  "company-address.titles.add-relation-to-company" = "company-address.titles.add-relation-to-company",
   "company-asset.company-asset" = "company-asset.company-asset",
   "company-asset.fields.id" = "company-asset.fields.id",
   "company-asset.fields.companyId" = "company-asset.fields.companyId",

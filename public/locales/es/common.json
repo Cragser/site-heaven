@@ -200,7 +200,8 @@
       "create": "Añadir domicilio para [company.nickname], ([company.rfc])",
       "edit": "Editar domicilio",
       "list": "Domicilios relacionados",
-      "show": "Mostrar domicilio ([company.nickname])"
+      "show": "Mostrar domicilio ([company.nickname])",
+        "add-relation-to-company": "Añadir domicilio"
     }
   },
   "company-asset": {
