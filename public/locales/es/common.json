@@ -158,7 +158,8 @@
     "audit": "Audit",
     "fields": {
       "id": "id",
-      "notes": "notes"
+      "notes": "Notas",
+        "name": "Nombre"
     }
   },
   "company": {
@@ -537,6 +538,22 @@
       "exteriorNumber": "Número exterior",
       "interiorNumber": "Número interior",
       "additionalInformation": "Información adicional para su localización"
+    }
+  },
+  "company-audit": {
+    "company-audit": "Auditorias ",
+    "fields": {
+      "companyId": "companyId",
+      "auditId": "auditId",
+      "notes": "notas",
+      "name": "nombre"
+    },
+    "titles": {
+      "create": "Crear auditoria",
+      "edit": "Edit CompanyAudit",
+      "list": "CompanyAudits",
+      "show": "CompanyAudit",
+      "add-relation-to-company": "Agregar auditoria"
     }
   }
 }

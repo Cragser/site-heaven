@@ -58,12 +58,12 @@ export default function CompanyShowPage({
           parent={"company"}
           id={record?.id}
           record={record}
-          uniqueResources={[ResourceEnum.companyCreationDetails]}
           resources={[
             ResourceEnum.companyAddress,
             ResourceEnum.companySocial,
             ResourceEnum.companyAsset,
             ResourceEnum.companyRelation,
+            ResourceEnum.companyAudit,
             // ResourceEnum.personCompany,
           ]}
         />

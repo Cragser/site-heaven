@@ -321,4 +321,8 @@ export enum LangTag {
   "address.fields.exteriorNumber" = "address.fields.exteriorNumber",
   "address.fields.interiorNumber" = "address.fields.interiorNumber",
   "address.fields.additionalInformation" = "address.fields.additionalInformation",
+  "company-audit.company-audit" = "company-audit.company-audit",
+  "company-audit.titles.add-relation-to-company" = "company-audit.titles.add-relation-to-company",
+  "company-audit.titles.create" = "company-audit.titles.create",
+  "audit.fields.name" = "audit.fields.name",
 }
