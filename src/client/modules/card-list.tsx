@@ -16,6 +16,7 @@ interface CardProps {
 }
 interface CardListProps {
   resources: ResourceEnum[];
+  uniqueResources?: ResourceEnum[];
   id: string;
   parent: "person" | "company";
   record: any;

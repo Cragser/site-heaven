@@ -9,6 +9,7 @@ import { CompanyType } from "@lib/types/company.type";
 import CardList from "@modules/card-list";
 import { StateManager } from "@components/feedback/state-manager/state-manager";
 import DescriptionSimple from "@components/data-display/description/description-simple";
+import { SimpleUniqueResource } from "@modules/unique-resources/simple-unique-resource";
 
 interface CompanyPage {
   params: {
@@ -45,10 +46,19 @@ export default function CompanyShowPage({
     >
       <Show isLoading={isLoading}>
         <DescriptionSimple items={items} />
+        <SimpleUniqueResource
+          resource={ResourceEnum.companyCreationDetails}
+          record={record}
+          meta={{
+            companyId,
+            creationDetailsId: record?.companyCreationDetails?.id,
+          }}
+        />
         <CardList
           parent={"company"}
           id={record?.id}
           record={record}
+          uniqueResources={[ResourceEnum.companyCreationDetails]}
           resources={[
             ResourceEnum.companyAddress,
             ResourceEnum.companySocial,

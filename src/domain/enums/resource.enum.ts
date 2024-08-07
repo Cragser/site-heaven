@@ -33,7 +33,7 @@ export enum ResourceEnum {
   companySocial = "company-social",
   companyAsset = "company-asset",
   companyRelation = "company-relation",
-
+  companyCreationDetails = "company-creation-details",
   //- Asset
   assetValueHistory = "asset-value-history",
 
@@ -46,4 +46,5 @@ export enum ResourceEnum {
 
   // This only helps front
   personCompanyRelation = "person-company-relation",
+  creationDetails = "creation-details",
 }

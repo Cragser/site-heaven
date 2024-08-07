@@ -213,11 +213,11 @@
     }
   },
   "company-creation-details": {
-    "company-creation-details": "CompanyCreationDetails",
+    "company-creation-details": "Aspectos de la constitución",
     "fields": {
       "companyId": "companyId",
-      "initial_capital": "initial_capital",
-      "initial_shares": "initial_shares"
+      "initialCapital": "Capital inicial",
+      "initialShares": "Acciones iniciales"
     }
   },
   "company-social": {
