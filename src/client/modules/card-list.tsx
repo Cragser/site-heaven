@@ -1,10 +1,10 @@
-import { useGetToPath, useGo, useTranslate } from '@refinedev/core';
-import { Card, Divider, List, Space, Statistic, Typography } from 'antd';
-import { UnorderedListOutlined } from '@ant-design/icons';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { LangTag } from '@lib/enums/language.enum';
-import { camelCase } from 'case-anything';
-import { resourcePath } from '@client/resources/refine-paths';
+import { useGetToPath, useGo, useTranslate } from "@refinedev/core";
+import { Card, Divider, List, Space, Statistic, Typography } from "antd";
+import { UnorderedListOutlined } from "@ant-design/icons";
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { LangTag } from "@lib/enums/language.enum";
+import { camelCase } from "case-anything";
+import { resourcePath } from "@client/resources/refine-paths";
 
 const { Title } = Typography;
 
@@ -17,7 +17,7 @@ interface CardProps {
 interface CardListProps {
   resources: ResourceEnum[];
   id: string;
-  parent: 'person' | 'company';
+  parent: "person" | "company";
   record: any;
 }
 
@@ -32,6 +32,7 @@ function calculateTotal(record: any, key: string) {
 
 function createTitle(resource: string, translate: (key: string) => string) {
   const keyLangTag = `${resource}.${resource}` as keyof LangTag;
+  console.log(keyLangTag);
   // @ts-expect-error Probablemente debamos mejorar esto en otro archivo
   return translate(LangTag[keyLangTag]);
 }
@@ -39,7 +40,7 @@ function createTitle(resource: string, translate: (key: string) => string) {
 function useCreateData(
   resources: ResourceEnum[],
   id: string,
-  parent: 'person' | 'company',
+  parent: "person" | "company",
   record: unknown
 ) {
   const translate = useTranslate();
@@ -47,7 +48,7 @@ function useCreateData(
   const getToPath = useGetToPath();
   const actions = (resource: ResourceEnum) => {
     return getToPath({
-      action: 'list',
+      action: "list",
       meta: {
         [`${parent}Id`]: id,
       },
@@ -79,7 +80,7 @@ function CardList({ id, parent, record, resources }: Readonly<CardListProps>) {
     <>
       <Divider />
       <Space direction="vertical">
-        <Title level={3}>{'Información relacionada'}</Title>
+        <Title level={3}>{"Información relacionada"}</Title>
       </Space>
 
       <List
@@ -98,8 +99,11 @@ function CardList({ id, parent, record, resources }: Readonly<CardListProps>) {
               title={item.title}
               actions={[
                 <UnorderedListOutlined
-                    key="setting"
-                    onClick={item.handleClick} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}                />,
+                  key="setting"
+                  onClick={item.handleClick}
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
+                />,
                 // <EditOutlined key="edit" />,
                 // <EllipsisOutlined key="ellipsis" />,
               ]}
