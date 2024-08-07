@@ -447,6 +447,15 @@
       "show": "Mostrar allegados"
     }
   },
+  "company-relation": {
+    "company-relation": "Compañias relacionadas",
+    "titles": {
+      "create": "Añadir compañia relacionada",
+      "edit": "Editar compañia relacionada",
+      "list": "Empresas relacionadas",
+      "show": "Empresas"
+    }
+  },
   "person-social": {
     "person-social": "Redes sociales",
     "fields": {

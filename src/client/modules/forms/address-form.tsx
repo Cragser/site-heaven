@@ -1,13 +1,13 @@
-import { Form, FormProps, Input } from 'antd';
-import { useTranslate } from '@refinedev/core';
-import { addressAntdValidation } from '@lib/schemas/address.schema';
+import { Form, FormProps, Input } from "antd";
+import { useTranslate } from "@refinedev/core";
+import { addressAntdValidation } from "@lib/schemas/address.schema";
 
 export default function AddressForm(formProps: Readonly<FormProps>) {
   const translate = useTranslate();
   return (
     <Form {...formProps} layout="vertical">
       <Form.Item
-        label={translate('address.fields.name')}
+        label={translate("address.fields.name")}
         name="name"
         rules={addressAntdValidation.name}
       >
@@ -15,7 +15,7 @@ export default function AddressForm(formProps: Readonly<FormProps>) {
       </Form.Item>
 
       <Form.Item
-        label={translate('address.fields.country')}
+        label={translate("address.fields.country")}
         name="country"
         rules={addressAntdValidation.country}
       >
@@ -23,7 +23,7 @@ export default function AddressForm(formProps: Readonly<FormProps>) {
       </Form.Item>
 
       <Form.Item
-        label={translate('address.fields.state')}
+        label={translate("address.fields.state")}
         name="state"
         rules={addressAntdValidation.state}
       >
@@ -31,7 +31,7 @@ export default function AddressForm(formProps: Readonly<FormProps>) {
       </Form.Item>
 
       <Form.Item
-        label={translate('address.fields.city')}
+        label={translate("address.fields.city")}
         name="city"
         rules={addressAntdValidation.city}
       >
@@ -39,15 +39,15 @@ export default function AddressForm(formProps: Readonly<FormProps>) {
       </Form.Item>
 
       <Form.Item
-        label={translate('address.fields.postalCode')}
+        label={translate("address.fields.postalCode")}
         name="postalCode"
         rules={addressAntdValidation.postalCode}
       >
-        <Input />
+        <Input type={"number"} />
       </Form.Item>
 
       <Form.Item
-        label={translate('address.fields.colony')}
+        label={translate("address.fields.colony")}
         name="colony"
         rules={addressAntdValidation.colony}
       >
@@ -55,7 +55,7 @@ export default function AddressForm(formProps: Readonly<FormProps>) {
       </Form.Item>
 
       <Form.Item
-        label={translate('address.fields.street')}
+        label={translate("address.fields.street")}
         name="street"
         rules={addressAntdValidation.street}
       >
@@ -63,7 +63,7 @@ export default function AddressForm(formProps: Readonly<FormProps>) {
       </Form.Item>
 
       <Form.Item
-        label={translate('address.fields.exteriorNumber')}
+        label={translate("address.fields.exteriorNumber")}
         name="exteriorNumber"
         rules={addressAntdValidation.exteriorNumber}
       >
@@ -71,7 +71,7 @@ export default function AddressForm(formProps: Readonly<FormProps>) {
       </Form.Item>
 
       <Form.Item
-        label={translate('address.fields.interiorNumber')}
+        label={translate("address.fields.interiorNumber")}
         name="interiorNumber"
         rules={addressAntdValidation.interiorNumber}
       >
@@ -79,7 +79,7 @@ export default function AddressForm(formProps: Readonly<FormProps>) {
       </Form.Item>
 
       <Form.Item
-        label={translate('address.fields.additionalInformation')}
+        label={translate("address.fields.additionalInformation")}
         name="additionalInformation"
         rules={addressAntdValidation.additionalInformation}
       >

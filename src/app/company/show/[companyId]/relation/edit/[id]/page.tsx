@@ -2,23 +2,24 @@
 
 import { Edit, useForm } from '@refinedev/antd';
 import { HttpError } from '@refinedev/core';
-import { ResourceEnum } from '@lib/enums/resource.enum';
 import { PersonType } from '@lib/types/person.type';
 import { PersonAndChildPageType } from '@page/types/person-and-child-page.type';
-import AddressForm from '@modules/forms/address-form';
+import RelationForm from '@modules/forms/relation-form';
+import { ResourceEnum } from '@lib/enums/resource.enum';
 
-export default function AddressEditPage(
+export default function RelationEditPage(
   props: Readonly<PersonAndChildPageType>
 ) {
   const id = props?.params?.id;
+  const personId = props?.params?.personId;
   const { formProps, saveButtonProps } = useForm<PersonType, HttpError>({
     id,
-    resource: ResourceEnum.address,
+    resource: ResourceEnum.personRelation,
   });
 
   return (
     <Edit saveButtonProps={saveButtonProps}>
-      <AddressForm {...formProps} />
+      <RelationForm personId={personId} formProps={formProps} />
     </Edit>
   );
 }

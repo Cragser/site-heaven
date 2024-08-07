@@ -116,3 +116,18 @@ export const renderHeaderToEntity = ({
     />
   );
 };
+
+export const renderHeaderWithoutDefault = ({
+  id,
+  customButtons,
+  parent,
+}: Omit<CustomHeaderProps, "defaultButtons">) => {
+  return ({ defaultButtons }: any) => (
+    <CustomHeader
+      defaultButtons={null}
+      id={id}
+      customButtons={customButtons}
+      parent={parent}
+    />
+  );
+};

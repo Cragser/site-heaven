@@ -268,6 +268,7 @@ export enum LangTag {
   "person-relation.titles.edit" = "person-relation.titles.edit",
   "person-relation.titles.list" = "person-relation.titles.list",
   "person-relation.titles.show" = "person-relation.titles.show",
+  "company-relation.titles.list" = "company-relation.titles.list",
   "person-social.person-social" = "person-social.person-social",
   "person-social.fields.id" = "person-social.fields.id",
   "person-social.fields.personId" = "person-social.fields.personId",
