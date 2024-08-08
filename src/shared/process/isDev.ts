@@ -1,6 +1,4 @@
-//const isDev = process.env.NODE_ENV === 'development';
+// const isDev = process.env.NODE_ENV === "development";
 
-const isDev = true
-export {
-	  isDev
-}
+const isDev = false;
+export { isDev };

@@ -212,6 +212,13 @@
       "id": "id",
       "companyId": "companyId",
       "assetId": "assetId"
+    },
+    "titles": {
+        "create": "Añadir activo a [company.nickname (company.rfc)]",
+        "edit": "Editar activo",
+        "list": "Activos de [company.nickname (company.rfc)]",
+        "show": "Mostrar activos",
+        "add-relation-to-company": "Añadir activo"
     }
   },
   "company-creation-details": {

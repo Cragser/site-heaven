@@ -1,40 +1,24 @@
-'use client';
+"use client";
 
-import { List, useTable } from '@refinedev/antd';
-import { renderHeaderToPerson } from '@client/util/ant/list/renderHeaderToPerson';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import AssetTable from '@modules/tables/asset-table';
-import { CompanyPageType } from '@page/types/company-and-child-page.type';
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import CreateParentEntityPage from "@modules/page/create-parent-entity.page";
+import { CompanyPageType } from "@page/types/company-and-child-page.type";
 
-export default function CompanyAssetList({
+export default function PersonList({
   params: { companyId },
 }: Readonly<CompanyPageType>) {
-  const { tableProps, tableQueryResult } = useTable({
-    filters: {
-      permanent: [
-        {
-          field: 'filter',
-          operator: 'eq',
-          value: `companyId||$eq||${companyId}`,
-        },
-      ],
-    },
-    pagination: {
-      current: 1,
-      mode: 'client',
-      pageSize: 10,
-    },
-    resource: ResourceEnum.companyAsset,
-    syncWithLocation: true,
-  });
-
-  if (tableQueryResult?.isLoading) {
-    return <div>Loading...</div>;
-  }
+  const columns = ["name", "date", "description", "type"];
 
   return (
-    <List headerButtons={renderHeaderToPerson(companyId, ResourceEnum.company)}>
-      <AssetTable tableProps={tableProps} />
-    </List>
+    <CreateParentEntityPage
+      parentId={companyId}
+      entityResource={ResourceEnum.asset}
+      relationResource={ResourceEnum.companyAsset}
+      parentResource={ResourceEnum.company}
+      parent="company"
+      columns={columns.map((column) => ({
+        dataIndex: [column],
+      }))}
+    />
   );
 }
