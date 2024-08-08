@@ -256,7 +256,12 @@
     "fields": {
       "id": "id",
       "name": "Nombre del grupo",
-      "comments": "Comentarios o resumen"
+      "comments": "Comentarios o resumen",
+        "type": "Tipo de grupo",
+        "caseNumber": "Número de casos",
+        "court": "Corte",
+        "claimedAct": "Acto reclamado",
+        "sentence": "Sentencia"
     }
   },
   "trial": {

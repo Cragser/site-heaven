@@ -2,6 +2,7 @@
 
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import CreateParentEntityPage from "@modules/page/create-parent-entity.page";
+import { legalFields } from "@lib/fields/legal.fields";
 
 interface Props {
   params: {
@@ -12,10 +13,8 @@ interface Props {
 export default function PersonLegalList({
   params: { personId },
 }: Readonly<Props>) {
-  const columns = ["name", "comments"];
-
   const formatedColumns = [
-    ...columns.map((column) => ({
+    ...legalFields.map((column) => ({
       dataIndex: [column],
     })),
   ];
