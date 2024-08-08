@@ -35,9 +35,9 @@ function CreateTable({
   const translate = useTranslate();
   const getToPath = useGetToPath();
   const go = useGo();
-
   const columnsRender = columns.map((item) => {
     const key = item.key ?? item.dataIndex.join(".");
+    // console.log(item);
     return (
       <Table.Column
         key={key}

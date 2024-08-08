@@ -13,12 +13,6 @@ interface Props {
 export default function PersonLegalList({
   params: { personId },
 }: Readonly<Props>) {
-  const formatedColumns = [
-    ...legalFields.map((column) => ({
-      dataIndex: [column],
-    })),
-  ];
-
   return (
     <CreateParentEntityPage
       parentId={personId}
@@ -26,7 +20,7 @@ export default function PersonLegalList({
       relationResource={ResourceEnum.personLegal}
       parentResource={ResourceEnum.person}
       parent="person"
-      columns={formatedColumns}
+      columns={legalFields}
     />
   );
 }
