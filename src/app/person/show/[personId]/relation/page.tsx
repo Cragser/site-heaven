@@ -66,10 +66,7 @@ export default function PersonRelationList({
             title={"Nombre persona relacionada"}
             dataIndex={["relatedPerson", "name"]}
           />
-          <Table.Column
-            title={"Nombre persona relacionada"}
-            dataIndex={["relatedPerson", "lastName"]}
-          />
+
           <Table.Column
             title={"Fecha de inicio"}
             dataIndex="startDate"

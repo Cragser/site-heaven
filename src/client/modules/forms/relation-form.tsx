@@ -60,12 +60,12 @@ export default function RelationForm({
           {...(selectProps as any)}
         />
       </Form.Item>
-      <Form.Item label="Fecha de inicio" name={"startDate"}>
-        <Input type={"date"} />
-      </Form.Item>
-      <Form.Item label="Fecha de fin" name={"endDate"}>
-        <Input type={"date"} />
-      </Form.Item>
+      {/*<Form.Item label="Fecha de inicio" name={"startDate"}>*/}
+      {/*  <Input type={"date"} />*/}
+      {/*</Form.Item>*/}
+      {/*<Form.Item label="Fecha de fin" name={"endDate"}>*/}
+      {/*  <Input type={"date"} />*/}
+      {/*</Form.Item>*/}
       <Form.Item label="Tipo de relación" name={"relation"}>
         <Select>
           {Object.values(PersonRelationEnum).map((value) => (
