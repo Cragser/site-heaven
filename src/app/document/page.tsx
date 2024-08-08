@@ -1,12 +1,11 @@
-'use client';
+"use client";
 
-import { List } from '@refinedev/antd';
-import { useTranslate } from '@refinedev/core';
-import { LangTag } from '@lib/enums/language.enum';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { useResourceTable } from '@client/util/hook/useResourceTable';
-import CompanyTable from '@modules/tables/company-table';
-import PersonTable from '@modules/tables/person-table';
+import { List } from "@refinedev/antd";
+import { useTranslate } from "@refinedev/core";
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { useResourceTable } from "@client/util/hook/useResourceTable";
+import CompanyTable from "@modules/tables/company-table";
+import PersonTable from "@modules/tables/person-table";
 
 export default function CompanyList() {
   const translate = useTranslate();
@@ -23,10 +22,10 @@ export default function CompanyList() {
 
   return (
     <>
-      <List title={translate(LangTag['person.titles.list'])}>
+      <List title={translate("company.titles.list")}>
         <CompanyTable tableProps={tableProps} />
       </List>
-      <List title={translate(LangTag['company.titles.list'])}>
+      <List title={translate("person.titles.list")}>
         <PersonTable tableProps={personTable} />
       </List>
     </>
