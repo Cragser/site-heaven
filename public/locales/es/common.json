@@ -572,5 +572,15 @@
       "show": "CompanyContract",
       "add-relation-to-company": "Add CompanyContract"
     }
+  },
+  "company-legal": {
+    "company-legal": "CompanyLegal",
+    "titles": {
+      "create": "Create CompanyLegal",
+      "edit": "Edit CompanyLegal",
+      "list": "CompanyLegals",
+      "show": "CompanyLegal",
+      "add-relation-to-company": "Add CompanyLegal"
+    }
   }
 }

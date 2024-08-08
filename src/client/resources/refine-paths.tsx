@@ -87,6 +87,10 @@ export const resourcePath: Partial<Record<ResourceEnum, ResourceProps>> = {
     ResourceEnum.company,
     ResourceEnum.contract
   ),
+  [ResourceEnum.companyLegal]: generateParentChild(
+    ResourceEnum.company,
+    ResourceEnum.legal
+  ),
 };
 
 export function refinePaths(): ResourceProps[] {

@@ -36,6 +36,7 @@ export enum ResourceEnum {
   companyCreationDetails = "company-creation-details",
   companyAudit = "company-audit",
   companyContract = "company-contract",
+  companyLegal = "company-legal",
   //- Asset
   assetValueHistory = "asset-value-history",
 

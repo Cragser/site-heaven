@@ -327,4 +327,6 @@ export enum LangTag {
   "audit.fields.name" = "audit.fields.name",
   "company-contract.company-contract" = "company-contract.company-contract",
   "company-contract.titles.add-relation-to-company" = "company-contract.titles.add-relation-to-company",
+  "company-legal.company-legal" = "company-legal.company-legal",
+  "company-legal.titles.add-relation-to-company" = "company-legal.titles.add-relation-to-company",
 }
