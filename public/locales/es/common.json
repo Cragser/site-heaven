@@ -183,7 +183,8 @@
     "contract": "Contract",
     "fields": {
       "id": "id",
-      "concept": "concept",
+        "name": "Nombre",
+      "concept": "Concepto",
       "startDate": "startDate",
       "contractor": "contractor",
       "notes": "notes",
@@ -554,6 +555,22 @@
       "list": "CompanyAudits",
       "show": "CompanyAudit",
       "add-relation-to-company": "Agregar auditoria"
+    }
+  },
+  "company-contract": {
+    "company-contract": "CompanyContract",
+    "fields": {
+      "companyId": "companyId",
+      "contractId": "contractId",
+      "notes": "notes",
+      "name": "name"
+    },
+    "titles": {
+      "create": "Create CompanyContract",
+      "edit": "Edit CompanyContract",
+      "list": "CompanyContracts",
+      "show": "CompanyContract",
+      "add-relation-to-company": "Add CompanyContract"
     }
   }
 }

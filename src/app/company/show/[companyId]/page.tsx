@@ -64,6 +64,7 @@ export default function CompanyShowPage({
             ResourceEnum.companyAsset,
             ResourceEnum.companyRelation,
             ResourceEnum.companyAudit,
+            ResourceEnum.companyContract,
             // ResourceEnum.personCompany,
           ]}
         />
