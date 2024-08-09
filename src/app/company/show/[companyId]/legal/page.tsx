@@ -15,9 +15,7 @@ export default function PersonList({
       relationResource={ResourceEnum.companyLegal}
       parentResource={ResourceEnum.company}
       parent="company"
-      columns={legalFields.map((column) => ({
-        dataIndex: [column],
-      }))}
+      columns={legalFields}
     />
   );
 }
