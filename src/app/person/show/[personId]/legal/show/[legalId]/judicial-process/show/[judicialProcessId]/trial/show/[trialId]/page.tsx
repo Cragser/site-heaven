@@ -73,7 +73,7 @@ export default function TrialShowPage({ params }: Readonly<Props>) {
         <TextField value={record.scope} />
       </Show>
       <TrialNotificationList params={params} />
-      <TrialRelationList trialId={trialId} />
+      <TrialRelationList params={params} />
     </section>
   );
 }

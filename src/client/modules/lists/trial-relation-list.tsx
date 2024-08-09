@@ -1,19 +1,25 @@
 "use client";
 
 import { DeleteButton, EditButton, List, useTable } from "@refinedev/antd";
-import { Space, Table } from "antd";
+import { Button, Space, Table } from "antd";
 import { BaseRecord, useTranslate } from "@refinedev/core";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import { LangTag } from "@lib/enums/language.enum";
 import { tagRender } from "@client/util/ant/fields/tagRender";
+import { useGoTo } from "@client/hooks/navigation/use-go-to";
 
-interface TrialRelationListProps {
-  trialId: string;
+interface Props {
+  params: {
+    trialId: string;
+    judicialProcessId: string;
+    personId: string;
+    legalId: string;
+  };
 }
 
-export default function TrialRelationList({
-  trialId,
-}: Readonly<TrialRelationListProps>) {
+export default function TrialRelationList({ params }: Readonly<Props>) {
+  const goTo = useGoTo();
+  const { trialId, judicialProcessId, personId, legalId } = params;
   const translate = useTranslate();
   const { tableProps, tableQueryResult } = useTable({
     filters: {
@@ -41,7 +47,25 @@ export default function TrialRelationList({
   console.log(tableProps);
 
   return (
-    <List resource={ResourceEnum.trialRelation} breadcrumb={false}>
+    <List
+      resource={ResourceEnum.trialRelation}
+      breadcrumb={false}
+      headerButtons={[
+        <Space>
+          <Button
+            onClick={() => {
+              goTo({
+                action: "create",
+                resource: ResourceEnum.personTrialRelation,
+                meta: { trialId, judicialProcessId, personId, legalId },
+              });
+            }}
+          >
+            Crear Relación de Jucios
+          </Button>
+        </Space>,
+      ]}
+    >
       <Table
         {...(tableProps as any)}
         rowKey="id"
@@ -80,7 +104,19 @@ export default function TrialRelationList({
                 hideText
                 size="middle"
                 recordItemId={record.id}
-                resource={ResourceEnum.trialRelation}
+                onClick={() => {
+                  goTo({
+                    action: "edit",
+                    resource: ResourceEnum.personTrialRelation,
+                    meta: {
+                      trialId,
+                      judicialProcessId,
+                      personId,
+                      legalId,
+                      trialRelationId: record.id as string,
+                    },
+                  });
+                }}
               />
 
               <DeleteButton

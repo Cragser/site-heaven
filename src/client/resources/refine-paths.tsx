@@ -124,6 +124,12 @@ export const resourcePath: Partial<Record<ResourceEnum, ResourceProps>> = {
     edit: "/person/show/:personId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/show/:trialId/trial-notification/edit/:trialNotificationId",
     name: "trial-notification",
   },
+  [ResourceEnum.personTrialRelation]: {
+    create:
+      "/person/show/:personId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/show/:trialId/trial-relation/create",
+    edit: "/person/show/:personId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/show/:trialId/trial-relation/edit/:trialRelationId",
+    name: "trial-relation",
+  },
 };
 
 export function refinePaths(): ResourceProps[] {

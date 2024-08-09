@@ -30,6 +30,7 @@ export enum ResourceEnum {
   personJudicialProcess = "person-judicial-process",
   personTrial = "person-trial",
   personTrialNotification = "person-trial-notification",
+  personTrialRelation = "person-trial-relation",
 
   //- Company
   company = "company",
