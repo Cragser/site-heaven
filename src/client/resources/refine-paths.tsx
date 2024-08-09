@@ -130,6 +130,34 @@ export const resourcePath: Partial<Record<ResourceEnum, ResourceProps>> = {
     edit: "/person/show/:personId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/show/:trialId/trial-relation/edit/:trialRelationId",
     name: "trial-relation",
   },
+  [ResourceEnum.companyJudicialProcess]: {
+    create:
+      "/company/show/:companyId/legal/show/:legalId/judicial-process/create",
+    edit: "/company/show/:companyId/legal/show/:legalId/judicial-process/edit/:judicialProcessId",
+    meta: {
+      canDelete: true,
+      hide: true,
+    },
+    name: "judicial-process",
+    show: "/company/show/:companyId/legal/show/:legalId/judicial-process/show/:judicialProcessId",
+  },
+  [ResourceEnum.companyTrial]: {
+    create:
+      "/company/show/:companyId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/create",
+    edit: "/company/show/:companyId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/edit/:trialId",
+    meta: {
+      canDelete: true,
+      hide: true,
+    },
+    name: "trial",
+    show: "/company/show/:companyId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/show/:trialId",
+  },
+  [ResourceEnum.companyTrialNotification]: {
+    create:
+      "/company/show/:companyId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/show/:trialId/trial-notification/create",
+    edit: "/company/show/:companyId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/show/:trialId/trial-notification/edit/:trialNotificationId",
+    name: "trial-notification",
+  },
 };
 
 export function refinePaths(): ResourceProps[] {
