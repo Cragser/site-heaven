@@ -91,6 +91,10 @@ export const resourcePath: Partial<Record<ResourceEnum, ResourceProps>> = {
     ResourceEnum.company,
     ResourceEnum.legal
   ),
+  [ResourceEnum.stakeholder]: {
+    list: "/company/show/:companyId/stakeholder",
+    name: "stakeholder",
+  },
 };
 
 export function refinePaths(): ResourceProps[] {

@@ -52,4 +52,6 @@ export enum ResourceEnum {
   creationDetails = "creation-details",
   audit = "audit",
   contract = "contract",
+  // custom
+  stakeholder = "stakeholder",
 }

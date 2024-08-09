@@ -12,6 +12,11 @@ export function useGoTo() {
   const go = useGo();
 
   return ({ action, meta, resource }: Props) => {
+    if (!resourcePath[resource]) {
+      console.error(`Resource ${resource} not found in resourcePath`);
+      return;
+    }
+
     go({
       to: getToPath({
         action: action,

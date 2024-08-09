@@ -10,6 +10,7 @@ import CardList from "@modules/card-list";
 import { StateManager } from "@components/feedback/state-manager/state-manager";
 import DescriptionSimple from "@components/data-display/description/description-simple";
 import { SimpleUniqueResource } from "@modules/unique-resources/simple-unique-resource";
+import { Stakeholder } from "@modules/custom-resources/stakeholder";
 
 interface CompanyPage {
   params: {
@@ -54,6 +55,7 @@ export default function CompanyShowPage({
             creationDetailsId: record?.companyCreationDetails?.id,
           }}
         />
+        <Stakeholder companyId={companyId} />
         <CardList
           parent={"company"}
           id={record?.id}
