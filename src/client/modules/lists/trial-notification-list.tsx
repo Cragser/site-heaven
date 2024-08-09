@@ -1,20 +1,26 @@
 "use client";
 
 import { DeleteButton, EditButton, List, useTable } from "@refinedev/antd";
-import { Space, Table } from "antd";
+import { Button, Space, Table } from "antd";
 import { BaseRecord, useTranslate } from "@refinedev/core";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import { LangTag } from "@lib/enums/language.enum";
 import { tagRender } from "@client/util/ant/fields/tagRender";
 import { dateRender } from "@client/util/ant/fields/dateRender";
+import { useGoTo } from "@client/hooks/navigation/use-go-to";
 
-interface TrialNotificationListProps {
-  trialId: string;
+interface Props {
+  params: {
+    trialId: string;
+    judicialProcessId: string;
+    personId: string;
+    legalId: string;
+  };
 }
 
-export default function TrialNotificationList({
-  trialId,
-}: Readonly<TrialNotificationListProps>) {
+export default function TrialNotificationList({ params }: Readonly<Props>) {
+  const { trialId, judicialProcessId, personId, legalId } = params;
+  const goTo = useGoTo();
   const translate = useTranslate();
   const { tableProps, tableQueryResult } = useTable({
     filters: {
@@ -40,7 +46,25 @@ export default function TrialNotificationList({
   }
 
   return (
-    <List resource={ResourceEnum.trialNotification} breadcrumb={false}>
+    <List
+      resource={ResourceEnum.trialNotification}
+      breadcrumb={false}
+      headerButtons={[
+        <Space>
+          <Button
+            onClick={() => {
+              goTo({
+                action: "create",
+                resource: ResourceEnum.personTrialNotification,
+                meta: { trialId, judicialProcessId, personId, legalId },
+              });
+            }}
+          >
+            Crear Notificación
+          </Button>
+        </Space>,
+      ]}
+    >
       <Table
         {...(tableProps as any)}
         rowKey="id"
@@ -76,7 +100,19 @@ export default function TrialNotificationList({
                 hideText
                 size="middle"
                 recordItemId={record.id}
-                resource={ResourceEnum.trialNotification}
+                onClick={() => {
+                  goTo({
+                    action: "edit",
+                    resource: ResourceEnum.personTrialNotification,
+                    meta: {
+                      trialId,
+                      judicialProcessId,
+                      personId,
+                      legalId,
+                      trialNotificationId: record.id as string,
+                    },
+                  });
+                }}
               />
 
               <DeleteButton

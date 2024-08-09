@@ -26,6 +26,10 @@ export enum ResourceEnum {
   personCompany = "person-company",
   personAsset = "person-asset",
   personLegal = "person-legal",
+  // NO-ENDPOINT ONLY NAVIGATION
+  personJudicialProcess = "person-judicial-process",
+  personTrial = "person-trial",
+  personTrialNotification = "person-trial-notification",
 
   //- Company
   company = "company",

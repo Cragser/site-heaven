@@ -95,6 +95,35 @@ export const resourcePath: Partial<Record<ResourceEnum, ResourceProps>> = {
     list: "/company/show/:companyId/stakeholder",
     name: "stakeholder",
   },
+  // TODO: This is person-judicial-process
+  [ResourceEnum.personJudicialProcess]: {
+    create:
+      "/person/show/:personId/legal/show/:legalId/judicial-process/create",
+    edit: "/person/show/:personId/legal/show/:legalId/judicial-process/edit/:judicialProcessId",
+    meta: {
+      canDelete: true,
+      hide: true,
+    },
+    name: "judicial-process",
+    show: "/person/show/:personId/legal/show/:legalId/judicial-process/show/:judicialProcessId",
+  },
+  [ResourceEnum.personTrial]: {
+    create:
+      "/person/show/:personId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/create",
+    edit: "/person/show/:personId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/edit/:trialId",
+    meta: {
+      canDelete: true,
+      hide: true,
+    },
+    name: "trial",
+    show: "/person/show/:personId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/show/:trialId",
+  },
+  [ResourceEnum.personTrialNotification]: {
+    create:
+      "/person/show/:personId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/show/:trialId/trial-notification/create",
+    edit: "/person/show/:personId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/show/:trialId/trial-notification/edit/:trialNotificationId",
+    name: "trial-notification",
+  },
 };
 
 export function refinePaths(): ResourceProps[] {

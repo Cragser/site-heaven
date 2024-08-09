@@ -1,24 +1,26 @@
-'use client';
+"use client";
 
-import { Show, TextField } from '@refinedev/antd';
-import { useShow, useTranslate } from '@refinedev/core';
-import { Divider, Typography } from 'antd';
-import { HttpError } from '@refinedev/core';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { LangTag } from '@lib/enums/language.enum';
-import { JudicialProcessType } from '@lib/types/judicial-process.type';
-import TrialList from '@modules/lists/trial-list';
-import { useJudicialProcessTitle } from '@client/hooks/titles/use-judicial-process-title';
+import { Show, TextField } from "@refinedev/antd";
+import { HttpError, useShow, useTranslate } from "@refinedev/core";
+import { Divider, Typography } from "antd";
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { LangTag } from "@lib/enums/language.enum";
+import { JudicialProcessType } from "@lib/types/judicial-process.type";
+import TrialList from "@modules/lists/trial-list";
+import { useJudicialProcessTitle } from "@client/hooks/titles/use-judicial-process-title";
 
 const { Title } = Typography;
 interface LegalPage {
   params: {
     judicialProcessId: string;
+    personId: string;
+    legalId: string;
   };
 }
 export default function JudicialProcessShowPage({
-  params: { judicialProcessId },
+  params: { judicialProcessId, personId, legalId },
 }: Readonly<LegalPage>) {
+  console.log("JUDICIAL PROCESS SHOW PAGE?");
   const { queryResult } = useShow<JudicialProcessType, HttpError>({
     id: judicialProcessId,
     resource: ResourceEnum.judicialProcess,
@@ -29,7 +31,7 @@ export default function JudicialProcessShowPage({
   const translate = useTranslate();
   const { title } = useJudicialProcessTitle(
     judicialProcessId,
-    LangTag['judicial-process.titles.show']
+    LangTag["judicial-process.titles.show"]
   );
   if (isError || !record) {
     return null;
@@ -47,7 +49,7 @@ export default function JudicialProcessShowPage({
       </Title>
       <TextField value={record.comments} />
       <Divider />
-      <TrialList params={{ id: judicialProcessId }} />
+      <TrialList params={{ judicialProcessId, personId, legalId }} />
     </Show>
   );
 }

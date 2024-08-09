@@ -7,22 +7,26 @@ import {
   ShowButton,
   useTable,
 } from "@refinedev/antd";
-import { Space, Table } from "antd";
+import { Button, Space, Table } from "antd";
 import { BaseRecord, useTranslate } from "@refinedev/core";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import { LangTag } from "@lib/enums/language.enum";
 import { dateRender } from "@client/util/ant/fields/dateRender";
 import { tagRender } from "@client/util/ant/fields/tagRender";
+import { useGoTo } from "@client/hooks/navigation/use-go-to";
 
 interface TrialListProps {
   params: {
-    id: string;
+    personId: string;
+    legalId: string;
+    judicialProcessId: string;
   };
 }
 
 export default function TrialList({
-  params: { id },
+  params: { judicialProcessId, legalId, personId },
 }: Readonly<TrialListProps>) {
+  const goTo = useGoTo();
   const translate = useTranslate();
   const { tableProps, tableQueryResult } = useTable({
     filters: {
@@ -30,7 +34,7 @@ export default function TrialList({
         {
           field: "filter",
           operator: "eq",
-          value: `judicialProcessId||$eq||${id}`,
+          value: `judicialProcessId||$eq||${judicialProcessId}`,
         },
       ],
     },
@@ -48,7 +52,25 @@ export default function TrialList({
   }
 
   return (
-    <List resource={ResourceEnum.trial} breadcrumb={false}>
+    <List
+      resource={ResourceEnum.trial}
+      breadcrumb={false}
+      headerButtons={[
+        <Space>
+          <Button
+            onClick={() => {
+              goTo({
+                action: "create",
+                resource: ResourceEnum.personTrial,
+                meta: { legalId, personId, judicialProcessId },
+              });
+            }}
+          >
+            Crear Juicio
+          </Button>
+        </Space>,
+      ]}
+    >
       <Table
         {...(tableProps as any)}
         rowKey="id"
@@ -106,15 +128,37 @@ export default function TrialList({
                 hideText
                 size="middle"
                 recordItemId={record.id}
-                resource={ResourceEnum.trial}
+                onClick={() => {
+                  goTo({
+                    action: "edit",
+                    resource: ResourceEnum.personTrial,
+                    meta: {
+                      legalId,
+                      personId,
+                      judicialProcessId,
+                      trialId: record.id as string,
+                    },
+                  });
+                }}
               />
               <ShowButton
                 hideText
                 size="middle"
                 recordItemId={record.id}
-                resource={ResourceEnum.trial}
+                onClick={() => {
+                  const meta = {
+                    legalId,
+                    personId,
+                    judicialProcessId,
+                    trialId: record.id as string,
+                  };
+                  goTo({
+                    action: "show",
+                    resource: ResourceEnum.personTrial,
+                    meta,
+                  });
+                }}
               />
-
               <DeleteButton
                 hideText
                 size="middle"

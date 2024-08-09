@@ -1,24 +1,23 @@
-'use client';
+"use client";
 
-import { Show, TextField } from '@refinedev/antd';
-import { useShow, useTranslate } from '@refinedev/core';
-import { Divider, Typography } from 'antd';
-import { HttpError } from '@refinedev/core';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { LangTag } from '@lib/enums/language.enum';
-import { LegalType } from '@lib/types/legal.type';
-import JudicialProcessList from '@modules/lists/judicial-process-list';
-
-const { Title } = Typography;
+import { Show } from "@refinedev/antd";
+import { HttpError, useShow, useTranslate } from "@refinedev/core";
+import { DescriptionsProps, Divider } from "antd";
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { LegalType } from "@lib/types/legal.type";
+import JudicialProcessList from "@modules/lists/judicial-process-list";
+import DescriptionSimple from "@components/data-display/description/description-simple";
+import { legalFields } from "@lib/fields/legal.fields";
 
 interface Props {
   params: {
     legalId: string;
+    personId: string;
   };
 }
 
 export default function LegalShowPage({
-  params: { legalId },
+  params: { legalId, personId },
 }: Readonly<Props>) {
   const { queryResult } = useShow<LegalType, HttpError>({
     id: legalId,
@@ -33,15 +32,16 @@ export default function LegalShowPage({
     return null;
   }
 
+  const items: DescriptionsProps["items"] = legalFields.map((field) => ({
+    children: record[field?.key as string],
+    label: translate(`legal.fields.${field.key}`),
+  }));
+
   return (
     <Show isLoading={isLoading}>
-      <Title level={5}>{translate(LangTag[`legal.fields.name`])}</Title>
-      <TextField value={record.name} />
-
-      <Title level={5}>{translate(LangTag[`legal.fields.comments`])}</Title>
-      <TextField value={record.comments} />
+      <DescriptionSimple items={items} />
       <Divider />
-      <JudicialProcessList params={{ legalId }} />
+      <JudicialProcessList params={{ legalId, personId }} />
     </Show>
   );
 }

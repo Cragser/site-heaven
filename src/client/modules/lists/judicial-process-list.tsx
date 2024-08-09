@@ -7,21 +7,24 @@ import {
   ShowButton,
   useTable,
 } from "@refinedev/antd";
-import { Space, Table } from "antd";
+import { Button, Space, Table } from "antd";
 import { BaseRecord, useTranslate } from "@refinedev/core";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import { LangTag } from "@lib/enums/language.enum";
 import { useLegalTitle } from "@client/hooks/titles/use-legal-title";
+import { useGoTo } from "@client/hooks/navigation/use-go-to";
 
 interface JudicialProcessListProps {
   params: {
     legalId: string;
+    personId: string;
   };
 }
 
 export default function JudicialProcessList({
-  params: { legalId },
+  params: { legalId, personId },
 }: Readonly<JudicialProcessListProps>) {
+  const goTo = useGoTo();
   const translate = useTranslate();
   const { tableProps, tableQueryResult } = useTable({
     filters: {
@@ -54,6 +57,21 @@ export default function JudicialProcessList({
       title={title}
       resource={ResourceEnum.judicialProcess}
       breadcrumb={false}
+      headerButtons={[
+        <Space>
+          <Button
+            onClick={() => {
+              goTo({
+                action: "create",
+                resource: ResourceEnum.personJudicialProcess,
+                meta: { legalId, personId },
+              });
+            }}
+          >
+            Crear
+          </Button>
+        </Space>,
+      ]}
     >
       <Table
         {...(tableProps as any)}
@@ -65,15 +83,9 @@ export default function JudicialProcessList({
         }}
       >
         <Table.Column
-          dataIndex={["id"]}
-          title={translate(LangTag[`judicial-process.fields.id`])}
-        />
-
-        <Table.Column
           dataIndex={["name"]}
           title={translate(LangTag[`judicial-process.fields.name`])}
         />
-
         <Table.Column
           dataIndex={["comments"]}
           title={translate(LangTag[`judicial-process.fields.comments`])}
@@ -88,14 +100,33 @@ export default function JudicialProcessList({
                 hideText
                 size="middle"
                 recordItemId={record.id}
-                resource={ResourceEnum.judicialProcess}
+                onClick={() => {
+                  goTo({
+                    action: "edit",
+                    resource: ResourceEnum.personJudicialProcess,
+                    meta: {
+                      legalId,
+                      personId,
+                      judicialProcessId: record.id as string,
+                    },
+                  });
+                }}
               />
-
               <ShowButton
                 hideText
                 size="middle"
-                recordItemId={record.id}
-                resource={ResourceEnum.judicialProcess}
+                onClick={() => {
+                  console.log({ record });
+                  goTo({
+                    action: "show",
+                    resource: ResourceEnum.personJudicialProcess,
+                    meta: {
+                      legalId,
+                      personId,
+                      judicialProcessId: record.id as string,
+                    },
+                  });
+                }}
               />
               <DeleteButton
                 hideText

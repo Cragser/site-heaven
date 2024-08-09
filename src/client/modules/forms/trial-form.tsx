@@ -1,8 +1,8 @@
-import { AutoComplete, Form, FormProps, Input } from 'antd';
-import { useTranslate } from '@refinedev/core';
-import { trialAntdValidation } from '@lib/schemas/trial.schema';
-import { TrialScopeEnum } from '@lib/enums/trial-scope.enum';
-import { TrialTypeEnum } from '@lib/enums/trial-type.enum';
+import { AutoComplete, Form, FormProps, Input } from "antd";
+import { useTranslate } from "@refinedev/core";
+import { trialAntdValidation } from "@lib/schemas/trial.schema";
+import { TrialScopeEnum } from "@lib/enums/trial-scope.enum";
+import { TrialTypeEnum } from "@lib/enums/trial-type.enum";
 
 interface TrialFormProps {
   formProps: FormProps;
@@ -14,11 +14,11 @@ export default function TrialForm({
   judicialProcessId,
 }: Readonly<TrialFormProps>) {
   const translate = useTranslate();
-
+  console.log({ judicialProcessId });
   return (
     <Form {...formProps} layout="vertical">
       <Form.Item
-        label={translate('trial.fields.name')}
+        label={translate("trial.fields.name")}
         name="name"
         rules={trialAntdValidation.name}
       >
@@ -26,7 +26,7 @@ export default function TrialForm({
       </Form.Item>
 
       <Form.Item
-        label={translate('trial.fields.courtName')}
+        label={translate("trial.fields.courtName")}
         name="courtName"
         rules={trialAntdValidation.courtName}
       >
@@ -34,7 +34,7 @@ export default function TrialForm({
       </Form.Item>
 
       <Form.Item
-        label={translate('trial.fields.summary')}
+        label={translate("trial.fields.summary")}
         name="summary"
         rules={trialAntdValidation.summary}
       >
@@ -51,23 +51,23 @@ export default function TrialForm({
       </Form.Item>
 
       <Form.Item
-        label={translate('trial.fields.startDate')}
+        label={translate("trial.fields.startDate")}
         name="startDate"
         rules={trialAntdValidation.startDate}
       >
-        <Input type={'date'} />
+        <Input type={"date"} />
       </Form.Item>
 
       <Form.Item
-        label={translate('trial.fields.endDate')}
+        label={translate("trial.fields.endDate")}
         name="endDate"
         rules={trialAntdValidation.endDate}
       >
-        <Input type={'date'} />
+        <Input type={"date"} />
       </Form.Item>
 
       <Form.Item
-        label={translate('trial.fields.type')}
+        label={translate("trial.fields.type")}
         name="type"
         rules={trialAntdValidation.type}
       >
@@ -80,7 +80,7 @@ export default function TrialForm({
       </Form.Item>
 
       <Form.Item
-        label={translate('trial.fields.scope')}
+        label={translate("trial.fields.scope")}
         name="scope"
         rules={trialAntdValidation.scope}
       >

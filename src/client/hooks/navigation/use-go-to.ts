@@ -17,12 +17,32 @@ export function useGoTo() {
       return;
     }
 
+    const toPath = getToPath({
+      action: action,
+      meta: meta,
+      resource: resourcePath[resource],
+    });
+
+    console.log({ toPath });
+    // if toPath includes ":" then error
+
+    if (!toPath) {
+      console.error(
+        `Action not found for resource ${resource} and action ${action}`
+      );
+      return;
+    }
+
+    if (toPath.includes(":")) {
+      console.log({
+        meta,
+      });
+      console.error(`toPath includes ":"`);
+      return;
+    }
+
     go({
-      to: getToPath({
-        action: action,
-        meta: meta,
-        resource: resourcePath[resource],
-      }),
+      to: toPath,
     });
   };
 }

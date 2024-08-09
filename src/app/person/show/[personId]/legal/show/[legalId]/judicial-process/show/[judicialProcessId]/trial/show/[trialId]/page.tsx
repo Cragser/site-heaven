@@ -1,15 +1,14 @@
-'use client';
+"use client";
 
-import { Show, TextField } from '@refinedev/antd';
-import { useShow, useTranslate } from '@refinedev/core';
-import { Typography } from 'antd';
-import { HttpError } from '@refinedev/core';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { LangTag } from '@lib/enums/language.enum';
-import { TrialType } from '@lib/types/trial.type';
-import TrialRelationList from '@modules/lists/trial-relation-list';
-import TrialNotificationList from '@modules/lists/trial-notification-list';
-import { useForTrialShow } from '@client/hooks/titles/use-for-trial-show';
+import { Show, TextField } from "@refinedev/antd";
+import { HttpError, useShow, useTranslate } from "@refinedev/core";
+import { Typography } from "antd";
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { LangTag } from "@lib/enums/language.enum";
+import { TrialType } from "@lib/types/trial.type";
+import TrialRelationList from "@modules/lists/trial-relation-list";
+import TrialNotificationList from "@modules/lists/trial-notification-list";
+import { useForTrialShow } from "@client/hooks/titles/use-for-trial-show";
 
 const { Title } = Typography;
 
@@ -17,13 +16,13 @@ interface Props {
   params: {
     trialId: string;
     judicialProcessId: string;
+    personId: string;
+    legalId: string;
   };
 }
 
-export default function TrialShowPage({
-  params: { judicialProcessId, trialId },
-}: Readonly<Props>) {
-  console.log(trialId, judicialProcessId);
+export default function TrialShowPage({ params }: Readonly<Props>) {
+  const { trialId, judicialProcessId, personId, legalId } = params;
   const { queryResult } = useShow<TrialType, HttpError>({
     id: trialId,
     resource: ResourceEnum.trial,
@@ -36,7 +35,7 @@ export default function TrialShowPage({
   const { title } = useForTrialShow(
     trialId,
     judicialProcessId,
-    LangTag['trial.titles.show']
+    LangTag["trial.titles.show"]
   );
 
   if (isError || !record) {
@@ -46,9 +45,9 @@ export default function TrialShowPage({
   return (
     <section
       style={{
-        display: 'grid',
-        gap: '2rem',
-        gridTemplateColumns: '1fr ',
+        display: "grid",
+        gap: "2rem",
+        gridTemplateColumns: "1fr ",
       }}
     >
       <Show title={title} isLoading={isLoading}>
@@ -73,7 +72,7 @@ export default function TrialShowPage({
         {/*<Title level={5}>{translate(LangTag[`trial.fields.scope`])}</Title>*/}
         <TextField value={record.scope} />
       </Show>
-      <TrialNotificationList trialId={trialId} />
+      <TrialNotificationList params={params} />
       <TrialRelationList trialId={trialId} />
     </section>
   );
