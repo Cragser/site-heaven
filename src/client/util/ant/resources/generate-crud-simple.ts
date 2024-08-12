@@ -1,7 +1,7 @@
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { ReactNode } from 'react';
-import { camelCase } from 'case-anything';
-import {ResourceProps} from "@refinedev/core";
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { ReactNode } from "react";
+import { camelCase } from "case-anything";
+import { ResourceProps } from "@refinedev/core";
 
 export function generateCrudSimple(
   resource: ResourceEnum,

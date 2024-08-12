@@ -1,6 +1,6 @@
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import {ResourceProps} from "@refinedev/core";
-import { camelCase } from 'case-anything';
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { ResourceProps } from "@refinedev/core";
+import { camelCase } from "case-anything";
 
 export function generateParentChild(
   entity: ResourceEnum,

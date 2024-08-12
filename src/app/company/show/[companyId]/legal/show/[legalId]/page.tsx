@@ -29,7 +29,10 @@ export default function LegalShowPage({
   const { data, isError, isLoading } = queryResult;
   const record = data?.data;
   const translate = useTranslate();
-
+  const { title } = useLegalTitle(
+    legalId,
+    LangTag["judicial-process.titles.create"]
+  );
   if (isError || !record) {
     return null;
   }
@@ -38,10 +41,7 @@ export default function LegalShowPage({
     children: record[field?.key as string],
     label: translate(`legal.fields.${field.key}`),
   }));
-  const { title } = useLegalTitle(
-    legalId,
-    LangTag["judicial-process.titles.create"]
-  );
+
   return (
     <Show isLoading={isLoading}>
       <DescriptionSimple items={items} />

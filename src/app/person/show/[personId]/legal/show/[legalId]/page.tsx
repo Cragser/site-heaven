@@ -19,6 +19,7 @@ interface Props {
 export default function LegalShowPage({
   params: { legalId, personId },
 }: Readonly<Props>) {
+  console.log("JUDICIAL PROCESS (2)");
   const { queryResult } = useShow<LegalType, HttpError>({
     id: legalId,
     resource: ResourceEnum.legal,

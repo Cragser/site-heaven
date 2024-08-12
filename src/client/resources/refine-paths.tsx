@@ -9,7 +9,8 @@ import {
 } from "@ant-design/icons";
 import { generateRouteObject } from "@client/util/ant/resource";
 import React from "react";
-import { generateParentChild } from "@client/util/ant/resources/generate-parent-child";
+import { companyResources } from "@client/resources/company-resources";
+import { personResources } from "@client/resources/person-resources";
 
 export const resourcePath: Partial<Record<ResourceEnum, ResourceProps>> = {
   [ResourceEnum.company]: generateCrudSimple(
@@ -26,76 +27,60 @@ export const resourcePath: Partial<Record<ResourceEnum, ResourceProps>> = {
       onPointerLeaveCapture={undefined}
     />
   ),
-  [ResourceEnum.personAddress]: generateParentChild(
-    ResourceEnum.person,
-    ResourceEnum.address
-  ),
-  [ResourceEnum.personAsset]: generateParentChild(
-    ResourceEnum.person,
-    ResourceEnum.asset
-  ),
-  [ResourceEnum.personCareer]: generateParentChild(
-    ResourceEnum.person,
-    ResourceEnum.career
-  ),
-  [ResourceEnum.personCompany]: generateParentChild(
-    ResourceEnum.person,
-    ResourceEnum.company
-  ),
-  [ResourceEnum.personEducation]: generateParentChild(
-    ResourceEnum.person,
-    ResourceEnum.education
-  ),
-  [ResourceEnum.personLegal]: generateParentChild(
-    ResourceEnum.person,
-    ResourceEnum.legal
-  ),
-  [ResourceEnum.personRelation]: generateParentChild(
-    ResourceEnum.person,
-    ResourceEnum.relation
-  ),
-  [ResourceEnum.personSocial]: generateParentChild(
-    ResourceEnum.person,
-    ResourceEnum.social
-  ),
-  [ResourceEnum.companyAddress]: generateParentChild(
-    ResourceEnum.company,
-    ResourceEnum.address
-  ),
-  [ResourceEnum.companyAsset]: generateParentChild(
-    ResourceEnum.company,
-    ResourceEnum.asset
-  ),
-  [ResourceEnum.companySocial]: generateParentChild(
-    ResourceEnum.company,
-    ResourceEnum.social
-  ),
+  // [ResourceEnum.personAddress]: generateParentChild(
+  //   ResourceEnum.person,
+  //   ResourceEnum.address
+  // ),
+  // [ResourceEnum.personAsset]: generateParentChild(
+  //   ResourceEnum.person,
+  //   ResourceEnum.asset
+  // ),
+  // [ResourceEnum.personCareer]: generateParentChild(
+  //   ResourceEnum.person,
+  //   ResourceEnum.career
+  // ),
+  // [ResourceEnum.personCompany]: generateParentChild(
+  //   ResourceEnum.person,
+  //   ResourceEnum.company
+  // ),
+  // [ResourceEnum.personEducation]: generateParentChild(
+  //   ResourceEnum.person,
+  //   ResourceEnum.education
+  // ),
+  // [ResourceEnum.personLegal]: generateParentChild(
+  //   ResourceEnum.person,
+  //   ResourceEnum.legal
+  // ),
+  // [ResourceEnum.personRelation]: generateParentChild(
+  //   ResourceEnum.person,
+  //   ResourceEnum.relation
+  // ),
+  // [ResourceEnum.personSocial]: generateParentChild(
+  //   ResourceEnum.person,
+  //   ResourceEnum.social
+  // ),
+  ...personResources,
+  ...companyResources,
+  // [ResourceEnum.companyAddress]: generateParentChild(
+  //   ResourceEnum.company,
+  //   ResourceEnum.address
+  // ),
+  // [ResourceEnum.companyAsset]: generateParentChild(
+  //   ResourceEnum.company,
+  //   ResourceEnum.asset
+  // ),
+  // [ResourceEnum.companySocial]: generateParentChild(
+  //   ResourceEnum.company,
+  //   ResourceEnum.social
+  // ),
   // TODO: COMPANY-RELATION
-  [ResourceEnum.companyRelation]: generateParentChild(
-    ResourceEnum.company,
-    ResourceEnum.relation
-  ),
-  [ResourceEnum.companyCreationDetails]: generateParentChild(
-    ResourceEnum.company,
-    ResourceEnum.creationDetails
-  ),
-  [ResourceEnum.companyAudit]: generateParentChild(
-    ResourceEnum.company,
-    ResourceEnum.audit
-  ),
-  [ResourceEnum.companyContract]: generateParentChild(
-    ResourceEnum.company,
-    ResourceEnum.contract
-  ),
-  [ResourceEnum.companyLegal]: generateParentChild(
-    ResourceEnum.company,
-    ResourceEnum.legal
-  ),
+
   [ResourceEnum.stakeholder]: {
     list: "/company/show/:companyId/stakeholder",
     name: "stakeholder",
   },
   // TODO: This is person-judicial-process
+  // ResourceEnum.person, ResourceEnum.legal, ResourceEnum.judicialProcess
   [ResourceEnum.personJudicialProcess]: {
     create:
       "/person/show/:personId/legal/show/:legalId/judicial-process/create",
