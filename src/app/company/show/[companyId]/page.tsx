@@ -4,7 +4,6 @@ import { Show } from "@refinedev/antd";
 import { HttpError, useShow, useTranslate } from "@refinedev/core";
 import { DescriptionsProps } from "antd";
 import { ResourceEnum } from "@lib/enums/resource.enum";
-import { LangTag } from "@lib/enums/language.enum";
 import { CompanyType } from "@lib/types/company.type";
 import CardList from "@modules/card-list";
 import { StateManager } from "@components/feedback/state-manager/state-manager";
@@ -35,9 +34,7 @@ export default function CompanyShowPage({
 
   const items: DescriptionsProps["items"] = fields.map((field) => ({
     children: record?.[field],
-    label: translate(
-      LangTag[`company.fields.${field}` as keyof typeof LangTag]
-    ),
+    label: translate(`company.fields.${field}`),
     span: 2,
   }));
   return (

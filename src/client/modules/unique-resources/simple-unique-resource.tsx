@@ -2,7 +2,6 @@ import { ResourceEnum } from "@lib/enums/resource.enum";
 import { camelCase } from "case-anything";
 import DescriptionSimple from "@components/data-display/description/description-simple";
 import { Button, DescriptionsProps, Flex } from "antd";
-import { LangTag } from "@lib/enums/language.enum";
 import { useTranslate } from "@refinedev/core";
 import { useGoTo } from "@client/hooks/navigation/use-go-to";
 
@@ -16,9 +15,7 @@ export function SimpleUniqueResource({ resource, record, meta }: Props) {
   const translate = useTranslate();
   const data = record?.[camelCase(resource)];
   const handleClick = useGoTo();
-  const title = translate(
-    LangTag[`${resource}.${resource}` as keyof typeof LangTag]
-  );
+  const title = translate(`${resource}.${resource}`);
   const handleCreate = () => {
     handleClick({
       action: "create",
@@ -46,9 +43,7 @@ export function SimpleUniqueResource({ resource, record, meta }: Props) {
 
   const items: DescriptionsProps["items"] = fields.map((field) => ({
     children: data?.[field],
-    label: translate(
-      LangTag[`${resource}.fields.${field}` as keyof typeof LangTag]
-    ),
+    label: translate(`${resource}.fields.${field}`),
     span: 1,
   }));
 

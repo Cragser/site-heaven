@@ -1,6 +1,5 @@
 import { DeleteButton, EditButton, List, useTable } from "@refinedev/antd";
 import { Space, Table } from "antd";
-import { LangTag } from "@lib/enums/language.enum";
 import { BaseRecord, useTranslate } from "@refinedev/core";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 
@@ -49,22 +48,22 @@ export function AssetValueHistoryList({
       >
         <Table.Column
           dataIndex={["value"]}
-          title={translate(LangTag[`asset-value-history.fields.value`])}
+          title={translate(`asset-value-history.fields.value`)}
         />
 
         <Table.Column
           dataIndex={["date"]}
-          title={translate(LangTag[`asset-value-history.fields.date`])}
+          title={translate(`asset-value-history.fields.date`)}
         />
 
         <Table.Column
           dataIndex={["type"]}
-          title={translate(LangTag[`asset-value-history.fields.type`])}
+          title={translate(`asset-value-history.fields.type`)}
         />
 
         <Table.Column
           dataIndex={["details"]}
-          // title={translate(LangTag[`asset-value-history.fields.details`])}
+          // title={translate(`asset-value-history.fields.details`)}
         />
 
         <Table.Column

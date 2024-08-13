@@ -5,7 +5,6 @@ import { HttpError, useCreate } from "@refinedev/core";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import { LegalType } from "@lib/types/legal.type";
 import LegalForm from "@modules/forms/legal-form";
-import { LangTag } from "@lib/enums/language.enum";
 import { useEntityTitle } from "@client/hooks/titles/use-person-title";
 import { CompanyPageType } from "@page/types/company-and-child-page.type";
 
@@ -25,7 +24,7 @@ export default function Page({
   });
   const { title } = useEntityTitle(
     companyId,
-    LangTag[`company-legal.titles.create` as keyof typeof LangTag],
+    `company-legal.titles.create`,
     "company"
   );
   return (

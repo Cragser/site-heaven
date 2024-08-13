@@ -10,7 +10,6 @@ import {
 import { Button, Space, Table } from "antd";
 import { BaseRecord, useTranslate } from "@refinedev/core";
 import { ResourceEnum } from "@lib/enums/resource.enum";
-import { LangTag } from "@lib/enums/language.enum";
 import { dateRender } from "@client/util/ant/fields/dateRender";
 import { tagRender } from "@client/util/ant/fields/tagRender";
 import { useGoTo } from "@client/hooks/navigation/use-go-to";
@@ -97,25 +96,25 @@ export default function TrialList({
 
         <Table.Column
           dataIndex={["startDate"]}
-          title={translate(LangTag[`trial.fields.startDate`])}
+          title={translate(`trial.fields.startDate`)}
           render={dateRender}
         />
 
         <Table.Column
           dataIndex={["endDate"]}
-          title={translate(LangTag[`trial.fields.endDate`])}
+          title={translate(`trial.fields.endDate`)}
           render={dateRender}
         />
 
         <Table.Column
           dataIndex={["type"]}
-          title={translate(LangTag[`trial.fields.type`])}
+          title={translate(`trial.fields.type`)}
           render={tagRender}
         />
 
         <Table.Column
           dataIndex={["scope"]}
-          // title={translate(LangTag[`trial.fields.scope`])}
+          // title={translate(`trial.fields.scope`)}
           render={tagRender}
         />
 

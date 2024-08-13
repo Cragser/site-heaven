@@ -1,11 +1,9 @@
-'use client';
+"use client";
 
-import { Show, TextField } from '@refinedev/antd';
-import { useShow, useTranslate } from '@refinedev/core';
-import { Typography } from 'antd';
-import { HttpError } from '@refinedev/core';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { LangTag } from '@lib/enums/language.enum';
+import { Show, TextField } from "@refinedev/antd";
+import { HttpError, useShow, useTranslate } from "@refinedev/core";
+import { Typography } from "antd";
+import { ResourceEnum } from "@lib/enums/resource.enum";
 
 const { Title } = Typography;
 
@@ -33,14 +31,14 @@ export default function RelationShowPage({
 
   return (
     <Show isLoading={isLoading}>
-      <Title level={5}>{translate(LangTag[`person-relation.fields.id`])}</Title>
+      <Title level={5}>{translate(`person-relation.fields.id`)}</Title>
       <TextField value={record.personId} />
 
-      <Title level={5}>{translate(LangTag[`person-relation.fields.id`])}</Title>
+      <Title level={5}>{translate(`person-relation.fields.id`)}</Title>
       <TextField value={record.relatedPersonId} />
 
       <Title level={5}>
-        {translate(LangTag[`person-relation.fields.relatedPersonId`])}
+        {translate(`person-relation.fields.relatedPersonId`)}
       </Title>
       <TextField value={record.relation} />
     </Show>

@@ -4,7 +4,6 @@ import { Show, TextField } from "@refinedev/antd";
 import { HttpError, useShow, useTranslate } from "@refinedev/core";
 import { Divider, Typography } from "antd";
 import { ResourceEnum } from "@lib/enums/resource.enum";
-import { LangTag } from "@lib/enums/language.enum";
 import { AssetType } from "@lib/types/asset.type";
 import { ReactNode } from "react";
 
@@ -41,9 +40,7 @@ export default function AssetShowPage({ params: { contractId } }: Props) {
 
   const items: ReactNode[] = fields.map((field) => (
     <div key={field}>
-      <Title level={5}>
-        {translate(LangTag[`contract.fields.${field}` as keyof typeof LangTag])}
-      </Title>
+      <Title level={5}>{translate(`contract.fields.${field}`)}</Title>
       <TextField value={record[field]} />
     </div>
   ));

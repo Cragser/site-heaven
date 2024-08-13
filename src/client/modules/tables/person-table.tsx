@@ -1,7 +1,6 @@
 import { Table } from "antd";
 import { tagRender } from "@client/util/ant/fields/tagRender";
 import { BaseRecord, useTranslate } from "@refinedev/core";
-import { LangTag } from "@lib/enums/language.enum";
 import React from "react";
 import useRenderActions from "@client/util/ant/table/use-render-actions";
 import { createDataIndex } from "@client/util/table/create-data-index";
@@ -33,21 +32,15 @@ export default function PersonTable({ parent = "", tableProps }: any) {
         <Table.Column
           key={key}
           dataIndex={dataIndex[key]}
-          title={translate(
-            LangTag[`person.fields.${key}` as keyof typeof LangTag]
-          )}
+          title={translate(`person.fields.${key}`)}
         />
       ))}
       <Table.Column
         dataIndex={["nationality", "name"]}
-        title={translate(LangTag[`person.fields.nationality`])}
+        title={translate(`person.fields.nationality`)}
         render={tagRender}
       />
-      <Table.Column
-        key="actions"
-        // title={translate(LangTag['person.fields.actions'])}
-        render={renderActions}
-      />
+      <Table.Column key="actions" render={renderActions} />
     </Table>
   );
 }

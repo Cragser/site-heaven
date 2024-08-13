@@ -10,7 +10,6 @@ import {
 import { Button, Space, Table } from "antd";
 import { BaseRecord, useTranslate } from "@refinedev/core";
 import { ResourceEnum } from "@lib/enums/resource.enum";
-import { LangTag } from "@lib/enums/language.enum";
 import { useLegalTitle } from "@client/hooks/titles/use-legal-title";
 import { useGoTo } from "@client/hooks/navigation/use-go-to";
 
@@ -44,10 +43,7 @@ export default function JudicialProcessList({
     resource: ResourceEnum.judicialProcess,
     syncWithLocation: true,
   });
-  const { title } = useLegalTitle(
-    legalId,
-    LangTag["judicial-process.titles.create"]
-  );
+  const { title } = useLegalTitle(legalId, "judicial-process.titles.create");
   if (tableQueryResult?.isLoading) {
     return <div>Loading...</div>;
   }
@@ -84,11 +80,11 @@ export default function JudicialProcessList({
       >
         <Table.Column
           dataIndex={["name"]}
-          title={translate(LangTag[`judicial-process.fields.name`])}
+          title={translate(`judicial-process.fields.name`)}
         />
         <Table.Column
           dataIndex={["comments"]}
-          title={translate(LangTag[`judicial-process.fields.comments`])}
+          title={translate(`judicial-process.fields.comments`)}
         />
 
         <Table.Column

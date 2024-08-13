@@ -2,7 +2,6 @@
 
 import { Table } from "antd";
 import { BaseRecord, useTranslate } from "@refinedev/core";
-import { LangTag } from "@lib/enums/language.enum";
 import { createDataIndex } from "@client/util/table/create-data-index";
 import useRenderActions from "@client/util/ant/table/use-render-actions";
 import { ResourceEnum } from "@lib/enums/resource.enum";
@@ -40,14 +39,12 @@ export default function AssetTable({
         <Table.Column
           key={key}
           dataIndex={dataIndex[key]}
-          title={translate(
-            LangTag[`asset.fields.${key}` as keyof typeof LangTag]
-          )}
+          title={translate(`asset.fields.${key}`)}
         />
       ))}
       <Table.Column
         dataIndex={dataIndex["type"]}
-        title={translate(LangTag[`asset.fields.type`])}
+        title={translate(`asset.fields.type`)}
         render={tagRender}
       />
 

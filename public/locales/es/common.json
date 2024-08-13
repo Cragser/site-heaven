@@ -586,7 +586,7 @@
     }
   },
   "company-legal": {
-    "company-legal": "CompanyLegal",
+    "company-legal": "Company Legal Section",
     "titles": {
       "create": "Create CompanyLegal",
       "edit": "Edit CompanyLegal",

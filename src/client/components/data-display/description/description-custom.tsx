@@ -1,10 +1,9 @@
-import { Descriptions } from 'antd';
-import { LangTag } from '@lib/enums/language.enum';
-import { useTranslate } from '@refinedev/core';
+import { Descriptions } from "antd";
+import { useTranslate } from "@refinedev/core";
 import FieldSelector, {
   FieldTypeEnum,
-} from '@client/util/ant/fields/field-selector';
-import { isValidValue } from '@components/data-display/description/helper';
+} from "@client/util/ant/fields/field-selector";
+import { isValidValue } from "@components/data-display/description/helper";
 
 interface ExceptionRenderProps {
   key: string;
@@ -35,10 +34,9 @@ export default function DescriptionCustom({
     if (!(key in record)) {
       throw new Error(`The key ${key} does not exist in the record object`);
     }
-    // @ts-expect-error Las llaves deberían existir.
-    const keyTranslate = LangTag[`${entity}.fields.${key}`];
+    const keyTranslate = `${entity}.fields.${key}`;
     const value = record[key];
-    if (isValidValue(value) && key !== 'id') {
+    if (isValidValue(value) && key !== "id") {
       items.push({
         children: (
           <FieldSelector fieldType={fieldTypeRecord[key]} value={value} />
@@ -51,8 +49,7 @@ export default function DescriptionCustom({
 
   for (const exception of exceptions || []) {
     const key = exception.key;
-    // @ts-expect-error Las llaves deberían existir.
-    const keyTranslate = LangTag[`${entity}.fields.${key}`];
+    const keyTranslate = `${entity}.fields.${key}`;
     // @ts-expect-error Seguramente funcionará :V
     const value = record[key][exception.field];
 
@@ -68,8 +65,7 @@ export default function DescriptionCustom({
     });
   }
 
-  // @ts-expect-error Las llaves deberían existir.
-  const tranlationKey = LangTag[`${entity}.titles.table`];
+  const tranlationKey = `${entity}.titles.table`;
 
   return (
     <Descriptions

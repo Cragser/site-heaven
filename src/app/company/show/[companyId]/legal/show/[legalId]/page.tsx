@@ -8,7 +8,6 @@ import { LegalType } from "@lib/types/legal.type";
 import DescriptionSimple from "@components/data-display/description/description-simple";
 import { legalFields } from "@lib/fields/legal.fields";
 import CreateSuborderedList from "@modules/lists/create-subordered-list";
-import { LangTag } from "@lib/enums/language.enum";
 import { useLegalTitle } from "@client/hooks/titles/use-legal-title";
 
 interface Props {
@@ -29,10 +28,7 @@ export default function LegalShowPage({
   const { data, isError, isLoading } = queryResult;
   const record = data?.data;
   const translate = useTranslate();
-  const { title } = useLegalTitle(
-    legalId,
-    LangTag["judicial-process.titles.create"]
-  );
+  const { title } = useLegalTitle(legalId, "judicial-process.titles.create");
   if (isError || !record) {
     return null;
   }

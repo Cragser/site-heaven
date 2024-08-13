@@ -7,7 +7,6 @@ import { PersonPageType } from "@page/types/pages/person/person-page.type";
 import { AssetType } from "@lib/types/asset.type";
 import AssetForm from "@modules/forms/asset-form";
 import { usePersonTitle } from "@client/hooks/titles/use-person-title";
-import { LangTag } from "@lib/enums/language.enum";
 
 export default function Page({
   params: { personId },
@@ -23,10 +22,7 @@ export default function Page({
     },
     resource: ResourceEnum.asset,
   });
-  const { title } = usePersonTitle(
-    personId,
-    LangTag[`person-career.titles.create` as keyof typeof LangTag]
-  );
+  const { title } = usePersonTitle(personId, `person-career.titles.create`);
   return (
     <Create saveButtonProps={saveButtonProps} title={title}>
       <AssetForm {...formProps} />

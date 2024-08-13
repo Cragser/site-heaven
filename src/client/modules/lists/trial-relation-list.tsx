@@ -4,7 +4,6 @@ import { DeleteButton, EditButton, List, useTable } from "@refinedev/antd";
 import { Button, Space, Table } from "antd";
 import { BaseRecord, useTranslate } from "@refinedev/core";
 import { ResourceEnum } from "@lib/enums/resource.enum";
-import { LangTag } from "@lib/enums/language.enum";
 import { tagRender } from "@client/util/ant/fields/tagRender";
 import { useGoTo } from "@client/hooks/navigation/use-go-to";
 
@@ -75,24 +74,20 @@ export default function TrialRelationList({ params }: Readonly<Props>) {
           size: "small",
         }}
       >
-        {/*<Table.Column*/}
-        {/*  dataIndex={['trialId']}*/}
-        {/*  title={translate(LangTag[`trial-relation.fields.trialId`])}*/}
-        {/*/>*/}
         <Table.Column
           dataIndex={["relatedTrial", "name"]}
-          // title={translate(LangTag[`trial-relation.fields.name`])}
+          // title={translate(`trial-relation.fields.name`)}
         />
 
         <Table.Column
           dataIndex={["relatedTrial", "type"]}
-          // title={translate(LangTag[`trial-relation.fields.type`])}
+          // title={translate(`trial-relation.fields.type`)}
           render={tagRender}
         />
 
         <Table.Column
           dataIndex={["relation"]}
-          title={translate(LangTag[`trial-relation.fields.relation`])}
+          title={translate(`trial-relation.fields.relation`)}
         />
 
         <Table.Column

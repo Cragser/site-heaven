@@ -1,20 +1,16 @@
-'use client';
+"use client";
 
-import { Show, TextField } from '@refinedev/antd';
-import { useShow, useTranslate } from '@refinedev/core';
-import { Typography } from 'antd';
-import { HttpError } from '@refinedev/core';
-import { LangTag } from '@lib/enums/language.enum';
-import { TrialNotificationType } from '@lib/types/trial-notification.type';
+import { Show, TextField } from "@refinedev/antd";
+import { HttpError, useShow, useTranslate } from "@refinedev/core";
+import { Typography } from "antd";
+import { TrialNotificationType } from "@lib/types/trial-notification.type";
 
 const { Title } = Typography;
 
-export default function TrialNotificationShowPage({
-  params: { id },
-}: any) {
+export default function TrialNotificationShowPage({ params: { id } }: any) {
   const { queryResult } = useShow<TrialNotificationType, HttpError>({
     id,
-    resource: '',
+    resource: "",
   });
 
   const { data, isError, isLoading } = queryResult;
@@ -27,24 +23,16 @@ export default function TrialNotificationShowPage({
 
   return (
     <Show isLoading={isLoading}>
-      <Title level={5}>
-        {translate(LangTag[`trial-notification.fields.id`])}
-      </Title>
+      <Title level={5}>{translate(`trial-notification.fields.id`)}</Title>
       <TextField value={record.id} />
 
-      <Title level={5}>
-        {translate(LangTag[`trial-notification.fields.name`])}
-      </Title>
+      <Title level={5}>{translate(`trial-notification.fields.name`)}</Title>
       <TextField value={record.name} />
 
-      <Title level={5}>
-        {translate(LangTag[`trial-notification.fields.type`])}
-      </Title>
+      <Title level={5}>{translate(`trial-notification.fields.type`)}</Title>
       <TextField value={record.type} />
 
-      <Title level={5}>
-        {translate(LangTag[`trial-notification.fields.date`])}
-      </Title>
+      <Title level={5}>{translate(`trial-notification.fields.date`)}</Title>
       <TextField value={record.date} />
     </Show>
   );

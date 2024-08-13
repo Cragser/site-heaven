@@ -7,7 +7,6 @@ import { PersonPageType } from "@page/types/pages/person/person-page.type";
 import { CompanyType } from "@lib/types/company.type";
 import CompanyForm from "@modules/forms/company-form";
 import { usePersonTitle } from "@client/hooks/titles/use-person-title";
-import { LangTag } from "@lib/enums/language.enum";
 
 export default function Page({
   params: { personId },
@@ -24,10 +23,7 @@ export default function Page({
     redirect: false,
     resource: ResourceEnum.company,
   });
-  const { title } = usePersonTitle(
-    personId,
-    LangTag[`person-company.titles.create` as keyof typeof LangTag]
-  );
+  const { title } = usePersonTitle(personId, `person-company.titles.create`);
   return (
     <Create saveButtonProps={saveButtonProps} title={title}>
       <CompanyForm {...formProps} />

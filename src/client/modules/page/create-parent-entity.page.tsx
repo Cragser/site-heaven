@@ -4,8 +4,6 @@ import { ResourceEnum } from "@lib/enums/resource.enum";
 import { useTranslate } from "@refinedev/core";
 import { Create, List, useDrawerForm, useTable } from "@refinedev/antd";
 import { useEntityTitle } from "@client/hooks/titles/use-person-title";
-import { LangTag } from "@lib/enums/language.enum";
-import { kebabCase } from "lodash";
 import { StateManager } from "@components/feedback/state-manager/state-manager";
 import { renderHeaderToEntity } from "@client/util/ant/list/renderHeaderToPerson";
 import { Button, Drawer } from "antd";
@@ -53,10 +51,9 @@ function CreateParentEntityPage({
     resource: relationResource,
     syncWithLocation: true,
   });
-  const kebabCaseResource = kebabCase(relationResource);
   const { title } = useEntityTitle(
     parentId,
-    LangTag[`${kebabCaseResource}.titles.list` as keyof typeof LangTag],
+    `${relationResource}.titles.list`,
     parent
   );
 
@@ -66,9 +63,7 @@ function CreateParentEntityPage({
   });
 
   const titleToAdd = translate(
-    LangTag[
-      `${kebabCaseResource}.titles.add-relation-to-${parent}` as keyof typeof LangTag
-    ]
+    `${relationResource}.titles.add-relation-to-${parent}`
   );
 
   const headerButtons = renderHeaderToEntity({

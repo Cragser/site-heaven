@@ -4,7 +4,6 @@ import { Show, TextField } from "@refinedev/antd";
 import { HttpError, useShow, useTranslate } from "@refinedev/core";
 import { Divider, Typography } from "antd";
 import { ResourceEnum } from "@lib/enums/resource.enum";
-import { LangTag } from "@lib/enums/language.enum";
 import { AssetType } from "@lib/types/asset.type";
 
 const { Title } = Typography;
@@ -31,10 +30,10 @@ export default function AssetShowPage({ params: { auditId } }: Props) {
 
   return (
     <Show isLoading={isLoading}>
-      <Title level={5}>{translate(LangTag[`audit.fields.name`])}</Title>
+      <Title level={5}>{translate(`audit.fields.name`)}</Title>
       <TextField value={record.name} />
 
-      <Title level={5}>{translate(LangTag[`audit.fields.notes`])}</Title>
+      <Title level={5}>{translate(`audit.fields.notes`)}</Title>
       <TextField value={record.notes} />
 
       <Divider />

@@ -1,16 +1,15 @@
-'use client';
+"use client";
 
-import { Create, List, useDrawerForm, useTable } from '@refinedev/antd';
-import { Button, Drawer } from 'antd';
-import { useTranslate } from '@refinedev/core';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { LangTag } from '@lib/enums/language.enum';
-import { PersonPageType } from '@page/types/pages/person/person-page.type';
-import { renderHeaderToPerson } from '@client/util/ant/list/renderHeaderToPerson';
-import { usePersonTitle } from '@client/hooks/titles/use-person-title';
-import { StateManager } from '@components/feedback/state-manager/state-manager';
-import PersonCompanyRelation from '@modules/forms/relations/person-company-relation';
-import CompanyTable from '@modules/tables/company-table';
+import { Create, List, useDrawerForm, useTable } from "@refinedev/antd";
+import { Button, Drawer } from "antd";
+import { useTranslate } from "@refinedev/core";
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { PersonPageType } from "@page/types/pages/person/person-page.type";
+import { renderHeaderToPerson } from "@client/util/ant/list/renderHeaderToPerson";
+import { usePersonTitle } from "@client/hooks/titles/use-person-title";
+import { StateManager } from "@components/feedback/state-manager/state-manager";
+import PersonCompanyRelation from "@modules/forms/relations/person-company-relation";
+import CompanyTable from "@modules/tables/company-table";
 
 export default function PersonCompanyList({
   params: { personId },
@@ -20,27 +19,24 @@ export default function PersonCompanyList({
     filters: {
       permanent: [
         {
-          field: 'filter',
-          operator: 'eq',
+          field: "filter",
+          operator: "eq",
           value: `personId||$eq||${personId}`,
         },
       ],
     },
     pagination: {
       current: 1,
-      mode: 'client',
+      mode: "client",
       pageSize: 10,
     },
     resource: ResourceEnum.personCompany,
     syncWithLocation: true,
   });
-  const { title } = usePersonTitle(
-    personId,
-    LangTag['person-company.titles.list']
-  );
+  const { title } = usePersonTitle(personId, "person-company.titles.list");
 
   const { drawerProps, formProps, saveButtonProps, show } = useDrawerForm({
-    action: 'create',
+    action: "create",
     resource: ResourceEnum.personCompany,
   });
 
@@ -58,15 +54,13 @@ export default function PersonCompanyList({
               show();
             }}
           >
-            {translate(
-              LangTag[`person-company.titles.add-relation-to-company`]
-            )}
+            {translate(`person-company.titles.add-relation-to-company`)}
           </Button>,
         ])}
       >
         <CompanyTable
           tableProps={tableProps}
-          parent={'company'}
+          parent={"company"}
           parentResource={ResourceEnum.personCompany}
         />
       </List>

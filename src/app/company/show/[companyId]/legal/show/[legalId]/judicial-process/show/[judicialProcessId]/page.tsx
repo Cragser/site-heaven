@@ -4,7 +4,6 @@ import { Show, TextField } from "@refinedev/antd";
 import { HttpError, useShow, useTranslate } from "@refinedev/core";
 import { Divider, Typography } from "antd";
 import { ResourceEnum } from "@lib/enums/resource.enum";
-import { LangTag } from "@lib/enums/language.enum";
 import { JudicialProcessType } from "@lib/types/judicial-process.type";
 import { useJudicialProcessTitle } from "@client/hooks/titles/use-judicial-process-title";
 import CreateSuborderedList from "@modules/lists/create-subordered-list";
@@ -31,7 +30,7 @@ export default function JudicialProcessShowPage({
   const translate = useTranslate();
   const { title } = useJudicialProcessTitle(
     judicialProcessId,
-    LangTag["judicial-process.titles.show"]
+    "judicial-process.titles.show"
   );
   if (isError || !record) {
     return null;
@@ -39,14 +38,10 @@ export default function JudicialProcessShowPage({
 
   return (
     <Show title={title} isLoading={isLoading}>
-      <Title level={5}>
-        {translate(LangTag[`judicial-process.fields.name`])}
-      </Title>
+      <Title level={5}>{translate(`judicial-process.fields.name`)}</Title>
       <TextField value={record.name} />
 
-      <Title level={5}>
-        {translate(LangTag[`judicial-process.fields.comments`])}
-      </Title>
+      <Title level={5}>{translate(`judicial-process.fields.comments`)}</Title>
       <TextField value={record.comments} />
       <Divider />
       {/*<TrialList params={{ judicialProcessId, personId: companyId, legalId }} />*/}

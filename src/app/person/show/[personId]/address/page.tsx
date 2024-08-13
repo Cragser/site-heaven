@@ -1,35 +1,32 @@
-'use client';
+"use client";
 
-import { Create, List, useDrawerForm, useTable } from '@refinedev/antd';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { PersonPageType } from '@page/types/pages/person/person-page.type';
-import AddressTable from '@modules/tables/address-table';
-import { renderHeaderToPerson } from '@client/util/ant/list/renderHeaderToPerson';
-import { StateManager } from '@components/feedback/state-manager/state-manager';
-import { Button, Drawer } from 'antd';
-import PersonAddressRelationForm from '@modules/forms/relations/person-address-relation-form';
-import { LangTag } from '@lib/enums/language.enum';
-import { useTranslate } from '@refinedev/core';
-import CreateEntityPage from "@modules/page/create-parent-entity.page";
+import { Create, List, useDrawerForm, useTable } from "@refinedev/antd";
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { PersonPageType } from "@page/types/pages/person/person-page.type";
+import AddressTable from "@modules/tables/address-table";
+import { renderHeaderToPerson } from "@client/util/ant/list/renderHeaderToPerson";
+import { StateManager } from "@components/feedback/state-manager/state-manager";
+import { Button, Drawer } from "antd";
+import PersonAddressRelationForm from "@modules/forms/relations/person-address-relation-form";
+import { useTranslate } from "@refinedev/core";
 
 export default function PersonAddressList({
   params: { personId },
 }: Readonly<PersonPageType>) {
-
   const translate = useTranslate();
   const { tableProps, tableQueryResult } = useTable({
     filters: {
       permanent: [
         {
-          field: 'filter',
-          operator: 'eq',
+          field: "filter",
+          operator: "eq",
           value: `personId||$eq||${personId}`,
         },
       ],
     },
     pagination: {
       current: 1,
-      mode: 'client',
+      mode: "client",
       pageSize: 10,
     },
     resource: ResourceEnum.personAddress,
@@ -37,7 +34,7 @@ export default function PersonAddressList({
   });
 
   const { drawerProps, formProps, saveButtonProps, show } = useDrawerForm({
-    action: 'create',
+    action: "create",
     resource: ResourceEnum.personAddress,
   });
 
@@ -54,15 +51,13 @@ export default function PersonAddressList({
               show();
             }}
           >
-            {translate(
-              LangTag[`person-address.titles.add-relation-to-address`]
-            )}
+            {translate(`person-address.titles.add-relation-to-address`)}
           </Button>,
         ])}
       >
         <AddressTable
           tableProps={tableProps}
-          parent={'address'}
+          parent={"address"}
           parentResource={ResourceEnum.personAddress}
         />
       </List>

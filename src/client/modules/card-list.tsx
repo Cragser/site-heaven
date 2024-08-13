@@ -2,7 +2,6 @@ import { useGetToPath, useGo, useTranslate } from "@refinedev/core";
 import { Card, Divider, List, Space, Statistic, Typography } from "antd";
 import { UnorderedListOutlined } from "@ant-design/icons";
 import { ResourceEnum } from "@lib/enums/resource.enum";
-import { LangTag } from "@lib/enums/language.enum";
 import { camelCase } from "case-anything";
 import { resourcePath } from "@client/resources/refine-paths";
 
@@ -32,10 +31,7 @@ function calculateTotal(record: any, key: string) {
 }
 
 function createTitle(resource: string, translate: (key: string) => string) {
-  const keyLangTag = `${resource}.${resource}` as keyof LangTag;
-  console.log(keyLangTag);
-  // @ts-expect-error Probablemente debamos mejorar esto en otro archivo
-  return translate(LangTag[keyLangTag]);
+  return translate(`${resource}.${resource}`);
 }
 
 function useCreateData(

@@ -1,13 +1,11 @@
-'use client';
+"use client";
 
-import { Show, TextField } from '@refinedev/antd';
-import { useShow, useTranslate } from '@refinedev/core';
-import { Typography } from 'antd';
-import { HttpError } from '@refinedev/core';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { LangTag } from '@lib/enums/language.enum';
-import { PersonAndChildPageType } from '@page/types/person-and-child-page.type';
-import { SocialType } from '@lib/types/social.type';
+import { Show, TextField } from "@refinedev/antd";
+import { HttpError, useShow, useTranslate } from "@refinedev/core";
+import { Typography } from "antd";
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { PersonAndChildPageType } from "@page/types/person-and-child-page.type";
+import { SocialType } from "@lib/types/social.type";
 
 const { Title } = Typography;
 
@@ -29,27 +27,27 @@ export default function SocialShowPage({
 
   return (
     <Show isLoading={isLoading}>
-      <Title level={5}>{translate(LangTag[`social.fields.id`])}</Title>
+      <Title level={5}>{translate(`social.fields.id`)}</Title>
       <TextField value={record.id} />
 
-      <Title level={5}>{translate(LangTag[`social.fields.name`])}</Title>
+      <Title level={5}>{translate(`social.fields.name`)}</Title>
       <TextField value={record.name} />
 
-      <Title level={5}>{translate(LangTag[`social.fields.type`])}</Title>
+      <Title level={5}>{translate(`social.fields.type`)}</Title>
       <TextField value={record.type} />
 
-      <Title level={5}>{translate(LangTag[`social.fields.description`])}</Title>
+      <Title level={5}>{translate(`social.fields.description`)}</Title>
       <TextField value={record.description} />
 
-      <Title level={5}>{translate(LangTag[`social.fields.link`])}</Title>
+      <Title level={5}>{translate(`social.fields.link`)}</Title>
       <TextField value={record.link} />
 
-      <Title level={5}>{translate(LangTag[`social.fields.createdAt`])}</Title>
+      <Title level={5}>{translate(`social.fields.createdAt`)}</Title>
       {/*  TODO: Change to date field */}
       <TextField value={record.createdAt.toDateString()} />
 
       <Title level={5}>
-        {translate(LangTag[`social.fields.estimatedPeopleImpacted`])}
+        {translate(`social.fields.estimatedPeopleImpacted`)}
       </Title>
       <TextField value={record.estimatedPeopleImpacted} />
     </Show>

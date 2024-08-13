@@ -6,7 +6,6 @@ import {
   useTranslate,
 } from "@refinedev/core";
 import { Space, Table } from "antd";
-import { LangTag } from "@lib/enums/language.enum";
 import { DeleteButton, EditButton, ShowButton } from "@refinedev/antd";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import React from "react";
@@ -42,9 +41,7 @@ function CreateTable({
       <Table.Column
         key={key}
         dataIndex={[entity, ...item.dataIndex]}
-        title={translate(
-          LangTag[`${entity}.fields.${key}` as keyof typeof LangTag]
-        )}
+        title={translate(`${entity}.fields.${key}`)}
         render={item.render || ((text: string) => text)}
       />
     );

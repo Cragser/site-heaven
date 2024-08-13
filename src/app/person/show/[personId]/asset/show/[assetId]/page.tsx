@@ -1,13 +1,11 @@
-'use client';
+"use client";
 
-import { Show, TextField } from '@refinedev/antd';
-import { useShow, useTranslate } from '@refinedev/core';
-import { Divider, Typography } from 'antd';
-import { HttpError } from '@refinedev/core';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { LangTag } from '@lib/enums/language.enum';
-import { AssetType } from '@lib/types/asset.type';
-import { AssetValueHistoryList } from '@modules/lists/asset-value-history-list';
+import { Show, TextField } from "@refinedev/antd";
+import { HttpError, useShow, useTranslate } from "@refinedev/core";
+import { Divider, Typography } from "antd";
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { AssetType } from "@lib/types/asset.type";
+import { AssetValueHistoryList } from "@modules/lists/asset-value-history-list";
 
 const { Title } = Typography;
 
@@ -27,18 +25,18 @@ export default function AssetShowPage({ params: { assetId } }: any) {
 
   return (
     <Show isLoading={isLoading}>
-      <Title level={5}>{translate(LangTag[`asset.fields.id`])}</Title>
+      <Title level={5}>{translate(`asset.fields.id`)}</Title>
       <TextField value={record.id} />
-      <Title level={5}>{translate(LangTag[`asset.fields.name`])}</Title>
+      <Title level={5}>{translate(`asset.fields.name`)}</Title>
       <TextField value={record.name} />
 
-      <Title level={5}>{translate(LangTag[`asset.fields.description`])}</Title>
+      <Title level={5}>{translate(`asset.fields.description`)}</Title>
       <TextField value={record.description} />
 
-      <Title level={5}>{translate(LangTag[`asset.fields.date`])}</Title>
+      <Title level={5}>{translate(`asset.fields.date`)}</Title>
       {/*<TextField value={record.date} />*/}
 
-      <Title level={5}>{translate(LangTag[`asset.fields.type`])}</Title>
+      <Title level={5}>{translate(`asset.fields.type`)}</Title>
       <TextField value={record.type} />
 
       <Divider />

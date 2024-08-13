@@ -1,5 +1,4 @@
 import { Form, FormProps, Input, Select } from "antd";
-import { LangTag } from "@lib/enums/language.enum";
 import { useTranslate } from "@refinedev/core";
 import { careerAntdValidation } from "@lib/schemas/career.schema";
 import { useResourceSelect } from "@client/util/hook/use-resource-select";
@@ -15,7 +14,7 @@ export default function CareerForm(formProps: Readonly<FormProps>) {
         <Select {...(selectProps as any)} />
       </Form.Item>
       <Form.Item
-        label={translate(LangTag[`career.fields.role`])}
+        label={translate(`career.fields.role`)}
         name={["role"]}
         rules={careerAntdValidation.role}
       >

@@ -3,7 +3,6 @@
 import { Create, List, useDrawerForm, useTable } from "@refinedev/antd";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import { useEntityTitle } from "@client/hooks/titles/use-person-title";
-import { LangTag } from "@lib/enums/language.enum";
 import { StateManager } from "@components/feedback/state-manager/state-manager";
 import { Button, Drawer } from "antd";
 import EntityRelationForm from "@modules/forms/relations/create-relation-form";
@@ -40,7 +39,7 @@ export default function PersonRelationList({
   });
   const { title } = useEntityTitle(
     companyId,
-    LangTag["company-relation.titles.list"],
+    "company-relation.titles.list",
     "company"
   );
   const titleToAdd = "Agregar";

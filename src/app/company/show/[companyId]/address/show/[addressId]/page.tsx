@@ -1,13 +1,11 @@
-'use client';
+"use client";
 
-import { Show } from '@refinedev/antd';
-import { useShow } from '@refinedev/core';
-import { HttpError } from '@refinedev/core';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { AddressType } from '@lib/types/address.type';
-import AddressView from '@modules/views/address-view';
-import { useCompanyTitle } from '@client/hooks/titles/use-company-title';
-import { LangTag } from '@lib/enums/language.enum';
+import { Show } from "@refinedev/antd";
+import { HttpError, useShow } from "@refinedev/core";
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { AddressType } from "@lib/types/address.type";
+import AddressView from "@modules/views/address-view";
+import { useCompanyTitle } from "@client/hooks/titles/use-company-title";
 
 interface Props {
   params: {
@@ -19,10 +17,7 @@ interface Props {
 export default function AddressShowPage({
   params: { addressId, companyId },
 }: Readonly<Props>) {
-  const { title } = useCompanyTitle(
-    companyId,
-    LangTag['company-address.titles.show']
-  );
+  const { title } = useCompanyTitle(companyId, "company-address.titles.show");
   const { queryResult } = useShow<AddressType, HttpError>({
     id: addressId,
     resource: ResourceEnum.address,

@@ -13,7 +13,6 @@ import { ResourceEnum } from "@lib/enums/resource.enum";
 import { PersonPageType } from "@page/types/pages/person/person-page.type";
 import { StateManager } from "@components/feedback/state-manager/state-manager";
 import { usePersonTitle } from "@client/hooks/titles/use-person-title";
-import { LangTag } from "@lib/enums/language.enum";
 import { renderHeaderToPerson } from "@client/util/ant/list/renderHeaderToPerson";
 
 export default function PersonRelationList({
@@ -39,10 +38,7 @@ export default function PersonRelationList({
     resource: ResourceEnum.personRelation,
     syncWithLocation: true,
   });
-  const { title } = usePersonTitle(
-    personId,
-    LangTag["person-relation.titles.list"]
-  );
+  const { title } = usePersonTitle(personId, "person-relation.titles.list");
 
   return (
     <StateManager

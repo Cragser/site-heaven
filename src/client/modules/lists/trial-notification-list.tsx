@@ -4,7 +4,6 @@ import { DeleteButton, EditButton, List, useTable } from "@refinedev/antd";
 import { Button, Space, Table } from "antd";
 import { BaseRecord, useTranslate } from "@refinedev/core";
 import { ResourceEnum } from "@lib/enums/resource.enum";
-import { LangTag } from "@lib/enums/language.enum";
 import { tagRender } from "@client/util/ant/fields/tagRender";
 import { dateRender } from "@client/util/ant/fields/dateRender";
 import { useGoTo } from "@client/hooks/navigation/use-go-to";
@@ -76,18 +75,18 @@ export default function TrialNotificationList({ params }: Readonly<Props>) {
       >
         <Table.Column
           dataIndex={["name"]}
-          title={translate(LangTag[`trial-notification.fields.name`])}
+          title={translate(`trial-notification.fields.name`)}
         />
 
         <Table.Column
           dataIndex={["type"]}
-          title={translate(LangTag[`trial-notification.fields.type`])}
+          title={translate(`trial-notification.fields.type`)}
           render={tagRender}
         />
 
         <Table.Column
           dataIndex={["date"]}
-          title={translate(LangTag[`trial-notification.fields.date`])}
+          title={translate(`trial-notification.fields.date`)}
           render={dateRender}
         />
 

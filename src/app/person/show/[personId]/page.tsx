@@ -1,18 +1,16 @@
-'use client';
+"use client";
 
-import { Show } from '@refinedev/antd';
-import { useShow, useTranslate } from '@refinedev/core';
-import { DescriptionsProps } from 'antd';
-import { PersonResponse } from '@lib/types/person.type';
-import { HttpError } from '@refinedev/core';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { LangTag } from '@lib/enums/language.enum';
-import CardList from '@modules/card-list';
+import { Show } from "@refinedev/antd";
+import { HttpError, useShow, useTranslate } from "@refinedev/core";
+import { DescriptionsProps } from "antd";
+import { PersonResponse } from "@lib/types/person.type";
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import CardList from "@modules/card-list";
 
-import { StateManager } from '@components/feedback/state-manager/state-manager';
-import { replaceTemplate } from '@client/util/ant/titles/replace-template';
-import { tagRender } from '@client/util/ant/fields/tagRender';
-import DescriptionSimple from '@components/data-display/description/description-simple';
+import { StateManager } from "@components/feedback/state-manager/state-manager";
+import { replaceTemplate } from "@client/util/ant/titles/replace-template";
+import { tagRender } from "@client/util/ant/fields/tagRender";
+import DescriptionSimple from "@components/data-display/description/description-simple";
 
 interface Props {
   params: {
@@ -30,26 +28,26 @@ export default function BlogPostShow({
   });
   const record = queryResult.data?.data;
 
-  const title = replaceTemplate(translate(LangTag['person.titles.show']), {
+  const title = replaceTemplate(translate("person.titles.show"), {
     person: {
       lastName: record?.lastName,
       name: record?.name,
     },
   });
 
-  const items: DescriptionsProps['items'] = [
+  const items: DescriptionsProps["items"] = [
     {
       children: `${record?.name} ${record?.lastName}`,
-      label: translate(LangTag[`person.fields.name`]),
+      label: translate(`person.fields.name`),
       span: 2,
     },
-    ...['rfc', 'nss', 'curp'].map((key) => ({
+    ...["rfc", "nss", "curp"].map((key) => ({
       children: record?.[key],
-      label: translate(LangTag[`person.fields.${key}` as keyof typeof LangTag ]),
+      label: translate(`person.fields.${key}`),
     })),
     {
       children: tagRender(record?.nationality?.name),
-      label: translate(LangTag[`person.fields.nationality`]),
+      label: translate(`person.fields.nationality`),
     },
   ];
 
@@ -62,7 +60,7 @@ export default function BlogPostShow({
         <DescriptionSimple items={items} />
         <CardList
           id={record?.id}
-          parent={'person'}
+          parent={"person"}
           record={record}
           resources={[
             ResourceEnum.personCompany,

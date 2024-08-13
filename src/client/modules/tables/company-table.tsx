@@ -1,5 +1,4 @@
 import { Table } from "antd";
-import { LangTag } from "@lib/enums/language.enum";
 import { BaseRecord, useTranslate } from "@refinedev/core";
 import { createDataIndex } from "@client/util/table/create-data-index";
 import useRenderActions from "@client/util/ant/table/use-render-actions";
@@ -43,9 +42,7 @@ export default function CompanyTable({
         <Table.Column
           key={key}
           dataIndex={dataIndex[key]}
-          title={translate(
-            LangTag[`company.fields.${key}` as keyof typeof LangTag]
-          )}
+          title={translate(`company.fields.${key}`)}
         />
       ))}
 

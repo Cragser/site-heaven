@@ -7,7 +7,6 @@ import { PersonPageType } from "@page/types/pages/person/person-page.type";
 import { SocialType } from "@lib/types/social.type";
 import SocialForm from "@modules/forms/social-form";
 import { usePersonTitle } from "@client/hooks/titles/use-person-title";
-import { LangTag } from "@lib/enums/language.enum";
 
 export default function Page({
   params: { personId },
@@ -23,10 +22,7 @@ export default function Page({
     },
     resource: ResourceEnum.social,
   });
-  const { title } = usePersonTitle(
-    personId,
-    LangTag[`person-social.titles.create` as keyof typeof LangTag]
-  );
+  const { title } = usePersonTitle(personId, `person-social.titles.create`);
   return (
     <Create saveButtonProps={saveButtonProps} title={title}>
       <SocialForm {...formProps} />
