@@ -462,7 +462,8 @@
       "create": "Añadir allegado",
       "edit": "Editar allegado",
       "list": "Allegados de [person.name] [person.lastName] ([person.rfc])",
-      "show": "Mostrar allegados"
+      "show": "Mostrar allegados",
+      "user-exist": "Con usuario existente"
     }
   },
   "company-relation": {
