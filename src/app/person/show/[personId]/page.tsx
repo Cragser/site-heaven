@@ -71,6 +71,7 @@ export default function BlogPostShow({
             ResourceEnum.personLegal,
             ResourceEnum.personRelation,
             ResourceEnum.personSocial,
+            ResourceEnum.personContract,
           ]}
         />
       </Show>

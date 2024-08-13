@@ -14,4 +14,5 @@ export const personResources: Partial<Record<ResourceEnum, ResourceProps>> = {
   [ResourceEnum.personLegal]: createPersonResource(ResourceEnum.legal),
   [ResourceEnum.personRelation]: createPersonResource(ResourceEnum.relation),
   [ResourceEnum.personSocial]: createPersonResource(ResourceEnum.social),
+  [ResourceEnum.personContract]: createPersonResource(ResourceEnum.contract),
 };

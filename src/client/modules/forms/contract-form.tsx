@@ -33,7 +33,7 @@ export default function ContractForm(formProps: Readonly<FormProps>) {
       </Form.Item>
 
       <Form.Item label={translate("contract.fields.value")} name="value">
-        <Input />
+        <Input type={"number"} />
       </Form.Item>
     </Form>
   );

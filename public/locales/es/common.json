@@ -255,7 +255,7 @@
       "create": "Crear nueva causa en el grupo [legal.name]",
       "edit": "Editar causa",
       "list": "Causas del grupo [legal.name]",
-      "show": "Juicios de la causa {[judicial-process.name]}"
+      "show": "Juicios de la causa [judicial-process.name]"
     }
   },
   "legal": {
@@ -275,6 +275,10 @@
     "trial": "Juicios",
     "fields": {
       "id": "id",
+      "name": "Nombre del juicio",
+      "courtName": "Nombre de la corte",
+      "summary": "Resumen",
+      "scope": "Ámbito",
       "startDate": "Comienzo del juicio",
       "endDate": "Final del juicio (si aplica)",
       "type": "Jerarquía del juicio",
@@ -284,7 +288,7 @@
       "create": "Crear juicio en la causa",
       "edit": "Editar juicio",
       "list": "Relación de juicios en la causa",
-      "show": "Desahogo del juicio [trial.type] en la causa {[judicial-process.name]}"
+      "show": "Desahogo del juicio [trial.type] en la causa [judicial-process.name]"
     }
   },
   "trial-notification": {

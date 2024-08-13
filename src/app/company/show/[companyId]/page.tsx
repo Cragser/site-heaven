@@ -2,7 +2,7 @@
 
 import { Show } from "@refinedev/antd";
 import { HttpError, useShow, useTranslate } from "@refinedev/core";
-import { DescriptionsProps } from "antd";
+import { DescriptionsProps, Divider } from "antd";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import { CompanyType } from "@lib/types/company.type";
 import CardList from "@modules/card-list";
@@ -44,6 +44,7 @@ export default function CompanyShowPage({
     >
       <Show isLoading={isLoading}>
         <DescriptionSimple items={items} />
+        <Divider />
         <SimpleUniqueResource
           resource={ResourceEnum.companyCreationDetails}
           record={record}
@@ -52,6 +53,7 @@ export default function CompanyShowPage({
             creationDetailsId: record?.companyCreationDetails?.id,
           }}
         />
+        <Divider />
         <Stakeholder companyId={companyId} />
         <CardList
           parent={"company"}
