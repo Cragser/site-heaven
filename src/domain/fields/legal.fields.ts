@@ -1,9 +1,9 @@
-import { TableColumn } from "@page/types/table-column.type";
+import { ItemConfig } from "@page/types/table-column.type";
 import { tagRender } from "@client/util/ant/fields/tagRender";
 import { LegalTypeProcessEnum } from "@lib/enums/legal-type-process.enum";
 import { createColumnsFromArray } from "@client/util/fields/create-columns-from-array";
 
-export const legalFields: TableColumn[] = [
+export const legalFields: ItemConfig[] = [
   ...createColumnsFromArray(["name"]),
   {
     dataIndex: ["type"],

@@ -10,7 +10,7 @@ import { Button, Drawer } from "antd";
 import CreateTable from "@modules/tables/create-table-relation";
 import CreateRelationForm from "@modules/forms/relations/create-relation-form";
 import { SectionEntityType } from "@page/types/section-entity.type";
-import { TableColumn } from "@page/types/table-column.type";
+import { ItemConfig } from "@page/types/table-column.type";
 
 interface Props {
   parentId: string;
@@ -21,7 +21,7 @@ interface Props {
   // person
   parentResource: ResourceEnum;
   parent: SectionEntityType;
-  columns: TableColumn[];
+  columns: ItemConfig[];
 }
 
 function CreateParentEntityPage({

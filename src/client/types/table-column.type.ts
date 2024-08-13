@@ -2,7 +2,7 @@
 // DOC: Un item será un elemento de un config
 // Un config debería ser una colección.
 
-export interface TableColumn {
+export interface ItemConfig {
   key?: string;
   dataIndex: string[];
   render?: any;

@@ -11,7 +11,7 @@ import { ResourceEnum } from "@lib/enums/resource.enum";
 import React from "react";
 import { SectionEntityType } from "@page/types/section-entity.type";
 import { resourcePath } from "@client/resources/refine-paths";
-import { TableColumn } from "@page/types/table-column.type";
+import { ItemConfig } from "@page/types/table-column.type";
 
 interface Props {
   // entityResource: ResourceEnum;
@@ -20,7 +20,7 @@ interface Props {
   parent: any;
   parentName: SectionEntityType;
   tableProps: any;
-  columns: TableColumn[];
+  columns: ItemConfig[];
 }
 
 function CreateTableRelationItself({

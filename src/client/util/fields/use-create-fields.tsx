@@ -1,9 +1,9 @@
 import React, { ReactNode } from "react";
-import { TableColumn } from "@page/types/table-column.type";
+import { ItemConfig } from "@page/types/table-column.type";
 import { useTranslate } from "@refinedev/core";
 import { Form, Input, Select } from "antd";
 
-function switchRender(column: TableColumn, translate: Function): ReactNode {
+function switchRender(column: ItemConfig, translate: Function): ReactNode {
   if (column.enum !== undefined) {
     return (
       <Form.Item
@@ -30,7 +30,7 @@ function switchRender(column: TableColumn, translate: Function): ReactNode {
   ); // Retornar null si no se cumple la condición
 }
 
-export function useCreateFields(fields: TableColumn[]): ReactNode[] {
+export function useCreateFields(fields: ItemConfig[]): ReactNode[] {
   const translate = useTranslate();
   return fields.map((column) => (
     <React.Fragment key={column.key}>
