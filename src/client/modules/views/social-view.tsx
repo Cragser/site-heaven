@@ -1,8 +1,8 @@
-import React from 'react';
-import { TextField } from '@refinedev/antd';
-import { Typography } from 'antd';
-import { useTranslate } from '@refinedev/core';
-import { SocialType } from '@lib/types/social.type';
+import React from "react";
+import { TextField } from "@refinedev/antd";
+import { Typography } from "antd";
+import { useTranslate } from "@refinedev/core";
+import { SocialType } from "@lib/types/social.type";
 
 const { Title } = Typography;
 
@@ -13,9 +13,6 @@ const SocialView = ({ record }: Props) => {
   const translate = useTranslate();
   return (
     <>
-      <Title level={5}>{translate(`social.fields.id`)}</Title>
-      <TextField value={record.id} />
-
       <Title level={5}>{translate(`social.fields.name`)}</Title>
       <TextField value={record.name} />
 
@@ -32,7 +29,7 @@ const SocialView = ({ record }: Props) => {
       <TextField value={record.createdAt.toDateString()} />
 
       <Title level={5}>
-        {translate(`social.fields.estimatedPeopleImpacted`])}
+        {translate(`social.fields.estimatedPeopleImpacted`)}
       </Title>
       <TextField value={record.estimatedPeopleImpacted} />
     </>
