@@ -1,10 +1,9 @@
-import { BaseRecord, useGetToPath, useGo } from '@refinedev/core';
-import { Space } from 'antd';
-import { DeleteButton, EditButton, ShowButton } from '@refinedev/antd';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { resourcePath } from '@client/resources/refine-paths';
-import React from 'react';
-import { Action } from '@refinedev/core';
+import { Action, BaseRecord, useGetToPath, useGo } from "@refinedev/core";
+import { Space } from "antd";
+import { DeleteButton, EditButton, ShowButton } from "@refinedev/antd";
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import React from "react";
+import { resourceNavigation } from "@client/navigation/resource-navigation";
 
 interface Props {
   resource: ResourceEnum;
@@ -24,28 +23,26 @@ interface Props {
 export default function useRenderActions({
   deleteResource,
   metaCreate,
-  parent = '',
+  parent = "",
   resource,
 }: Props) {
-
   const resourceToDelete =
     deleteResource === undefined ? resource : deleteResource;
   const getToPath = useGetToPath();
   const go = useGo();
   const getId = (record: BaseRecord) => {
-    if (parent === '') {
+    if (parent === "") {
       return record.id;
     }
     return record[parent].id;
   };
-
 
   const actions = (record: BaseRecord, action: Action) => {
     const meta = metaCreate(record, getId);
     return getToPath({
       action: action,
       meta,
-      resource: resourcePath[resource],
+      resource: resourceNavigation[resource],
     });
   };
 
@@ -60,12 +57,12 @@ export default function useRenderActions({
       <EditButton
         hideText
         size="middle"
-        onClick={() => handleClick(record, 'edit')}
+        onClick={() => handleClick(record, "edit")}
       />
       <ShowButton
         hideText
         size="middle"
-        onClick={() => handleClick(record, 'show')}
+        onClick={() => handleClick(record, "show")}
       />
       <DeleteButton
         hideText

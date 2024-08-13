@@ -1,153 +1,12 @@
 import { ResourceProps } from "@refinedev/core";
-import { generateCrudSimple } from "@client/util/ant/resources/generate-crud-simple";
-import { ResourceEnum } from "@lib/enums/resource.enum";
-import {
-  BookOutlined,
-  ProjectOutlined,
-  ShopOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
+import { BookOutlined, ProjectOutlined } from "@ant-design/icons";
 import { generateRouteObject } from "@client/util/ant/resource";
 import React from "react";
-import { companyResources } from "@client/resources/company-resources";
-import { personResources } from "@client/resources/person-resources";
-
-export const resourcePath: Partial<Record<ResourceEnum, ResourceProps>> = {
-  [ResourceEnum.company]: generateCrudSimple(
-    ResourceEnum.company,
-    <ShopOutlined
-      onPointerEnterCapture={undefined}
-      onPointerLeaveCapture={undefined}
-    />
-  ),
-  [ResourceEnum.person]: generateCrudSimple(
-    ResourceEnum.person,
-    <UserOutlined
-      onPointerEnterCapture={undefined}
-      onPointerLeaveCapture={undefined}
-    />
-  ),
-  // [ResourceEnum.personAddress]: generateParentChild(
-  //   ResourceEnum.person,
-  //   ResourceEnum.address
-  // ),
-  // [ResourceEnum.personAsset]: generateParentChild(
-  //   ResourceEnum.person,
-  //   ResourceEnum.asset
-  // ),
-  // [ResourceEnum.personCareer]: generateParentChild(
-  //   ResourceEnum.person,
-  //   ResourceEnum.career
-  // ),
-  // [ResourceEnum.personCompany]: generateParentChild(
-  //   ResourceEnum.person,
-  //   ResourceEnum.company
-  // ),
-  // [ResourceEnum.personEducation]: generateParentChild(
-  //   ResourceEnum.person,
-  //   ResourceEnum.education
-  // ),
-  // [ResourceEnum.personLegal]: generateParentChild(
-  //   ResourceEnum.person,
-  //   ResourceEnum.legal
-  // ),
-  // [ResourceEnum.personRelation]: generateParentChild(
-  //   ResourceEnum.person,
-  //   ResourceEnum.relation
-  // ),
-  // [ResourceEnum.personSocial]: generateParentChild(
-  //   ResourceEnum.person,
-  //   ResourceEnum.social
-  // ),
-  ...personResources,
-  ...companyResources,
-  // [ResourceEnum.companyAddress]: generateParentChild(
-  //   ResourceEnum.company,
-  //   ResourceEnum.address
-  // ),
-  // [ResourceEnum.companyAsset]: generateParentChild(
-  //   ResourceEnum.company,
-  //   ResourceEnum.asset
-  // ),
-  // [ResourceEnum.companySocial]: generateParentChild(
-  //   ResourceEnum.company,
-  //   ResourceEnum.social
-  // ),
-  // TODO: COMPANY-RELATION
-
-  [ResourceEnum.stakeholder]: {
-    list: "/company/show/:companyId/stakeholder",
-    name: "stakeholder",
-  },
-  // TODO: This is person-judicial-process
-  // ResourceEnum.person, ResourceEnum.legal, ResourceEnum.judicialProcess
-  [ResourceEnum.personJudicialProcess]: {
-    create:
-      "/person/show/:personId/legal/show/:legalId/judicial-process/create",
-    edit: "/person/show/:personId/legal/show/:legalId/judicial-process/edit/:judicialProcessId",
-    meta: {
-      canDelete: true,
-      hide: true,
-    },
-    name: "judicial-process",
-    show: "/person/show/:personId/legal/show/:legalId/judicial-process/show/:judicialProcessId",
-  },
-  [ResourceEnum.personTrial]: {
-    create:
-      "/person/show/:personId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/create",
-    edit: "/person/show/:personId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/edit/:trialId",
-    meta: {
-      canDelete: true,
-      hide: true,
-    },
-    name: "trial",
-    show: "/person/show/:personId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/show/:trialId",
-  },
-  [ResourceEnum.personTrialNotification]: {
-    create:
-      "/person/show/:personId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/show/:trialId/trial-notification/create",
-    edit: "/person/show/:personId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/show/:trialId/trial-notification/edit/:trialNotificationId",
-    name: "trial-notification",
-  },
-  [ResourceEnum.personTrialRelation]: {
-    create:
-      "/person/show/:personId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/show/:trialId/trial-relation/create",
-    edit: "/person/show/:personId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/show/:trialId/trial-relation/edit/:trialRelationId",
-    name: "trial-relation",
-  },
-  [ResourceEnum.companyJudicialProcess]: {
-    create:
-      "/company/show/:companyId/legal/show/:legalId/judicial-process/create",
-    edit: "/company/show/:companyId/legal/show/:legalId/judicial-process/edit/:judicialProcessId",
-    meta: {
-      canDelete: true,
-      hide: true,
-    },
-    name: "judicial-process",
-    show: "/company/show/:companyId/legal/show/:legalId/judicial-process/show/:judicialProcessId",
-  },
-  [ResourceEnum.companyTrial]: {
-    create:
-      "/company/show/:companyId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/create",
-    edit: "/company/show/:companyId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/edit/:trialId",
-    meta: {
-      canDelete: true,
-      hide: true,
-    },
-    name: "trial",
-    show: "/company/show/:companyId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/show/:trialId",
-  },
-  [ResourceEnum.companyTrialNotification]: {
-    create:
-      "/company/show/:companyId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/show/:trialId/trial-notification/create",
-    edit: "/company/show/:companyId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/show/:trialId/trial-notification/edit/:trialNotificationId",
-    name: "trial-notification",
-  },
-};
+import { resourceNavigation } from "@client/navigation/resource-navigation";
 
 export function refinePaths(): ResourceProps[] {
   return [
-    ...Object.values(resourcePath),
+    ...Object.values(resourceNavigation),
     {
       meta: {
         icon: (
@@ -179,6 +38,16 @@ export function refinePaths(): ResourceProps[] {
         parent: "catalog",
       },
       name: "nationality",
+    },
+    {
+      create: "catalog/person-relation-type/create",
+      edit: "catalog/person-relation-type/edit/:personRelationTypeId",
+      list: "catalog/person-relation-type",
+      meta: {
+        canDelete: true,
+        parent: "catalog",
+      },
+      name: "person-relation-type",
     },
 
     // generateRouteObject("company", "address"),

@@ -1,6 +1,7 @@
 import { Action, useGetToPath, useGo } from "@refinedev/core";
 import { ResourceEnum } from "@lib/enums/resource.enum";
-import { resourcePath } from "@client/resources/refine-paths";
+
+import { resourceNavigation } from "@client/navigation/resource-navigation";
 
 interface Props {
   action: Action;
@@ -12,7 +13,7 @@ export function useGoTo() {
   const go = useGo();
 
   return ({ action, meta, resource }: Props) => {
-    if (!resourcePath[resource]) {
+    if (!resourceNavigation[resource]) {
       console.error(`Resource ${resource} not found in resourcePath`);
       return;
     }
@@ -20,7 +21,7 @@ export function useGoTo() {
     const toPath = getToPath({
       action: action,
       meta: meta,
-      resource: resourcePath[resource],
+      resource: resourceNavigation[resource],
     });
 
     console.log({ toPath });

@@ -1,20 +1,19 @@
 import { Button, Space } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
-import { useGetToPath, useGo, useResource } from "@refinedev/core";
+import { useGetToPath, useGo } from "@refinedev/core";
 import { ResourceEnum } from "@lib/enums/resource.enum";
-import { resourcePath } from "@client/resources/refine-paths";
 import { SectionEntityType } from "@page/types/section-entity.type";
+import { resourceNavigation } from "@client/navigation/resource-navigation";
 
 const Header = ({ customButtons, defaultButtons, personId, resourse }: any) => {
   // TODO: useResource as an object returns url with personId instead of id
-  const { resource: resourceEntity } = useResource(resourse);
 
   const getToPath = useGetToPath();
   const go = useGo();
   const url: string = getToPath({
     action: "show",
     meta: { id: personId },
-    resource: resourcePath[ResourceEnum.person],
+    resource: resourceNavigation[ResourceEnum.person],
   }) as string;
 
   const handleClick = () => {
@@ -72,7 +71,7 @@ const CustomHeader = ({
   const url: string = getToPath({
     action: "show",
     meta: { id: id },
-    resource: resourcePath[selectedResource],
+    resource: resourceNavigation[selectedResource],
   }) as string;
 
   const handleClick = () => {
@@ -122,7 +121,7 @@ export const renderHeaderWithoutDefault = ({
   customButtons,
   parent,
 }: Omit<CustomHeaderProps, "defaultButtons">) => {
-  return ({ defaultButtons }: any) => (
+  return () => (
     <CustomHeader
       defaultButtons={null}
       id={id}

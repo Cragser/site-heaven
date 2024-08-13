@@ -10,8 +10,8 @@ import { DeleteButton, EditButton, ShowButton } from "@refinedev/antd";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import React from "react";
 import { SectionEntityType } from "@page/types/section-entity.type";
-import { resourcePath } from "@client/resources/refine-paths";
 import { ItemConfig } from "@page/types/table-column.type";
+import { resourceNavigation } from "@client/navigation/resource-navigation";
 
 interface Props {
   // entityResource: ResourceEnum;
@@ -74,7 +74,7 @@ function CreateTableRelationItself({
           const handleClick = (action: Action) => {
             // ESTE ES EL CAMBIO MÁS IMPORTANTE
             const to = getToPath({
-              resource: resourcePath[parentResource],
+              resource: resourceNavigation[parentResource],
               action,
               meta,
             });

@@ -12,12 +12,13 @@ import RelationForm from "@modules/forms/relation-form";
 export default function Page({
   params: { personId },
 }: Readonly<PersonPageType>) {
-  const translate = useTranslate();
   const { formProps, saveButtonProps } = useForm<any, HttpError>({
     resource: ResourceEnum.personRelation,
+    redirect: false,
   });
+  const translate = useTranslate();
 
-  const [showCustomForm, setShowCustomForm] = useState(false);
+  const [showCustomForm, setShowCustomForm] = useState(true);
 
   const onChange = (checked: boolean) => {
     setShowCustomForm(checked);

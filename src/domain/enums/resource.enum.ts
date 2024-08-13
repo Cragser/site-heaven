@@ -16,6 +16,7 @@ export enum ResourceEnum {
   legal = "legal",
   judicialProcess = "judicial-process",
   trial = "trial",
+  personRelationType = "person-relation-type",
   // Entity Relation
   //- Person
   personCareer = "person-career",

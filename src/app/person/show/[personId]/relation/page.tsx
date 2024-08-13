@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  DeleteButton,
-  EditButton,
-  List,
-  ShowButton,
-  useTable,
-} from "@refinedev/antd";
+import { DeleteButton, EditButton, List, useTable } from "@refinedev/antd";
 import { Space, Table } from "antd";
 import { BaseRecord, useTranslate } from "@refinedev/core";
 import { ResourceEnum } from "@lib/enums/resource.enum";
@@ -14,6 +8,8 @@ import { PersonPageType } from "@page/types/pages/person/person-page.type";
 import { StateManager } from "@components/feedback/state-manager/state-manager";
 import { usePersonTitle } from "@client/hooks/titles/use-person-title";
 import { renderHeaderToPerson } from "@client/util/ant/list/renderHeaderToPerson";
+import { tagRender } from "@client/util/ant/fields/tagRender";
+import { useGoTo } from "@client/hooks/navigation/use-go-to";
 
 export default function PersonRelationList({
   params: { personId },
@@ -39,6 +35,7 @@ export default function PersonRelationList({
     syncWithLocation: true,
   });
   const { title } = usePersonTitle(personId, "person-relation.titles.list");
+  const goTo = useGoTo();
 
   return (
     <StateManager
@@ -64,28 +61,36 @@ export default function PersonRelationList({
           />
 
           <Table.Column
-            title={"Fecha de inicio"}
-            dataIndex="startDate"
-            render={(value) => value || "-"}
+            title={"Tipo de relación"}
+            dataIndex={["relation", "nameES"]}
+            render={tagRender}
           />
-          <Table.Column
-            title={"Fecha de fin"}
-            dataIndex="endDate"
-            render={(value) => value || "-"}
-          />
-          <Table.Column title={"Tipo de relación"} dataIndex="relation" />
           <Table.Column
             title={"Actions"}
             dataIndex="actions"
             render={(_, record: BaseRecord) => (
               <Space>
-                <EditButton hideText size="middle" recordItemId={record.id} />
-                <ShowButton
+                <EditButton
                   hideText
                   size="middle"
+                  onClick={() =>
+                    goTo({
+                      action: "edit",
+                      resource: ResourceEnum.personRelation,
+                      meta: {
+                        personId,
+                        personRelationId: record.id as string,
+                      },
+                    })
+                  }
                   recordItemId={record.id}
-                  resource={ResourceEnum.personRelation}
                 />
+                {/*<ShowButton*/}
+                {/*  hideText*/}
+                {/*  size="middle"*/}
+                {/*  recordItemId={record.id}*/}
+                {/*  resource={ResourceEnum.personRelation}*/}
+                {/*/>*/}
                 <DeleteButton hideText size="middle" recordItemId={record.id} />
               </Space>
             )}

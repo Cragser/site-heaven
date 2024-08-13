@@ -12,7 +12,7 @@ export const personResources: Partial<Record<ResourceEnum, ResourceProps>> = {
   [ResourceEnum.personCompany]: createPersonResource(ResourceEnum.company),
   [ResourceEnum.personEducation]: createPersonResource(ResourceEnum.education),
   [ResourceEnum.personLegal]: createPersonResource(ResourceEnum.legal),
-  [ResourceEnum.personRelation]: createPersonResource(ResourceEnum.relation),
+  // [ResourceEnum.personRelation]: createPersonResource(ResourceEnum.relation),
   [ResourceEnum.personSocial]: createPersonResource(ResourceEnum.social),
   [ResourceEnum.personContract]: createPersonResource(ResourceEnum.contract),
 };

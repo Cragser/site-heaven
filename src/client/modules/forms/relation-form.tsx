@@ -1,10 +1,9 @@
 import { Form, FormProps, Input, Select } from "antd";
-import { useTranslate } from "@refinedev/core";
 import { personRelationAntdValidation } from "@lib/schemas/person-relation.schema";
-import { PersonRelationEnum } from "@lib/enums/person-relation.enum";
 import { useSelect } from "@refinedev/antd";
 import { PersonType } from "@lib/types/person.type";
 import { ResourceEnum } from "@lib/enums/resource.enum";
+import { useResourceSelect } from "@client/util/hook/use-resource-select";
 
 interface RelationFormProps {
   formProps: FormProps;
@@ -16,7 +15,7 @@ export default function RelationForm({
   personId,
 }: Readonly<RelationFormProps>) {
   // TODO: add translation
-  const translate = useTranslate();
+  // const translate = useTranslate();
   const { selectProps } = useSelect<PersonType>({
     onSearch: (search) => {
       if (!search) return [];
@@ -29,7 +28,6 @@ export default function RelationForm({
       ];
     },
     optionLabel: (item) => {
-      console.log(item);
       return `${item.name} ${item.lastName}`;
     },
     optionValue: (item) => item.id,
@@ -38,6 +36,12 @@ export default function RelationForm({
     },
     resource: ResourceEnum.person,
   });
+  // Get initialValues.relation.id as  default value
+  const relationId = formProps?.initialValues?.relation?.id;
+  const { selectProps: RelationProps } = useResourceSelect({
+    resource: ResourceEnum.personRelationType,
+  });
+
   return (
     <Form {...formProps} layout="vertical">
       <Form.Item
@@ -60,20 +64,13 @@ export default function RelationForm({
           {...(selectProps as any)}
         />
       </Form.Item>
-      {/*<Form.Item label="Fecha de inicio" name={"startDate"}>*/}
-      {/*  <Input type={"date"} />*/}
-      {/*</Form.Item>*/}
-      {/*<Form.Item label="Fecha de fin" name={"endDate"}>*/}
-      {/*  <Input type={"date"} />*/}
-      {/*</Form.Item>*/}
-      <Form.Item label="Tipo de relación" name={"relation"}>
-        <Select>
-          {Object.values(PersonRelationEnum).map((value) => (
-            <Select.Option key={value} value={value}>
-              {value}
-            </Select.Option>
-          ))}
-        </Select>
+
+      <Form.Item
+        label={"Tipo de relación"}
+        name={["relation", "id"]}
+        initialValue={relationId}
+      >
+        <Select {...(RelationProps as any)} />
       </Form.Item>
     </Form>
   );

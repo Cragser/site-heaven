@@ -3,7 +3,8 @@ import { Card, Divider, List, Space, Statistic, Typography } from "antd";
 import { UnorderedListOutlined } from "@ant-design/icons";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import { camelCase } from "case-anything";
-import { resourcePath } from "@client/resources/refine-paths";
+
+import { resourceNavigation } from "@client/navigation/resource-navigation";
 
 const { Title } = Typography;
 
@@ -49,7 +50,7 @@ function useCreateData(
       meta: {
         [`${parent}Id`]: id,
       },
-      resource: resourcePath[resource],
+      resource: resourceNavigation[resource],
     });
   };
   const handleClick = (resource: ResourceEnum) => {
