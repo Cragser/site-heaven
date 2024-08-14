@@ -145,7 +145,8 @@
       "assetId": "id_activo",
       "value": "Valor (en unidades del activo) ",
       "date": "Fecha del movimiento",
-      "type": "Tipo del movimiento"
+      "type": "Tipo del movimiento",
+      "details": "Detalles del movimiento"
     },
     "titles": {
       "create": "Añadir movimientos de [asset.name (id asset.id)]",
@@ -598,6 +599,17 @@
       "list": "CompanyLegals",
       "show": "CompanyLegal",
       "add-relation-to-company": "Add CompanyLegal"
+    }
+  },
+  "person-contract": {
+    "person-contract": "Contratos",
+
+    "titles": {
+      "create": "Create Contratos",
+      "edit": "Edit Contratos",
+      "list": "Contratoss",
+      "show": "Contratos",
+      "add-relation-to-person": "Agregar contrato"
     }
   }
 }

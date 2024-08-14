@@ -54,16 +54,7 @@ export function refinePaths(): ResourceProps[] {
     // generateRouteObject("company", "social"),
     // generateRouteObject("company", "asset"),
     generateRouteObject("company", "person"),
-    {
-      create:
-        "/person/show/:personId/asset/show/:id/asset-value-history/create",
-      edit: "/person/show/:personId/asset/show/:id/asset-value-history/edit/:id",
-      meta: {
-        canDelete: true,
-        hide: true,
-      },
-      name: "asset-value-history",
-    },
+
     // http://localhost:3000/person/show/4b06220d-b1aa-4048-911d-81b8f0825974/legal/show/6089a343-0c94-4f4e-baea-94bd13ea8375?pageSize=10&current=1
     // generateRoutes({
     //   entities: ['person', 'legal', 'judicialProcess'],

@@ -2,21 +2,9 @@
 
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import CreateParentEntityPage from "@modules/page/create-parent-entity.page";
+import { addressFields } from "@lib/fields/address/address.fields";
 
-export default function PersonList({ params: { companyId } }: any) {
-  const columns = [
-    "name",
-    "country",
-    "state",
-    "city",
-    "postalCode",
-    "colony",
-    "street",
-    "exteriorNumber",
-    "interiorNumber",
-    "additionalInformation",
-  ];
-
+export default function CompanyAddress({ params: { companyId } }: any) {
   return (
     <CreateParentEntityPage
       parentId={companyId}
@@ -24,9 +12,7 @@ export default function PersonList({ params: { companyId } }: any) {
       relationResource={ResourceEnum.companyAddress}
       parentResource={ResourceEnum.company}
       parent="company"
-      columns={columns.map((column) => ({
-        dataIndex: [column],
-      }))}
+      columns={addressFields}
     />
   );
 }

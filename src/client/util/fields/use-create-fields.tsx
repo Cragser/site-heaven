@@ -2,12 +2,17 @@ import React, { ReactNode } from "react";
 import { ItemConfig } from "@page/types/table-column.type";
 import { useTranslate } from "@refinedev/core";
 import { Form, Input, Select } from "antd";
+import { ResourceEnum } from "@lib/enums/resource.enum";
 
-function switchRender(column: ItemConfig, translate: Function): ReactNode {
+function switchRender(
+  column: ItemConfig,
+  translate: Function,
+  resource?: ResourceEnum
+): ReactNode {
   if (column.enum !== undefined) {
     return (
       <Form.Item
-        label={translate(`legal.fields.${column.key}`)}
+        label={translate(`${resource}.fields.${column.key}`)}
         name={column.key}
       >
         <Select>
@@ -20,21 +25,36 @@ function switchRender(column: ItemConfig, translate: Function): ReactNode {
       </Form.Item>
     );
   }
+
+  if (column?.type === "textarea") {
+    return (
+      <Form.Item
+        label={translate(`${resource}.fields.${column.key}`)}
+        name={column.key}
+      >
+        <Input.TextArea rows={4} />
+      </Form.Item>
+    );
+  }
+
   return (
     <Form.Item
-      label={translate(`legal.fields.${column.key}`)}
+      label={translate(`${resource}.fields.${column.key}`)}
       name={column.key}
     >
-      <Input />
+      <Input type={column?.type ?? "text"} />
     </Form.Item>
   ); // Retornar null si no se cumple la condición
 }
 
-export function useCreateFields(fields: ItemConfig[]): ReactNode[] {
+export function useCreateFields(
+  fields: ItemConfig[],
+  resource?: ResourceEnum
+): ReactNode[] {
   const translate = useTranslate();
   return fields.map((column) => (
     <React.Fragment key={column.key}>
-      {switchRender(column, translate)}
+      {switchRender(column, translate, resource)}
     </React.Fragment>
   ));
 }

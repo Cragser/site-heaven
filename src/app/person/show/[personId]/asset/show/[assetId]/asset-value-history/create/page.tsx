@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import { Create, useForm } from '@refinedev/antd';
-import { HttpError } from '@refinedev/core';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import AssetValueHistoryForm from '@modules/forms/asset-value-history-form';
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { CreateForm } from "@modules/forms/generator/create-form";
+import { assetValueHistoryField } from "@lib/fields/asset/asset-value-history.field";
+import { useAssetTitle } from "@client/hooks/titles/use-asset-title";
 
 export default function Page({ params: { assetId } }: any) {
-  const { formProps, saveButtonProps } = useForm<any, HttpError>({
-    resource: ResourceEnum.assetValueHistory,
-  });
-
+  const { title } = useAssetTitle(assetId, "asset-value-history.titles.create");
   return (
-    <Create saveButtonProps={saveButtonProps}>
-      <AssetValueHistoryForm formProps={formProps} assetId={assetId} />
-    </Create>
+    <CreateForm
+      entityResource={ResourceEnum.assetValueHistory}
+      columns={assetValueHistoryField}
+      meta={{ assetId }}
+      title={title}
+    />
   );
 }

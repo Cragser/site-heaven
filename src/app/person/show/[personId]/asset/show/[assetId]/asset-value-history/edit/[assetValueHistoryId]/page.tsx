@@ -1,22 +1,29 @@
-'use client';
+"use client";
 
-import { Edit, useForm } from '@refinedev/antd';
-import { HttpError } from '@refinedev/core';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { AssetType } from '@lib/types/asset.type';
-import AssetValueHistoryForm from '@modules/forms/asset-value-history-form';
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { EditForm } from "@modules/forms/generator/edit-form";
+import { assetValueHistoryField } from "@lib/fields/asset/asset-value-history.field";
+import { useAssetTitle } from "@client/hooks/titles/use-asset-title";
 
-export default function AssetValueHistoryEditPage(props: any) {
-  const assetValueHistoryId = props?.params?.assetValueHistoryId;
-  const assetId = props?.params?.assetId;
-  const { formProps, saveButtonProps } = useForm<AssetType, HttpError>({
-    id: assetValueHistoryId,
-    resource: ResourceEnum.assetValueHistory,
-  });
+interface Props {
+  params: {
+    assetId: string;
+    assetValueHistoryId: string;
+    personId: string;
+  };
+}
 
+export default function AssetValueHistoryEditPage({
+  params: { assetId, assetValueHistoryId },
+}: Props) {
+  const { title } = useAssetTitle(assetId, "asset-value-history.titles.create");
   return (
-    <Edit saveButtonProps={saveButtonProps}>
-      <AssetValueHistoryForm formProps={formProps} assetId={assetId} />
-    </Edit>
+    <EditForm
+      entityResource={ResourceEnum.assetValueHistory}
+      columns={assetValueHistoryField}
+      meta={{ assetId }}
+      id={assetValueHistoryId}
+      title={title}
+    />
   );
 }

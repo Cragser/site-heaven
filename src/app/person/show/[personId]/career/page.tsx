@@ -18,6 +18,7 @@ export default function PersonList({
       parent="person"
       columns={[
         {
+          key: "role",
           dataIndex: ["role"],
         },
         {
@@ -25,14 +26,17 @@ export default function PersonList({
           dataIndex: ["company", "name"],
         },
         {
+          key: "startDate",
           dataIndex: ["startDate"],
           render: dateRender,
         },
         {
+          key: "endDate",
           dataIndex: ["endDate"],
           render: dateRender,
         },
         {
+          key: "contractType",
           dataIndex: ["contractType"],
           render: tagRender,
         },

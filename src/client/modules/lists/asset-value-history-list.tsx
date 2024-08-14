@@ -1,7 +1,9 @@
 import { DeleteButton, EditButton, List, useTable } from "@refinedev/antd";
-import { Space, Table } from "antd";
+import { Button, Space, Table } from "antd";
 import { BaseRecord, useTranslate } from "@refinedev/core";
 import { ResourceEnum } from "@lib/enums/resource.enum";
+import { useGoTo } from "@client/hooks/navigation/use-go-to";
+import { useAssetTitle } from "@client/hooks/titles/use-asset-title";
 
 interface AssetValueHistoryListProps {
   assetId: string;
@@ -28,15 +30,36 @@ export function AssetValueHistoryList({
     resource: ResourceEnum.assetValueHistory,
     syncWithLocation: true,
   });
+  const goTo = useGoTo();
+  const { title } = useAssetTitle(assetId, "asset-value-history.titles.list");
 
   if (tableQueryResult?.isLoading) {
     return <div>Loading...</div>;
   }
 
-  console.log(tableProps);
-
+  const headerButtons = [
+    <Button
+      key="1"
+      onClick={() => {
+        goTo({
+          resource: ResourceEnum.assetValueHistory,
+          action: "create",
+          meta: {
+            assetId,
+          },
+        });
+      }}
+    >
+      Crear
+    </Button>,
+  ];
   return (
-    <List resource={ResourceEnum.assetValueHistory} breadcrumb={false}>
+    <List
+      resource={ResourceEnum.assetValueHistory}
+      breadcrumb={false}
+      headerButtons={headerButtons}
+      title={title}
+    >
       <Table
         {...(tableProps as any)}
         rowKey="id"
@@ -76,6 +99,16 @@ export function AssetValueHistoryList({
                 size="middle"
                 recordItemId={record.id}
                 resource={ResourceEnum.assetValueHistory}
+                onClick={() => {
+                  goTo({
+                    resource: ResourceEnum.assetValueHistory,
+                    action: "edit",
+                    meta: {
+                      assetId,
+                      assetValueHistoryId: record.id as string,
+                    },
+                  });
+                }}
               />
 
               <DeleteButton

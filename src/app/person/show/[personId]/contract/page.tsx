@@ -3,19 +3,11 @@
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import CreateParentEntityPage from "@modules/page/create-parent-entity.page";
 import { PersonPageType } from "@page/types/pages/person/person-page.type";
+import { contractFields } from "@lib/fields/contract/contract.fields";
 
 export default function PersonList({
   params: { personId },
 }: Readonly<PersonPageType>) {
-  const columns = [
-    "name",
-    "concept",
-    "startDate",
-    "contractor",
-    "notes",
-    "value",
-  ];
-
   return (
     <CreateParentEntityPage
       parentId={personId}
@@ -23,9 +15,7 @@ export default function PersonList({
       relationResource={ResourceEnum.personContract}
       parentResource={ResourceEnum.person}
       parent="person"
-      columns={columns.map((column) => ({
-        dataIndex: [column],
-      }))}
+      columns={contractFields}
     />
   );
 }

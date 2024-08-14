@@ -104,4 +104,16 @@ export const resourceNavigation: Partial<Record<ResourceEnum, ResourceProps>> =
       },
       name: "person-relation",
     },
+
+    [ResourceEnum.assetValueHistory]: {
+      create:
+        "/person/show/:personId/asset/show/:assetId/asset-value-history/create",
+      edit: "/person/show/:personId/asset/show/:assetId/asset-value-history/edit/:assetValueHistoryId",
+      show: "/person/show/:personId/asset/show/:assetId/asset-value-history/show/:assetValueHistoryId",
+      meta: {
+        canDelete: true,
+        hide: true,
+      },
+      name: "asset-value-history",
+    },
   };
