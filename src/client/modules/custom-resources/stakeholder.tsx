@@ -15,7 +15,7 @@ export function Stakeholder({ companyId }: Props) {
       meta: {
         companyId: companyId,
       },
-      resource: ResourceEnum.stakeholder,
+      resource: ResourceEnum.companyPerson,
     });
   };
   return (

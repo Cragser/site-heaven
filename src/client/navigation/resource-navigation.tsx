@@ -116,4 +116,35 @@ export const resourceNavigation: Partial<Record<ResourceEnum, ResourceProps>> =
       },
       name: "asset-value-history",
     },
+    [ResourceEnum.companyPerson]: {
+      create: "/company/show/:companyId/company-person/create",
+      edit: "/company/show/:companyId/company-person/edit/:personCompanyId",
+      show: "/company/show/:companyId/company-person/show/:personCompanyId",
+      list: "/company/show/:companyId/company-person",
+      meta: {
+        canDelete: true,
+        hide: true,
+      },
+      name: "company-person",
+    },
+    [ResourceEnum.personCompanyTimeFrame]: {
+      create:
+        "/person/show/:personId/company/show/:companyId/time-frame/create",
+      edit: "/person/show/:personId/company/show/:companyId/time-frame/edit/:timeFrameId",
+      show: "/person/show/:personId/company/show/:companyId/time-frame/show/:timeFrameId",
+      meta: {
+        canDelete: true,
+        hide: true,
+      },
+      name: "person-company-time-frame",
+    },
+    [ResourceEnum.companyPersonTimeFrame]: {
+      create:
+        "/company/show/:companyId/company-person/show/:personCompanyId/time-frame/create",
+      meta: {
+        canDelete: true,
+        hide: true,
+      },
+      name: "company-person-time-frame",
+    },
   };

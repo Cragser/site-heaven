@@ -28,6 +28,7 @@ export enum ResourceEnum {
   personAsset = "person-asset",
   personLegal = "person-legal",
   personContract = "person-contract",
+  personCompanyTimeFrame = "person-company-time-frame",
   // NO-ENDPOINT ONLY NAVIGATION
   personJudicialProcess = "person-judicial-process",
   personTrial = "person-trial",
@@ -44,10 +45,13 @@ export enum ResourceEnum {
   companyAudit = "company-audit",
   companyContract = "company-contract",
   companyLegal = "company-legal",
+
   // NO-ENDPOINT ONLY NAVIGATION
   companyJudicialProcess = "company-judicial-process",
   companyTrial = "company-trial",
   companyTrialNotification = "company-trial-notification",
+  companyPerson = "company-person",
+  companyPersonTimeFrame = "company-person-time-frame",
 
   //- Asset
   assetValueHistory = "asset-value-history",
@@ -60,7 +64,6 @@ export enum ResourceEnum {
   nationalityHelper = "nationality-helper",
 
   // This only helps front
-  personCompanyRelation = "person-company-relation",
   creationDetails = "creation-details",
   audit = "audit",
   contract = "contract",

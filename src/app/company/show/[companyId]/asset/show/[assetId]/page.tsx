@@ -1,14 +1,13 @@
-'use client';
+"use client";
 
-import { Show } from '@refinedev/antd';
-import { useShow } from '@refinedev/core';
-import { HttpError } from '@refinedev/core';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { AssetType } from '@lib/types/asset.type';
+import { Show } from "@refinedev/antd";
+import { HttpError, useShow } from "@refinedev/core";
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { AssetType } from "@lib/types/asset.type";
 
-import AssetView from '@modules/views/asset-view';
-import { Divider } from 'antd';
-import { AssetValueHistoryList } from '@modules/lists/asset-value-history-list';
+import AssetView from "@modules/views/asset-view";
+import { Divider } from "antd";
+import { AssetValueHistoryList } from "@modules/lists/asset-value-history-list";
 
 interface Props {
   params: {

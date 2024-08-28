@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { List, useTable } from '@refinedev/antd';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import CompanyTable from '@modules/tables/company-table';
-import { StateManager } from '@components/feedback/state-manager/state-manager';
+import { List, useTable } from "@refinedev/antd";
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import CompanyTable from "@modules/tables/company-table";
+import { StateManager } from "@components/feedback/state-manager/state-manager";
 
 export default function CompanyList() {
   const { tableProps, tableQueryResult } = useTable({
     pagination: {
       current: 1,
-      mode: 'client',
+      mode: "client",
       pageSize: 10,
     },
     resource: ResourceEnum.company,

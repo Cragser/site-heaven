@@ -9,6 +9,7 @@ export const companyResources: Partial<Record<ResourceEnum, ResourceProps>> = {
   [ResourceEnum.companyAddress]: createCompanyResource(ResourceEnum.address),
   [ResourceEnum.companyAsset]: createCompanyResource(ResourceEnum.asset),
   [ResourceEnum.companySocial]: createCompanyResource(ResourceEnum.social),
+
   [ResourceEnum.companyRelation]: createCompanyResource(ResourceEnum.relation),
   [ResourceEnum.companyCreationDetails]: createCompanyResource(
     ResourceEnum.creationDetails

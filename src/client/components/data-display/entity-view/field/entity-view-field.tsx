@@ -6,14 +6,24 @@ interface Props {
 }
 export default function EntityViewField({ item, record }: Props) {
   if (!item.key) {
-    throw new Error("Item key is required");
+    console.log(item);
+    console.log(record);
+    throw new Error(`Item key ${item.key} is required`);
   }
   if (!record) {
     throw new Error("Record is required");
   }
 
   if (!record[item.key]) {
-    throw new Error("Record key is required");
+    if (item.key.includes(".")) {
+      const keys = item.key.split(".");
+      if (keys.length === 2) {
+        // @ts-ignore
+        return <div>{record[keys[0]][keys[1]] as string}</div>;
+      }
+    }
+
+    throw new Error(`Record key  is required`);
   }
 
   if (item.render) {

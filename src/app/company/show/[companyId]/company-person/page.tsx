@@ -7,6 +7,10 @@ import React from "react";
 import PersonTable from "@modules/tables/person-table";
 import { StateManager } from "@components/feedback/state-manager/state-manager";
 import { renderHeaderToEntity } from "@client/util/ant/list/renderHeaderToPerson";
+import { useCompanyTitle } from "@client/hooks/titles/use-company-title";
+import EntityTable from "@components/data-display/entity-collection/table/entity-table";
+import { BaseRecord } from "@refinedev/core";
+import { personCompanyFields } from "@lib/fields/person/person-company.fields";
 
 interface Props {
   params: {
@@ -20,27 +24,34 @@ export default function StakeholderPage({ params: { companyId } }: Props) {
       mode: "client",
       pageSize: 10,
     },
-    resource: ResourceEnum.person,
+    resource: ResourceEnum.personCompany,
     syncWithLocation: false,
-    filters: {
-      initial: [
-        {
-          field: "filter",
-          operator: "eq",
-          value: `personCompany.companyId||$eq||${companyId}`,
-        },
-      ],
-    },
+    // filters: {
+    //   initial: [equalFilter("personCompany.companyId", companyId)],
+    // },
   });
 
-  console.log({ tableQueryResult });
+  // 1. Este listado debería mostrar el nombre de la persona.
+  // 2. Debería mostrar le nombre de la companñia
+  // 3. Debería mostrar el tipo de relación entre la persona y la compañía
+  const { title } = useCompanyTitle(companyId, "stakeholder.titles.list");
+  // console.table(tableProps.dataSource[0]);
+  // Traer
+  const navigationItem = {
+    resource: ResourceEnum.companyPerson,
+    createMeta: (record: BaseRecord) => ({
+      companyId,
+      personCompanyId: record.id,
+    }),
+  };
+
   return (
     <StateManager
       isLoading={tableQueryResult.isLoading}
       isError={tableQueryResult.isError}
     >
       <List
-        title={"Stakeholder"}
+        title={title}
         headerButtons={renderHeaderToEntity({
           customButtons: undefined,
           id: companyId,
@@ -48,6 +59,15 @@ export default function StakeholderPage({ params: { companyId } }: Props) {
         })}
       >
         <PersonTable tableProps={tableProps} />
+        <EntityTable
+          columns={personCompanyFields}
+          entityResource={ResourceEnum.personCompany}
+          tableProps={tableProps}
+          navigation={{
+            edit: navigationItem,
+            show: navigationItem,
+          }}
+        />
       </List>
     </StateManager>
   );

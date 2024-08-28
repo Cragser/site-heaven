@@ -611,5 +611,21 @@
       "show": "Contratos",
       "add-relation-to-person": "Agregar contrato"
     }
+  },
+  "stakeholder" : {
+    "titles": {
+      "create": "Crear Stakeholder",
+      "edit": "Editar Stakeholder",
+      "list": "Participaciones en [company.name]",
+      "show": "Stakeholder"
+    },
+    "fields": {
+      "id": "id",
+      "name": "Nombre",
+      "description": "Descripción",
+      "type": "Tipo",
+      "role": "Rol",
+      "notes": "Notas"
+    }
   }
 }

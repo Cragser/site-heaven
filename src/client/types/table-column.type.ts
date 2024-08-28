@@ -5,6 +5,7 @@
 export interface ItemConfig {
   key: string;
   dataIndex: string[];
+  translateKey?: string;
   render?: any;
   enum?: any;
   type?: // | "button"

@@ -30,7 +30,7 @@ export default function CompanyTable({
   });
   return (
     <Table
-      {...(tableProps as any)}
+      {...tableProps}
       rowKey="companyId"
       pagination={{
         ...tableProps.pagination,
