@@ -8,7 +8,6 @@ export default function PersonRelationTypeListPage() {
   return (
     <CreateList
       columns={personRelationTypeFields}
-      entity={"person-relation-type"}
       entityResource={ResourceEnum.personRelationType}
     />
   );
