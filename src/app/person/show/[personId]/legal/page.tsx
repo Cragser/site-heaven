@@ -1,7 +1,7 @@
 "use client";
 
 import { ResourceEnum } from "@lib/enums/resource.enum";
-import CreateParentEntityPage from "@modules/page/create-parent-entity.page";
+import ListParentRelationPage from "@/lib/pages/list/list-parent-relation.page";
 import { legalFields } from "@lib/fields/legal.fields";
 
 interface Props {
@@ -14,7 +14,7 @@ export default function PersonLegalList({
   params: { personId },
 }: Readonly<Props>) {
   return (
-    <CreateParentEntityPage
+    <ListParentRelationPage
       parentId={personId}
       entityResource={ResourceEnum.legal}
       relationResource={ResourceEnum.personLegal}

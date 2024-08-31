@@ -53,7 +53,7 @@ function ListPage({
             });
           }}
         >
-          Crear {entityResource}
+          {translate(`${entityResource}.titles.create`)}
         </Button>
       </Space>
     ) : null;

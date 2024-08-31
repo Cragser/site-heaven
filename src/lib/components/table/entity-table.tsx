@@ -34,7 +34,7 @@ export default function EntityTable({
         size: "small",
       }}
     >
-      {columns.map((item) => {
+      {columns.map((item, index) => {
         const key = item.key ?? item.dataIndex.join(".");
         const translateKey =
           item.translateKey ?? `${entityResource}.fields.${key}`;
@@ -54,7 +54,6 @@ export default function EntityTable({
           const meta = {
             [`${entityCamelCase}Id`]: record[`id`] as string,
           };
-
           return (
             <Space>
               <TableEditButton

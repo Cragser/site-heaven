@@ -2,14 +2,14 @@
 
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import { PersonPageType } from "@page/types/pages/person/person-page.type";
-import CreateParentEntityPage from "@modules/page/create-parent-entity.page";
+import ListParentRelationPage from "@/lib/pages/list/list-parent-relation.page";
 import { educationFields } from "@/app/person/show/[personId]/education/education.fields";
 
 export default function PersonEducationList({
   params: { personId },
 }: Readonly<PersonPageType>) {
   return (
-    <CreateParentEntityPage
+    <ListParentRelationPage
       parentId={personId}
       entityResource={ResourceEnum.education}
       relationResource={ResourceEnum.personEducation}

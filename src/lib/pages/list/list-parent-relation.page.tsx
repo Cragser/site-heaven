@@ -7,10 +7,10 @@ import { useEntityTitle } from "@client/hooks/titles/use-person-title";
 import { StateManager } from "@components/feedback/state-manager/state-manager";
 import { renderHeaderToEntity } from "@client/util/ant/list/renderHeaderToPerson";
 import { Button, Drawer } from "antd";
-import CreateTable from "@modules/tables/create-table-relation";
 import CreateRelationForm from "@modules/forms/relations/create-relation-form";
 import { SectionEntityType } from "@page/types/section-entity.type";
 import { ItemConfig } from "@page/types/table-column.type";
+import RelationTable from "@/lib/components/table/relation-table";
 
 interface Props {
   parentId: string;
@@ -24,7 +24,7 @@ interface Props {
   columns: ItemConfig[];
 }
 
-function CreateParentEntityPage({
+function ListParentRelationPage({
   parentId,
   relationResource,
   parentResource,
@@ -87,7 +87,7 @@ function CreateParentEntityPage({
       isError={tableQueryResult?.isError}
     >
       <List title={title} headerButtons={headerButtons}>
-        <CreateTable
+        <RelationTable
           parent={entityResource}
           parentResource={parentResource}
           entityResource={entityResource}
@@ -120,4 +120,4 @@ function CreateParentEntityPage({
   );
 }
 
-export default CreateParentEntityPage;
+export default ListParentRelationPage;

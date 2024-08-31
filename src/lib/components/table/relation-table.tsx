@@ -19,11 +19,12 @@ interface Props {
   parentResource: ResourceEnum;
   parent: any;
   parentName: SectionEntityType;
-  tableProps: any;
   columns: ItemConfig[];
+
+  tableProps: any;
 }
 
-function CreateTable({
+function RelationTable({
   parent: entity,
   entityResource,
   relationResource,
@@ -36,7 +37,6 @@ function CreateTable({
   const go = useGo();
   const columnsRender = columns.map((item) => {
     const key = item.key ?? item.dataIndex.join(".");
-    // console.log(item);
     return (
       <Table.Column
         key={key}
@@ -109,4 +109,4 @@ function CreateTable({
   );
 }
 
-export default CreateTable;
+export default RelationTable;
