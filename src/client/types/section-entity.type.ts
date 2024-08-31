@@ -1,1 +1,1 @@
-export type SectionEntityType = "person" | "company";
+export type SectionEntityType = "person" | "company" | "government";

@@ -9,6 +9,7 @@ import { ResourceEnum } from "@lib/enums/resource.enum";
 import { StateManager } from "@components/feedback/state-manager/state-manager";
 import { replaceTemplate } from "@client/util/ant/titles/replace-template";
 import DescriptionSimple from "@components/data-display/description/description-simple";
+import CardList from "@modules/card-list";
 
 interface Props {
   params: {
@@ -43,6 +44,12 @@ export default function BlogPostShow({
       <Show title={title} canEdit={false}>
         <DescriptionSimple items={items} />
       </Show>
+      <CardList
+        id={record?.id}
+        parent={"government"}
+        record={record}
+        resources={[]}
+      />
     </StateManager>
   );
 }

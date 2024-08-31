@@ -5,6 +5,7 @@ import { ResourceEnum } from "@lib/enums/resource.enum";
 import { camelCase } from "case-anything";
 
 import { resourceNavigation } from "@client/navigation/resource-navigation";
+import { SectionEntityType } from "@page/types/section-entity.type";
 
 const { Title } = Typography;
 
@@ -18,7 +19,7 @@ interface CardListProps {
   resources: ResourceEnum[];
   uniqueResources?: ResourceEnum[];
   id: string;
-  parent: "person" | "company";
+  parent: SectionEntityType;
   record: any;
 }
 
@@ -38,7 +39,7 @@ function createTitle(resource: string, translate: (key: string) => string) {
 function useCreateData(
   resources: ResourceEnum[],
   id: string,
-  parent: "person" | "company",
+  parent: SectionEntityType,
   record: unknown
 ) {
   const translate = useTranslate();
