@@ -1,6 +1,6 @@
 "use client";
 
-import { CreateForm } from "@modules/forms/generator/create-form";
+import { CreateForm } from "@/lib/pages/create/create-form";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import { governmentFields } from "@lib/fields/government/government.fields";
 

@@ -23,11 +23,7 @@ export default function PersonForm(formProps: Readonly<FormProps>) {
         <Input />
       </Form.Item>
 
-      <Form.Item
-        label={"Nacionalidad"}
-        name="nationality"
-        initialValue={formProps?.initialValues?.nationality?.id}
-      >
+      <Form.Item label={"Nacionalidad"} name={["nationality", "id"]}>
         <Select {...(selectProps as any)} />
       </Form.Item>
       <Form.Item label={"Nombre"} name="name" rules={personAntdValidation.rfc}>

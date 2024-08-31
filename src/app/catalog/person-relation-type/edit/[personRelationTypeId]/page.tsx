@@ -1,7 +1,7 @@
 "use client";
 
 import { ResourceEnum } from "@lib/enums/resource.enum";
-import { EditForm } from "@modules/forms/generator/edit-form";
+import { EditForm } from "@/lib/pages/edit/edit-form";
 import { personRelationTypeFields } from "@lib/fields/person-relation-type.fields";
 
 interface Props {

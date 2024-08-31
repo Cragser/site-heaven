@@ -1,12 +1,12 @@
 "use client";
 
-import CreateList from "@components/data-display/entity-collection/list/create-list";
+import ListPage from "@/lib/pages/list/list-page";
 import { personRelationTypeFields } from "@lib/fields/person-relation-type.fields";
 import { ResourceEnum } from "@/domain/enums/resource.enum";
 
 export default function Page() {
   return (
-    <CreateList
+    <ListPage
       columns={personRelationTypeFields}
       entityResource={ResourceEnum.personRelationType}
     />

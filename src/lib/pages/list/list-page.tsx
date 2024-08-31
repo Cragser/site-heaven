@@ -3,7 +3,7 @@ import { List, useTable } from "@refinedev/antd";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import React from "react";
 import { ItemConfig } from "@page/types/table-column.type";
-import EntityTable from "@components/data-display/entity-collection/table/entity-table";
+import EntityTable from "@/lib/components/table/entity-table";
 import { StateManager } from "@components/feedback/state-manager/state-manager";
 import { Button, Space } from "antd";
 import { useGoTo } from "@client/hooks/navigation/use-go-to";
@@ -21,7 +21,7 @@ export interface CreateListProps {
   };
 }
 
-function CreateList({
+function ListPage({
   entityResource,
   columns,
   navigation,
@@ -76,4 +76,4 @@ function CreateList({
   );
 }
 
-export default CreateList;
+export default ListPage;

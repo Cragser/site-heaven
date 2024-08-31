@@ -1,10 +1,8 @@
-'use client';
+"use client";
 
-import { Edit, useForm } from '@refinedev/antd';
-import { PersonType } from '@lib/types/person.type';
-import { HttpError } from '@refinedev/core';
-import PersonForm from '@modules/forms/person-form';
-import { ResourceEnum } from '@lib/enums/resource.enum';
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { EditForm } from "@/lib/pages/edit/edit-form";
+import { personFields } from "@lib/fields/person/person.fields";
 
 interface Props {
   params: {
@@ -12,15 +10,12 @@ interface Props {
   };
 }
 
-export default function BlogPostEdit({ params: { personId } }: Props) {
-  const { formProps, saveButtonProps } = useForm<PersonType, HttpError>({
-    id: personId,
-    resource: ResourceEnum.person,
-  });
-
+export default function Page({ params: { personId } }: Props) {
   return (
-    <Edit saveButtonProps={saveButtonProps}>
-      <PersonForm {...formProps} />
-    </Edit>
+    <EditForm
+      entityResource={ResourceEnum.person}
+      columns={personFields}
+      id={personId}
+    />
   );
 }
