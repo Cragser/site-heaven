@@ -38,6 +38,7 @@ export default function StakeholderPage({
       <CreateList
         columns={personCompanyTimeFrameFields}
         entityResource={ResourceEnum.personCompanyTimeFrame}
+        defaultNavigation={false}
         navigation={{
           create: {
             resource: ResourceEnum.companyPersonTimeFrame,

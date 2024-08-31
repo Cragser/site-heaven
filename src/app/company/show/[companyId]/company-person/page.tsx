@@ -67,6 +67,7 @@ export default function StakeholderPage({ params: { companyId } }: Props) {
             edit: navigationItem,
             show: navigationItem,
           }}
+          defaultNavigation={false}
         />
       </List>
     </StateManager>

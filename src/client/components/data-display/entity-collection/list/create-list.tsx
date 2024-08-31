@@ -1,4 +1,4 @@
-import { BaseRecord, useTranslate } from "@refinedev/core";
+import { useTranslate } from "@refinedev/core";
 import { List, useTable } from "@refinedev/antd";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import React from "react";
@@ -7,14 +7,12 @@ import EntityTable from "@components/data-display/entity-collection/table/entity
 import { StateManager } from "@components/feedback/state-manager/state-manager";
 import { Button, Space } from "antd";
 import { useGoTo } from "@client/hooks/navigation/use-go-to";
+import { Navigation } from "@components/data-display/entity-collection/types/navigation.type";
 
-interface Navigation {
-  resource: ResourceEnum | false;
-  createMeta?: (record: BaseRecord) => Record<string, any>;
-}
 export interface CreateListProps {
   entityResource: ResourceEnum;
   columns: ItemConfig[];
+  defaultNavigation?: boolean;
   navigation?: {
     edit?: Navigation;
     show?: Navigation;
@@ -23,7 +21,12 @@ export interface CreateListProps {
   };
 }
 
-function CreateList({ entityResource, columns, navigation }: CreateListProps) {
+function CreateList({
+  entityResource,
+  columns,
+  navigation,
+  defaultNavigation = true,
+}: CreateListProps) {
   const { tableProps, tableQueryResult } = useTable({
     pagination: {
       current: 1,
@@ -38,21 +41,22 @@ function CreateList({ entityResource, columns, navigation }: CreateListProps) {
   const goTo = useGoTo();
   const title = translate(`${entityResource}.titles.list`);
 
-  const createButton = navigation?.create ? (
-    <Space>
-      <Button
-        onClick={() => {
-          goTo({
-            action: "create",
-            resource: navigation?.create?.resource || entityResource,
-            meta: navigation?.create?.createMeta?.({}) || {},
-          });
-        }}
-      >
-        Crear {entityResource}
-      </Button>
-    </Space>
-  ) : null;
+  const createButton =
+    defaultNavigation || navigation?.create ? (
+      <Space>
+        <Button
+          onClick={() => {
+            goTo({
+              action: "create",
+              resource: navigation?.create?.resource || entityResource,
+              meta: navigation?.create?.createMeta?.({}) || {},
+            });
+          }}
+        >
+          Crear {entityResource}
+        </Button>
+      </Space>
+    ) : null;
 
   return (
     <StateManager
@@ -65,6 +69,7 @@ function CreateList({ entityResource, columns, navigation }: CreateListProps) {
           entityResource={entityResource}
           columns={columns}
           navigation={navigation}
+          defaultNavigation={defaultNavigation}
         />
       </List>
     </StateManager>
