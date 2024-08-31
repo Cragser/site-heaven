@@ -69,4 +69,7 @@ export enum ResourceEnum {
   contract = "contract",
   // custom
   stakeholder = "stakeholder",
+
+  //
+  government = "government",
 }

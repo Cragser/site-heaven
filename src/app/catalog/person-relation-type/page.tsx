@@ -4,7 +4,7 @@ import CreateList from "@components/data-display/entity-collection/list/create-l
 import { personRelationTypeFields } from "@lib/fields/person-relation-type.fields";
 import { ResourceEnum } from "@/domain/enums/resource.enum";
 
-export default function PersonRelationTypeListPage() {
+export default function Page() {
   return (
     <CreateList
       columns={personRelationTypeFields}

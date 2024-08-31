@@ -1,7 +1,7 @@
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import { ResourceProps } from "@refinedev/core";
 import { generateCrudSimple } from "@client/util/ant/resources/generate-crud-simple";
-import { ShopOutlined, UserOutlined } from "@ant-design/icons";
+import { BankOutlined, ShopOutlined, UserOutlined } from "@ant-design/icons";
 import { personResources } from "@client/navigation/person-resources";
 import { companyResources } from "@client/navigation/company-resources";
 
@@ -24,6 +24,13 @@ export const resourceNavigation: Partial<Record<ResourceEnum, ResourceProps>> =
     ),
     ...personResources,
 
+    [ResourceEnum.government]: generateCrudSimple(
+      ResourceEnum.government,
+      <BankOutlined
+        onPointerEnterCapture={undefined}
+        onPointerLeaveCapture={undefined}
+      />
+    ),
     // TODO: COMPANY-RELATION
 
     [ResourceEnum.stakeholder]: {
