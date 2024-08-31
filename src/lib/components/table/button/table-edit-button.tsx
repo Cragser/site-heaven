@@ -19,7 +19,7 @@ export default function TableEditButton({
   record,
   meta,
 }: Props) {
-  if (defaultNavigation === false && !navigation) {
+  if (!defaultNavigation && !navigation) {
     console.log("defaultNavigation is false and navigation is undefined");
     return null;
   }

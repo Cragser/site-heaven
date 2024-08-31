@@ -3,11 +3,12 @@ import { ItemConfig } from "@page/types/table-column.type";
 import { useTranslate } from "@refinedev/core";
 import { Form, Input, Select } from "antd";
 import { ResourceEnum } from "@lib/enums/resource.enum";
+import SelectItem from "@/lib/mutate/form-item/select-item";
 
 function switchRender(
   column: ItemConfig,
   translate: Function,
-  resource?: ResourceEnum
+  resource: ResourceEnum
 ): ReactNode {
   if (column.enum !== undefined) {
     return (
@@ -24,6 +25,10 @@ function switchRender(
         </Select>
       </Form.Item>
     );
+  }
+
+  if (column?.type === "autocomplete") {
+    return <SelectItem column={column} resource={resource} />;
   }
 
   if (column?.type === "textarea") {
@@ -49,7 +54,7 @@ function switchRender(
 
 export function useCreateFields(
   fields: ItemConfig[],
-  resource?: ResourceEnum
+  resource: ResourceEnum
 ): ReactNode[] {
   const translate = useTranslate();
   return fields.map((column) => (

@@ -1,19 +1,15 @@
-'use client';
+"use client";
 
-import { Create, useForm } from '@refinedev/antd';
-import { HttpError } from '@refinedev/core';
-import { PersonType } from '@lib/types/person.type';
-import PersonForm from '@modules/forms/person-form';
-import { ResourceEnum } from '@lib/enums/resource.enum';
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { CreateForm } from "@/lib/pages/create/create-form";
+import { personFields } from "@lib/fields/person/person.fields";
 
-export default function BlogPostCreate() {
-  const { formProps, saveButtonProps } = useForm<PersonType, HttpError>({
-    resource: ResourceEnum.person,
-  });
-
+export default function Page() {
   return (
-    <Create saveButtonProps={saveButtonProps}>
-      <PersonForm {...formProps} />
-    </Create>
+    <CreateForm
+      columns={personFields}
+      entityResource={ResourceEnum.person}
+      title="Create Person"
+    />
   );
 }

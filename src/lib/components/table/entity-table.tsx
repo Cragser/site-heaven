@@ -5,9 +5,9 @@ import { DeleteButton } from "@refinedev/antd";
 import React from "react";
 import { camelCase } from "case-anything";
 import { useGoTo } from "@client/hooks/navigation/use-go-to";
-import { CreateListProps } from "@components/data-display/entity-collection/list/create-list";
-import TableEditButton from "@components/data-display/entity-collection/table/button/table-edit-button";
-import TableShowButton from "@components/data-display/entity-collection/table/button/table-show-button";
+import { CreateListProps } from "@/lib/pages/list/list-page";
+import TableEditButton from "@/lib/components/table/button/table-edit-button";
+import TableShowButton from "@/lib/components/table/button/table-show-button";
 
 export interface EntityTableProps extends CreateListProps {
   tableProps: any;

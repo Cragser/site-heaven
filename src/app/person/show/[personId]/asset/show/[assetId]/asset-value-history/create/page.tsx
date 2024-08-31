@@ -1,7 +1,7 @@
 "use client";
 
 import { ResourceEnum } from "@lib/enums/resource.enum";
-import { CreateForm } from "@modules/forms/generator/create-form";
+import { CreateForm } from "@/lib/pages/create/create-form";
 import { assetValueHistoryField } from "@lib/fields/asset/asset-value-history.field";
 import { useAssetTitle } from "@client/hooks/titles/use-asset-title";
 

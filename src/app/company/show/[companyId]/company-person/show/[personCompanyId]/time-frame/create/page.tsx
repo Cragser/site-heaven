@@ -1,6 +1,6 @@
 "use client";
 
-import { CreateForm } from "@modules/forms/generator/create-form";
+import { CreateForm } from "@/lib/pages/create/create-form";
 import { personCompanyTimeFrameFields } from "@lib/fields/person/person-company-time-frame.fields";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 
@@ -12,7 +12,7 @@ interface Props {
 }
 
 export default function CompanyPersonTimeFrameCreatePage({
-  params: { companyId, personCompanyId },
+  params: { personCompanyId },
 }: Props) {
   return (
     <CreateForm

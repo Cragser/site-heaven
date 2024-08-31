@@ -6,7 +6,7 @@ import { StateManager } from "@components/feedback/state-manager/state-manager";
 import { HttpError, useShow } from "@refinedev/core";
 import { personCompanyFields } from "@lib/fields/person/person-company.fields";
 import { Divider } from "antd";
-import CreateList from "@components/data-display/entity-collection/list/create-list";
+import ListPage from "@/lib/pages/list/list-page";
 import { personCompanyTimeFrameFields } from "@lib/fields/person/person-company-time-frame.fields";
 
 interface Props {
@@ -35,14 +35,14 @@ export default function StakeholderPage({
         record={queryResult.data?.data}
       />
       <Divider />
-      <CreateList
+      <ListPage
         columns={personCompanyTimeFrameFields}
         entityResource={ResourceEnum.personCompanyTimeFrame}
         defaultNavigation={false}
         navigation={{
           create: {
             resource: ResourceEnum.companyPersonTimeFrame,
-            createMeta: (record) => ({
+            createMeta: () => ({
               companyId,
               personCompanyId,
             }),

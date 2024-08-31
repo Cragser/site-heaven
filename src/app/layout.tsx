@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
   },
-  title: "Refine",
+  title: "Formel",
 };
 
 export default function RootLayout({

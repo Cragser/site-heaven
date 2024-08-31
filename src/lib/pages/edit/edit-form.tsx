@@ -1,19 +1,17 @@
-import { ResourceEnum } from "@lib/enums/resource.enum";
-import { ItemConfig } from "@page/types/table-column.type";
 import { Form } from "antd";
-import { useCreateFields } from "@client/util/fields/use-create-fields";
+import { useCreateFields } from "@/lib/mutate/hooks/use-create-fields";
 import { Edit, useForm } from "@refinedev/antd";
 import { HttpError } from "@refinedev/core";
-import createHiddenFields from "@client/util/fields/create-hidden-fields";
+import createHiddenFields from "@/lib/mutate/util/create-hidden-fields";
+import { MutationPageType } from "@/lib/pages/types/mutation-page.type";
 
-interface Props {
-  entityResource: ResourceEnum;
-  columns: ItemConfig[];
-  id: string;
-  meta?: Record<string, string>;
-  title?: string;
-}
-export function EditForm({ columns, entityResource, id, meta, title }: Props) {
+export function EditForm({
+  columns,
+  entityResource,
+  id,
+  meta,
+  title,
+}: MutationPageType) {
   const { formProps, saveButtonProps } = useForm<any, HttpError>({
     resource: entityResource,
     action: "edit",
