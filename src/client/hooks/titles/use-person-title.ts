@@ -33,9 +33,14 @@ export const useEntityTitle = (
   parent: SectionEntityType
 ) => {
   const translate = useTranslate();
+  const sectionMap = {
+    person: ResourceEnum.person,
+    company: ResourceEnum.company,
+    government: ResourceEnum.government,
+  };
   const { data: entity } = useOne({
     id: entityId,
-    resource: parent === "person" ? ResourceEnum.person : ResourceEnum.company,
+    resource: sectionMap[parent],
   });
 
   return {

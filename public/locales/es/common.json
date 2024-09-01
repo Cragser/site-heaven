@@ -190,6 +190,12 @@
       "contractor": "contractor",
       "notes": "notes",
       "value": "value"
+    },
+    "titles": {
+      "create": "Crear contrato",
+        "edit": "Editar contrato",
+        "list": "Contratos",
+        "show": "Mostrar contrato"
     }
   },
   "company-address": {

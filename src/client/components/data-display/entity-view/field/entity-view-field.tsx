@@ -23,6 +23,10 @@ export default function EntityViewField({ item, record }: Props) {
       }
     }
 
+    if (record.hasOwnProperty(item.key)) {
+      return <div>{record[item.key] as string}</div>;
+    }
+
     throw new Error(`Record key  is required`);
   }
 

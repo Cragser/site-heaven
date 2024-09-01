@@ -2,20 +2,20 @@
 
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import ListParentRelationPage from "@/lib/pages/list/list-parent-relation.page";
-import { contractFields } from "@lib/fields/contract/contract.fields";
+import { auditFields } from "@lib/fields/audit/audit.fields";
 import { GovernmentPageType } from "@page/types/pages/government/government-page.type";
 
-export default function PersonList({
+export default function Page({
   params: { governmentId },
 }: Readonly<GovernmentPageType>) {
   return (
     <ListParentRelationPage
       parentId={governmentId}
-      entityResource={ResourceEnum.contract}
-      relationResource={ResourceEnum.governmentContract}
+      entityResource={ResourceEnum.audit}
+      relationResource={ResourceEnum.governmentAudit}
       parentResource={ResourceEnum.government}
       parent="government"
-      columns={contractFields}
+      columns={auditFields}
     />
   );
 }

@@ -10,4 +10,7 @@ export const governmentResources: Partial<Record<ResourceEnum, ResourceProps>> =
     [ResourceEnum.governmentContract]: createGovernmentResource(
       ResourceEnum.contract
     ),
+    [ResourceEnum.governmentAudit]: createGovernmentResource(
+      ResourceEnum.audit
+    ),
   };

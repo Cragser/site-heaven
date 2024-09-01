@@ -48,7 +48,10 @@ export default function BlogPostShow({
         id={record?.id}
         parent={"government"}
         record={record}
-        resources={[ResourceEnum.governmentContract]}
+        resources={[
+          ResourceEnum.governmentContract,
+          ResourceEnum.governmentAudit,
+        ]}
       />
     </StateManager>
   );

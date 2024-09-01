@@ -73,4 +73,5 @@ export enum ResourceEnum {
   //
   government = "government",
   governmentContract = "government-contract",
+  governmentAudit = "government-audit",
 }
