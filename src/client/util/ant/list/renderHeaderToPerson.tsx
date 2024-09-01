@@ -66,8 +66,16 @@ const CustomHeader = ({
 }: CustomHeaderProps) => {
   const getToPath = useGetToPath();
   const go = useGo();
-  const selectedResource =
-    parent === "person" ? ResourceEnum.person : ResourceEnum.company;
+  const mapSelectedResource = {
+    person: ResourceEnum.person,
+    company: ResourceEnum.company,
+    government: ResourceEnum.government,
+  };
+  const selectedResource = mapSelectedResource[parent];
+  if (!selectedResource) {
+    throw new Error(`Resource ${parent} not found`);
+  }
+
   const url: string = getToPath({
     action: "show",
     meta: { id: id },
@@ -78,7 +86,12 @@ const CustomHeader = ({
     go({ to: url });
   };
 
-  const label = parent === "person" ? "persona" : "empresa";
+  const mapLabel = {
+    person: "persona",
+    company: "empresa",
+    government: "gobierno",
+  };
+  const label = mapLabel[parent];
   return (
     <Space>
       <Button type={"link"} onClick={handleClick}>

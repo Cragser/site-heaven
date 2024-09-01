@@ -4,6 +4,7 @@ import { generateCrudSimple } from "@client/util/ant/resources/generate-crud-sim
 import { BankOutlined, ShopOutlined, UserOutlined } from "@ant-design/icons";
 import { personResources } from "@client/navigation/person-resources";
 import { companyResources } from "@client/navigation/company-resources";
+import { governmentResources } from "@client/navigation/government-resources";
 
 export const resourceNavigation: Partial<Record<ResourceEnum, ResourceProps>> =
   {
@@ -31,6 +32,7 @@ export const resourceNavigation: Partial<Record<ResourceEnum, ResourceProps>> =
         onPointerLeaveCapture={undefined}
       />
     ),
+    ...governmentResources,
     // TODO: COMPANY-RELATION
 
     [ResourceEnum.stakeholder]: {
