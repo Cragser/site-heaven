@@ -3,7 +3,7 @@
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import { PersonPageType } from "@page/types/pages/person/person-page.type";
 import ListParentRelationPage from "@/lib/pages/list/list-parent-relation.page";
-import { educationFields } from "@/app/person/show/[personId]/education/education.fields";
+import { educationFields } from "@lib/fields/education/education.fields";
 
 export default function PersonEducationList({
   params: { personId },

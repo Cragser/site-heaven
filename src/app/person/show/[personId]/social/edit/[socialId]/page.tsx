@@ -2,23 +2,23 @@
 
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import { EditFormPage } from "@/lib/pages/edit/edit-form.page";
-import { addressFields } from "@lib/fields/address/address.fields";
+import { socialFields } from "@lib/fields/social/social.fields";
 
 interface Props {
   params: {
     personId: string;
-    addressId: string;
+    socialId: string;
   };
 }
 
-export default function AddressEditPage({
-  params: { addressId },
+export default function SocialEditPage({
+  params: { socialId },
 }: Readonly<Props>) {
   return (
     <EditFormPage
-      entityResource={ResourceEnum.address}
-      columns={addressFields}
-      id={addressId}
+      entityResource={ResourceEnum.social}
+      columns={socialFields}
+      id={socialId}
     />
   );
 }

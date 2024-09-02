@@ -5,7 +5,7 @@ import { HttpError } from "@refinedev/core";
 import createHiddenFields from "@/lib/mutate/util/create-hidden-fields";
 import { MutationPageType } from "@/lib/pages/types/mutation-page.type";
 
-export function EditForm({
+export function EditFormPage({
   columns,
   entityResource,
   id,

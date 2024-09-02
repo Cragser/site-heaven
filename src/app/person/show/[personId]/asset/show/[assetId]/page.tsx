@@ -7,7 +7,7 @@ import { ResourceEnum } from "@lib/enums/resource.enum";
 import { AssetType } from "@lib/types/asset.type";
 import { AssetValueHistoryList } from "@modules/lists/asset-value-history-list";
 import EntityView from "@components/data-display/entity-view/entity-view";
-import { assetField } from "@lib/fields/asset/asset.field";
+import { assetFields } from "@lib/fields/asset/assetFields";
 
 interface Props {
   params: {
@@ -16,7 +16,7 @@ interface Props {
   };
 }
 
-export default function AssetShowPage({ params: { assetId } }: any) {
+export default function AssetShowPage({ params: { assetId } }: Props) {
   const { queryResult } = useShow<AssetType, HttpError>({
     id: assetId,
     resource: ResourceEnum.asset,
@@ -32,7 +32,7 @@ export default function AssetShowPage({ params: { assetId } }: any) {
   return (
     <Show isLoading={isLoading}>
       <EntityView
-        items={assetField}
+        items={assetFields}
         resource={ResourceEnum.asset}
         record={record}
       />

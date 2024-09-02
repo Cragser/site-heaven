@@ -1,7 +1,7 @@
 "use client";
 
 import { ResourceEnum } from "@lib/enums/resource.enum";
-import { EditForm } from "@/lib/pages/edit/edit-form";
+import { EditFormPage } from "@/lib/pages/edit/edit-form.page";
 import { personFields } from "@lib/fields/person/person.fields";
 
 interface Props {
@@ -12,7 +12,7 @@ interface Props {
 
 export default function Page({ params: { personId } }: Props) {
   return (
-    <EditForm
+    <EditFormPage
       entityResource={ResourceEnum.person}
       columns={personFields}
       id={personId}

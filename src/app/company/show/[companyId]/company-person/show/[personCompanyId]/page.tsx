@@ -8,6 +8,7 @@ import { personCompanyFields } from "@lib/fields/person/person-company.fields";
 import { Divider } from "antd";
 import ListPage from "@/lib/pages/list/list-page";
 import { personCompanyTimeFrameFields } from "@lib/fields/person/person-company-time-frame.fields";
+import { Show } from "@refinedev/antd";
 
 interface Props {
   params: {
@@ -29,26 +30,28 @@ export default function StakeholderPage({
       isLoading={queryResult.isLoading}
       isError={queryResult.isError}
     >
-      <EntityView
-        items={personCompanyFields}
-        resource={ResourceEnum.personCompany}
-        record={queryResult.data?.data}
-      />
-      <Divider />
-      <ListPage
-        columns={personCompanyTimeFrameFields}
-        entityResource={ResourceEnum.personCompanyTimeFrame}
-        defaultNavigation={false}
-        navigation={{
-          create: {
-            resource: ResourceEnum.companyPersonTimeFrame,
-            createMeta: () => ({
-              companyId,
-              personCompanyId,
-            }),
-          },
-        }}
-      />
+      <Show canEdit={false}>
+        <EntityView
+          items={personCompanyFields}
+          resource={ResourceEnum.personCompany}
+          record={queryResult.data?.data}
+        />
+        <Divider />
+        <ListPage
+          columns={personCompanyTimeFrameFields}
+          entityResource={ResourceEnum.personCompanyTimeFrame}
+          defaultNavigation={false}
+          navigation={{
+            create: {
+              resource: ResourceEnum.companyPersonTimeFrame,
+              createMeta: () => ({
+                companyId,
+                personCompanyId,
+              }),
+            },
+          }}
+        />
+      </Show>
     </StateManager>
   );
 }

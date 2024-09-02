@@ -50,9 +50,10 @@ export default function TableShowButton({
       hideText
       size="middle"
       onClick={() => {
+        console.log(navigation?.resource);
         goTo({
           resource: navigation?.resource,
-          action: "edit",
+          action: "show",
           meta: navigation?.createMeta?.(record) ?? meta,
         });
       }}

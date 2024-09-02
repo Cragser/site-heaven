@@ -4,7 +4,6 @@
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import { List, useTable } from "@refinedev/antd";
 import React from "react";
-import PersonTable from "@modules/tables/person-table";
 import { StateManager } from "@components/feedback/state-manager/state-manager";
 import { renderHeaderToEntity } from "@client/util/ant/list/renderHeaderToPerson";
 import { useCompanyTitle } from "@client/hooks/titles/use-company-title";
@@ -31,12 +30,8 @@ export default function StakeholderPage({ params: { companyId } }: Props) {
     // },
   });
 
-  // 1. Este listado debería mostrar el nombre de la persona.
-  // 2. Debería mostrar le nombre de la companñia
-  // 3. Debería mostrar el tipo de relación entre la persona y la compañía
   const { title } = useCompanyTitle(companyId, "stakeholder.titles.list");
-  // console.table(tableProps.dataSource[0]);
-  // Traer
+
   const navigationItem = {
     resource: ResourceEnum.companyPerson,
     createMeta: (record: BaseRecord) => ({
@@ -58,7 +53,6 @@ export default function StakeholderPage({ params: { companyId } }: Props) {
           parent: "company",
         })}
       >
-        <PersonTable tableProps={tableProps} />
         <EntityTable
           columns={personCompanyFields}
           entityResource={ResourceEnum.personCompany}

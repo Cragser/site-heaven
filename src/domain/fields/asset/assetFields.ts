@@ -3,12 +3,16 @@ import { tagRender } from "@client/util/ant/fields/tagRender";
 import { dateRender } from "@client/util/ant/fields/dateRender";
 import { createItemConfig } from "@client/util/fields/create-columns-from-array";
 
-export const assetField: ItemConfig[] = [
+export const assetFields: ItemConfig[] = [
   createItemConfig("name"),
-  createItemConfig("description"),
+  {
+    ...createItemConfig("description"),
+    type: "textarea",
+  },
   {
     ...createItemConfig("date"),
     render: dateRender,
+    type: "date",
   },
   {
     ...createItemConfig("type"),

@@ -1,7 +1,7 @@
 "use client";
 
 import { ResourceEnum } from "@lib/enums/resource.enum";
-import { EditForm } from "@/lib/pages/edit/edit-form";
+import { EditFormPage } from "@/lib/pages/edit/edit-form.page";
 import { observationFields } from "@lib/fields/observation.fields";
 
 interface Props {
@@ -14,7 +14,7 @@ export default function ContractEditPage({
   params: { observationId },
 }: Readonly<Props>) {
   return (
-    <EditForm
+    <EditFormPage
       entityResource={ResourceEnum.observation}
       columns={observationFields}
       id={observationId}

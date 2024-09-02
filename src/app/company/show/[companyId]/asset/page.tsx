@@ -3,7 +3,7 @@
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import ListParentRelationPage from "@/lib/pages/list/list-parent-relation.page";
 import { CompanyPageType } from "@page/types/company-and-child-page.type";
-import { assetField } from "@lib/fields/asset/asset.field";
+import { assetFields } from "@lib/fields/asset/assetFields";
 
 export default function PersonList({
   params: { companyId },
@@ -15,7 +15,7 @@ export default function PersonList({
       relationResource={ResourceEnum.companyAsset}
       parentResource={ResourceEnum.company}
       parent="company"
-      columns={assetField}
+      columns={assetFields}
     />
   );
 }

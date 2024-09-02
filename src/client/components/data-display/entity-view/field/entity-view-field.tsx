@@ -6,8 +6,6 @@ interface Props {
 }
 export default function EntityViewField({ item, record }: Props) {
   if (!item.key) {
-    console.log(item);
-    console.log(record);
     throw new Error(`Item key ${item.key} is required`);
   }
   if (!record) {
@@ -17,6 +15,7 @@ export default function EntityViewField({ item, record }: Props) {
   if (!record[item.key]) {
     if (item.key.includes(".")) {
       const keys = item.key.split(".");
+
       if (keys.length === 2) {
         // @ts-ignore
         return <div>{record[keys[0]][keys[1]] as string}</div>;
@@ -26,6 +25,8 @@ export default function EntityViewField({ item, record }: Props) {
     if (record.hasOwnProperty(item.key)) {
       return <div>{record[item.key] as string}</div>;
     }
+
+    console.log({ item, record });
 
     throw new Error(`Record key  is required`);
   }

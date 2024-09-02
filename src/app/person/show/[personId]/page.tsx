@@ -63,15 +63,15 @@ export default function BlogPostShow({
           parent={"person"}
           record={record}
           resources={[
-            ResourceEnum.personCompany,
             ResourceEnum.personAddress,
             ResourceEnum.personAsset,
             ResourceEnum.personCareer,
+            ResourceEnum.personCompany,
+            ResourceEnum.personContract,
             ResourceEnum.personEducation,
             ResourceEnum.personLegal,
             ResourceEnum.personRelation,
             ResourceEnum.personSocial,
-            ResourceEnum.personContract,
           ]}
         />
       </Show>

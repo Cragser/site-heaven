@@ -516,7 +516,7 @@
       "add-relation-to-company": "Añadir a sociedad",
       "create": "Añadir participación de [person.name person.lastName (person.rfc)] en una sociedad",
       "edit": "Editar red social",
-      "list": "Redes sociales y presencia web de [person.name person.lastName (person.rfc)]",
+      "list": "Empresas asociadas",
       "show": "Mostrar redes sociales"
     }
   },

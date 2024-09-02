@@ -1,7 +1,7 @@
 "use client";
 
 import { ResourceEnum } from "@lib/enums/resource.enum";
-import { EditForm } from "@/lib/pages/edit/edit-form";
+import { EditFormPage } from "@/lib/pages/edit/edit-form.page";
 import { assetValueHistoryField } from "@lib/fields/asset/asset-value-history.field";
 import { useAssetTitle } from "@client/hooks/titles/use-asset-title";
 
@@ -18,7 +18,7 @@ export default function AssetValueHistoryEditPage({
 }: Props) {
   const { title } = useAssetTitle(assetId, "asset-value-history.titles.create");
   return (
-    <EditForm
+    <EditFormPage
       entityResource={ResourceEnum.assetValueHistory}
       columns={assetValueHistoryField}
       meta={{ assetId }}

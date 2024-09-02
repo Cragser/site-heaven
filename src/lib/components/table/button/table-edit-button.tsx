@@ -46,10 +46,14 @@ export default function TableEditButton({
   }
 
   return (
+    //http://localhost:3000/
+    // company/show/151c5429-ed52-4297-960a-e64803af49ce/
+    // company-person/edit/4610c169-c0c5-462c-aea2-2c71201b782d
     <EditButton
       hideText
       size="middle"
       onClick={() => {
+        console.log(navigation?.resource);
         goTo({
           resource: navigation?.resource,
           action: "edit",
