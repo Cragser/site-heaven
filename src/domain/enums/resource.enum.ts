@@ -74,4 +74,6 @@ export enum ResourceEnum {
   government = "government",
   governmentContract = "government-contract",
   governmentAudit = "government-audit",
+  observation = "observation",
+  governmentObservation = "government-observation",
 }

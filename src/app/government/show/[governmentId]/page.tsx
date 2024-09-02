@@ -51,6 +51,7 @@ export default function BlogPostShow({
         resources={[
           ResourceEnum.governmentContract,
           ResourceEnum.governmentAudit,
+          ResourceEnum.governmentObservation,
         ]}
       />
     </StateManager>
