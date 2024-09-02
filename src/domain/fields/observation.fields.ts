@@ -19,5 +19,3 @@ export const observationFields: ItemConfig[] = [
     type: "textarea",
   },
 ];
-// observationtId
-// observationId
