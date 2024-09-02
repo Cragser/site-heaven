@@ -18,7 +18,7 @@ export default function SelectItem({ column, resource }: Props) {
   return (
     <Form.Item
       label={translate(`${resource}.fields.${column.key}`)}
-      name={column.dataIndex}
+      name={column.selectDataIndex}
     >
       <Select {...(selectProps as any)} />
     </Form.Item>
