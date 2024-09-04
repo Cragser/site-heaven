@@ -4,7 +4,14 @@ import { tagRender } from "@client/util/ant/fields/tagRender";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 //
 export const personFields: ItemConfig[] = [
-  ...createColumnsFromArray(["name", "lastName", "rfc", "curp", "nss"]),
+  ...createColumnsFromArray([
+    "name",
+    "firstName",
+    "lastName",
+    "rfc",
+    "curp",
+    "nss",
+  ]),
   {
     dataIndex: ["nationality", "name"],
     selectDataIndex: ["nationality", "id"],

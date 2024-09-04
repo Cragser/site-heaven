@@ -52,7 +52,14 @@ function ListPage({
         });
       } else if (initialFilter) {
         filters.push(...initialFilter);
+      } else {
+        filters.push({
+          field: "filter",
+          operator: "eq",
+          value: `name||$ne||NULL` as string,
+        });
       }
+      // should return filters and reload
       return filters;
     },
   });
