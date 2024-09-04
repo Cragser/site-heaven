@@ -1,12 +1,8 @@
 "use client";
 
-import { Show, TextField } from "@refinedev/antd";
-import { HttpError, useShow, useTranslate } from "@refinedev/core";
-import { Divider, Typography } from "antd";
 import { ResourceEnum } from "@lib/enums/resource.enum";
-import { AssetType } from "@lib/types/asset.type";
-
-const { Title } = Typography;
+import ShowEntityPage from "@/lib/pages/show/show-entity.page";
+import { auditFields } from "@lib/fields/audit/audit.fields";
 
 interface Props {
   params: {
@@ -14,29 +10,12 @@ interface Props {
   };
 }
 
-export default function AssetShowPage({ params: { auditId } }: Props) {
-  const { queryResult } = useShow<AssetType, HttpError>({
-    id: auditId,
-    resource: ResourceEnum.audit,
-  });
-
-  const { data, isError, isLoading } = queryResult;
-  const record = data?.data;
-  const translate = useTranslate();
-
-  if (isError || !record) {
-    return null;
-  }
-
+export default function Page({ params: { auditId } }: Props) {
   return (
-    <Show isLoading={isLoading}>
-      <Title level={5}>{translate(`audit.fields.name`)}</Title>
-      <TextField value={record.name} />
-
-      <Title level={5}>{translate(`audit.fields.notes`)}</Title>
-      <TextField value={record.notes} />
-
-      <Divider />
-    </Show>
+    <ShowEntityPage
+      fields={auditFields}
+      resource={ResourceEnum.audit}
+      id={auditId}
+    />
   );
 }

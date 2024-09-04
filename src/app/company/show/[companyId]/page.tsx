@@ -61,12 +61,12 @@ export default function CompanyShowPage({
           record={record}
           resources={[
             ResourceEnum.companyAddress,
-            ResourceEnum.companySocial,
             ResourceEnum.companyAsset,
-            ResourceEnum.companyRelation,
             ResourceEnum.companyAudit,
             ResourceEnum.companyContract,
             ResourceEnum.companyLegal,
+            ResourceEnum.companyRelation,
+            ResourceEnum.companySocial,
             // ResourceEnum.personCompany,
           ]}
         />

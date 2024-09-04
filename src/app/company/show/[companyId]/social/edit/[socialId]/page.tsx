@@ -1,10 +1,8 @@
-'use client';
+"use client";
 
-import { Edit, useForm } from '@refinedev/antd';
-import { HttpError } from '@refinedev/core';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { CompanyType } from '@lib/types/company.type';
-import SocialForm from '@modules/forms/social-form';
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { EditFormPage } from "@/lib/pages/edit/edit-form.page";
+import { socialFields } from "@lib/fields/social/social.fields";
 
 interface Props {
   params: {
@@ -12,16 +10,14 @@ interface Props {
   };
 }
 
-export default function CompanyEditPage(props: Readonly<Props>) {
-  const id = props.params.socialId;
-  const { formProps, saveButtonProps } = useForm<CompanyType, HttpError>({
-    id,
-    resource: ResourceEnum.social,
-  });
-
+export default function CompanyEditPage({
+  params: { socialId },
+}: Readonly<Props>) {
   return (
-    <Edit saveButtonProps={saveButtonProps}>
-      <SocialForm {...formProps} />
-    </Edit>
+    <EditFormPage
+      entityResource={ResourceEnum.social}
+      columns={socialFields}
+      id={socialId}
+    />
   );
 }

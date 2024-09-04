@@ -1,31 +1,22 @@
-'use client';
+"use client";
 
-import { Create, useForm } from '@refinedev/antd';
-import { HttpError } from '@refinedev/core';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { useCreate } from '@refinedev/core';
-import { CompanyPageType } from '@page/types/company-and-child-page.type';
-import { AssetType } from '@lib/types/asset.type';
-import AssetForm from '@modules/forms/asset-form';
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { CompanyPageType } from "@page/types/company-and-child-page.type";
+import CreateRelationPage from "@/lib/pages/create/create-relation.page";
+import { assetFields } from "@lib/fields/asset/assetFields";
 
 export default function Page({
   params: { companyId },
 }: Readonly<CompanyPageType>) {
-  const { mutate } = useCreate();
-  const { formProps, saveButtonProps } = useForm<AssetType, HttpError>({
-    onMutationSuccess: (data) => {
-      const id = data.data?.id;
-      mutate({
-        resource: ResourceEnum.companyAsset,
-        values: { assetId: id, companyId: companyId },
-      });
-    },
-    resource: ResourceEnum.asset,
-  });
-
   return (
-    <Create saveButtonProps={saveButtonProps}>
-      <AssetForm {...formProps} />
-    </Create>
+    <CreateRelationPage
+      parentId={companyId}
+      parentName="company"
+      parentSection="company"
+      parentResource={ResourceEnum.company}
+      entityResource={ResourceEnum.asset}
+      relationResource={ResourceEnum.companyAsset}
+      fields={assetFields}
+    />
   );
 }

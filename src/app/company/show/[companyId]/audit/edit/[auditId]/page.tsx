@@ -1,9 +1,8 @@
 "use client";
 
-import { Edit, useForm } from "@refinedev/antd";
-import { HttpError } from "@refinedev/core";
 import { ResourceEnum } from "@lib/enums/resource.enum";
-import AuditForm from "@modules/forms/audit-form";
+import { EditFormPage } from "@/lib/pages/edit/edit-form.page";
+import { auditFields } from "@lib/fields/audit/audit.fields";
 
 interface Props {
   params: {
@@ -12,17 +11,14 @@ interface Props {
   };
 }
 
-export default function AssetEditPage(props: Readonly<Props>) {
-  const id = props?.params?.auditId;
-  const { formProps, saveButtonProps } = useForm<any, HttpError>({
-    id,
-    resource: ResourceEnum.audit,
-    action: "edit",
-  });
-
+export default function AssetEditPage({
+  params: { auditId },
+}: Readonly<Props>) {
   return (
-    <Edit saveButtonProps={saveButtonProps}>
-      <AuditForm {...formProps} />
-    </Edit>
+    <EditFormPage
+      entityResource={ResourceEnum.audit}
+      columns={auditFields}
+      id={auditId}
+    />
   );
 }

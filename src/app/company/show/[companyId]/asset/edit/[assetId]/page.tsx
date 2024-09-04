@@ -1,10 +1,8 @@
-'use client';
+"use client";
 
-import { Edit, useForm } from '@refinedev/antd';
-import { HttpError } from '@refinedev/core';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { CompanyType } from '@lib/types/company.type';
-import AssetForm from '@modules/forms/asset-form';
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import ShowEntityPage from "@/lib/pages/show/show-entity.page";
+import { assetFields } from "@lib/fields/asset/assetFields";
 
 interface Props {
   params: {
@@ -12,16 +10,14 @@ interface Props {
   };
 }
 
-export default function CompanyEditPage(props: Readonly<Props>) {
-  const id = props.params.assetId;
-  const { formProps, saveButtonProps } = useForm<CompanyType, HttpError>({
-    id,
-    resource: ResourceEnum.social,
-  });
-
+export default function CompanyEditPage({
+  params: { assetId },
+}: Readonly<Props>) {
   return (
-    <Edit saveButtonProps={saveButtonProps}>
-      <AssetForm {...formProps} />
-    </Edit>
+    <ShowEntityPage
+      fields={assetFields}
+      resource={ResourceEnum.asset}
+      id={assetId}
+    />
   );
 }

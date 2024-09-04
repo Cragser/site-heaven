@@ -1,31 +1,23 @@
-'use client';
+"use client";
 
-import { Edit, useForm } from '@refinedev/antd';
-import { HttpError } from '@refinedev/core';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { CompanyType } from '@lib/types/company.type';
-import { CompanyPageType } from '@page/types/company-and-child-page.type';
-import AddressForm from '@modules/forms/address-form';
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { EditFormPage } from "@/lib/pages/edit/edit-form.page";
+import { addressFields } from "@lib/fields/address/address.fields";
 
-interface AddressCompanyPageType extends CompanyPageType {
+interface Props {
   params: {
-    companyId: string;
     addressId: string;
   };
 }
 
-export default function CompanyEditPage(
-  props: Readonly<AddressCompanyPageType>
-) {
-  const id = props?.params?.addressId;
-  const { formProps, saveButtonProps } = useForm<CompanyType, HttpError>({
-    id,
-    resource: ResourceEnum.address,
-  });
-
+export default function AddressEditPage({
+  params: { addressId },
+}: Readonly<Props>) {
   return (
-    <Edit saveButtonProps={saveButtonProps}>
-      <AddressForm {...formProps} />
-    </Edit>
+    <EditFormPage
+      entityResource={ResourceEnum.address}
+      columns={addressFields}
+      id={addressId}
+    />
   );
 }
