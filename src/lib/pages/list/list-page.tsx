@@ -1,18 +1,20 @@
-import { useTranslate } from "@refinedev/core";
+import { CrudFilters, useTranslate } from "@refinedev/core";
 import { List, useTable } from "@refinedev/antd";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import React from "react";
 import { ItemConfig } from "@page/types/table-column.type";
-import EntityTable from "@/lib/components/table/entity-table";
+import EntityTable from "@/lib/data-display/table/entity-table";
 import { StateManager } from "@components/feedback/state-manager/state-manager";
 import { Button, Space } from "antd";
 import { useGoTo } from "@client/hooks/navigation/use-go-to";
 import { Navigation } from "@components/data-display/entity-collection/types/navigation.type";
+import Filter from "@/lib/data-display/table/filter/simple-filter";
 
 export interface CreateListProps {
   entityResource: ResourceEnum;
   columns: ItemConfig[];
   defaultNavigation?: boolean;
+  initialFilter?: CrudFilters;
   navigation?: {
     edit?: Navigation;
     show?: Navigation;
@@ -26,8 +28,9 @@ function ListPage({
   columns,
   navigation,
   defaultNavigation = true,
+  initialFilter,
 }: CreateListProps) {
-  const { tableProps, tableQueryResult } = useTable({
+  const { tableProps, tableQueryResult, searchFormProps } = useTable({
     pagination: {
       current: 1,
       mode: "client",
@@ -35,6 +38,23 @@ function ListPage({
     },
     resource: entityResource,
     syncWithLocation: true,
+    filters: {
+      mode: "server",
+      initial: initialFilter ?? [],
+    },
+    onSearch: (params: { q: string }) => {
+      const filters: CrudFilters = [];
+      if (params?.q) {
+        filters.push({
+          field: "filter",
+          operator: "eq",
+          value: `name||$contL||${params.q}` as string,
+        });
+      } else if (initialFilter) {
+        filters.push(...initialFilter);
+      }
+      return filters;
+    },
   });
 
   const translate = useTranslate();
@@ -64,6 +84,7 @@ function ListPage({
       isError={tableQueryResult?.isError}
     >
       <List title={title} headerButtons={[createButton]}>
+        <Filter formProps={searchFormProps} />
         <EntityTable
           tableProps={tableProps}
           entityResource={entityResource}

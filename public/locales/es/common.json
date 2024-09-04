@@ -86,7 +86,8 @@
     "undo": "Deshacer",
     "import": "Importar",
     "clone": "Clonar",
-    "notAccessTitle": "No tienes permiso para acceder"
+    "notAccessTitle": "No tienes permiso para acceder",
+    "search": "Buscar"
   },
   "warnWhenUnsavedChanges": "¿Estás seguro de que quieres salir? Tienes cambios sin guardar.",
   "notifications": {
@@ -109,7 +110,11 @@
     "title": "Panel de control"
   },
   "table": {
-    "actions": "Acciones"
+    "actions": "Acciones",
+    "filters": {
+      "title": "Filtros",
+      "label": "Filtrar por nombre"
+    }
   },
   "documentTitle": {
     "default": "refinar",
@@ -133,6 +138,7 @@
     "fields": {
       "id": "id",
       "name": "Nombre",
+      "value": "Valor del inmueble",
       "description": "Descripción",
       "date": "Fecha",
       "type": "Tipo de activo"

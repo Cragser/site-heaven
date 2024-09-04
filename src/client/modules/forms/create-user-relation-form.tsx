@@ -1,9 +1,9 @@
 import { Form, FormProps, Input, Select } from "antd";
 import { HttpError, useCreate, useTranslate } from "@refinedev/core";
-import { PersonRelationEnum } from "@lib/enums/person-relation.enum";
 import { Create, useForm } from "@refinedev/antd";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import { useState } from "react";
+import { useResourceSelect } from "@client/util/hook/use-resource-select";
 
 interface RelationFormProps {
   formProps: FormProps;
@@ -39,7 +39,9 @@ export default function CreateUserRelationForm({
   });
 
   const translate = useTranslate();
-
+  const { selectProps: RelationProps } = useResourceSelect({
+    resource: ResourceEnum.personRelationType,
+  });
   return (
     <Create saveButtonProps={saveButtonProps}>
       <Form {...personFormProps} layout="vertical">
@@ -58,18 +60,8 @@ export default function CreateUserRelationForm({
         >
           <Input type={"hidden"} />
         </Form.Item>
-
-        <Form.Item
-          label={translate("person-relation.fields.relation")}
-          name={"relation"}
-        >
-          <Select>
-            {Object.values(PersonRelationEnum).map((value) => (
-              <Select.Option key={value} value={value}>
-                {value}
-              </Select.Option>
-            ))}
-          </Select>
+        <Form.Item label={"Tipo de relación"} name={["relation", "id"]}>
+          <Select {...(RelationProps as any)} />
         </Form.Item>
       </Form>
     </Create>

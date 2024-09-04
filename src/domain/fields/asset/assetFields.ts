@@ -10,6 +10,10 @@ export const assetFields: ItemConfig[] = [
     type: "textarea",
   },
   {
+    ...createItemConfig("value"),
+    type: "number",
+  },
+  {
     ...createItemConfig("date"),
     render: dateRender,
     type: "date",

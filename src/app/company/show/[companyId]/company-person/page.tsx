@@ -7,7 +7,7 @@ import React from "react";
 import { StateManager } from "@components/feedback/state-manager/state-manager";
 import { renderHeaderToEntity } from "@client/util/ant/list/renderHeaderToPerson";
 import { useCompanyTitle } from "@client/hooks/titles/use-company-title";
-import EntityTable from "@/lib/components/table/entity-table";
+import EntityTable from "@/lib/data-display/table/entity-table";
 import { BaseRecord } from "@refinedev/core";
 import { personCompanyFields } from "@lib/fields/person/person-company.fields";
 

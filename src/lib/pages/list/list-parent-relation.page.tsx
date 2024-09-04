@@ -10,7 +10,7 @@ import { Button, Drawer } from "antd";
 import CreateRelationForm from "@modules/forms/relations/create-relation-form";
 import { SectionEntityType } from "@page/types/section-entity.type";
 import { ItemConfig } from "@page/types/table-column.type";
-import RelationTable from "@/lib/components/table/relation-table";
+import RelationTable from "@/lib/data-display/table/relation-table";
 
 interface Props {
   parentId: string;
