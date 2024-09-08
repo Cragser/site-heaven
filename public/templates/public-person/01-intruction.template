@@ -1,0 +1,10 @@
+INTRODUCCIÓN
+Se llevaron a cabo búsquedas y análisis de información en torno a la persona pública de nombre [person.firstName] [person.lastname](en adelante, [person.initials]) con el objetivo de identificar sus antecedentes y vínculos profesionales, laborales, corporativos, gubernamentales, patrimoniales, legales y mediáticos. Para tales fines, se revisaron registros provenientes de distintas bases de datos públicas, medios digitales y redes sociales. Este reporte suscribe los resultados obtenidos.
+
+RESUMEN EJECUTIVO
+## Mapa de las relaciones
+[person] | Información general
+[personCareer] | Antecedentes laborales y empresariales (sector privado)
+[personGovernment] | Antecedentes gubernamentales y políticos
+[personLegal] | Antecedentes legales
+[personSocial] | Redes sociales y prensa digital
