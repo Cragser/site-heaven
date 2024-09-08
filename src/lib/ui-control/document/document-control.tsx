@@ -1,0 +1,17 @@
+import { Flex } from "antd";
+import LateralDocumentControl from "@/lib/ui-control/document/compunded/lateral-document-control/lateral-document-control";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { DocumentType } from "@/lib/ui-control/document/types/document.type";
+import MainDocumentControl from "@/lib/ui-control/document/main-document-control/main-document-control";
+
+export default function DocumentControl(props: Readonly<DocumentType>) {
+  return (
+    <DndProvider backend={HTML5Backend}>
+      <Flex gap={16}>
+        <LateralDocumentControl />
+        <MainDocumentControl {...props} />
+      </Flex>
+    </DndProvider>
+  );
+}

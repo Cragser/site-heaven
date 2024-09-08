@@ -1,0 +1,14 @@
+.container {
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+    width: auto;
+    cursor: move;
+    position: relative;
+    min-width: 35%;
+    height: 6rem;
+    border-radius: 3px;
+    display: flex;
+    align-content: center;
+    overflow: hidden;
+    flex-direction: column;
+}

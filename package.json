@@ -31,18 +31,22 @@
     "i18next-http-backend": "^2.5.1",
     "i18next-resources-to-backend": "^1.2.0",
     "i18next-xhr-backend": "^3.2.2",
+    "immutability-helper": "^3.1.1",
     "js-cookie": "^3.0.5",
     "lodash": "^4.17.21",
     "next": "14.2.4",
     "next-auth": "^4.24.7",
     "next-i18next": "^8.9.0",
     "react": "18.2.0",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "18.2.0",
     "react-i18next": "^11.8.11",
     "rxjs": "^7.8.0",
     "tslib": "^2.3.0",
     "zod": "^3.22.4",
-    "zod-to-json-schema": "^3.22.4"
+    "zod-to-json-schema": "^3.22.4",
+    "zustand": "^4.5.5"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
