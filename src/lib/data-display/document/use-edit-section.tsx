@@ -22,7 +22,7 @@ export const useEditSection = () => {
     // Implementar lógica de edición
   };
 
-  const handleAddNote = (newNote) => {
+  const handleAddNote = (newNote: string) => {
     setNote(newNote);
   };
 
