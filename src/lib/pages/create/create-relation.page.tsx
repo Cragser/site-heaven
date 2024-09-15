@@ -7,7 +7,7 @@ import { camelCase } from "case-anything";
 import { Form } from "antd";
 import createHiddenFields from "@/lib/mutate/util/create-hidden-fields";
 import { useCreateFields } from "@/lib/mutate/hooks/use-create-fields";
-import { ItemConfig } from "@page/types/table-column.type";
+import { ItemConfig } from "@/lib/@types/table-column.type";
 
 interface Props {
   parentId: string;

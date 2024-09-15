@@ -2,7 +2,7 @@ import { Form, Select } from "antd";
 import React from "react";
 import { useTranslate } from "@refinedev/core";
 import { ResourceEnum } from "@lib/enums/resource.enum";
-import { ItemConfig } from "@page/types/table-column.type";
+import { ItemConfig } from "@/lib/@types/table-column.type";
 import { useResourceSelect } from "@client/util/hook/use-resource-select";
 
 interface Props {

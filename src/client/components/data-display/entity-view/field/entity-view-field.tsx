@@ -1,4 +1,4 @@
-import { ItemConfig } from "@page/types/table-column.type";
+import { ItemConfig } from "@/lib/@types/table-column.type";
 
 interface Props {
   item: ItemConfig;

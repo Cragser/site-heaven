@@ -2,7 +2,7 @@ import { CrudFilters, useTranslate } from "@refinedev/core";
 import { List, useTable } from "@refinedev/antd";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import React from "react";
-import { ItemConfig } from "@page/types/table-column.type";
+import { ItemConfig } from "@/lib/@types/table-column.type";
 import EntityTable from "@/lib/data-display/table/entity-table";
 import { StateManager } from "@components/feedback/state-manager/state-manager";
 import { Button, Space } from "antd";

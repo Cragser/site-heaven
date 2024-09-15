@@ -5,7 +5,7 @@ import { HttpError, useShow, useTranslate } from "@refinedev/core";
 import { DescriptionsProps, Divider } from "antd";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import { CompanyType } from "@lib/types/company.type";
-import CardList from "@modules/card-list";
+import CardList from "@/lib/data-display/card-list/card-list";
 import { StateManager } from "@components/feedback/state-manager/state-manager";
 import DescriptionSimple from "@components/data-display/description/description-simple";
 import { SimpleUniqueResource } from "@modules/unique-resources/simple-unique-resource";

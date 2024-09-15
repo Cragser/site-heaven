@@ -10,7 +10,7 @@ import { DeleteButton, EditButton, ShowButton } from "@refinedev/antd";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import React from "react";
 import { SectionEntityType } from "@page/types/section-entity.type";
-import { ItemConfig } from "@page/types/table-column.type";
+import { ItemConfig } from "@/lib/@types/table-column.type";
 import { resourceNavigation } from "@client/navigation/resource-navigation";
 
 interface Props {

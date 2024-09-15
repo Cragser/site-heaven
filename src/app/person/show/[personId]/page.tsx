@@ -5,7 +5,7 @@ import { HttpError, useShow, useTranslate } from "@refinedev/core";
 import { DescriptionsProps } from "antd";
 import { PersonResponse } from "@lib/types/person.type";
 import { ResourceEnum } from "@lib/enums/resource.enum";
-import CardList from "@modules/card-list";
+import CardList from "@/lib/data-display/card-list/card-list";
 
 import { StateManager } from "@components/feedback/state-manager/state-manager";
 import { replaceTemplate } from "@client/util/ant/titles/replace-template";

@@ -1,5 +1,5 @@
 import { ResourceEnum } from "@lib/enums/resource.enum";
-import { ItemConfig } from "@page/types/table-column.type";
+import { ItemConfig } from "@/lib/@types/table-column.type";
 
 export interface MutationPageType {
   entityResource: ResourceEnum;

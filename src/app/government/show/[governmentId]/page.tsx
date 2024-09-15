@@ -9,7 +9,7 @@ import { ResourceEnum } from "@lib/enums/resource.enum";
 import { StateManager } from "@components/feedback/state-manager/state-manager";
 import { replaceTemplate } from "@client/util/ant/titles/replace-template";
 import DescriptionSimple from "@components/data-display/description/description-simple";
-import CardList from "@modules/card-list";
+import CardList from "@/lib/data-display/card-list/card-list";
 
 interface Props {
   params: {

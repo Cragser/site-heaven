@@ -1,11 +1,10 @@
-import { useGetToPath, useGo, useTranslate } from "@refinedev/core";
+import { useTranslate } from "@refinedev/core";
 import { Card, Divider, List, Space, Statistic, Typography } from "antd";
 import { UnorderedListOutlined } from "@ant-design/icons";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import { camelCase } from "case-anything";
-
-import { resourceNavigation } from "@client/navigation/resource-navigation";
 import { SectionEntityType } from "@page/types/section-entity.type";
+import { useGoTo } from "@client/hooks/navigation/use-go-to";
 
 const { Title } = Typography;
 
@@ -32,10 +31,6 @@ function calculateTotal(record: any, key: string) {
   return Array.isArray(recordRelation) ? recordRelation?.length : 0;
 }
 
-function createTitle(resource: string, translate: (key: string) => string) {
-  return translate(`${resource}.${resource}`);
-}
-
 function useCreateData(
   resources: ResourceEnum[],
   id: string,
@@ -43,29 +38,22 @@ function useCreateData(
   record: unknown
 ) {
   const translate = useTranslate();
-  const go = useGo();
-  const getToPath = useGetToPath();
-  const actions = (resource: ResourceEnum) => {
-    return getToPath({
-      action: "list",
-      meta: {
-        [`${parent}Id`]: id,
-      },
-      resource: resourceNavigation[resource],
-    });
-  };
-  const handleClick = (resource: ResourceEnum) => {
-    go({
-      to: actions(resource),
-    });
-  };
+  const goto = useGoTo();
 
   return resources.map((resource): CardProps => {
-    const title = createTitle(resource, translate);
+    const title = translate(`${resource}.${resource}`);
     const total = calculateTotal(record, resource);
 
     return {
-      handleClick: () => handleClick(resource),
+      handleClick: () => {
+        goto({
+          action: "list",
+          meta: {
+            [`${parent}Id`]: id,
+          },
+          resource: resource,
+        });
+      },
       key: resource,
       title,
       total,
@@ -108,9 +96,6 @@ function CardList({ id, parent, record, resources }: Readonly<CardListProps>) {
               ]}
             >
               <Statistic title="Relacionados" value={item.total} />
-              {/*<Link to={item.url}>Ver más</Link>*/}
-
-              {/*<p>{item.key}</p>*/}
             </Card>
           </List.Item>
         )}

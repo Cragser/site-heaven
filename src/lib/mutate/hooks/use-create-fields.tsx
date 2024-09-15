@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { ItemConfig } from "@page/types/table-column.type";
+import { ItemConfig } from "@/lib/@types/table-column.type";
 import { useTranslate } from "@refinedev/core";
 import { Form, Input, Select } from "antd";
 import { ResourceEnum } from "@lib/enums/resource.enum";

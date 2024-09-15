@@ -2,7 +2,7 @@ import { HttpError, useShow, useTranslate } from "@refinedev/core";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import { StateManager } from "@components/feedback/state-manager/state-manager";
 import EntityView from "@components/data-display/entity-view/entity-view";
-import { ItemConfig } from "@page/types/table-column.type";
+import { ItemConfig } from "@/lib/@types/table-column.type";
 import { Show } from "@refinedev/antd";
 
 interface Props {

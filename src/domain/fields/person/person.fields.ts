@@ -1,4 +1,4 @@
-import { ItemConfig } from "@page/types/table-column.type";
+import { ItemConfig } from "@/lib/@types/table-column.type";
 import { createColumnsFromArray } from "@client/util/fields/create-columns-from-array";
 import { tagRender } from "@client/util/ant/fields/tagRender";
 import { ResourceEnum } from "@lib/enums/resource.enum";

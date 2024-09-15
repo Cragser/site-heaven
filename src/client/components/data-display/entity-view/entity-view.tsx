@@ -1,4 +1,4 @@
-import { ItemConfig } from "@page/types/table-column.type";
+import { ItemConfig } from "@/lib/@types/table-column.type";
 import DescriptionSimple from "@components/data-display/description/description-simple";
 import { DescriptionsProps } from "antd";
 import { useTranslate } from "@refinedev/core";
