@@ -5,6 +5,7 @@ import { BankOutlined, ShopOutlined, UserOutlined } from "@ant-design/icons";
 import { personResources } from "@client/navigation/person-resources";
 import { companyResources } from "@client/navigation/company-resources";
 import { governmentResources } from "@client/navigation/government-resources";
+import { documentResources } from "@client/navigation/document-resources";
 
 export const resourceNavigation: Partial<Record<ResourceEnum, ResourceProps>> =
   {
@@ -156,4 +157,12 @@ export const resourceNavigation: Partial<Record<ResourceEnum, ResourceProps>> =
       },
       name: "company-person-time-frame",
     },
+    [ResourceEnum.document]: generateCrudSimple(
+      ResourceEnum.document,
+      <ShopOutlined
+        onPointerEnterCapture={undefined}
+        onPointerLeaveCapture={undefined}
+      />
+    ),
+    ...documentResources,
   };
