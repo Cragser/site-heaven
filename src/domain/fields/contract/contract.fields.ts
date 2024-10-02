@@ -21,4 +21,8 @@ export const contractFields: ItemConfig[] = [
     ...createItemConfig("notes"),
     type: "textarea",
   },
+  {
+    ...createItemConfig("typeOfProcedureAndLinks"),
+    // only show if section is government
+  },
 ];
