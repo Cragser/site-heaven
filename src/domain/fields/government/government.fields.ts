@@ -1,21 +1,35 @@
 import { ItemConfig } from "@/lib/@types/table-column.type";
 import { createItemConfig } from "@client/util/fields/create-columns-from-array";
-import { tagRender } from "@client/util/ant/fields/tagRender";
-import { ResourceEnum } from "@lib/enums/resource.enum";
 
+//
+// @Column({ default: null, nullable: true })
+// position: string;
+// // nivel: enum federal, estatal, municial
+// @Column({ default: null, nullable: true })
+// level: string;
+// // periodo inicio
+// @Column({ default: null, nullable: true })
+// startDate: Date;
+// // periodo fin
+// @Column({ default: null, nullable: true })
+// endDate: Date;
 export const governmentFields: ItemConfig[] = [
-  createItemConfig("name"),
   {
-    dataIndex: ["person", "name"],
-    selectDataIndex: ["person", "id"],
-    key: "person",
-    render: tagRender,
-    type: "autocomplete",
-    selectResource: ResourceEnum.person,
+    ...createItemConfig("name"),
   },
   {
     ...createItemConfig("description"),
-    type: "textarea",
   },
-  createItemConfig("period"),
+  {
+    ...createItemConfig("position"),
+  },
+  {
+    ...createItemConfig("level"),
+  },
+  {
+    ...createItemConfig("startDate"),
+  },
+  {
+    ...createItemConfig("endDate"),
+  },
 ];

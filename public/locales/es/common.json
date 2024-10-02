@@ -190,12 +190,13 @@
     "contract": "Contract",
     "fields": {
       "id": "id",
-        "name": "Nombre",
+      "name": "Nombre",
       "concept": "Concepto",
-      "startDate": "startDate",
-      "contractor": "contractor",
-      "notes": "notes",
-      "value": "value"
+      "startDate": "Fecha de inicio",
+      "contractor": "Contratista",
+      "notes": "Notas",
+      "value": "Valor",
+      "typeOfProcedureAndLinks": "Tipo de procedimiento y enlaces"
     },
     "titles": {
       "create": "Crear contrato",
@@ -639,6 +640,19 @@
       "type": "Tipo",
       "role": "Rol",
       "notes": "Notas"
+    }
+  },
+  "government" : {
+    "government": "Gobierno"
+  },
+  "document-template": {
+    "document-template": "Plantilla de documento",
+    "titles": {
+      "create": "Crear plantilla de documento"
+    },
+    "fields": {
+      "title": "Título",
+      "entityType": "Sección relacionada"
     }
   }
 }
