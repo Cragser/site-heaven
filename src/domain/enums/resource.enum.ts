@@ -77,4 +77,11 @@ export enum ResourceEnum {
   observation = "observation",
   governmentObservation = "government-observation",
   document = "document",
+  documentTemplate = "document-template",
+  chapterTemplate = "chapter-template",
+  documentTemplateChapterTemplate = "document-template-chapter-template",
+
+  documentPerson = "document-person",
+  documentCompany = "document-company",
+  documentGovernment = "document-government",
 }

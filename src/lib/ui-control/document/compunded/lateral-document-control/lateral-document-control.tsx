@@ -13,7 +13,7 @@ export default function LateralDocumentControl({}) {
             <SectionControl title="Person" text="Introducción" />
           </Col>
           <Col className="gutter-row" span={12}>
-            <SectionControl title="Resumen ejectuvivo" text="Introducción" />
+            <SectionControl title="Resumen ejecutivo" text="Introducción" />
           </Col>
         </Row>
       </LateralSection>

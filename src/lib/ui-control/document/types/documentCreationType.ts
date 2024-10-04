@@ -1,4 +1,4 @@
-export interface Subchapter {
+export interface SubchapterType {
   title: string;
   content: string;
 }
@@ -6,15 +6,18 @@ export interface Subchapter {
 export interface ChapterType {
   title: string;
   content: string;
-  subchapters?: Subchapter[];
+  subchapters?: SubchapterType[];
   moveCard?: (dragIndex: number, hoverIndex: number) => void;
-  index?: number;
-  id?: string;
+  index: number;
+  id: string;
+  entity: string;
 }
 
-export interface DocumentType {
+export interface DocumentCreationType {
   title: string;
   subtitle: string;
   date: string;
   chapters: ChapterType[];
+  data: any;
+  templateContent: any;
 }

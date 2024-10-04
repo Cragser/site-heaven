@@ -8,6 +8,8 @@ import { Form } from "antd";
 import createHiddenFields from "@/lib/mutate/util/create-hidden-fields";
 import { useCreateFields } from "@/lib/mutate/hooks/use-create-fields";
 import { ItemConfig } from "@/lib/@types/table-column.type";
+import useFormStore from "@/lib/states/use-form-store";
+import { useEffect } from "react";
 
 interface Props {
   parentId: string;
@@ -31,6 +33,10 @@ export default function CreateRelationPage({
 }: Readonly<Props>) {
   const entityCamel = camelCase(entityResource);
   const { mutate } = useCreate();
+  const setValues = useFormStore((state) => state.setValues); // Obtener la función para actualizar el estado en zustand
+  useEffect(() => {
+    setValues({ ...formProps.initialValues, parentId });
+  }, []);
   const { formProps, saveButtonProps } = useForm<any, HttpError>({
     onMutationSuccess: (data) => {
       const id = data.data?.id;
@@ -40,17 +46,24 @@ export default function CreateRelationPage({
       });
     },
     resource: entityResource,
+    action: "create",
   });
   const { title } = useEntityTitle(
     parentId,
     `${relationResource}.titles.create`,
-    parentSection
+    parentSection,
   );
   return (
     <Create saveButtonProps={saveButtonProps} title={title}>
-      <Form {...formProps} layout="vertical">
+      <Form
+        {...formProps}
+        layout="vertical"
+        onValuesChange={(changedValues, allValues) => {
+          setValues(allValues); // Actualizamos el estado global en zustand
+        }}
+      >
         {meta && createHiddenFields({ meta })}
-        {useCreateFields(fields, entityResource)}
+        {useCreateFields(fields, entityResource, formProps)}
       </Form>
     </Create>
   );

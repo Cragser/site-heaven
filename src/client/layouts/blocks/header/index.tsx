@@ -14,7 +14,7 @@ import {
   theme,
   Typography,
 } from "antd";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useMemo } from "react";
 import { DownOutlined } from "@ant-design/icons";
 import Cookies from "js-cookie";
 
@@ -34,25 +34,34 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
   const { data: user } = useGetIdentity<IUser>();
   const { mode, setMode } = useContext(ColorModeContext);
 
-  const headerStyles: React.CSSProperties = {
-    alignItems: "center",
-    backgroundColor: token.colorBgElevated,
-    display: "flex",
-    height: "64px",
-    justifyContent: "flex-end",
-    padding: "0px 24px",
-  };
+  const headerStyles: React.CSSProperties = useMemo(() => {
+    const styles: React.CSSProperties = {
+      alignItems: "center",
+      backgroundColor: token.colorBgElevated,
+      display: "flex",
+      height: "64px",
+      justifyContent: "flex-end",
+      padding: "0px 24px",
+    };
 
-  if (sticky) {
-    headerStyles.position = "sticky";
-    headerStyles.top = 0;
-    headerStyles.zIndex = 1;
-  }
+    if (sticky) {
+      styles.position = "sticky";
+      styles.top = 0;
+      styles.zIndex = 1;
+    }
+
+    return styles;
+  }, [sticky, token.colorBgElevated]);
 
   // EXPERIMENTAL
   const locale = useGetLocale();
   const currentLocale = locale();
   const changeLanguage = useSetLocale();
+
+  useEffect(() => {
+    // default value is "es"
+    changeLanguage("es");
+  }, []);
 
   enum languagesKeys {
     en = "en",
@@ -60,32 +69,34 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
   }
 
   enum languagesValues {
-    en = "English",
     es = "Español",
+    en = "English",
   }
 
   const languagesDict: Record<languagesKeys, languagesValues> = {
-    en: languagesValues.en,
     es: languagesValues.es,
+    en: languagesValues.en,
   };
 
   const languages = Object.keys(languagesDict) as languagesKeys[];
 
-  const languageMenuItems: MenuProps["items"] = [...(languages || [])]
-    .sort()
-    .map((lang) => ({
-      icon: (
-        <span style={{ marginRight: 8 }}>
-          <Avatar size={16} src={`/images/flags/${lang}.svg`} />
-        </span>
-      ),
-      key: lang,
-      label: languagesDict[lang],
-      onClick: () => {
-        changeLanguage(lang);
-        Cookies.set("NEXT_LOCALE", lang);
-      },
-    }));
+  const languageMenuItems: MenuProps["items"] = useMemo(
+    () =>
+      [...(languages || [])].map((lang) => ({
+        icon: (
+          <span style={{ marginRight: 8 }}>
+            <Avatar size={16} src={`/images/flags/${lang}.svg`} />
+          </span>
+        ),
+        key: lang,
+        label: languagesDict[lang],
+        onClick: () => {
+          changeLanguage(lang);
+          Cookies.set("NEXT_LOCALE", lang);
+        },
+      })),
+    [languages, languagesDict, changeLanguage]
+  );
 
   return (
     <AntdLayout.Header style={headerStyles}>

@@ -1,1 +1,6 @@
-export type SectionEntityType = "person" | "company" | "government";
+export type SectionEntityType =
+  | "person"
+  | "company"
+  | "government"
+  | "document"
+  | "documentTemplate";

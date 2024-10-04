@@ -11,6 +11,10 @@
   border-dash-gap: 12px;
 }
 
+.container.selected {
+  border: 1px solid #222 ;
+}
+
 .buttonContainer {
   display: flex;
   visibility: hidden;
@@ -39,4 +43,10 @@
   .container {
     padding: 0 24px;
   }
+}
+
+.note {
+  outline: 2px solid red;
+  position: relative;
+
 }

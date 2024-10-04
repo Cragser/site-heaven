@@ -1,6 +1,5 @@
 "use client";
 
-import { ResourceEnum } from "@lib/enums/resource.enum";
 import { useTranslate } from "@refinedev/core";
 import { Create, List, useDrawerForm, useTable } from "@refinedev/antd";
 import { useEntityTitle } from "@client/hooks/titles/use-person-title";
@@ -8,22 +7,14 @@ import { StateManager } from "@components/feedback/state-manager/state-manager";
 import { renderHeaderToEntity } from "@client/util/ant/list/renderHeaderToPerson";
 import { Button, Drawer } from "antd";
 import CreateRelationForm from "@modules/forms/relations/create-relation-form";
-import { SectionEntityType } from "@page/types/section-entity.type";
-import { ItemConfig } from "@/lib/@types/table-column.type";
 import RelationTable from "@/lib/data-display/table/relation-table";
+import { camelCase } from "case-anything";
+import { CreateRelationPageProps } from "@/lib/pages/types/list-page.type";
+import useListParentRelation from "@/lib/pages/list/hooks/use-list-paren-relation";
 
-interface Props {
-  parentId: string;
-  // career
-  entityResource: ResourceEnum;
-  // personCareer
-  relationResource: ResourceEnum;
-  // person
-  parentResource: ResourceEnum;
-  parent: SectionEntityType;
-  columns: ItemConfig[];
-}
-
+/**
+ * Para utilizar esta página, debe de tener una relación padre e hijo. Pero la tabla intermedia no debe de tener valores
+ */
 function ListParentRelationPage({
   parentId,
   relationResource,
@@ -31,30 +22,20 @@ function ListParentRelationPage({
   entityResource,
   parent,
   columns,
-}: Props) {
+  navigation,
+}: Readonly<CreateRelationPageProps>) {
   const translate = useTranslate();
-  const { tableProps, tableQueryResult } = useTable({
-    filters: {
-      permanent: [
-        {
-          field: "filter",
-          operator: "eq",
-          value: `${parent}Id||$eq||${parentId}`,
-        },
-      ],
-    },
-    pagination: {
-      current: 1,
-      mode: "client",
-      pageSize: 10,
-    },
-    resource: relationResource,
-    syncWithLocation: true,
+  const { tableProps, tableQueryResult } = useListParentRelation({
+    sectionId: parentId,
+    sectionResource: parentResource,
+    relationResource,
+    columns,
   });
+
   const { title } = useEntityTitle(
     parentId,
     `${relationResource}.titles.list`,
-    parent
+    parent,
   );
 
   const { drawerProps, formProps, saveButtonProps, show } = useDrawerForm({
@@ -63,7 +44,7 @@ function ListParentRelationPage({
   });
 
   const titleToAdd = translate(
-    `${relationResource}.titles.add-relation-to-${parent}`
+    `${relationResource}.titles.add-relation-to-${parent}`,
   );
 
   const headerButtons = renderHeaderToEntity({
@@ -87,15 +68,17 @@ function ListParentRelationPage({
       isError={tableQueryResult?.isError}
     >
       <List title={title} headerButtons={headerButtons}>
-        <RelationTable
-          parent={entityResource}
-          parentResource={parentResource}
-          entityResource={entityResource}
-          tableProps={tableProps}
-          parentName={parent}
-          relationResource={relationResource}
-          columns={columns}
-        />
+        {tableQueryResult?.data?.data?.length > 0 ? (
+          <RelationTable
+            parent={entityResource}
+            parentResource={parentResource}
+            entityResource={entityResource}
+            tableProps={tableProps}
+            parentName={parent}
+            relationResource={relationResource}
+            columns={columns}
+          />
+        ) : null}
       </List>
       <Drawer {...drawerProps}>
         <Create
@@ -106,9 +89,12 @@ function ListParentRelationPage({
           <CreateRelationForm
             parentEntityId={parentId}
             entityResource={entityResource}
-            excludeIds={tableQueryResult?.data?.data.map(
-              (item) => item[entityResource].id
-            )}
+            excludeIds={tableQueryResult?.data?.data.map((item) => {
+              // TODO: Solucionar el tipado
+              const camelEntity = camelCase(entityResource);
+              if (!item[camelEntity]) return null;
+              return item[camelEntity].id;
+            })}
             formProps={formProps}
             entityFieldName={entityResource}
             entityLabelName={titleToAdd}

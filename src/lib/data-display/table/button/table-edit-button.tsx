@@ -1,11 +1,12 @@
 import React from "react";
 import { Navigation } from "@components/data-display/entity-collection/types/navigation.type";
 import { EditButton } from "@refinedev/antd";
+import { useGoTo } from "@client/hooks/navigation/use-go-to";
+import { ResourceEnum } from "@lib/enums/resource.enum";
 
 interface Props {
   defaultNavigation: boolean;
   navigation?: Navigation;
-  goTo: any;
   record: any;
   entityResource: any;
   meta: any;
@@ -15,10 +16,18 @@ export default function TableEditButton({
   defaultNavigation,
   navigation,
   entityResource,
-  goTo,
   record,
   meta,
-}: Props) {
+}: Readonly<Props>) {
+  const goTo = useGoTo();
+  console.log({
+    defaultNavigation,
+    navigation,
+    entityResource,
+    goTo,
+    record,
+    meta,
+  });
   if (!defaultNavigation && !navigation) {
     console.log("defaultNavigation is false and navigation is undefined");
     return null;
@@ -30,6 +39,8 @@ export default function TableEditButton({
         hideText
         size="middle"
         onClick={() => {
+          console.log("defaultNavigation is true");
+          console.log(goTo);
           goTo({
             resource: entityResource,
             action: "edit",
@@ -53,9 +64,9 @@ export default function TableEditButton({
       hideText
       size="middle"
       onClick={() => {
-        console.log(navigation?.resource);
+        console.log("defaultNavigation is false");
         goTo({
-          resource: navigation?.resource,
+          resource: navigation?.resource as ResourceEnum,
           action: "edit",
           meta: navigation?.createMeta?.(record) ?? meta,
         });

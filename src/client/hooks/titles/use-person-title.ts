@@ -30,20 +30,30 @@ export const useCompanyTitle = (companyId: string, key: string) => {
 export const useEntityTitle = (
   entityId: string,
   key: string,
-  parent: SectionEntityType
+  parent: SectionEntityType,
 ) => {
   const translate = useTranslate();
-  const sectionMap = {
+  const sectionMap: Record<SectionEntityType, ResourceEnum> = {
     person: ResourceEnum.person,
     company: ResourceEnum.company,
     government: ResourceEnum.government,
+    document: ResourceEnum.document,
+    documentTemplate: ResourceEnum.documentTemplate,
   };
-  const { data: entity } = useOne({
+  const { data: entity, error } = useOne({
     id: entityId,
     resource: sectionMap[parent],
   });
 
+  if (error) {
+    return {
+      title: translate(key),
+      entity: null,
+    };
+  }
+
   return {
     title: replaceTemplate(translate(key), { [parent]: entity?.data }),
+    entity,
   };
 };

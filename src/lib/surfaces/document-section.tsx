@@ -7,9 +7,9 @@ const { useBreakpoint } = Grid;
 
 export default function DocumentSection({
   children,
-}: {
+}: Readonly<{
   children?: React.ReactNode;
-}) {
+}>) {
   const { token } = useToken();
 
   const styles = {
@@ -19,6 +19,7 @@ export default function DocumentSection({
       backgroundColor: token.colorBgContainer,
       border: `${token.lineWidth}px solid ${token.colorBorder}`,
       borderRadius: token.borderRadiusLG,
+      minWidth: "15rem",
     },
   };
 

@@ -6,6 +6,7 @@ import { personResources } from "@client/navigation/person-resources";
 import { companyResources } from "@client/navigation/company-resources";
 import { governmentResources } from "@client/navigation/government-resources";
 import { documentResources } from "@client/navigation/document-resources";
+import { documentTemplateResources } from "@client/navigation/document-template-resources";
 
 export const resourceNavigation: Partial<Record<ResourceEnum, ResourceProps>> =
   {
@@ -165,4 +166,12 @@ export const resourceNavigation: Partial<Record<ResourceEnum, ResourceProps>> =
       />
     ),
     ...documentResources,
+    [ResourceEnum.documentTemplate]: generateCrudSimple(
+      ResourceEnum.documentTemplate,
+      <ShopOutlined
+        onPointerEnterCapture={undefined}
+        onPointerLeaveCapture={undefined}
+      />
+    ),
+    ...documentTemplateResources,
   };

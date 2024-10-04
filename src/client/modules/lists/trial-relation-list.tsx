@@ -43,8 +43,6 @@ export default function TrialRelationList({ params }: Readonly<Props>) {
     return <div>Loading...</div>;
   }
 
-  console.log(tableProps);
-
   return (
     <List
       resource={ResourceEnum.trialRelation}

@@ -1,30 +1,31 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useState } from "react";
 import { ItemConfig } from "@/lib/@types/table-column.type";
 import { useTranslate } from "@refinedev/core";
-import { Form, Input, Select } from "antd";
+import { Form, FormProps, Input, Select, Switch } from "antd";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import SelectItem from "@/lib/mutate/form-item/select-item";
-
+import "react-quill/dist/quill.snow.css";
+import RichText from "@/lib/mutate/rich-text/rich-text";
+import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
+import EnumItem from "@/lib/mutate/form-item/enum-item";
+import useFormStore from "@/lib/states/use-form-store";
 function switchRender(
   column: ItemConfig,
   translate: Function,
-  resource: ResourceEnum
+  resource: ResourceEnum,
+  formProps?: unknown,
+  values?: Record<string, any>,
 ): ReactNode {
+  if (column.field?.shouldRender && !column.field.shouldRender(values)) {
+    return null;
+  }
+
+  if (column?.type === "custom" && column?.field?.custom) {
+    return <>{column.field.custom(column, resource, formProps)}</>;
+  }
+
   if (column.enum !== undefined) {
-    return (
-      <Form.Item
-        label={translate(`${resource}.fields.${column.key}`)}
-        name={column.key}
-      >
-        <Select>
-          {(Object.values(column.enum) as string[]).map((value: string) => (
-            <Select.Option key={value} value={value}>
-              {value}
-            </Select.Option>
-          ))}
-        </Select>
-      </Form.Item>
-    );
+    return <EnumItem column={column} resource={resource} />;
   }
 
   if (column?.type === "autocomplete") {
@@ -42,6 +43,25 @@ function switchRender(
     );
   }
 
+  if (column?.type === "rich-text") {
+    return <RichText column={column} resource={resource} />;
+  }
+
+  if (column?.type === "boolean") {
+    return (
+      <Form.Item
+        label={translate(`${resource}.fields.${column.key}`)}
+        name={column.key}
+      >
+        <Switch
+          checkedChildren={<CheckOutlined />}
+          unCheckedChildren={<CloseOutlined />}
+          defaultChecked
+        />
+      </Form.Item>
+    );
+  }
+
   return (
     <Form.Item
       label={translate(`${resource}.fields.${column.key}`)}
@@ -54,12 +74,15 @@ function switchRender(
 
 export function useCreateFields(
   fields: ItemConfig[],
-  resource: ResourceEnum
+  resource: ResourceEnum,
+  formProps?: FormProps,
 ): ReactNode[] {
   const translate = useTranslate();
+  const values = useFormStore((state) => state.values);
+
   return fields.map((column) => (
     <React.Fragment key={column.key}>
-      {switchRender(column, translate, resource)}
+      {switchRender(column, translate, resource, formProps, values)}
     </React.Fragment>
   ));
 }

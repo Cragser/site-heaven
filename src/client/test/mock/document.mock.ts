@@ -1,6 +1,6 @@
-import { DocumentType } from "@/lib/ui-control/document/types/document.type";
+import { DocumentCreationType } from "@/lib/ui-control/document/types/documentCreationType";
 
-export const mockDocument: DocumentType = {
+export const mockDocument: DocumentCreationType = {
   title: "Informe de Investigación: Everaldo Hernestino",
   subtitle: "Análisis Completo de Antecedentes y Situación Actual",
   date: "2024-09-07",
@@ -9,6 +9,9 @@ export const mockDocument: DocumentType = {
       title: "1. Introducción",
       content:
         "Este informe presenta un análisis detallado de Everaldo Hernestino, estudiante de derecho y objeto de investigación. El documento abarca diversos aspectos de su vida personal y profesional.",
+      index: 0,
+      id: "",
+      entity: "",
     },
     {
       title: "2. General",
@@ -25,6 +28,9 @@ export const mockDocument: DocumentType = {
             "Everaldo Hernestino es un estudiante de derecho de 33 años, actualmente bajo investigación por motivos no especificados.",
         },
       ],
+      index: 0,
+      id: "",
+      entity: "",
     },
     {
       title: "3. Estudios",
@@ -41,6 +47,9 @@ export const mockDocument: DocumentType = {
             "Diplomado en Derecho Constitucional (2022)\nCertificación en Derecho Mercantil (2023)",
         },
       ],
+      index: 0,
+      id: "",
+      entity: "",
     },
     {
       title: "4. Activos",
@@ -56,6 +65,9 @@ export const mockDocument: DocumentType = {
           content: "Volkswagen Jetta 2020\nValor estimado: $250,000 MXN",
         },
       ],
+      index: 0,
+      id: "",
+      entity: "",
     },
     {
       title: "5. Vínculos",
@@ -72,6 +84,9 @@ export const mockDocument: DocumentType = {
             "Carlos Mendoza: Compañero de estudios y socio en proyecto legal\nLuisa Fernández: Mentora en bufete de prácticas",
         },
       ],
+      index: 0,
+      id: "",
+      entity: "",
     },
     {
       title: "6. Laboral",
@@ -88,6 +103,9 @@ export const mockDocument: DocumentType = {
             "Asesoría legal a pequeñas empresas\nPeríodo: 2022 - Presente",
         },
       ],
+      index: 0,
+      id: "",
+      entity: "",
     },
     {
       title: "7. Empresas",
@@ -104,6 +122,9 @@ export const mockDocument: DocumentType = {
             "Co-fundador de 'LegalTech Consultores'\nStart-up en fase inicial, enfocada en la digitalización de procesos legales",
         },
       ],
+      index: 0,
+      id: "",
+      entity: "",
     },
     {
       title: "8. Gobierno",
@@ -120,6 +141,9 @@ export const mockDocument: DocumentType = {
             "Sin contratos o relaciones comerciales directas con entidades gubernamentales identificadas hasta la fecha",
         },
       ],
+      index: 0,
+      id: "",
+      entity: "",
     },
     {
       title: "9. Antecedentes Legales",
@@ -141,6 +165,11 @@ export const mockDocument: DocumentType = {
             "Actualmente bajo investigación por posible conflicto de intereses en relación con su participación en 'Innovación Legal S.A. de C.V.'\nInvestigación iniciada en: Junio 2024\nEstatus: En proceso",
         },
       ],
+      index: 0,
+      id: "",
+      entity: "",
     },
   ],
+  data: [],
+  templateContent: "",
 };

@@ -4,6 +4,7 @@ import { useGetToPath, useGo } from "@refinedev/core";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import { SectionEntityType } from "@page/types/section-entity.type";
 import { resourceNavigation } from "@client/navigation/resource-navigation";
+import { ReactNode } from "react";
 
 const Header = ({ customButtons, defaultButtons, personId, resourse }: any) => {
   // TODO: useResource as an object returns url with personId instead of id
@@ -38,7 +39,7 @@ const Header = ({ customButtons, defaultButtons, personId, resourse }: any) => {
 export const renderHeaderToPerson = (
   personId: string,
   resourse: ResourceEnum,
-  customButtons?: any[]
+  customButtons?: any[],
 ) => {
   // eslint-disable-next-line react/display-name
   return ({ defaultButtons }: any) => (
@@ -70,6 +71,8 @@ const CustomHeader = ({
     person: ResourceEnum.person,
     company: ResourceEnum.company,
     government: ResourceEnum.government,
+    documentTemplate: ResourceEnum.documentTemplate,
+    document: ResourceEnum.document,
   };
   const selectedResource = mapSelectedResource[parent];
   if (!selectedResource) {
@@ -90,7 +93,10 @@ const CustomHeader = ({
     person: "persona",
     company: "empresa",
     government: "gobierno",
+    documentTemplate: "plantilla",
+    document: "documento",
   };
+
   const label = mapLabel[parent];
   return (
     <Space>
@@ -142,4 +148,12 @@ export const renderHeaderWithoutDefault = ({
       parent={parent}
     />
   );
+};
+
+export const renderHeader = ({
+  customButtons,
+}: {
+  customButtons: ReactNode[];
+}) => {
+  return () => <Space>{customButtons}</Space>;
 };

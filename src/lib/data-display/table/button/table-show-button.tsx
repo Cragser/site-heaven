@@ -1,24 +1,25 @@
 import React from "react";
 import { Navigation } from "@components/data-display/entity-collection/types/navigation.type";
 import { ShowButton } from "@refinedev/antd";
+import { useGoTo } from "@client/hooks/navigation/use-go-to";
+import { ResourceEnum } from "@lib/enums/resource.enum";
 
 interface Props {
   defaultNavigation: boolean;
   navigation?: Navigation;
-  goTo: any;
   record: any;
   entityResource: any;
-  meta: any;
+  meta: Record<string, string>;
 }
 
 export default function TableShowButton({
   defaultNavigation,
   navigation,
   entityResource,
-  goTo,
   record,
   meta,
-}: Props) {
+}: Readonly<Props>) {
+  const goTo = useGoTo();
   if (!defaultNavigation && !navigation) {
     console.log("defaultNavigation is false and navigation is undefined");
     return null;
@@ -50,9 +51,8 @@ export default function TableShowButton({
       hideText
       size="middle"
       onClick={() => {
-        console.log(navigation?.resource);
         goTo({
-          resource: navigation?.resource,
+          resource: navigation?.resource as ResourceEnum,
           action: "show",
           meta: navigation?.createMeta?.(record) ?? meta,
         });

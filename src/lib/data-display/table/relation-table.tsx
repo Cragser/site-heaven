@@ -1,17 +1,12 @@
-import {
-  Action,
-  BaseRecord,
-  useGetToPath,
-  useGo,
-  useTranslate,
-} from "@refinedev/core";
-import { Space, Table } from "antd";
-import { DeleteButton, EditButton, ShowButton } from "@refinedev/antd";
+import { useGo } from "@refinedev/core";
+import { Table } from "antd";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import React from "react";
 import { SectionEntityType } from "@page/types/section-entity.type";
 import { ItemConfig } from "@/lib/@types/table-column.type";
-import { resourceNavigation } from "@client/navigation/resource-navigation";
+import createColumns from "@/lib/data-display/table/generate/create-columns";
+import createTableActions from "@/lib/data-display/table/generate/create-table-actions";
+import { NavigationCrud } from "@/lib/pages/types/list-page.type";
 
 interface Props {
   entityResource: ResourceEnum;
@@ -20,36 +15,23 @@ interface Props {
   parent: any;
   parentName: SectionEntityType;
   columns: ItemConfig[];
-
   tableProps: any;
+  navigation?: NavigationCrud;
 }
 
 function RelationTable({
-  parent: entity,
   entityResource,
   relationResource,
+  parentResource,
   tableProps,
-  parentName,
   columns,
-}: Props) {
-  const translate = useTranslate();
-  const getToPath = useGetToPath();
-  const go = useGo();
-  const columnsRender = columns.map((item) => {
-    const key = item.key ?? item.dataIndex.join(".");
-    return (
-      <Table.Column
-        key={key}
-        dataIndex={[entity, ...item.dataIndex]}
-        title={translate(`${entity}.fields.${key}`)}
-        render={item.render || ((text: string) => text)}
-      />
-    );
-  });
-
+  navigation,
+}: Readonly<Props>) {
+  const goTo = useGo();
+  const defaultNavigation = true;
   return (
     <Table
-      {...(tableProps as any)}
+      {...tableProps}
       rowKey="id"
       pagination={{
         ...tableProps.pagination,
@@ -57,54 +39,14 @@ function RelationTable({
         size: "small",
       }}
     >
-      {columnsRender}
-      <Table.Column
-        title={"Actions"}
-        dataIndex="actions"
-        render={(_, record: BaseRecord) => {
-          const meta = {
-            [`${entity}Id`]: record[`${entity}Id`],
-            [`${parentName}Id`]: record[`${parentName}Id`],
-          };
-
-          const handleClick = (action: Action) => {
-            const to = getToPath({
-              resource: resourceNavigation[entityResource],
-              action,
-              meta,
-            });
-            go({
-              to,
-            });
-          };
-          return (
-            <Space>
-              <EditButton
-                hideText
-                size="middle"
-                resource={entityResource}
-                onClick={() => {
-                  handleClick("edit");
-                }}
-              />
-              <ShowButton
-                hideText
-                size="middle"
-                resource={entityResource}
-                onClick={() => {
-                  handleClick("show");
-                }}
-              />
-              <DeleteButton
-                hideText
-                size="middle"
-                recordItemId={record.id}
-                resource={relationResource}
-              />
-            </Space>
-          );
-        }}
-      />
+      {createColumns({ columns, entityResource, useParent: true })}
+      {createTableActions({
+        entityResource,
+        parentResource,
+        navigation,
+        defaultNavigation,
+        goTo,
+      })}
     </Table>
   );
 }

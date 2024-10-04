@@ -1,27 +1,12 @@
 import { CrudFilters, useTranslate } from "@refinedev/core";
 import { List, useTable } from "@refinedev/antd";
-import { ResourceEnum } from "@lib/enums/resource.enum";
 import React from "react";
-import { ItemConfig } from "@/lib/@types/table-column.type";
 import EntityTable from "@/lib/data-display/table/entity-table";
 import { StateManager } from "@components/feedback/state-manager/state-manager";
 import { Button, Space } from "antd";
 import { useGoTo } from "@client/hooks/navigation/use-go-to";
-import { Navigation } from "@components/data-display/entity-collection/types/navigation.type";
 import Filter from "@/lib/data-display/table/filter/simple-filter";
-
-export interface CreateListProps {
-  entityResource: ResourceEnum;
-  columns: ItemConfig[];
-  defaultNavigation?: boolean;
-  initialFilter?: CrudFilters;
-  navigation?: {
-    edit?: Navigation;
-    show?: Navigation;
-    delete?: Navigation;
-    create?: Navigation;
-  };
-}
+import { CreateListProps } from "@/lib/pages/types/list-page.type";
 
 function ListPage({
   entityResource,
@@ -29,7 +14,7 @@ function ListPage({
   navigation,
   defaultNavigation = true,
   initialFilter,
-}: CreateListProps) {
+}: Readonly<CreateListProps>) {
   const { tableProps, tableQueryResult, searchFormProps } = useTable({
     pagination: {
       current: 1,

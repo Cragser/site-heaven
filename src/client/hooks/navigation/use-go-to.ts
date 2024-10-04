@@ -9,6 +9,7 @@ interface Props {
   meta: Record<string, string>;
 }
 export function useGoTo() {
+  console.log("useGoTo");
   const getToPath = useGetToPath();
   const go = useGo();
 
@@ -42,6 +43,7 @@ export function useGoTo() {
       return;
     }
 
+    console.log("GOTO", toPath);
     go({
       to: toPath,
     });

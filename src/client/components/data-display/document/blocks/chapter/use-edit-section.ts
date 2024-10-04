@@ -1,9 +1,16 @@
 import { useState } from "react";
+import useDocumentStore from "@components/data-display/document/state/useDocumentStore";
+interface Props {
+  entity: string;
+}
 
-export const useEditSection = () => {
+export const useEditSection = ({ entity }: Props) => {
   const [isEditing, setIsEditing] = useState(false);
   const [isDraggable, setIsDraggable] = useState(false);
   const [note, setNote] = useState("");
+  const [isSelected, setIsSelected] = useState(false);
+
+  const { setChapterSelected, clearChapterSelected } = useDocumentStore();
 
   const handleDelete = () => {
     console.log("Deleting section");
@@ -18,12 +25,17 @@ export const useEditSection = () => {
 
   const handleEdit = () => {
     setIsEditing(!isEditing);
-    console.log("Editing section");
     // Implementar lógica de edición
   };
 
   const handleAddNote = (newNote: string) => {
     setNote(newNote);
+  };
+
+  const handleSelect = () => {
+    setIsSelected(!isSelected);
+    setChapterSelected(entity);
+    // entity
   };
 
   return {
@@ -34,5 +46,7 @@ export const useEditSection = () => {
     handleEdit,
     handleAddNote,
     isDraggable,
+    isSelected,
+    handleSelect,
   };
 };

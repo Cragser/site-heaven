@@ -2,10 +2,15 @@
 // DOC: Un item será un elemento de un config
 // Un config debería ser una colección.
 
+import { ReactNode } from "react";
+import { ResourceEnum } from "@lib/enums/resource.enum";
+
 type ItemConfigType =
   // | "button"
   // | "checkbox"
   // | "color"
+  | "custom"
+  | "boolean"
   | "autocomplete"
   | "date"
   | "datetime-local"
@@ -25,8 +30,10 @@ type ItemConfigType =
   | "text"
   | "time"
   | "url"
-  | "textarea";
+  | "textarea"
+  | "rich-text";
 
+// TODO: Considera migrar los elementos de tipo fields y tipo column.
 export interface ItemConfig {
   key: string;
   dataIndex: string[];
@@ -38,4 +45,17 @@ export interface ItemConfig {
   // Ilimitado
   selectResource?: any;
   selectDataIndex?: string[];
+  // custom
+  // Field is for Forms
+  field?: {
+    custom?: (
+      column: ItemConfig,
+      resource: ResourceEnum,
+      formProps?: unknown,
+    ) => ReactNode;
+    shouldRender?: (values?: Record<string, any>) => boolean;
+  };
+  // column is for Tables
+
+  // what is for view?
 }

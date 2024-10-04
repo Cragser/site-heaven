@@ -1,7 +1,7 @@
 "use client";
 
 import { ThemedLayoutV2, ThemedSiderV2 } from "@refinedev/antd";
-import React from "react";
+import React, { memo, useMemo } from "react";
 import { Table } from "antd";
 import { tagRender } from "@client/util/ant/fields/tagRender";
 import { Header } from "@client/layouts/blocks/header";
@@ -22,12 +22,6 @@ export const ThemedLayout = ({ children }: React.PropsWithChildren) => {
       if (index % 3 === 0 && index !== 0) {
         acc.push(arr.slice(index - 2, index + 1));
       }
-      // else {
-      //   if (index === arr.length - 1) {
-      //     acc.push([curr, 'list', '']);
-      //   }
-      // }
-
       return acc;
     }, [] as string[][]);
     UrlAdvisor = isDev ? (

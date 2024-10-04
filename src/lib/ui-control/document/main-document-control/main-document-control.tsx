@@ -1,13 +1,16 @@
-import Chapter from "@/lib/data-display/document/chapter";
+import Chapter from "@components/data-display/document/blocks/chapter/chapter";
 import {
   ChapterType,
-  DocumentType,
-} from "@/lib/ui-control/document/types/document.type";
+  DocumentCreationType,
+} from "@/lib/ui-control/document/types/documentCreationType";
 import DocumentSection from "@/lib/surfaces/document-section";
 import { useCallback, useState } from "react";
 import update from "immutability-helper";
 
-export default function MainDocumentControl({ title, chapters }: DocumentType) {
+export default function MainDocumentControl({
+  title,
+  chapters,
+}: DocumentCreationType) {
   const [cards, setCards] = useState(chapters);
   const moveCard = useCallback((dragIndex: number, hoverIndex: number) => {
     console.log("Moving section|| Callback");
@@ -17,7 +20,7 @@ export default function MainDocumentControl({ title, chapters }: DocumentType) {
           [dragIndex, 1],
           [hoverIndex, 0, prevCards[dragIndex] as ChapterType],
         ],
-      })
+      }),
     );
   }, []);
 

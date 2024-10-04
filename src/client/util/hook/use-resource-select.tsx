@@ -2,7 +2,7 @@ import { useSelect } from "@refinedev/antd";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import { CrudFilters } from "@refinedev/core";
 
-type Filter = (search: string) => {
+export type Filter = (search: string) => {
   field: string;
   operator: string;
   value: string;
@@ -23,6 +23,7 @@ export function useResourceSelect({
   filters = [],
   resource,
 }: Props): SelectProps {
+  console.log(excludeIds);
   const initialFilters: CrudFilters =
     excludeIds.length > 0
       ? [

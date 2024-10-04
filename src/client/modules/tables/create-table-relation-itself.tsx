@@ -34,7 +34,7 @@ function CreateTableRelationItself({
   tableProps,
   // company
   columns,
-}: Props) {
+}: Readonly<Props>) {
   const translate = useTranslate();
   const getToPath = useGetToPath();
   const go = useGo();

@@ -1,13 +1,14 @@
 "use client";
-import { BaseRecord, useTranslate } from "@refinedev/core";
+import { BaseRecord } from "@refinedev/core";
 import { Space, Table } from "antd";
 import { DeleteButton } from "@refinedev/antd";
-import React from "react";
+import React, { useMemo } from "react";
 import { camelCase } from "case-anything";
 import { useGoTo } from "@client/hooks/navigation/use-go-to";
-import { CreateListProps } from "@/lib/pages/list/list-page";
 import TableEditButton from "@/lib/data-display/table/button/table-edit-button";
 import TableShowButton from "@/lib/data-display/table/button/table-show-button";
+import createColumns from "@/lib/data-display/table/generate/create-columns";
+import { CreateListProps } from "@/lib/pages/types/list-page.type";
 
 export interface EntityTableProps extends CreateListProps {
   tableProps: any;
@@ -19,10 +20,11 @@ export default function EntityTable({
   tableProps,
   navigation,
   defaultNavigation = true,
-}: EntityTableProps) {
-  const entityCamelCase = camelCase(entityResource);
-  const goTo = useGoTo();
-  const translate = useTranslate();
+}: Readonly<EntityTableProps>) {
+  const entityCamelCase = useMemo(
+    () => camelCase(entityResource),
+    [entityResource],
+  );
 
   return (
     <Table
@@ -34,32 +36,20 @@ export default function EntityTable({
         size: "small",
       }}
     >
-      {columns.map((item, index) => {
-        const key = item.key ?? item.dataIndex.join(".");
-        const translateKey =
-          item.translateKey ?? `${entityResource}.fields.${key}`;
-        return (
-          <Table.Column
-            key={key}
-            dataIndex={item.dataIndex}
-            title={translate(translateKey)}
-            render={item.render || ((text: string) => text)}
-          />
-        );
-      })}
+      {createColumns({ columns, entityResource })}
       <Table.Column
         title={"Actions"}
         dataIndex="actions"
         render={(_, record: BaseRecord) => {
-          const meta = {
+          const meta: Record<string, string> = {
             [`${entityCamelCase}Id`]: record[`id`] as string,
           };
+
           return (
             <Space>
               <TableEditButton
                 defaultNavigation={defaultNavigation}
                 navigation={navigation?.edit}
-                goTo={goTo}
                 record={record}
                 entityResource={entityResource}
                 meta={meta}
@@ -67,7 +57,6 @@ export default function EntityTable({
               <TableShowButton
                 defaultNavigation={defaultNavigation}
                 navigation={navigation?.show}
-                goTo={goTo}
                 record={record}
                 entityResource={entityResource}
                 meta={meta}

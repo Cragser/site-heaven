@@ -1,3 +1,7 @@
 .ant-form {
   max-width: 32rem;
 }
+
+.ql-disabled > div.ql-editor[contenteditable="false"] {
+  padding: 0;
+}

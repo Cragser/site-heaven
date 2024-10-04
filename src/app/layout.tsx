@@ -25,9 +25,8 @@ export default function RootLayout({
   const cookieStore = cookies();
   const theme = cookieStore.get("theme");
   const lang = cookieStore.get("NEXT_LOCALE");
-
   return (
-    <html lang={lang?.value ?? "en"}>
+    <html lang={lang?.value ?? "es"}>
       <body>
         <Suspense>
           <AntdRegistry>

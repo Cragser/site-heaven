@@ -4,13 +4,14 @@ import { Create, useForm } from "@refinedev/antd";
 import { HttpError } from "@refinedev/core";
 import createHiddenFields from "@/lib/mutate/util/create-hidden-fields";
 import { MutationPageType } from "@/lib/pages/types/mutation-page.type";
+import { useEffect } from "react";
 
 export function CreateForm({
   columns,
   entityResource,
   meta,
   title,
-}: MutationPageType) {
+}: Readonly<MutationPageType>) {
   const { formProps, saveButtonProps } = useForm<any, HttpError>({
     resource: entityResource,
   });
