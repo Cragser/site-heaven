@@ -1,12 +1,11 @@
 import { ItemConfig } from "@/lib/@types/table-column.type";
+import { createItemConfig } from "@client/util/fields/create-columns-from-array";
 
 export const personRelationTypeFields: ItemConfig[] = [
   {
-    key: "name",
-    dataIndex: ["name"],
+    ...createItemConfig("name"),
   },
   {
-    key: "nameES",
-    dataIndex: ["nameES"],
+    ...createItemConfig("nameES"),
   },
 ];

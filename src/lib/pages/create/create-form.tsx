@@ -1,10 +1,9 @@
 import { Form } from "antd";
-import { useCreateFields } from "@/lib/mutate/hooks/use-create-fields";
 import { Create, useForm } from "@refinedev/antd";
 import { HttpError } from "@refinedev/core";
 import createHiddenFields from "@/lib/mutate/util/create-hidden-fields";
 import { MutationPageType } from "@/lib/pages/types/mutation-page.type";
-import { useEffect } from "react";
+import { useCreateFields } from "@/lib/mutate/hooks/use-create-fields";
 
 export function CreateForm({
   columns,

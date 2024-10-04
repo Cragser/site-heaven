@@ -1,14 +1,15 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode } from "react";
 import { ItemConfig } from "@/lib/@types/table-column.type";
 import { useTranslate } from "@refinedev/core";
-import { Form, FormProps, Input, Select, Switch } from "antd";
+import { Form, FormProps, Input, Switch } from "antd";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import SelectItem from "@/lib/mutate/form-item/select-item";
 import "react-quill/dist/quill.snow.css";
-import RichText from "@/lib/mutate/rich-text/rich-text";
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import EnumItem from "@/lib/mutate/form-item/enum-item";
 import useFormStore from "@/lib/states/use-form-store";
+import RichText from "@/lib/mutate/rich-text/rich-text";
+
 function switchRender(
   column: ItemConfig,
   translate: Function,
@@ -43,10 +44,6 @@ function switchRender(
     );
   }
 
-  if (column?.type === "rich-text") {
-    return <RichText column={column} resource={resource} />;
-  }
-
   if (column?.type === "boolean") {
     return (
       <Form.Item
@@ -60,6 +57,10 @@ function switchRender(
         />
       </Form.Item>
     );
+  }
+
+  if (column?.type === "rich-text") {
+    return <RichText column={column} resource={resource} />;
   }
 
   return (

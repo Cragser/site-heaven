@@ -1,9 +1,14 @@
 import { Form } from "antd";
-import ReactQuill from "react-quill";
+import dynamic from "next/dynamic";
 import React from "react";
 import { ItemConfig } from "@/lib/@types/table-column.type";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import { useTranslate } from "@refinedev/core";
+
+const ReactQuill = dynamic(() => import("react-quill"), {
+  ssr: false,
+  loading: () => <p>Cargando editor...</p>,
+});
 
 interface Props {
   column: ItemConfig;
@@ -12,6 +17,7 @@ interface Props {
 
 export default function RichText({ column, resource }: Readonly<Props>) {
   const translate = useTranslate();
+
   return (
     <Form.Item
       label={translate(`${resource}.fields.${column.key}`)}

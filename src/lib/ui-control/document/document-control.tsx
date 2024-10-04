@@ -1,5 +1,4 @@
 import { Flex } from "antd";
-import LateralDocumentControl from "@/lib/ui-control/document/compunded/lateral-document-control/lateral-document-control";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { DocumentCreationType } from "@/lib/ui-control/document/types/documentCreationType";
@@ -9,7 +8,7 @@ export default function DocumentControl(props: Readonly<DocumentCreationType>) {
   return (
     <DndProvider backend={HTML5Backend}>
       <Flex gap={16}>
-        <LateralDocumentControl />
+        {/* <LateralDocumentControl /> */}
         <MainDocumentControl {...props} />
       </Flex>
     </DndProvider>

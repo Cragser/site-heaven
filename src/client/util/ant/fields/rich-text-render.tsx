@@ -8,7 +8,10 @@ export default function richTextRender(value: unknown) {
       theme="bubble"
       value={value as Value}
       readOnly={true}
-      modules={{ toolbar: false, history: false }}
+      modules={{
+        toolbar: false,
+        history: false,
+      }}
     />
   );
 }
