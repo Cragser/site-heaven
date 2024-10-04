@@ -100,7 +100,10 @@
     "deleteError": "Error al eliminar {{resource}} (código de estado: {{statusCode}})",
     "editSuccess": "{{resource}} editado con éxito",
     "editError": "Error al editar {{resource}} (código de estado: {{statusCode}})",
-    "importProgress": "Importando: {{processed}}/{{total}}"
+    "importProgress": "Importando: {{processed}}/{{total}}",
+    "isLoading": "Cargando...",
+    "isError": "Error...",
+    "isEmpty": "No hay datos..."
   },
   "loading": "Cargando",
   "tags": {
@@ -166,7 +169,7 @@
     "fields": {
       "id": "id",
       "notes": "Notas",
-        "name": "Nombre"
+      "name": "Nombre"
     }
   },
   "company": {
@@ -200,9 +203,9 @@
     },
     "titles": {
       "create": "Crear contrato",
-        "edit": "Editar contrato",
-        "list": "Contratos",
-        "show": "Mostrar contrato"
+      "edit": "Editar contrato",
+      "list": "Contratos",
+      "show": "Mostrar contrato"
     }
   },
   "company-address": {
@@ -217,7 +220,7 @@
       "edit": "Editar domicilio",
       "list": "Domicilios relacionados",
       "show": "Mostrar domicilio ([company.nickname])",
-        "add-relation-to-company": "Añadir domicilio"
+      "add-relation-to-company": "Añadir domicilio"
     }
   },
   "company-asset": {
@@ -228,11 +231,11 @@
       "assetId": "assetId"
     },
     "titles": {
-        "create": "Añadir activo a [company.nickname (company.rfc)]",
-        "edit": "Editar activo",
-        "list": "Activos de [company.nickname (company.rfc)]",
-        "show": "Mostrar activos",
-        "add-relation-to-company": "Añadir activo"
+      "create": "Añadir activo a [company.nickname (company.rfc)]",
+      "edit": "Editar activo",
+      "list": "Activos de [company.nickname (company.rfc)]",
+      "show": "Mostrar activos",
+      "add-relation-to-company": "Añadir activo"
     }
   },
   "company-creation-details": {
@@ -278,11 +281,11 @@
       "id": "id",
       "name": "Nombre del grupo",
       "comments": "Comentarios o resumen",
-        "type": "Tipo de grupo",
-        "caseNumber": "Número de casos",
-        "court": "Corte",
-        "claimedAct": "Acto reclamado",
-        "sentence": "Sentencia"
+      "type": "Tipo de grupo",
+      "caseNumber": "Número de casos",
+      "court": "Corte",
+      "claimedAct": "Acto reclamado",
+      "sentence": "Sentencia"
     }
   },
   "trial": {
@@ -355,7 +358,7 @@
       "license": "Número de cédula",
       "validated": "¿Estudios validados oficialmente?",
       "initialDate": "Fecha de inicio",
-        "endDate": "Fecha de término"
+      "endDate": "Fecha de término"
     },
     "titles": {
       "create": "Añadir estudios",
@@ -441,7 +444,7 @@
       "edit": "Editar estudio",
       "list": "Estudios de [person.name person.lastName (person.rfc)]",
       "show": "Mostrar estudios",
-        "add-relation-to-person": "Añadir estudio"
+      "add-relation-to-person": "Añadir estudio"
     }
   },
   "person-legal": {
@@ -456,7 +459,7 @@
       "edit": "Editar grupo de causas",
       "list": "Legal [person.name person.lastName (person.rfc)]",
       "show": "[person.name], grupo de causas",
-        "add-relation-to-person": "Añadir grupo de causas"
+      "add-relation-to-person": "Añadir grupo de causas"
     }
   },
   "person-notes": {
@@ -617,7 +620,6 @@
   },
   "person-contract": {
     "person-contract": "Contratos",
-
     "titles": {
       "create": "Create Contratos",
       "edit": "Edit Contratos",
@@ -626,7 +628,7 @@
       "add-relation-to-person": "Agregar contrato"
     }
   },
-  "stakeholder" : {
+  "stakeholder": {
     "titles": {
       "create": "Crear Stakeholder",
       "edit": "Editar Stakeholder",
@@ -642,7 +644,7 @@
       "notes": "Notas"
     }
   },
-  "government" : {
+  "government": {
     "government": "Gobierno"
   },
   "document-template": {

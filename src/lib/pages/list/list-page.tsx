@@ -1,12 +1,12 @@
-import { CrudFilters, useTranslate } from "@refinedev/core";
-import { List, useTable } from "@refinedev/antd";
+import { useTranslate } from "@refinedev/core";
+import { List } from "@refinedev/antd";
 import React from "react";
 import EntityTable from "@/lib/data-display/table/entity-table";
 import { StateManager } from "@components/feedback/state-manager/state-manager";
-import { Button, Space } from "antd";
-import { useGoTo } from "@client/hooks/navigation/use-go-to";
 import Filter from "@/lib/data-display/table/filter/simple-filter";
 import { CreateListProps } from "@/lib/pages/types/list-page.type";
+import useListPage from "@/lib/pages/list/hooks/use-list-page";
+import CreateItemListPage from "@/lib/pages/list/blocks/create-item-list-page";
 
 function ListPage({
   entityResource,
@@ -15,67 +15,31 @@ function ListPage({
   defaultNavigation = true,
   initialFilter,
 }: Readonly<CreateListProps>) {
-  const { tableProps, tableQueryResult, searchFormProps } = useTable({
-    pagination: {
-      current: 1,
-      mode: "client",
-      pageSize: 10,
-    },
-    resource: entityResource,
-    syncWithLocation: true,
-    filters: {
-      mode: "server",
-      initial: initialFilter ?? [],
-    },
-    onSearch: (params: { q: string }) => {
-      const filters: CrudFilters = [];
-      if (params?.q) {
-        filters.push({
-          field: "filter",
-          operator: "eq",
-          value: `name||$contL||${params.q}` as string,
-        });
-      } else if (initialFilter) {
-        filters.push(...initialFilter);
-      } else {
-        filters.push({
-          field: "filter",
-          operator: "eq",
-          value: `name||$ne||NULL` as string,
-        });
-      }
-      // should return filters and reload
-      return filters;
-    },
+  const { tableProps, tableQuery, searchFormProps } = useListPage({
+    entityResource,
+    columns,
+    navigation,
+    defaultNavigation,
+    initialFilter,
   });
-
   const translate = useTranslate();
-  const goTo = useGoTo();
-  const title = translate(`${entityResource}.titles.list`);
-
-  const createButton =
-    defaultNavigation || navigation?.create ? (
-      <Space>
-        <Button
-          onClick={() => {
-            goTo({
-              action: "create",
-              resource: navigation?.create?.resource || entityResource,
-              meta: navigation?.create?.createMeta?.({}) || {},
-            });
-          }}
-        >
-          {translate(`${entityResource}.titles.create`)}
-        </Button>
-      </Space>
-    ) : null;
 
   return (
-    <StateManager
-      isLoading={tableQueryResult?.isLoading}
-      isError={tableQueryResult?.isError}
+    <List
+      title={translate(`${entityResource}.titles.list`)}
+      headerButtons={[
+        <CreateItemListPage
+          entityResource={entityResource}
+          navigation={navigation}
+          key="create-item"
+        />,
+      ]}
     >
-      <List title={title} headerButtons={[createButton]}>
+      <StateManager
+        isLoading={tableQuery?.isLoading}
+        isError={tableQuery?.isError}
+        data={tableQuery?.data}
+      >
         <Filter formProps={searchFormProps} />
         <EntityTable
           tableProps={tableProps}
@@ -84,8 +48,8 @@ function ListPage({
           navigation={navigation}
           defaultNavigation={defaultNavigation}
         />
-      </List>
-    </StateManager>
+      </StateManager>
+    </List>
   );
 }
 

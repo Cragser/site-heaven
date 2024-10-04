@@ -8,8 +8,8 @@ interface Props {
   resource: ResourceEnum;
   meta: Record<string, string>;
 }
+
 export function useGoTo() {
-  console.log("useGoTo");
   const getToPath = useGetToPath();
   const go = useGo();
 
@@ -30,7 +30,7 @@ export function useGoTo() {
 
     if (!toPath) {
       console.error(
-        `Action not found for resource ${resource} and action ${action}`
+        `Action not found for resource ${resource} and action ${action}`,
       );
       return;
     }
