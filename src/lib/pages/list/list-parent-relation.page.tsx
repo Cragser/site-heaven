@@ -68,7 +68,7 @@ function ListParentRelationPage({
       isError={tableQueryResult?.isError}
     >
       <List title={title} headerButtons={headerButtons}>
-        {tableQueryResult?.data?.data?.length > 0 ? (
+        {(tableQueryResult?.data?.data?.length ?? 0 > 0) ? (
           <RelationTable
             parent={entityResource}
             parentResource={parentResource}
