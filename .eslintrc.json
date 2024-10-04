@@ -1,13 +1,29 @@
 {
   "root": true,
-  "ignorePatterns": ["**/*"],
+  "ignorePatterns": [
+    "**/*"
+  ],
   "extends": [
     "next/core-web-vitals",
     "airbnb",
     "airbnb/hooks",
     "airbnb-typescript"
   ],
-  "plugins": ["perfectionist", "@typescript-eslint", "filenames-simple", "import", "react", "jsx-a11y"],
+  "plugins": [
+    "perfectionist",
+    "@typescript-eslint",
+    "filenames-simple",
+    "import",
+    "react",
+    "jsx-a11y"
+  ],
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "project": "./tsconfig.json"
+      }
+    }
+  },
   "overrides": [
     {
       "files": "*.json",
@@ -15,7 +31,10 @@
       "rules": {}
     },
     {
-      "files": ["*.js", "*.jsx"],
+      "files": [
+        "*.js",
+        "*.jsx"
+      ],
       "rules": {}
     }
   ],
@@ -37,16 +56,39 @@
       "error",
       {
         "selector": "property",
-        "format": ["camelCase"]
+        "format": [
+          "camelCase"
+        ]
       }
     ],
     "filenames-simple/extension": "error",
-    "filenames-simple/naming-convention": ["error", { "rule": "kebab-case" }],
+    "filenames-simple/naming-convention": [
+      "error",
+      {
+        "rule": "kebab-case"
+      }
+    ],
     "filenames-simple/pluralize": [
       "error",
       {
         "parentDir": "plural",
         "file": "singular"
+      }
+    ],
+    "import/no-restricted-paths": [
+      "error",
+      {
+        "zones": [
+          {
+            "target": "./src/lib",
+            "from": "./src",
+            "except": [
+              "./src/lib",
+              "**/node_modules/**"
+            ],
+            "message": "Los módulos dentro de `src/lib` no deben depender de otros módulos fuera de `src/lib`, salvo librerías de terceros."
+          }
+        ]
       }
     ]
   }
