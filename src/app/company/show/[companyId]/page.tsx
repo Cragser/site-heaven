@@ -37,10 +37,13 @@ export default function CompanyShowPage({
     label: translate(`company.fields.${field}`),
     span: 2,
   }));
+
+  console.log(queryResult);
   return (
     <StateManager
       isLoading={queryResult.isLoading}
       isError={queryResult.isError}
+      data={queryResult.data}
     >
       <Show isLoading={isLoading}>
         <DescriptionSimple items={items} />

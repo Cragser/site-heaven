@@ -6,7 +6,7 @@ export interface StateManagerProps {
   isError: boolean;
   children: ReactNode;
   data?: {
-    data: unknown[];
+    data: unknown[] | Record<string, unknown>;
   };
 }
 
@@ -25,7 +25,14 @@ export function StateManager({
     return <div>{translate("notifications.isError")}</div>;
   }
 
-  if (!data?.data?.length) {
+  if (Array.isArray(data?.data) && data?.data.length === 0) {
+    return <div>{translate("notifications.isEmpty")}</div>;
+  }
+
+  if (
+    !Array.isArray(data?.data) &&
+    Object.keys(data?.data || {}).length === 0
+  ) {
     return <div>{translate("notifications.isEmpty")}</div>;
   }
 
