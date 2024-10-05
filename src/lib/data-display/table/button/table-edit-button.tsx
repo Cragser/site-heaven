@@ -20,14 +20,7 @@ export default function TableEditButton({
   meta,
 }: Readonly<Props>) {
   const goTo = useGoTo();
-  console.log({
-    defaultNavigation,
-    navigation,
-    entityResource,
-    goTo,
-    record,
-    meta,
-  });
+
   if (!defaultNavigation && !navigation) {
     console.log("defaultNavigation is false and navigation is undefined");
     return null;
