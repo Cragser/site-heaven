@@ -90,8 +90,6 @@ function CardList({ id, parent, record, resources }: Readonly<CardListProps>) {
                 <UnorderedListOutlined
                   key="setting"
                   onClick={item.handleClick}
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
                 />,
                 // <EditOutlined key="edit" />,
                 // <EllipsisOutlined key="ellipsis" />,

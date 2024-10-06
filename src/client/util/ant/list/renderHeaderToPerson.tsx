@@ -23,10 +23,7 @@ const Header = ({ customButtons, defaultButtons, personId, resourse }: any) => {
   return (
     <Space>
       <Button type={"link"} onClick={handleClick}>
-        <ArrowLeftOutlined
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
-        />
+        <ArrowLeftOutlined />
         Vista persona
       </Button>
       {customButtons}
@@ -101,10 +98,7 @@ const CustomHeader = ({
   return (
     <Space>
       <Button type={"link"} onClick={handleClick}>
-        <ArrowLeftOutlined
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
-        />
+        <ArrowLeftOutlined />
         Vista {label}
       </Button>
       {customButtons}

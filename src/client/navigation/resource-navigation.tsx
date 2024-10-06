@@ -12,27 +12,18 @@ export const resourceNavigation: Partial<Record<ResourceEnum, ResourceProps>> =
   {
     [ResourceEnum.company]: generateCrudSimple(
       ResourceEnum.company,
-      <ShopOutlined
-        onPointerEnterCapture={undefined}
-        onPointerLeaveCapture={undefined}
-      />,
+      <ShopOutlined />,
     ),
     ...companyResources,
     [ResourceEnum.person]: generateCrudSimple(
       ResourceEnum.person,
-      <UserOutlined
-        onPointerEnterCapture={undefined}
-        onPointerLeaveCapture={undefined}
-      />,
+      <UserOutlined />,
     ),
     ...personResources,
 
     [ResourceEnum.government]: generateCrudSimple(
       ResourceEnum.government,
-      <BankOutlined
-        onPointerEnterCapture={undefined}
-        onPointerLeaveCapture={undefined}
-      />,
+      <BankOutlined />,
     ),
     ...governmentResources,
     // TODO: COMPANY-RELATION
@@ -172,18 +163,12 @@ export const resourceNavigation: Partial<Record<ResourceEnum, ResourceProps>> =
     },
     [ResourceEnum.document]: generateCrudSimple(
       ResourceEnum.document,
-      <ShopOutlined
-        onPointerEnterCapture={undefined}
-        onPointerLeaveCapture={undefined}
-      />,
+      <ShopOutlined />,
     ),
     ...documentResources,
     [ResourceEnum.documentTemplate]: generateCrudSimple(
       ResourceEnum.documentTemplate,
-      <ShopOutlined
-        onPointerEnterCapture={undefined}
-        onPointerLeaveCapture={undefined}
-      />,
+      <ShopOutlined />,
     ),
     ...documentTemplateResources,
   };

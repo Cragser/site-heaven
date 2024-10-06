@@ -9,12 +9,7 @@ export function refinePaths(): ResourceProps[] {
     ...Object.values(resourceNavigation),
     {
       meta: {
-        icon: (
-          <BookOutlined
-            onPointerEnterCapture={undefined}
-            onPointerLeaveCapture={undefined}
-          />
-        ),
+        icon: <BookOutlined />,
       },
       name: "catalog",
     },
@@ -104,12 +99,7 @@ export function refinePaths(): ResourceProps[] {
       edit: "/document/edit/:id",
       list: "/document",
       meta: {
-        icon: (
-          <ProjectOutlined
-            onPointerEnterCapture={undefined}
-            onPointerLeaveCapture={undefined}
-          />
-        ),
+        icon: <ProjectOutlined />,
       },
       name: "document",
       show: "/document/show/:id",

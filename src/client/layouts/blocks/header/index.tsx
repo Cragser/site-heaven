@@ -95,7 +95,7 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
           Cookies.set("NEXT_LOCALE", lang);
         },
       })),
-    [languages, languagesDict, changeLanguage]
+    [languages, languagesDict, changeLanguage],
   );
 
   return (
@@ -112,10 +112,7 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
             <Typography.Text>
               {languagesDict[currentLocale as languagesKeys]}
             </Typography.Text>
-            <DownOutlined
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
-            />
+            <DownOutlined />
           </Space>
         </Button>
       </Dropdown>
