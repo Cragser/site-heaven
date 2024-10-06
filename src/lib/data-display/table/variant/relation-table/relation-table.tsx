@@ -1,12 +1,11 @@
-import { useGo } from "@refinedev/core";
 import { Table } from "antd";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import React from "react";
 import { SectionEntityType } from "@page/types/section-entity.type";
 import { ItemConfig } from "@/lib/@types/table-column.type";
-import useCreateTableColumns from "@/lib/data-display/table/generate/use-create-table-columns";
-import createTableActions from "@/lib/data-display/table/generate/create-table-actions";
 import { NavigationCrud } from "@/lib/pages/types/list-page.type";
+import { generateColumnsForRelationTable } from "@/lib/data-display/table/variant/relation-table/blocks/column-list/generator/generate-columns";
+import generateNavigationButtonForRelationTable from "@/lib/data-display/table/variant/relation-table/blocks/navigation/generator/generate-navigation-buttons";
 
 interface Props {
   entityResource: ResourceEnum;
@@ -17,6 +16,7 @@ interface Props {
   columns: ItemConfig[];
   tableProps: any;
   navigation?: NavigationCrud;
+  parentId: string;
 }
 
 function RelationTable({
@@ -25,10 +25,26 @@ function RelationTable({
   parentResource,
   tableProps,
   columns,
-  navigation,
+  parentId,
 }: Readonly<Props>) {
-  const goTo = useGo();
-  const defaultNavigation = true;
+  const columnsNode = generateColumnsForRelationTable({
+    columns,
+    entityResource,
+  });
+
+  columnsNode.push(
+    <Table.Column
+      key="actions"
+      title={"Actions"}
+      render={generateNavigationButtonForRelationTable({
+        entityResource,
+        relationResource,
+        sectionResource: parentResource,
+        sectionId: parentId,
+      })}
+    />,
+  );
+
   return (
     <Table
       {...tableProps}
@@ -39,18 +55,7 @@ function RelationTable({
         size: "small",
       }}
     >
-      {useCreateTableColumns({
-        columns,
-        entityResource,
-        useParent: true,
-      })}
-      {createTableActions({
-        entityResource,
-        parentResource,
-        navigation,
-        defaultNavigation,
-        goTo,
-      })}
+      {columnsNode}
     </Table>
   );
 }

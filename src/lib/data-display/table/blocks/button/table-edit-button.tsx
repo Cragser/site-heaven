@@ -1,8 +1,17 @@
 import React from "react";
-import { Navigation } from "@components/data-display/entity-collection/types/navigation.type";
-import { EditButton } from "@refinedev/antd";
-import { useGoTo } from "@client/hooks/navigation/use-go-to";
-import { ResourceEnum } from "@lib/enums/resource.enum";
+import {
+    Navigation
+} from "@components/data-display/entity-collection/types/navigation.type";
+import {EditButton} from "@refinedev/antd";
+import {useGoTo} from "@client/hooks/navigation/use-go-to";
+import {ResourceEnum} from "@lib/enums/resource.enum";
+
+/**
+ * Esto pensando en los casos.
+ * 1. Una sección, siempre usa el valor por defecto
+ * 2. Una sección relacionada a una entidad, crea un meta con el id de la sección y de la entidad, así que no necesita meta.
+ * 3. Una entidad relacionada a otra entidad, signfica que siempre necesita meta.
+ */
 
 interface Props {
   defaultNavigation: boolean;

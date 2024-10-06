@@ -1,8 +1,8 @@
 "use client";
 import { Table } from "antd";
 import React from "react";
-import createColumns from "@/lib/data-display/table/generate/create-columns";
 import { CreateListProps } from "@/lib/pages/types/list-page.type";
+import { generateColumns } from "@/lib/data-display/table/variant/entity-table/blocks/column-list/generate-columns";
 
 export interface EntityTableProps extends CreateListProps {
   tableProps: any;
@@ -12,8 +12,6 @@ export default function EntityTable({
   entityResource,
   columns,
   tableProps,
-  navigation,
-  defaultNavigation = true,
 }: Readonly<EntityTableProps>) {
   return (
     <Table
@@ -26,11 +24,9 @@ export default function EntityTable({
       }}
       // showHeader={false}
     >
-      {createColumns({
+      {generateColumns({
         columns,
         entityResource,
-        navigation,
-        defaultNavigation,
       })}
     </Table>
   );

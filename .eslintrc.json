@@ -90,6 +90,13 @@
           }
         ]
       }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "CallExpression[arguments.0.type='Literal'][arguments.0.raw='true'], CallExpression[arguments.0.type='Literal'][arguments.0.raw='false']",
+        "message": "No se permite pasar banderas booleanas como parámetro a las funciones."
+      }
     ]
   }
 }

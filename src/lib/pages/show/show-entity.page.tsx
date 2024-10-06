@@ -24,13 +24,14 @@ export default function ShowEntityPage({ fields, resource, id }: Props) {
   }
 
   return (
-    <StateManager
-      isLoading={queryResult.isLoading}
-      isError={queryResult.isError}
-    >
-      <Show title={translate(`${resource}.titles.show`)} canEdit={false}>
+    <Show title={translate(`${resource}.titles.show`)} canEdit={false}>
+      <StateManager
+        isLoading={queryResult.isLoading}
+        isError={queryResult.isError}
+        data={queryResult.data}
+      >
         <EntityView items={fields} resource={resource} record={record} />
-      </Show>
-    </StateManager>
+      </StateManager>
+    </Show>
   );
 }

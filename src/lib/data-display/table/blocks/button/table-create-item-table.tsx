@@ -10,7 +10,7 @@ interface Props {
   navigation?: NavigationCrud;
 }
 
-export default function CreateItemListPage({
+export default function TableCreateItemTable({
   entityResource,
   navigation,
 }: Readonly<Props>) {

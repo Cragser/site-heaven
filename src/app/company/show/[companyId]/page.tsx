@@ -38,14 +38,13 @@ export default function CompanyShowPage({
     span: 2,
   }));
 
-  console.log(queryResult);
   return (
-    <StateManager
-      isLoading={queryResult.isLoading}
-      isError={queryResult.isError}
-      data={queryResult.data}
-    >
-      <Show isLoading={isLoading}>
+    <Show isLoading={isLoading}>
+      <StateManager
+        isLoading={queryResult.isLoading}
+        isError={queryResult.isError}
+        data={queryResult.data}
+      >
         <DescriptionSimple items={items} />
         <Divider />
         <SimpleUniqueResource
@@ -73,7 +72,7 @@ export default function CompanyShowPage({
             // ResourceEnum.personCompany,
           ]}
         />
-      </Show>
-    </StateManager>
+      </StateManager>
+    </Show>
   );
 }

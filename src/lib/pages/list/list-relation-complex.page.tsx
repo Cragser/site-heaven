@@ -2,12 +2,12 @@ import { ListRelationComplexPageProps } from "@/lib/pages/types/list-page.type";
 import useTableQuery from "@/lib/pages/list/util/use-table.query";
 import { StateManager } from "@components/feedback/state-manager/state-manager";
 import { List } from "@refinedev/antd";
-import RelationTable from "@/lib/data-display/table/relation-table";
+import RelationTable from "@/lib/data-display/table/variant/relation-table/relation-table";
 import { Space } from "antd";
 import { camelCase } from "case-anything";
 import { SectionEntityType } from "@page/types/section-entity.type";
 
-import TableCreateButton from "@/lib/data-display/table/button/table-create-button";
+import TableCreateButton from "@/lib/data-display/table/blocks/button/table-create-button";
 
 export function ListRelationComplexPage({
   parentId,
