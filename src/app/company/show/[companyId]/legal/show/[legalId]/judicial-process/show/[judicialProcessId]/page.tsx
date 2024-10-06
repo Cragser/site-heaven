@@ -1,14 +1,12 @@
 "use client";
 
-import { Show, TextField } from "@refinedev/antd";
-import { HttpError, useShow, useTranslate } from "@refinedev/core";
-import { Divider, Typography } from "antd";
+import { Divider } from "antd";
 import { ResourceEnum } from "@lib/enums/resource.enum";
-import { JudicialProcessType } from "@lib/types/judicial-process.type";
-import { useJudicialProcessTitle } from "@client/hooks/titles/use-judicial-process-title";
-import CreateSuborderedList from "@modules/lists/create-subordered-list";
+import ShowEntityPage from "@/lib/pages/show/show-entity.page";
+import { legalJudicialProcessFields } from "@lib/fields/legal/legal-judicial-process.fields";
+import ListInnerPage from "@/lib/pages/list/variant/list-inner/list-inner.page";
+import { trialFields } from "@lib/fields/legal/trial.fields";
 
-const { Title } = Typography;
 interface LegalPage {
   params: {
     judicialProcessId: string;
@@ -16,52 +14,30 @@ interface LegalPage {
     legalId: string;
   };
 }
+
 export default function JudicialProcessShowPage({
-  params,
+  params: { judicialProcessId, companyId, legalId },
 }: Readonly<LegalPage>) {
-  const { judicialProcessId, companyId, legalId } = params;
-  const { queryResult } = useShow<JudicialProcessType, HttpError>({
-    id: judicialProcessId,
-    resource: ResourceEnum.judicialProcess,
-  });
-
-  const { data, isError, isLoading } = queryResult;
-  const record = data?.data;
-  const translate = useTranslate();
-  const { title } = useJudicialProcessTitle(
-    judicialProcessId,
-    "judicial-process.titles.show"
-  );
-  if (isError || !record) {
-    return null;
-  }
-
   return (
-    <Show title={title} isLoading={isLoading}>
-      <Title level={5}>{translate(`judicial-process.fields.name`)}</Title>
-      <TextField value={record.name} />
-
-      <Title level={5}>{translate(`judicial-process.fields.comments`)}</Title>
-      <TextField value={record.comments} />
-      <Divider />
-      {/*<TrialList params={{ judicialProcessId, personId: companyId, legalId }} />*/}
-      {/*<Divider />*/}
-      <CreateSuborderedList
-        fields={[
-          "name",
-          "courtName",
-          "summary",
-          "startDate",
-          "endDate",
-          "type",
-          "scope",
-        ]}
-        navigationResource={ResourceEnum.companyTrial}
-        parentName="judicialProcess"
-        params={params}
-        resource={ResourceEnum.trial}
-        title={title}
+    <>
+      <ShowEntityPage
+        fields={legalJudicialProcessFields}
+        resource={ResourceEnum.judicialProcess}
+        id={judicialProcessId}
       />
-    </Show>
+      <Divider />
+      <ListInnerPage
+        parentId={judicialProcessId}
+        parentResource={ResourceEnum.judicialProcess}
+        relationResource={ResourceEnum.trial}
+        columns={trialFields}
+        navigationResource={ResourceEnum.companyTrial}
+        meta={{
+          legalId,
+          companyId,
+          judicialProcessId,
+        }}
+      />
+    </>
   );
 }

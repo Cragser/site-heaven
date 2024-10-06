@@ -14,6 +14,8 @@ export enum ResourceEnum {
   address = "address",
   notes = "notes",
   legal = "legal",
+  // TODO: Es necesario tener judicial-process en lugar de legal-judicial-process?
+  legalJudicialProcess = "legal-judicial-process",
   judicialProcess = "judicial-process",
   trial = "trial",
   personRelationType = "person-relation-type",

@@ -14,6 +14,7 @@ interface CardProps {
   total: number;
   handleClick: () => void;
 }
+
 interface CardListProps {
   resources: ResourceEnum[];
   uniqueResources?: ResourceEnum[];
@@ -35,7 +36,7 @@ function useCreateData(
   resources: ResourceEnum[],
   id: string,
   parent: SectionEntityType,
-  record: unknown
+  record: unknown,
 ) {
   const translate = useTranslate();
   const goto = useGoTo();
@@ -63,6 +64,7 @@ function useCreateData(
 
 function CardList({ id, parent, record, resources }: Readonly<CardListProps>) {
   const data: CardProps[] = useCreateData(resources, id, parent, record);
+  console.log({ record });
   return (
     <>
       <Divider />

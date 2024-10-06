@@ -103,6 +103,7 @@ export const resourceNavigation: Partial<Record<ResourceEnum, ResourceProps>> =
       create:
         "/company/show/:companyId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/show/:trialId/trial-notification/create",
       edit: "/company/show/:companyId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/show/:trialId/trial-notification/edit/:trialNotificationId",
+      show: "/company/show/:companyId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/show/:trialId/trial-notification/show/:trialNotificationId",
       name: "trial-notification",
     },
     [ResourceEnum.personRelation]: {

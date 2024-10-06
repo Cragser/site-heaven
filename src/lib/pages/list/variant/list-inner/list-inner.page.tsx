@@ -25,11 +25,6 @@ export default function ListInnerPage({
   navigationResource,
   meta,
 }: Readonly<Props>) {
-  console.log({
-    parentResource,
-    relationResource,
-    navigationResource,
-  });
   const translate = useTranslate();
   const { tableProps, tableQueryResult } = useListParentRelation({
     sectionId: parentId,

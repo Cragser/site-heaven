@@ -25,7 +25,6 @@ export default function AssetShowPage({
         id={assetId}
       />
       <Divider />
-
       <ListInnerPage
         parentId={assetId}
         parentResource={ResourceEnum.asset}

@@ -20,8 +20,3 @@ export default function AssetValueHistoryEditPage(props: any) {
     </Edit>
   );
 }
-
-// http://localhost:3000/
-// company/show/151c5429-ed52-4297-960a-e64803af49ce/
-// asset/show/              6d2b7671-f77b-4d6d-9bd4-46bc6ee536e8
-// asset-value-history/show/6d2b7671-f77b-4d6d-9bd4-46bc6ee536e8

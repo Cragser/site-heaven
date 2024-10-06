@@ -45,6 +45,7 @@ export default function StakeholderPage({ params: { companyId } }: Props) {
     <StateManager
       isLoading={tableQueryResult.isLoading}
       isError={tableQueryResult.isError}
+      data={tableQueryResult.data}
     >
       <List
         title={title}

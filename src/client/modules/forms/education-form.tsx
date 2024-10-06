@@ -1,14 +1,13 @@
-import { Form, FormProps, Input, Switch } from 'antd';
-import { useTranslate } from '@refinedev/core';
-import { educationAntdValidation } from '@lib/schemas/education.schema';
+import { Form, FormProps, Input, Switch } from "antd";
+import { useTranslate } from "@refinedev/core";
+import { educationAntdValidation } from "@lib/schemas/education.schema";
 
 export default function EducationForm(formProps: Readonly<FormProps>) {
   const translate = useTranslate();
-  console.log();
   return (
     <Form {...formProps} layout="vertical">
       <Form.Item
-        label={translate('education.fields.name')}
+        label={translate("education.fields.name")}
         name="name"
         rules={educationAntdValidation.name}
       >
@@ -16,7 +15,7 @@ export default function EducationForm(formProps: Readonly<FormProps>) {
       </Form.Item>
 
       <Form.Item
-        label={translate('education.fields.institution')}
+        label={translate("education.fields.institution")}
         name="institution"
         rules={educationAntdValidation.institution}
       >
@@ -24,7 +23,7 @@ export default function EducationForm(formProps: Readonly<FormProps>) {
       </Form.Item>
 
       <Form.Item
-        label={translate('education.fields.license')}
+        label={translate("education.fields.license")}
         name="license"
         rules={educationAntdValidation.license}
       >
@@ -32,7 +31,7 @@ export default function EducationForm(formProps: Readonly<FormProps>) {
       </Form.Item>
 
       <Form.Item
-        label={translate('education.fields.validated')}
+        label={translate("education.fields.validated")}
         name="validated"
         rules={educationAntdValidation.validated}
         valuePropName="checked"
@@ -42,18 +41,18 @@ export default function EducationForm(formProps: Readonly<FormProps>) {
       </Form.Item>
 
       <Form.Item
-        label={translate('education.fields.initialDate')}
+        label={translate("education.fields.initialDate")}
         name="initialDate"
         rules={educationAntdValidation.initialDate}
       >
-        <Input type={'date'} />
+        <Input type={"date"} />
       </Form.Item>
       <Form.Item
-        label={translate('education.fields.endDate')}
+        label={translate("education.fields.endDate")}
         name="endDate"
         rules={educationAntdValidation.endDate}
       >
-        <Input type={'date'} />
+        <Input type={"date"} />
       </Form.Item>
     </Form>
   );

@@ -40,7 +40,7 @@ export default function PersonRelationList({
   const { title } = useEntityTitle(
     companyId,
     "company-relation.titles.list",
-    "company"
+    "company",
   );
   const titleToAdd = "Agregar";
   const { drawerProps, formProps, saveButtonProps, show } = useDrawerForm({
@@ -66,6 +66,7 @@ export default function PersonRelationList({
     <StateManager
       isLoading={tableQueryResult?.isLoading}
       isError={tableQueryResult?.isError}
+      data={tableQueryResult?.data}
     >
       <List title={title} headerButtons={headerButtons}>
         <CreateTableRelationItself
@@ -92,7 +93,7 @@ export default function PersonRelationList({
             parentEntityId={companyId}
             entityResource={ResourceEnum.company}
             excludeIds={tableQueryResult?.data?.data.map(
-              (item) => item["relatedCompany"].id
+              (item) => item["relatedCompany"].id,
             )}
             // excludeIds={[]}
             formProps={formProps}

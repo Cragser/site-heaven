@@ -1,7 +1,7 @@
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import { camelCase } from "case-anything";
 import DescriptionSimple from "@components/data-display/description/description-simple";
-import { Button, DescriptionsProps, Flex } from "antd";
+import { Button, DescriptionsProps, Flex, Space } from "antd";
 import { useTranslate } from "@refinedev/core";
 import { useGoTo } from "@client/hooks/navigation/use-go-to";
 
@@ -50,10 +50,12 @@ export function SimpleUniqueResource({ resource, record, meta }: Props) {
   return (
     <div>
       <h3>{title}</h3>
-      <DescriptionSimple items={items} />
-      <Flex justify={"end"} align={"center"}>
-        <Button onClick={handleEdit}>Editar</Button>
-      </Flex>
+      <Space direction={"vertical"}>
+        <DescriptionSimple items={items} />
+        <Flex justify={"end"} align={"center"}>
+          <Button onClick={handleEdit}>Editar</Button>
+        </Flex>
+      </Space>
     </div>
   );
 }

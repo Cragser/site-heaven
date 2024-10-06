@@ -1,14 +1,11 @@
 "use client";
 
-import { Show, TextField } from "@refinedev/antd";
-import { HttpError, useShow, useTranslate } from "@refinedev/core";
-import { Typography } from "antd";
+import { Divider } from "antd";
 import { ResourceEnum } from "@lib/enums/resource.enum";
-import { TrialType } from "@lib/types/trial.type";
-import { useForTrialShow } from "@client/hooks/titles/use-for-trial-show";
-import CreateSuborderedList from "@modules/lists/create-subordered-list";
-
-const { Title } = Typography;
+import ShowEntityPage from "@/lib/pages/show/show-entity.page";
+import { trialFields } from "@lib/fields/legal/trial.fields";
+import ListInnerPage from "@/lib/pages/list/variant/list-inner/list-inner.page";
+import { trialNotificationFields } from "@lib/fields/legal/trial-notification.fields";
 
 interface Props {
   params: {
@@ -21,65 +18,28 @@ interface Props {
 
 export default function TrialShowPage({ params }: Readonly<Props>) {
   const { trialId, judicialProcessId, companyId, legalId } = params;
-  const { queryResult } = useShow<TrialType, HttpError>({
-    id: trialId,
-    resource: ResourceEnum.trial,
-  });
-  const { data, isError, isLoading } = queryResult;
-
-  const record = data?.data;
-  const translate = useTranslate();
-
-  const { title } = useForTrialShow(
-    trialId,
-    judicialProcessId,
-    "trial.titles.show"
-  );
-
-  if (isError || !record) {
-    return null;
-  }
 
   return (
-    <section
-      style={{
-        display: "grid",
-        gap: "2rem",
-        gridTemplateColumns: "1fr ",
-      }}
-    >
-      <Show title={title} isLoading={isLoading}>
-        {/*<Title level={5}>{translate(`trial.fields.name`)}</Title>*/}
-        <TextField value={record.name} />
-
-        {/*<Title level={5}>{translate(`trial.fields.courtName`)}</Title>*/}
-        <TextField value={record.courtName} />
-
-        {/*<Title level={5}>{translate(`trial.fields.summary`)}</Title>*/}
-        <TextField value={record.summary} />
-
-        <Title level={5}>{translate(`trial.fields.startDate`)}</Title>
-        <TextField value={record.startDate} />
-
-        <Title level={5}>{translate(`trial.fields.endDate`)}</Title>
-        <TextField value={record.endDate} />
-
-        <Title level={5}>{translate(`trial.fields.type`)}</Title>
-        <TextField value={record.type} />
-
-        {/*<Title level={5}>{translate(LangTag[`trial.fields.scope`)}</Title>*/}
-        <TextField value={record.scope} />
-      </Show>
-      {/*<TrialNotificationList params={params} />*/}
-      <CreateSuborderedList
-        fields={["name", "date", "type"]}
-        navigationResource={ResourceEnum.companyTrialNotification}
-        parentName="trial"
-        params={params}
-        resource={ResourceEnum.trialNotification}
-        title={title}
+    <>
+      <ShowEntityPage
+        fields={trialFields}
+        resource={ResourceEnum.trial}
+        id={trialId}
       />
-      {/*<TrialRelationList params={params} />*/}
-    </section>
+      <Divider />
+      <ListInnerPage
+        parentId={trialId}
+        parentResource={ResourceEnum.trial}
+        relationResource={ResourceEnum.trialNotification}
+        columns={trialNotificationFields}
+        navigationResource={ResourceEnum.companyTrialNotification}
+        meta={{
+          legalId,
+          companyId,
+          judicialProcessId,
+          trialId,
+        }}
+      />
+    </>
   );
 }

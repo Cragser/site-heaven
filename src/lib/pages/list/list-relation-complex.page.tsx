@@ -36,10 +36,12 @@ export function ListRelationComplexPage({
     <StateManager
       isLoading={tableQueryResult?.isLoading}
       isError={tableQueryResult?.isError}
+      data={tableQueryResult?.data}
     >
       <List breadcrumb={false} headerButtons={headerButtons}>
         {(tableQueryResult?.data?.data?.length ?? 0 > 0) ? (
           <RelationTable
+            parentId={parentId}
             parent={entityResource}
             parentResource={parentResource}
             entityResource={entityResource}

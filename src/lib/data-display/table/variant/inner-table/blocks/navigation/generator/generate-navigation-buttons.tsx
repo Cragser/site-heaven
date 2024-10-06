@@ -30,7 +30,6 @@ export default function generateNavigationButtonForInnerTable({
         [`${resourceNames.relation}Id`]: record.id as string,
         ...meta,
       };
-      console.log({ localMeta });
       return (
         <Navigation
           defaultNavigation={defaultNavigation}

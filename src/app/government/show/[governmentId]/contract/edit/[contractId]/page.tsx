@@ -14,7 +14,6 @@ interface Props {
 export default function ContractEditPage({
   params: { contractId },
 }: Readonly<Props>) {
-  console.log({ contractId });
   return (
     <EditFormPage
       entityResource={ResourceEnum.contract}
