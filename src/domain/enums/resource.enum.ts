@@ -40,6 +40,8 @@ export enum ResourceEnum {
   companyAddress = "company-address",
   companySocial = "company-social",
   companyAsset = "company-asset",
+  // This is a navigation
+  companyAssetValueHistory = "company-asset-value-history",
   companyRelation = "company-relation",
   companyCreationDetails = "company-creation-details",
   companyAudit = "company-audit",

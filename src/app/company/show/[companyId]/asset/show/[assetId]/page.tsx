@@ -1,40 +1,42 @@
 "use client";
 
-import { Show } from "@refinedev/antd";
-import { HttpError, useShow } from "@refinedev/core";
 import { ResourceEnum } from "@lib/enums/resource.enum";
-import { AssetType } from "@lib/types/asset.type";
-
-import AssetView from "@modules/views/asset-view";
 import { Divider } from "antd";
-import { AssetValueHistoryList } from "@modules/lists/asset-value-history-list";
+import ShowEntityPage from "@/lib/pages/show/show-entity.page";
+import { assetFields } from "@lib/fields/asset/assetFields";
+import ListInnerPage from "@/lib/pages/list/variant/list-inner/list-inner.page";
+import { assetValueHistoryField } from "@lib/fields/asset/asset-value-history.field";
 
 interface Props {
   params: {
     assetId: string;
+    companyId: string;
   };
 }
 
 export default function AssetShowPage({
-  params: { assetId },
+  params: { assetId, companyId },
 }: Readonly<Props>) {
-  const { queryResult } = useShow<AssetType, HttpError>({
-    id: assetId,
-    resource: ResourceEnum.asset,
-  });
-
-  const { data, isError, isLoading } = queryResult;
-  const record = data?.data;
-
-  if (isError || !record) {
-    return null;
-  }
-
   return (
-    <Show isLoading={isLoading}>
-      <AssetView record={record} />
+    <>
+      <ShowEntityPage
+        fields={assetFields}
+        resource={ResourceEnum.asset}
+        id={assetId}
+      />
       <Divider />
-      <AssetValueHistoryList assetId={record.id} />
-    </Show>
+
+      <ListInnerPage
+        parentId={assetId}
+        parentResource={ResourceEnum.asset}
+        relationResource={ResourceEnum.assetValueHistory}
+        columns={assetValueHistoryField}
+        navigationResource={ResourceEnum.companyAssetValueHistory}
+        meta={{
+          companyId,
+          assetId,
+        }}
+      />
+    </>
   );
 }

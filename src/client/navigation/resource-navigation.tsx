@@ -15,7 +15,7 @@ export const resourceNavigation: Partial<Record<ResourceEnum, ResourceProps>> =
       <ShopOutlined
         onPointerEnterCapture={undefined}
         onPointerLeaveCapture={undefined}
-      />
+      />,
     ),
     ...companyResources,
     [ResourceEnum.person]: generateCrudSimple(
@@ -23,7 +23,7 @@ export const resourceNavigation: Partial<Record<ResourceEnum, ResourceProps>> =
       <UserOutlined
         onPointerEnterCapture={undefined}
         onPointerLeaveCapture={undefined}
-      />
+      />,
     ),
     ...personResources,
 
@@ -32,7 +32,7 @@ export const resourceNavigation: Partial<Record<ResourceEnum, ResourceProps>> =
       <BankOutlined
         onPointerEnterCapture={undefined}
         onPointerLeaveCapture={undefined}
-      />
+      />,
     ),
     ...governmentResources,
     // TODO: COMPANY-RELATION
@@ -127,6 +127,17 @@ export const resourceNavigation: Partial<Record<ResourceEnum, ResourceProps>> =
       },
       name: "asset-value-history",
     },
+    [ResourceEnum.companyAssetValueHistory]: {
+      create:
+        "/company/show/:companyId/asset/show/:assetId/asset-value-history/create",
+      edit: "/company/show/:companyId/asset/show/:assetId/asset-value-history/edit/:assetValueHistoryId",
+      show: "/company/show/:companyId/asset/show/:assetId/asset-value-history/show/:assetValueHistoryId",
+      meta: {
+        canDelete: true,
+        hide: true,
+      },
+      name: "asset-value-history",
+    },
     [ResourceEnum.companyPerson]: {
       create: "/company/show/:companyId/company-person/create",
       edit: "/company/show/:companyId/company-person/edit/:personCompanyId",
@@ -163,7 +174,7 @@ export const resourceNavigation: Partial<Record<ResourceEnum, ResourceProps>> =
       <ShopOutlined
         onPointerEnterCapture={undefined}
         onPointerLeaveCapture={undefined}
-      />
+      />,
     ),
     ...documentResources,
     [ResourceEnum.documentTemplate]: generateCrudSimple(
@@ -171,7 +182,7 @@ export const resourceNavigation: Partial<Record<ResourceEnum, ResourceProps>> =
       <ShopOutlined
         onPointerEnterCapture={undefined}
         onPointerLeaveCapture={undefined}
-      />
+      />,
     ),
     ...documentTemplateResources,
   };
