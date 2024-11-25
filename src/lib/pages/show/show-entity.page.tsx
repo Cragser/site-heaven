@@ -11,14 +11,18 @@ interface Props {
   id: string;
 }
 
-export default function ShowEntityPage({ fields, resource, id }: Props) {
+export default function ShowEntityPage({
+  fields,
+  resource,
+  id,
+}: Readonly<Props>) {
   const translate = useTranslate();
-  const { queryResult } = useShow<any, HttpError>({
+  const { query } = useShow<any, HttpError>({
     id: id,
     resource: resource,
   });
 
-  const record = queryResult.data?.data;
+  const record = query.data?.data;
   if (!record) {
     return null;
   }
@@ -26,9 +30,9 @@ export default function ShowEntityPage({ fields, resource, id }: Props) {
   return (
     <Show title={translate(`${resource}.titles.show`)} canEdit={false}>
       <StateManager
-        isLoading={queryResult.isLoading}
-        isError={queryResult.isError}
-        data={queryResult.data}
+        isLoading={query.isLoading}
+        isError={query.isError}
+        data={query.data}
       >
         <EntityView items={fields} resource={resource} record={record} />
       </StateManager>

@@ -1,8 +1,9 @@
 import DocumentSection from "@/lib/surfaces/document-section";
 import { DocumentCreationType } from "@/lib/ui-control/document/types/documentCreationType";
-import { JsonViewer } from "@textea/json-viewer";
 import useDocumentStore from "@components/data-display/document/state/useDocumentStore";
 import { Divider } from "antd";
+import { JsonViewer } from "@textea/json-viewer";
+import useDocumentContentStore from "@components/data-display/document/state/use-document-content-store";
 
 export default function LateralDocument(props: Readonly<DocumentCreationType>) {
   // Todo: Debe ver la información del capítulo seleccionado.
@@ -12,15 +13,16 @@ export default function LateralDocument(props: Readonly<DocumentCreationType>) {
   // Estos cuadros se deben de poder agregar como nuevos capítulos.
 
   const { chapterSelected } = useDocumentStore();
-
+  const { chapters } = useDocumentContentStore();
   return (
     <DocumentSection>
       <div>Lateral | {chapterSelected}</div>
       <Divider orientation="left">
         Información del capítulo seleccionado
       </Divider>
-      <JsonViewer value={props.templateContent} />
-      <JsonViewer value={props.data} />
+      <JsonViewer value={chapters} />
+      {/* <JsonViewer value={props.templateContent} /> */}
+      {/* <JsonViewer value={props.data} /> */}
     </DocumentSection>
   );
 }

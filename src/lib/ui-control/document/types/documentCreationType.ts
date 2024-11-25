@@ -20,4 +20,5 @@ export interface DocumentCreationType {
   chapters: ChapterType[];
   data: any;
   templateContent: any;
+  chapterData?: any;
 }

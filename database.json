@@ -1,0 +1,3325 @@
+{
+  "tables": [
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "name",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "country",
+          "is_nullable": "NO",
+          "column_default": "México"
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "state",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "city",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "postalCode",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "colony",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "street",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "exteriorNumber",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "interiorNumber",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "additionalInformation",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "address",
+      "foreign_keys": null,
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "name",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "description",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "date",
+          "max_length": null,
+          "column_name": "date",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "type",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "float",
+          "max_length": null,
+          "column_name": "value",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "asset",
+      "foreign_keys": null,
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "assetId",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "float",
+          "max_length": null,
+          "column_name": "value",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "date",
+          "max_length": null,
+          "column_name": "date",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "details",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "type",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "assetId",
+          "is_unique": "NO",
+          "index_name": "FK_48338e20f3769499bd45b91ff80",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "asset_value_history",
+      "foreign_keys": [
+        {
+          "column_name": "assetId",
+          "constraint_name": "FK_48338e20f3769499bd45b91ff80",
+          "referenced_table": "asset",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "name",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "notes",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "datetime",
+          "max_length": null,
+          "column_name": "date",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "reason",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "authority",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "type",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "audit",
+      "foreign_keys": null,
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "role",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "date",
+          "max_length": null,
+          "column_name": "startDate",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "date",
+          "max_length": null,
+          "column_name": "endDate",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "contractType",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "companyId",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "companyId",
+          "is_unique": "NO",
+          "index_name": "FK_2da08d0d882fb7dd26830408286",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "career",
+      "foreign_keys": [
+        {
+          "column_name": "companyId",
+          "constraint_name": "FK_2da08d0d882fb7dd26830408286",
+          "referenced_table": "company",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "title",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "longtext",
+          "max_length": 4294967295,
+          "column_name": "content",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "tinyint",
+          "max_length": null,
+          "column_name": "shouldRepeat",
+          "is_nullable": "NO",
+          "column_default": "0"
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "relatedRepeatingSection",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "longtext",
+          "max_length": 4294967295,
+          "column_name": "contentRepeatingSection",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "chapter_template",
+      "foreign_keys": null,
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "name",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "goal",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "nickname",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "rfc",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "personCompanyId",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "personCompanyId",
+          "is_unique": "NO",
+          "index_name": "FK_ee8269e01f99dbd44dd3e8f8973",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "company",
+      "foreign_keys": [
+        {
+          "column_name": "personCompanyId",
+          "constraint_name": "FK_ee8269e01f99dbd44dd3e8f8973",
+          "referenced_table": "person_company",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "companyId",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "addressId",
+          "is_nullable": "NO",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "companyId",
+          "is_unique": "NO",
+          "index_name": "FK_2509f69fcfd83d6928072f8bac9",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "addressId",
+          "is_unique": "NO",
+          "index_name": "FK_c530c1fa84429206f80b342cfdd",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "company_address",
+      "foreign_keys": [
+        {
+          "column_name": "companyId",
+          "constraint_name": "FK_2509f69fcfd83d6928072f8bac9",
+          "referenced_table": "company",
+          "referenced_column": "id"
+        },
+        {
+          "column_name": "addressId",
+          "constraint_name": "FK_c530c1fa84429206f80b342cfdd",
+          "referenced_table": "address",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "companyId",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "assetId",
+          "is_nullable": "NO",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "assetId",
+          "is_unique": "NO",
+          "index_name": "FK_55552f05208491378244a072341",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "companyId",
+          "is_unique": "NO",
+          "index_name": "FK_d22248c31f72332f08c5d723274",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "company_asset",
+      "foreign_keys": [
+        {
+          "column_name": "assetId",
+          "constraint_name": "FK_55552f05208491378244a072341",
+          "referenced_table": "asset",
+          "referenced_column": "id"
+        },
+        {
+          "column_name": "companyId",
+          "constraint_name": "FK_d22248c31f72332f08c5d723274",
+          "referenced_table": "company",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "companyId",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "auditId",
+          "is_nullable": "NO",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "auditId",
+          "is_unique": "NO",
+          "index_name": "FK_695d5dec94e48011ac290b92f8d",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "companyId",
+          "is_unique": "NO",
+          "index_name": "FK_d0ae59e4f2e939c1c2a1e637760",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "company_audit",
+      "foreign_keys": [
+        {
+          "column_name": "auditId",
+          "constraint_name": "FK_695d5dec94e48011ac290b92f8d",
+          "referenced_table": "audit",
+          "referenced_column": "id"
+        },
+        {
+          "column_name": "companyId",
+          "constraint_name": "FK_d0ae59e4f2e939c1c2a1e637760",
+          "referenced_table": "company",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "companyId",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "contractId",
+          "is_nullable": "NO",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "contractId",
+          "is_unique": "NO",
+          "index_name": "FK_5266c54f6d63741ad01ce2dc8b2",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "companyId",
+          "is_unique": "NO",
+          "index_name": "FK_970800544384746c99690ba8bbb",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "company_contract",
+      "foreign_keys": [
+        {
+          "column_name": "contractId",
+          "constraint_name": "FK_5266c54f6d63741ad01ce2dc8b2",
+          "referenced_table": "contract",
+          "referenced_column": "id"
+        },
+        {
+          "column_name": "companyId",
+          "constraint_name": "FK_970800544384746c99690ba8bbb",
+          "referenced_table": "company",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "companyId",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "int",
+          "max_length": null,
+          "column_name": "initialCapital",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "int",
+          "max_length": null,
+          "column_name": "initialShares",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "companyId",
+          "is_unique": "YES",
+          "index_name": "REL_f6d5ab4dafc2bad435e67f5b0f",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "company_creation_details",
+      "foreign_keys": [
+        {
+          "column_name": "companyId",
+          "constraint_name": "FK_f6d5ab4dafc2bad435e67f5b0f4",
+          "referenced_table": "company",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "companyId",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "legalId",
+          "is_nullable": "NO",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "companyId",
+          "is_unique": "NO",
+          "index_name": "FK_9775a756e0365e4a64549b6288f",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "legalId",
+          "is_unique": "NO",
+          "index_name": "FK_ceedb6575c6ddc2b9d78fba97d9",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "company_legal",
+      "foreign_keys": [
+        {
+          "column_name": "companyId",
+          "constraint_name": "FK_9775a756e0365e4a64549b6288f",
+          "referenced_table": "company",
+          "referenced_column": "id"
+        },
+        {
+          "column_name": "legalId",
+          "constraint_name": "FK_ceedb6575c6ddc2b9d78fba97d9",
+          "referenced_table": "legal",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "companyId",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "relatedCompanyId",
+          "is_nullable": "NO",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "companyId",
+          "is_unique": "NO",
+          "index_name": "FK_21e26f38447e868786360cbb9e8",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "relatedCompanyId",
+          "is_unique": "NO",
+          "index_name": "FK_da76865ea7eb47eacadfc4fcdc3",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "company_relation",
+      "foreign_keys": [
+        {
+          "column_name": "companyId",
+          "constraint_name": "FK_21e26f38447e868786360cbb9e8",
+          "referenced_table": "company",
+          "referenced_column": "id"
+        },
+        {
+          "column_name": "relatedCompanyId",
+          "constraint_name": "FK_da76865ea7eb47eacadfc4fcdc3",
+          "referenced_table": "company",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "companyId",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "socialId",
+          "is_nullable": "NO",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "companyId",
+          "is_unique": "NO",
+          "index_name": "FK_19574cee582d70761349b4ba4c9",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "socialId",
+          "is_unique": "NO",
+          "index_name": "FK_5ddb7245b3d4756561486dcb108",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "company_social",
+      "foreign_keys": [
+        {
+          "column_name": "companyId",
+          "constraint_name": "FK_19574cee582d70761349b4ba4c9",
+          "referenced_table": "company",
+          "referenced_column": "id"
+        },
+        {
+          "column_name": "socialId",
+          "constraint_name": "FK_5ddb7245b3d4756561486dcb108",
+          "referenced_table": "social",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "name",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "concept",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "datetime",
+          "max_length": null,
+          "column_name": "startDate",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "contractor",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "notes",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "int",
+          "max_length": null,
+          "column_name": "value",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "typeOfProcedureAndLinks",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "contract",
+      "foreign_keys": null,
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "name",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "datetime",
+          "max_length": null,
+          "column_name": "createdAt",
+          "is_nullable": "NO",
+          "column_default": "CURRENT_TIMESTAMP(6)"
+        },
+        {
+          "data_type": "datetime",
+          "max_length": null,
+          "column_name": "updatedAt",
+          "is_nullable": "NO",
+          "column_default": "CURRENT_TIMESTAMP(6)"
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "documentTemplateId",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "entityType",
+          "is_nullable": "NO",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "document",
+      "foreign_keys": null,
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "documentId",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "companyId",
+          "is_nullable": "NO",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "documentId",
+          "is_unique": "NO",
+          "index_name": "FK_7f7f498bcec2a12f6877271948e",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "companyId",
+          "is_unique": "NO",
+          "index_name": "FK_dee8946aa196e47cfddc8aca08c",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "document_company",
+      "foreign_keys": [
+        {
+          "column_name": "documentId",
+          "constraint_name": "FK_7f7f498bcec2a12f6877271948e",
+          "referenced_table": "document",
+          "referenced_column": "id"
+        },
+        {
+          "column_name": "companyId",
+          "constraint_name": "FK_dee8946aa196e47cfddc8aca08c",
+          "referenced_table": "company",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "documentId",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "governmentId",
+          "is_nullable": "NO",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "documentId",
+          "is_unique": "NO",
+          "index_name": "FK_2c783b767d0b4aa673d93d9bbdb",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "governmentId",
+          "is_unique": "NO",
+          "index_name": "FK_ad4a4108e339917c2e71ac6f33f",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "document_government",
+      "foreign_keys": [
+        {
+          "column_name": "documentId",
+          "constraint_name": "FK_2c783b767d0b4aa673d93d9bbdb",
+          "referenced_table": "document",
+          "referenced_column": "id"
+        },
+        {
+          "column_name": "governmentId",
+          "constraint_name": "FK_ad4a4108e339917c2e71ac6f33f",
+          "referenced_table": "government",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "documentId",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "personId",
+          "is_nullable": "NO",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "personId",
+          "is_unique": "NO",
+          "index_name": "FK_10861f39a4ad1578775ad05b333",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "documentId",
+          "is_unique": "NO",
+          "index_name": "FK_c0bc14248eccf6ce65f55f6c741",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "document_person",
+      "foreign_keys": [
+        {
+          "column_name": "personId",
+          "constraint_name": "FK_10861f39a4ad1578775ad05b333",
+          "referenced_table": "person",
+          "referenced_column": "id"
+        },
+        {
+          "column_name": "documentId",
+          "constraint_name": "FK_c0bc14248eccf6ce65f55f6c741",
+          "referenced_table": "document",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "title",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "enum",
+          "max_length": 10,
+          "column_name": "entityType",
+          "is_nullable": "NO",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "document_template",
+      "foreign_keys": null,
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "documentTemplateId",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "chapterTemplateId",
+          "is_nullable": "NO",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "documentTemplateId",
+          "is_unique": "NO",
+          "index_name": "FK_4374ee66e28d1e75c6322f6b35d",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "chapterTemplateId",
+          "is_unique": "NO",
+          "index_name": "FK_f688e3c2e0c614f3a04e51f1f81",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "document_template_chapter_template",
+      "foreign_keys": [
+        {
+          "column_name": "documentTemplateId",
+          "constraint_name": "FK_4374ee66e28d1e75c6322f6b35d",
+          "referenced_table": "document_template",
+          "referenced_column": "id"
+        },
+        {
+          "column_name": "chapterTemplateId",
+          "constraint_name": "FK_f688e3c2e0c614f3a04e51f1f81",
+          "referenced_table": "chapter_template",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "name",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "institution",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "license",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "tinyint",
+          "max_length": null,
+          "column_name": "validated",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "date",
+          "max_length": null,
+          "column_name": "initialDate",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "date",
+          "max_length": null,
+          "column_name": "endDate",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "education",
+      "foreign_keys": null,
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "name",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "description",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "personId",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "position",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "level",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "datetime",
+          "max_length": null,
+          "column_name": "startDate",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "datetime",
+          "max_length": null,
+          "column_name": "endDate",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "personId",
+          "is_unique": "NO",
+          "index_name": "FK_a28d5bd8460ea941ec1fa4eebce",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "government",
+      "foreign_keys": [
+        {
+          "column_name": "personId",
+          "constraint_name": "FK_a28d5bd8460ea941ec1fa4eebce",
+          "referenced_table": "person",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "governmentId",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "auditId",
+          "is_nullable": "NO",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "auditId",
+          "is_unique": "NO",
+          "index_name": "FK_be930b9a17ebbdae33663dc587b",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "governmentId",
+          "is_unique": "NO",
+          "index_name": "FK_ea22d15868611cbcafee8fbebcd",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "government_audit",
+      "foreign_keys": [
+        {
+          "column_name": "auditId",
+          "constraint_name": "FK_be930b9a17ebbdae33663dc587b",
+          "referenced_table": "audit",
+          "referenced_column": "id"
+        },
+        {
+          "column_name": "governmentId",
+          "constraint_name": "FK_ea22d15868611cbcafee8fbebcd",
+          "referenced_table": "government",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "governmentId",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "contractId",
+          "is_nullable": "NO",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "governmentId",
+          "is_unique": "NO",
+          "index_name": "FK_96135bbc35594afbee81125cc89",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "contractId",
+          "is_unique": "NO",
+          "index_name": "FK_e81e4bf48b087c5b5d79552703f",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "government_contract",
+      "foreign_keys": [
+        {
+          "column_name": "governmentId",
+          "constraint_name": "FK_96135bbc35594afbee81125cc89",
+          "referenced_table": "government",
+          "referenced_column": "id"
+        },
+        {
+          "column_name": "contractId",
+          "constraint_name": "FK_e81e4bf48b087c5b5d79552703f",
+          "referenced_table": "contract",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "governmentId",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "observationId",
+          "is_nullable": "NO",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "governmentId",
+          "is_unique": "NO",
+          "index_name": "FK_3a077c85c0f50b36a9c9477fbfa",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "observationId",
+          "is_unique": "NO",
+          "index_name": "FK_db83115e58580ece81f791a600b",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "government_observation",
+      "foreign_keys": [
+        {
+          "column_name": "governmentId",
+          "constraint_name": "FK_3a077c85c0f50b36a9c9477fbfa",
+          "referenced_table": "government",
+          "referenced_column": "id"
+        },
+        {
+          "column_name": "observationId",
+          "constraint_name": "FK_db83115e58580ece81f791a600b",
+          "referenced_table": "observation",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "name",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "comments",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "legalId",
+          "is_nullable": "NO",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "legalId",
+          "is_unique": "NO",
+          "index_name": "FK_8d16b17ac9702c0e0638fd8ab75",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "judicial_process",
+      "foreign_keys": [
+        {
+          "column_name": "legalId",
+          "constraint_name": "FK_8d16b17ac9702c0e0638fd8ab75",
+          "referenced_table": "legal",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "name",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "enum",
+          "max_length": 21,
+          "column_name": "type",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "caseNumber",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "court",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "claimedAct",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "sentence",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "comments",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "legal",
+      "foreign_keys": null,
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "enum",
+          "max_length": 18,
+          "column_name": "name",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "enum",
+          "max_length": 2,
+          "column_name": "language",
+          "is_nullable": "NO",
+          "column_default": "es"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "nationality",
+      "foreign_keys": null,
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "content",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "type",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "notes",
+      "foreign_keys": null,
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "name",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "datetime",
+          "max_length": null,
+          "column_name": "date",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "period",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "comments",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "observation",
+      "foreign_keys": null,
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "rfc",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "curp",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "nss",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "name",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "lastName",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "nationalityId",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "tinyint",
+          "max_length": null,
+          "column_name": "isInvestigated",
+          "is_nullable": "YES",
+          "column_default": "1"
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "firstName",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "nationalityId",
+          "is_unique": "NO",
+          "index_name": "FK_9edc9243122fbffc27876053d5d",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "person",
+      "foreign_keys": [
+        {
+          "column_name": "nationalityId",
+          "constraint_name": "FK_9edc9243122fbffc27876053d5d",
+          "referenced_table": "nationality",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "personId",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "addressId",
+          "is_nullable": "NO",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "addressId",
+          "is_unique": "NO",
+          "index_name": "FK_b21d795cc44392c10cfb5e33d70",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "personId",
+          "is_unique": "NO",
+          "index_name": "FK_f79a1d5a864499940a8ecf95f83",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "person_address",
+      "foreign_keys": [
+        {
+          "column_name": "addressId",
+          "constraint_name": "FK_b21d795cc44392c10cfb5e33d70",
+          "referenced_table": "address",
+          "referenced_column": "id"
+        },
+        {
+          "column_name": "personId",
+          "constraint_name": "FK_f79a1d5a864499940a8ecf95f83",
+          "referenced_table": "person",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "personId",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "assetId",
+          "is_nullable": "NO",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "assetId",
+          "is_unique": "NO",
+          "index_name": "FK_d915cae4d683aa63c3916e54b30",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "personId",
+          "is_unique": "NO",
+          "index_name": "FK_e0c09a4b9cb08ec1eeb632b5185",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "person_asset",
+      "foreign_keys": [
+        {
+          "column_name": "assetId",
+          "constraint_name": "FK_d915cae4d683aa63c3916e54b30",
+          "referenced_table": "asset",
+          "referenced_column": "id"
+        },
+        {
+          "column_name": "personId",
+          "constraint_name": "FK_e0c09a4b9cb08ec1eeb632b5185",
+          "referenced_table": "person",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "personId",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "careerId",
+          "is_nullable": "NO",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "careerId",
+          "is_unique": "NO",
+          "index_name": "FK_b2c1060854f76ee1a629c6d038a",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "personId",
+          "is_unique": "NO",
+          "index_name": "FK_e29b20f54e845f6d3961bb1cdfd",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "person_career",
+      "foreign_keys": [
+        {
+          "column_name": "careerId",
+          "constraint_name": "FK_b2c1060854f76ee1a629c6d038a",
+          "referenced_table": "career",
+          "referenced_column": "id"
+        },
+        {
+          "column_name": "personId",
+          "constraint_name": "FK_e29b20f54e845f6d3961bb1cdfd",
+          "referenced_table": "person",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "personId",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "companyId",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "enum",
+          "max_length": 8,
+          "column_name": "relation",
+          "is_nullable": "YES",
+          "column_default": "other"
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "personId",
+          "is_unique": "NO",
+          "index_name": "FK_0556b9db0e5ffe5860ca3d0141c",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "companyId",
+          "is_unique": "NO",
+          "index_name": "FK_f963e89240e684980645ca483c5",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "person_company",
+      "foreign_keys": [
+        {
+          "column_name": "personId",
+          "constraint_name": "FK_0556b9db0e5ffe5860ca3d0141c",
+          "referenced_table": "person",
+          "referenced_column": "id"
+        },
+        {
+          "column_name": "companyId",
+          "constraint_name": "FK_f963e89240e684980645ca483c5",
+          "referenced_table": "company",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "name",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "date",
+          "max_length": null,
+          "column_name": "startDate",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "date",
+          "max_length": null,
+          "column_name": "endDate",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "decimal",
+          "max_length": null,
+          "column_name": "share",
+          "is_nullable": "YES",
+          "column_default": "0.00"
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "position",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "decimal",
+          "max_length": null,
+          "column_name": "money",
+          "is_nullable": "YES",
+          "column_default": "0.00"
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "personCompanyId",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "personCompanyId",
+          "is_unique": "NO",
+          "index_name": "FK_74a895239bd18684f35c6694775",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "person_company_time_frame",
+      "foreign_keys": [
+        {
+          "column_name": "personCompanyId",
+          "constraint_name": "FK_74a895239bd18684f35c6694775",
+          "referenced_table": "person_company",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "personId",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "contractId",
+          "is_nullable": "NO",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "contractId",
+          "is_unique": "NO",
+          "index_name": "FK_3cb7a383079f3b24515de729b73",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "personId",
+          "is_unique": "NO",
+          "index_name": "FK_75f5aa239543cc76bc3b637da43",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "person_contract",
+      "foreign_keys": [
+        {
+          "column_name": "contractId",
+          "constraint_name": "FK_3cb7a383079f3b24515de729b73",
+          "referenced_table": "contract",
+          "referenced_column": "id"
+        },
+        {
+          "column_name": "personId",
+          "constraint_name": "FK_75f5aa239543cc76bc3b637da43",
+          "referenced_table": "person",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "personId",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "educationId",
+          "is_nullable": "NO",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "personId",
+          "is_unique": "NO",
+          "index_name": "FK_5fe25c5151bc7bec70e4bb80790",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "educationId",
+          "is_unique": "NO",
+          "index_name": "FK_73684b8769ece4f196238249482",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "person_education",
+      "foreign_keys": [
+        {
+          "column_name": "personId",
+          "constraint_name": "FK_5fe25c5151bc7bec70e4bb80790",
+          "referenced_table": "person",
+          "referenced_column": "id"
+        },
+        {
+          "column_name": "educationId",
+          "constraint_name": "FK_73684b8769ece4f196238249482",
+          "referenced_table": "education",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "personId",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "legalId",
+          "is_nullable": "NO",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "legalId",
+          "is_unique": "NO",
+          "index_name": "FK_33ecfaff080dba8ded3414db5ed",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "personId",
+          "is_unique": "NO",
+          "index_name": "FK_c9f6c09fecd6ae4ffe6ab59083c",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "person_legal",
+      "foreign_keys": [
+        {
+          "column_name": "legalId",
+          "constraint_name": "FK_33ecfaff080dba8ded3414db5ed",
+          "referenced_table": "legal",
+          "referenced_column": "id"
+        },
+        {
+          "column_name": "personId",
+          "constraint_name": "FK_c9f6c09fecd6ae4ffe6ab59083c",
+          "referenced_table": "person",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "personId",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "noteId",
+          "is_nullable": "NO",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "noteId",
+          "is_unique": "NO",
+          "index_name": "FK_3fcef39efcb4cda3009648af825",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "personId,noteId",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "person_notes",
+      "foreign_keys": [
+        {
+          "column_name": "noteId",
+          "constraint_name": "FK_3fcef39efcb4cda3009648af825",
+          "referenced_table": "notes",
+          "referenced_column": "id"
+        },
+        {
+          "column_name": "personId",
+          "constraint_name": "FK_9ecc7b91fdafa49ea5242102131",
+          "referenced_table": "person",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "personId",
+          "constraint_name": "PRIMARY"
+        },
+        {
+          "column_name": "noteId",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "personId",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "relatedPersonId",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "relationId",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "personId",
+          "is_unique": "NO",
+          "index_name": "FK_7af9b691ee19db9ee2fa318b673",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "relationId",
+          "is_unique": "NO",
+          "index_name": "FK_c1ee4e925fc438b968fa9d1e9f7",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "relatedPersonId",
+          "is_unique": "NO",
+          "index_name": "FK_f1c08c57502903b7e243a925a92",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "person_relation",
+      "foreign_keys": [
+        {
+          "column_name": "personId",
+          "constraint_name": "FK_7af9b691ee19db9ee2fa318b673",
+          "referenced_table": "person",
+          "referenced_column": "id"
+        },
+        {
+          "column_name": "relationId",
+          "constraint_name": "FK_c1ee4e925fc438b968fa9d1e9f7",
+          "referenced_table": "person_relation_type",
+          "referenced_column": "id"
+        },
+        {
+          "column_name": "relatedPersonId",
+          "constraint_name": "FK_f1c08c57502903b7e243a925a92",
+          "referenced_table": "person",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "name",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "nameES",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "person_relation_type",
+      "foreign_keys": null,
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "personId",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "socialId",
+          "is_nullable": "NO",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "socialId",
+          "is_unique": "NO",
+          "index_name": "FK_704b2c9cf329dd9c5a706353a49",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "personId",
+          "is_unique": "NO",
+          "index_name": "FK_7bd464809bd3157f2a2e93992c5",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "person_social",
+      "foreign_keys": [
+        {
+          "column_name": "socialId",
+          "constraint_name": "FK_704b2c9cf329dd9c5a706353a49",
+          "referenced_table": "social",
+          "referenced_column": "id"
+        },
+        {
+          "column_name": "personId",
+          "constraint_name": "FK_7bd464809bd3157f2a2e93992c5",
+          "referenced_table": "person",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "name",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "type",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "description",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "link",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "date",
+          "max_length": null,
+          "column_name": "createdAt",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "mediumint",
+          "max_length": null,
+          "column_name": "estimatedPeopleImpacted",
+          "is_nullable": "YES",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "social",
+      "foreign_keys": null,
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "name",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "date",
+          "max_length": null,
+          "column_name": "startDate",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "date",
+          "max_length": null,
+          "column_name": "endDate",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "courtName",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "summary",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "enum",
+          "max_length": 18,
+          "column_name": "type",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "enum",
+          "max_length": 26,
+          "column_name": "scope",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "judicialProcessId",
+          "is_nullable": "NO",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "judicialProcessId",
+          "is_unique": "NO",
+          "index_name": "FK_efef7c9eedd4417e0f17ed0579f",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "trial",
+      "foreign_keys": [
+        {
+          "column_name": "judicialProcessId",
+          "constraint_name": "FK_efef7c9eedd4417e0f17ed0579f",
+          "referenced_table": "judicial_process",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "name",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "enum",
+          "max_length": 22,
+          "column_name": "type",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "date",
+          "max_length": null,
+          "column_name": "date",
+          "is_nullable": "YES",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "trialId",
+          "is_nullable": "NO",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "trialId",
+          "is_unique": "NO",
+          "index_name": "FK_46b9eddcd9e6f0b1f2f018f3bb2",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "trial_notification",
+      "foreign_keys": [
+        {
+          "column_name": "trialId",
+          "constraint_name": "FK_46b9eddcd9e6f0b1f2f018f3bb2",
+          "referenced_table": "trial",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    },
+    {
+      "columns": [
+        {
+          "data_type": "varchar",
+          "max_length": 36,
+          "column_name": "id",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "trialId",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "relatedTrialId",
+          "is_nullable": "NO",
+          "column_default": null
+        },
+        {
+          "data_type": "varchar",
+          "max_length": 255,
+          "column_name": "relation",
+          "is_nullable": "NO",
+          "column_default": null
+        }
+      ],
+      "indexes": [
+        {
+          "columns": "trialId",
+          "is_unique": "NO",
+          "index_name": "FK_a043c9e30aa1753010e195388ae",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "relatedTrialId",
+          "is_unique": "NO",
+          "index_name": "FK_b00c45f615e90523fee809e55b3",
+          "index_type": "BTREE"
+        },
+        {
+          "columns": "id",
+          "is_unique": "YES",
+          "index_name": "PRIMARY",
+          "index_type": "BTREE"
+        }
+      ],
+      "table_name": "trial_relation",
+      "foreign_keys": [
+        {
+          "column_name": "trialId",
+          "constraint_name": "FK_a043c9e30aa1753010e195388ae",
+          "referenced_table": "trial",
+          "referenced_column": "id"
+        },
+        {
+          "column_name": "relatedTrialId",
+          "constraint_name": "FK_b00c45f615e90523fee809e55b3",
+          "referenced_table": "trial",
+          "referenced_column": "id"
+        }
+      ],
+      "primary_keys": [
+        {
+          "column_name": "id",
+          "constraint_name": "PRIMARY"
+        }
+      ]
+    }
+  ],
+  "schema_name": "formel"
+}

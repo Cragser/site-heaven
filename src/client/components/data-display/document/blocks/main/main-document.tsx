@@ -1,11 +1,10 @@
-import { useCallback, useState } from "react";
-import {
-  ChapterType,
-  DocumentCreationType,
-} from "@/lib/ui-control/document/types/documentCreationType";
-import update from "immutability-helper";
+import { DocumentCreationType } from "@/lib/ui-control/document/types/documentCreationType";
 import DocumentSection from "@/lib/surfaces/document-section";
 import Chapter from "@components/data-display/document/blocks/chapter/chapter";
+import { Divider, Space } from "antd";
+import SaveDocumentButton from "@components/data-display/document/blocks/main/save-document-button";
+import ReloadAllDataButton from "@components/data-display/document/blocks/main/reload-all-data-button";
+import useDocumentContentStore from "@components/data-display/document/state/use-document-content-store"; //
 
 //
 function createRandomId() {
@@ -17,36 +16,46 @@ function createRandomId() {
 
 export default function MainDocument({
   title,
-  chapters,
 }: Readonly<DocumentCreationType>) {
-  const [cards, setCards] = useState(chapters);
-  const moveCard = useCallback((dragIndex: number, hoverIndex: number) => {
-    setCards((prevCards: ChapterType[]) =>
-      update(prevCards, {
-        $splice: [
-          [dragIndex, 1],
-          [hoverIndex, 0, prevCards[dragIndex] as ChapterType],
-        ],
-      }),
-    );
-  }, []);
+  const { chapters } = useDocumentContentStore();
 
-  console.log({ cards });
+  // const [cards, setCards] = useState(chapters);
+  // const moveCard = useCallback((dragIndex: number, hoverIndex: number) => {
+  //   setCards((prevCards: ChapterType[]) =>
+  //     update(prevCards, {
+  //       $splice: [
+  //         [dragIndex, 1],
+  //         [hoverIndex, 0, prevCards[dragIndex] as ChapterType],
+  //       ],
+  //     }),
+  //   );
+  // }, []);
+
   return (
     <DocumentSection>
       <h2>{title}</h2>
-      <div>
+      <Space
+        style={{
+          marginBottom: "1rem",
+          width: "100%",
+          justifyContent: "end",
+        }}
+      >
+        <SaveDocumentButton />
+        <ReloadAllDataButton />
+      </Space>
+      <Space direction={"vertical"} split={<Divider />}>
         {/* <ChapterCollection cards={cards} /> */}
-        {cards.map((chapter, index) => (
+        {chapters.map((chapter) => (
           <Chapter
-            key={createRandomId()}
+            key={chapter.order}
             {...chapter}
-            moveCard={moveCard}
+            // moveCard={moveCard}
             // id={index + "-" + chapter.title}
             // index={index}
           />
         ))}
-      </div>
+      </Space>
     </DocumentSection>
   );
 }

@@ -17,9 +17,6 @@ export interface DocumentTemplateChapterTemplate {
 
 export const documentTemplateFields: ItemConfig[] = [
   {
-    ...createItemConfig("id"),
-  },
-  {
     ...createItemConfig("title"),
   },
   {

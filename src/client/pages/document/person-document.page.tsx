@@ -64,10 +64,6 @@ export default function PersonDocumentPage({ data }: Readonly<Props>) {
     data: normalizedPerson,
     templateContent,
   };
-  // console.log({
-  //   data: normalizedPerson,
-  //   document,
-  //   template: templateContent,
-  // });
+
   return <DocumentComponent {...document} />;
 }

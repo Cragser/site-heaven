@@ -4,9 +4,10 @@ interface Props {
   item: ItemConfig;
   record?: Record<string, unknown>;
 }
+
 export default function EntityViewField({ item, record }: Props) {
   if (!item.key) {
-    throw new Error(`Item key ${item.key} is required`);
+    throw new Error(`Item key ${item.key} ${JSON.stringify(item)} is required`);
   }
   if (!record) {
     throw new Error("Record is required");
@@ -26,7 +27,10 @@ export default function EntityViewField({ item, record }: Props) {
       return <div>{record[item.key] as string}</div>;
     }
 
-    console.log({ item, record });
+    console.log({
+      item,
+      record,
+    });
 
     throw new Error(`Record key  is required`);
   }
