@@ -9,6 +9,7 @@ import {
   generateTranslateKey,
 } from "@/lib/data-display/table/blocks/column-list/util/helper";
 import generateActionButtons from "@/lib/data-display/table/variant/entity-table/blocks/navigation/generator/generate-action-buttons";
+import { useTranslate } from "@refinedev/core";
 
 interface Props {
   columns: ItemConfig[];
@@ -16,6 +17,7 @@ interface Props {
 }
 
 export function generateColumns({ columns, entityResource }: Readonly<Props>) {
+  const translate = useTranslate();
   const newColumns = columns.map((item) => {
     const key = generateColumnKey(item);
     const translateKey = generateTranslateKey(item, entityResource);
@@ -25,7 +27,7 @@ export function generateColumns({ columns, entityResource }: Readonly<Props>) {
       <Column
         key={key}
         dataIndex={dataIndex}
-        title={translateKey}
+        title={translate(translateKey)}
         render={render}
       />
     );

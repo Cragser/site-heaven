@@ -83,6 +83,8 @@ export enum ResourceEnum {
   document = "document",
   documentTemplate = "document-template",
   chapterTemplate = "chapter-template",
+  subchapterTemplate = "subchapter-template",
+  chapterTemplateSubchapterTemplate = "chapter-template-subchapter-template",
   documentTemplateChapterTemplate = "document-template-chapter-template",
 
   documentPerson = "document-person",

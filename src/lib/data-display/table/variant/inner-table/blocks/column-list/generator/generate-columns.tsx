@@ -7,6 +7,7 @@ import { calculateDataIndex } from "@/lib/data-display/table/blocks/column-list/
 import { ItemConfig } from "@/lib/@types/table-column.type";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import Column from "@/lib/data-display/table/blocks/column/Column";
+import { useTranslate } from "@refinedev/core";
 
 interface Props {
   columns: ItemConfig[];
@@ -17,6 +18,7 @@ export function generateColumnsForInnerTable({
   columns,
   entityResource,
 }: Readonly<Props>) {
+  const translate = useTranslate();
   return columns.map((item) => {
     const key = generateColumnKey(item);
     const translateKey = generateTranslateKey(item, entityResource);
@@ -26,7 +28,7 @@ export function generateColumnsForInnerTable({
       <Column
         key={key}
         dataIndex={dataIndex}
-        title={translateKey}
+        title={translate(translateKey)}
         render={render}
       />
     );

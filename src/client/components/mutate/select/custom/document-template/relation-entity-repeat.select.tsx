@@ -34,7 +34,10 @@ export default function RelationEntityRepeatSelect({
     resource: ResourceEnum.documentTemplate,
   });
 
-  console.log({ data, values });
+  console.log({
+    data,
+    values,
+  });
 
   // Si no debería repetirse (shouldRepeat es falso), oculta el componente
   if (!shouldRepeat) {
@@ -45,7 +48,10 @@ export default function RelationEntityRepeatSelect({
   if (data?.data?.entityType === "person") {
     return (
       <EnumItem
-        column={{ ...column, enum: PersonSubEntitiesEnum }}
+        column={{
+          ...column,
+          enum: PersonSubEntitiesEnum,
+        }}
         resource={resource}
       />
     );
@@ -54,7 +60,10 @@ export default function RelationEntityRepeatSelect({
   if (data?.data?.entityType === "company") {
     return (
       <EnumItem
-        column={{ ...column, enum: CompanySubEntitiesEnum }}
+        column={{
+          ...column,
+          enum: CompanySubEntitiesEnum,
+        }}
         resource={resource}
       />
     );
@@ -63,7 +72,10 @@ export default function RelationEntityRepeatSelect({
   if (data?.data?.entityType === "government") {
     return (
       <EnumItem
-        column={{ ...column, enum: CompanySubEntitiesEnum }}
+        column={{
+          ...column,
+          enum: CompanySubEntitiesEnum,
+        }}
         resource={resource}
       />
     );

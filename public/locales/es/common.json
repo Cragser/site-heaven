@@ -650,11 +650,48 @@
   "document-template": {
     "document-template": "Plantilla de documento",
     "titles": {
-      "create": "Crear plantilla de documento"
+      "create": "Crear plantilla de documento",
+      "show": "Plantilla de documento",
+      "edit": "Editar plantilla de documento",
+      "list": "Listado de Plantillas de documento - "
     },
     "fields": {
       "title": "Título",
       "entityType": "Sección relacionada"
+    }
+  },
+  "chapter-template": {
+    "chapter-template": "Plantilla de capítulo",
+    "titles": {
+      "create": "Crear plantilla de capítulo",
+      "show": "Plantilla de capítulo",
+      "edit": "Editar plantilla de capítulo",
+      "list": "Listado de capítulos - Plantillas "
+    },
+    "fields": {
+      "title": "Título",
+      "content": "Plantilla de contenido"
+    }
+  },
+  "document-template-chapter-template": {
+    "document-template-chapter-template": "Plantilla de capítulo de plantilla de documento",
+    "fields": {
+      "documentTemplateId": "Plantilla de documento",
+      "chapterTemplateId": "Plantilla de capítulo"
+    }
+  },
+  "subchapter-template": {
+    "subchapter-template": "Plantilla de subcapítulo",
+    "titles": {
+      "create": "Crear plantilla de subcapítulo",
+      "show": "Plantilla de subcapítulo",
+      "edit": "Editar plantilla de subcapítulo",
+      "list": "Listado de subcapítulos - Plantillas "
+    },
+    "fields": {
+      "title": "Título",
+      "relatedRepeatingSection": "Sección",
+      "contentRepeatingSection": "Plantilla de contenido"
     }
   }
 }

@@ -8,6 +8,7 @@ import { camelCase } from "case-anything";
 import { SectionEntityType } from "@page/types/section-entity.type";
 
 import TableCreateButton from "@/lib/data-display/table/blocks/button/table-create-button";
+import { useTranslate } from "@refinedev/core";
 
 export function ListRelationComplexPage({
   parentId,
@@ -22,6 +23,7 @@ export function ListRelationComplexPage({
     relationResource,
     parentResource,
   });
+  const translate = useTranslate();
   const parentName = camelCase(parentResource);
   const headerButtons = () => (
     <Space>
@@ -38,7 +40,11 @@ export function ListRelationComplexPage({
       isError={tableQueryResult?.isError}
       data={tableQueryResult?.data}
     >
-      <List breadcrumb={false} headerButtons={headerButtons}>
+      <List
+        title={translate(`${entityResource}.titles.list`)}
+        breadcrumb={false}
+        headerButtons={headerButtons}
+      >
         {(tableQueryResult?.data?.data?.length ?? 0 > 0) ? (
           <RelationTable
             parentId={parentId}

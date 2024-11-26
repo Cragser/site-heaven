@@ -1,7 +1,7 @@
-import { Descriptions, DescriptionsProps } from 'antd';
+import { Descriptions, DescriptionsProps } from "antd";
 
 interface Props {
-  items: DescriptionsProps['items'];
+  items: DescriptionsProps["items"];
 }
 
 export default function DescriptionSimple({ items }: Readonly<Props>) {

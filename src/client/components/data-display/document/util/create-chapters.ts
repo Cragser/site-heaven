@@ -3,11 +3,12 @@ import {
   ResponseDataNormalized,
 } from "@components/data-display/document/util/normalize-person";
 import { ChapterTemplateType } from "@lib/fields/chapter-template/chapter-template.fields";
-import {
-  ChapterType,
-  SubchapterType,
-} from "@/lib/ui-control/document/types/documentCreationType";
+import { SubchapterType } from "@/lib/ui-control/document/types/documentCreationType";
 import { fillTemplate } from "@/adapter/document-templating/main";
+import {
+  ChapterData,
+  SubchapterData,
+} from "@components/data-display/types/chapter.type";
 
 function localIndex() {
   let index = 1;
@@ -57,17 +58,22 @@ function isTemplateWithRepeatingSection(
 export function createChapters(
   data: ResponseDataNormalized,
   chapterTemplateCollection: ChapterTemplateType[],
-): ChapterType[] {
-  const chapters: ChapterType[] = [];
+): ChapterData[] {
+  const chapters: ChapterData[] = [];
+  if (!Array.isArray(chapterTemplateCollection)) {
+    return chapters;
+  }
+
   for (const chapterTemplate of chapterTemplateCollection) {
     // SI no se repite, entonces crea un nuevo chapter
     if (!chapterTemplate.shouldRepeat) {
       chapters.push({
+        note: "",
+        order: 0,
         title: chapterTemplate.title,
         content: fillTemplate(chapterTemplate.content, data),
         id: chapterTemplate.id,
-        index: incrementIndex(),
-        entity: "person?",
+        subchapters: chapterTemplate?.subchapterTemplate as SubchapterData[],
       });
       // salta a la siguiente
       continue;

@@ -9,6 +9,8 @@ function chaptersToChapterData(
     note: "",
     title: chapter.title,
     order: index + 1,
+    id: chapter?.id as string,
+    subchapters: chapter?.subchapters,
   }));
 }
 

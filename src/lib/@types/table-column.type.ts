@@ -57,5 +57,8 @@ export interface ItemConfig {
   };
   // column is for Tables
 
-  // what is for view?
+  // row is for view
+  rowConfig?: {
+    span?: number;
+  };
 }

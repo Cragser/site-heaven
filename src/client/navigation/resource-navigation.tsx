@@ -171,4 +171,16 @@ export const resourceNavigation: Partial<Record<ResourceEnum, ResourceProps>> =
       <ShopOutlined />,
     ),
     ...documentTemplateResources,
+    [ResourceEnum.chapterTemplateSubchapterTemplate]: {
+      create:
+        "/document-template/show/:documentTemplateId/chapter-template/show/:chapterTemplateId/subchapter-template/create",
+      edit: "/document-template/show/:documentTemplateId/chapter-template/show/:chapterTemplateId/subchapter-template/edit/:subchapterTemplateId",
+      list: "/document-template/show/:documentTemplateId/chapter-template/show/:chapterTemplateId/edit/:subchapterTemplateId",
+      show: "/document-template/show/:documentTemplateId/chapter-template/show/:chapterTemplateId/edit/:subchapterTemplateId/show/:id",
+      meta: {
+        canDelete: true,
+        hide: true,
+      },
+      name: "chapter-template-subchapter-template",
+    },
   };

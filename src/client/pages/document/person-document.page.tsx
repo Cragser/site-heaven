@@ -32,6 +32,7 @@ interface DocumentTemplateResponse extends DocumentTemplateType {
 
 export default function PersonDocumentPage({ data }: Readonly<Props>) {
   // get the document template
+
   const { data: documentTemplateData, isLoading } =
     useOne<DocumentTemplateResponse>({
       id: data.documentTemplateId,
@@ -44,10 +45,6 @@ export default function PersonDocumentPage({ data }: Readonly<Props>) {
     id: firstPerson.personId,
     resource: ResourceEnum.person,
   });
-
-  if (isLoading || isLoadingPerson) {
-    return <div>Loading...</div>;
-  }
 
   const normalizedPerson = normalizePerson(personData?.data);
   const templateContent =
@@ -63,7 +60,11 @@ export default function PersonDocumentPage({ data }: Readonly<Props>) {
     chapters: createChapters(normalizedPerson, templateContent as any),
     data: normalizedPerson,
     templateContent,
+    person: personData?.data,
   };
 
+  if (isLoading || isLoadingPerson) {
+    return <div>Loading...</div>;
+  }
   return <DocumentComponent {...document} />;
 }

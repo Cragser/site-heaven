@@ -18,6 +18,7 @@ export default function EntityView({ items, resource, record }: Props) {
       // children: item.children,
       children: <EntityViewField item={item} record={record} />,
       label: translate(`${resource}.fields.${item.key}`),
+      span: item?.rowConfig?.span ?? 1,
     };
   });
 

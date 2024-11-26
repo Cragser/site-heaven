@@ -1,28 +1,20 @@
 import { ItemConfig } from "@/lib/@types/table-column.type";
 import { createItemConfig } from "@client/util/fields/create-columns-from-array";
 import richTextRender from "@client/util/ant/fields/rich-text-render";
+import { PersonSubEntitiesEnum } from "@lib/enums/sub-entities/section-sub-entities-enum";
 
-export interface ChapterTemplateType {
-  id: string;
-  title: string;
-  content: string;
-  // shouldRepeat: boolean;
-  // relatedRepeatingSection?: string;
-}
-
-const rowConfig = {
-  span: 2,
-};
-
-export const chapterTemplateFields: ItemConfig[] = [
+export const subchapterTemplateFields: ItemConfig[] = [
   {
     ...createItemConfig("title"),
-    rowConfig,
   },
   {
-    ...createItemConfig("content"),
+    ...createItemConfig("relatedRepeatingSection"),
+    type: "custom",
+    enum: PersonSubEntitiesEnum,
+  },
+  {
+    ...createItemConfig("contentRepeatingSection"),
     type: "rich-text",
     render: richTextRender,
-    rowConfig,
   },
 ];
