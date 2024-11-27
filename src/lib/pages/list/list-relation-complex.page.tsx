@@ -35,15 +35,15 @@ export function ListRelationComplexPage({
   );
 
   return (
-    <StateManager
-      isLoading={tableQueryResult?.isLoading}
-      isError={tableQueryResult?.isError}
-      data={tableQueryResult?.data}
+    <List
+      title={translate(`${entityResource}.titles.list`)}
+      breadcrumb={false}
+      headerButtons={headerButtons}
     >
-      <List
-        title={translate(`${entityResource}.titles.list`)}
-        breadcrumb={false}
-        headerButtons={headerButtons}
+      <StateManager
+        isLoading={tableQueryResult?.isLoading}
+        isError={tableQueryResult?.isError}
+        data={tableQueryResult?.data}
       >
         {(tableQueryResult?.data?.data?.length ?? 0 > 0) ? (
           <RelationTable
@@ -58,7 +58,7 @@ export function ListRelationComplexPage({
             navigation={navigation}
           />
         ) : null}
-      </List>
-    </StateManager>
+      </StateManager>
+    </List>
   );
 }
