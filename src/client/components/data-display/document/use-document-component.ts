@@ -1,7 +1,11 @@
+import { SubchapterData } from "@components/data-display/types/chapter.type";
+
 function chaptersToChapterData(
   chapters: Array<{
     content: string;
     title: string;
+    id: string;
+    subchapters: SubchapterData[];
   }>,
 ) {
   return chapters.map((chapter, index) => ({

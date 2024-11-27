@@ -1,6 +1,4 @@
-import { z } from "zod";
-import { ResourceEnum } from "@lib/enums/resource.enum";
-
+import { z } from "zod"; // has entityType and is person | company | government
 // has entityType and is person | company | government
 const entityTypeSchema = z.enum(["person", "company", "government"]);
 
@@ -9,7 +7,7 @@ const variableWithEntityTypeSchema = z.object({
 });
 
 export function isEntityTypeVariables(
-  variables: unknown
+  variables: unknown,
 ): variables is { entityType: string } {
   const result = variableWithEntityTypeSchema.safeParse(variables);
   return result.success;
@@ -23,7 +21,7 @@ const personVariableSchema = z.object({
 
 // Función para validar que el objeto cumple con el esquema
 export function isPersonVariables(
-  variables: unknown
+  variables: unknown,
 ): variables is { person: { id: string } } {
   const result = personVariableSchema.safeParse(variables);
   return result.success;
@@ -36,7 +34,7 @@ const companyVariableSchema = z.object({
 });
 
 export function isCompanyVariables(
-  variables: unknown
+  variables: unknown,
 ): variables is { company: { id: string } } {
   const result = companyVariableSchema.safeParse(variables);
   return result.success;
@@ -49,7 +47,7 @@ const governmentVariableSchema = z.object({
 });
 
 export function isGovernmentVariables(
-  variables: unknown
+  variables: unknown,
 ): variables is { government: { id: string } } {
   const result = governmentVariableSchema.safeParse(variables);
   return result.success;

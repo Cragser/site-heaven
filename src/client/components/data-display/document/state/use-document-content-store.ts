@@ -9,6 +9,16 @@ interface DocumentState {
   moveDown: (index: number) => void;
   deleteChapter: (index: number) => void;
   updateNote: (index: number, newNote: string) => void;
+  // todo:
+
+  // moveUpSubchapter: (index: number) => void;
+  // moveDownSubchapter: (index: number) => void;
+  updateNoteSubchapter: (
+    chapterIndex: number,
+    subchapterIndex: number,
+    newNote: string,
+  ) => void;
+  deleteSubchapter: (chapterIndex: number, subchapterIndex: number) => void;
 }
 
 const useDocumentContentStore = create<DocumentState>()((set, get) => ({
@@ -88,6 +98,30 @@ const useDocumentContentStore = create<DocumentState>()((set, get) => ({
     }));
 
     set({ chapters: updatedChapters });
+  },
+  updateNoteSubchapter(chapterIndex, subchapterIndex, newNote) {
+    const chapters = get().chapters;
+    const newChapters = [...chapters];
+    newChapters[chapterIndex].subchapters[subchapterIndex].note = newNote;
+
+    const updatedChapters = newChapters.map((chapter, index) => ({
+      ...chapter,
+      order: index,
+    }));
+
+    set({ chapters: updatedChapters });
+  },
+  deleteSubchapter(chapterIndex, subchapterIndex) {
+    const chapters = get().chapters;
+    const newChapters = [...chapters];
+    newChapters[chapterIndex].subchapters.splice(subchapterIndex, 1);
+
+    const updatedChapters = newChapters.map((chapter, index) => ({
+      ...chapter,
+      order: index,
+    }));
+
+    set({ chapters: updatedChapters }); // Actualizamos el estado global en zustand
   },
 }));
 

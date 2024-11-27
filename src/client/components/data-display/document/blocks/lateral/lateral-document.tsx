@@ -23,7 +23,7 @@ export default function LateralDocument(props: Readonly<DocumentCreationType>) {
       <JsonViewer value={chapters} rootName="Capítulos" />
       <JsonViewer value={props.templateContent} rootName="Plantilla" />
       <JsonViewer value={props.data} rootName="Datos" />
-      <JsonViewer value={props.person} rootName="Datos persona" />
+      <JsonViewer value={props?.person} rootName="Datos persona" />
     </DocumentSection>
   );
 }

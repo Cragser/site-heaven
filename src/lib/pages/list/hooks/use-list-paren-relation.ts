@@ -1,5 +1,4 @@
 import { useTable } from "@refinedev/antd";
-import { useEntityTitle } from "@client/hooks/titles/use-person-title";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import { ItemConfig } from "@/lib/@types/table-column.type";
 import { camelCase } from "case-anything";

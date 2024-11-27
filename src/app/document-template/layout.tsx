@@ -8,7 +8,7 @@ export default async function Layout({
   return (
     <ThemedLayout>
       <Alert
-        message="Only for maintainers"
+        message="Access restricted to maintainers only"
         type="warning"
         style={{ marginBottom: 16 }}
       />

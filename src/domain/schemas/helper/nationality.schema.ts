@@ -8,7 +8,7 @@ export const nationalitySchema: ZodType<Omit<NationalityType, "id">> = z.object(
   {
     language: z.string(),
     name: z.string(),
-  }
+  },
 );
 
 export const nationalityHelperSchemaExtended = extendApi(nationalitySchema, {
