@@ -5,6 +5,7 @@ import { Button, Drawer, List, Space, Typography } from "antd";
 import { SubchapterData } from "@components/data-display/types/chapter.type";
 import useDocumentContentStore from "@components/data-display/document/state/use-document-content-store";
 import ReactQuill from "react-quill";
+import { If } from "react-if";
 
 export default function Subchapter({
   title,
@@ -13,9 +14,16 @@ export default function Subchapter({
   order,
   note,
 }: Readonly<SubchapterData>) {
-  const { updateNoteSubchapter, deleteSubchapter } = useDocumentContentStore();
+  const {
+    updateNoteSubchapter,
+    deleteSubchapter,
+    moveUpSubchapter,
+    moveDownSubchapter,
+  } = useDocumentContentStore();
   // edit button here
   const [open, setOpen] = useState(false);
+
+  const [showEditor, setShowEditor] = useState(false);
 
   const showDrawer = () => {
     setOpen(true);
@@ -26,12 +34,29 @@ export default function Subchapter({
   };
 
   if (typeof chapterIndex === "undefined") return null;
+
   const handleNoteChange = (value: string) => {
     updateNoteSubchapter(chapterIndex, order, value); // Actualizamos el estado con el valor del editor
   };
+
   return (
     <List.Item
       actions={[
+        <If condition={order !== 0}>
+          <a
+            key="list-loadmore-edit"
+            onClick={() => moveUpSubchapter(chapterIndex, order)}
+          >
+            Mover arriba
+          </a>
+        </If>,
+        <a
+          key="list-loadmore-edit"
+          onClick={() => moveDownSubchapter(chapterIndex, order)}
+        >
+          Mover abajo
+        </a>,
+
         <a key="list-loadmore-edit" onClick={showDrawer}>
           Modificar
         </a>,
@@ -40,26 +65,24 @@ export default function Subchapter({
       className={styles.container}
     >
       <Typography.Paragraph>{title}</Typography.Paragraph>
-      <div>{chapterIndex}</div>
       <Drawer size={"large"} title={title} onClose={onClose} open={open}>
         <Space>
           <Button onClick={() => deleteSubchapter(chapterIndex, order)}>
             Eliminar
           </Button>
-          {/* <Button onClick={() => deleteChapter(order)}>Eliminar</Button> */}
-          {/* <Button onClick={() => moveUp(order)}>Mover arriba</Button> */}
-          {/* <Button onClick={() => moveDown(order)}>Mover abajo</Button> */}
-          {/* <Button onClick={() => setShowEditor(!showEditor)}> */}
-          {/*   /!* {showEditor ? "Ocultar" : "Mostrar"} editor *!/ */}
-          {/* </Button> */}
+          <Button onClick={() => setShowEditor(!showEditor)}>
+            {showEditor ? "Ocultar" : "Mostrar"} editor
+          </Button>
         </Space>
         {richTextRender(contentRepeatingSection)}
         <Typography.Title level={5}>Nota</Typography.Title>
-        <ReactQuill
-          theme="snow"
-          value={note} // Controlamos el valor del editor
-          onChange={handleNoteChange} // Actualizamos el estado con el cambio
-        />
+        <If condition={showEditor}>
+          <ReactQuill
+            theme="snow"
+            value={note} // Controlamos el valor del editor
+            onChange={handleNoteChange} // Actualizamos el estado con el cambio
+          />
+        </If>
       </Drawer>
     </List.Item>
   );

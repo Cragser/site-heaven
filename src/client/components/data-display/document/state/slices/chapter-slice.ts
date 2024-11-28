@@ -32,7 +32,6 @@ export const createChapterSlice = (set: any, get: any): ChapterSlice => {
 
   return {
     chapters: [],
-
     setChapters: (newChapters: ChapterData[]) => {
       set((state: ChapterSlice) => ({
         ...state,

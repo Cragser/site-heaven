@@ -90,4 +90,5 @@ export enum ResourceEnum {
   documentPerson = "document-person",
   documentCompany = "document-company",
   documentGovernment = "document-government",
+  documentFilled = "document-filled",
 }
