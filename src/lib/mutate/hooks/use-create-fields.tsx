@@ -63,6 +63,14 @@ function switchRender(
     return <RichText column={column} resource={resource} />;
   }
 
+  if (column?.type === "hidden") {
+    return (
+      <Form.Item name={column.key} hidden={true}>
+        <Input type={"hidden"} />
+      </Form.Item>
+    );
+  }
+
   return (
     <Form.Item
       label={translate(`${resource}.fields.${column.key}`)}

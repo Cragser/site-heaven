@@ -52,6 +52,18 @@ export default function Chapter({
           onChange={handleNoteChange} // Actualizamos el estado con el cambio
         />
       </If>
+      <If condition={!showEditor}>
+        <ReactQuill
+          className={styles.content}
+          theme="bubble"
+          modules={{
+            toolbar: false,
+          }}
+          value={note}
+          readOnly={true}
+        />
+      </If>
+
       <When condition={Array.isArray(subchapters) && subchapters.length > 0}>
         {/* <Typography.Title level={5}>Subcapitulos</Typography.Title> */}
         <List>

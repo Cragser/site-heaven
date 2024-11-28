@@ -21,7 +21,10 @@ export function useFormCreateDocument() {
         const personId = variables?.person.id;
         mutate({
           resource: ResourceEnum.documentPerson,
-          values: { documentId: id, personId: personId },
+          values: {
+            documentId: id,
+            personId: personId,
+          },
         });
       }
 
@@ -29,7 +32,10 @@ export function useFormCreateDocument() {
         const companyId = variables?.company.id;
         mutate({
           resource: ResourceEnum.documentCompany,
-          values: { documentId: id, companyId: companyId },
+          values: {
+            documentId: id,
+            companyId: companyId,
+          },
         });
       }
 
@@ -37,9 +43,14 @@ export function useFormCreateDocument() {
         const governmentId = variables?.government.id;
         mutate({
           resource: ResourceEnum.documentGovernment,
-          values: { documentId: id, governmentId: governmentId },
+          values: {
+            documentId: id,
+            governmentId: governmentId,
+          },
         });
       }
+
+      // content?
     },
     redirect: false,
   });

@@ -24,7 +24,7 @@ export default function Page({ params: { documentId } }: Readonly<Props>) {
   if (isLoading) return <div>Loading...</div>;
   if (data?.data?.entityType === "person") {
     // @ts-ignore TODO: Check this
-    return <PersonDocumentPage data={data.data} />;
+    return <PersonDocumentPage data={data.data} documentId={documentId} />;
   }
   // get the document template
   // get the document template fields

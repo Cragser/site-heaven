@@ -18,12 +18,13 @@ export interface ChapterType {
 }
 
 export interface DocumentCreationType {
-  title: string;
-  subtitle: string;
-  date: string;
+  chapterData?: any;
   chapters: ChapterData[];
   data: any;
-  templateContent: any;
-  chapterData?: any;
+  date: string;
+  documentId: string;
   person?: any;
+  subtitle: string;
+  templateContent: any;
+  title: string;
 }

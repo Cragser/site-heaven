@@ -19,6 +19,7 @@ interface DocumentPersonResponse extends DocumentType {
 
 interface Props {
   data: DocumentPersonResponse;
+  documentId: string;
 }
 
 interface DocumentTemplateChapterTemplateResponse
@@ -30,9 +31,11 @@ interface DocumentTemplateResponse extends DocumentTemplateType {
   documentTemplateChapterTemplate: DocumentTemplateChapterTemplateResponse[];
 }
 
-export default function PersonDocumentPage({ data }: Readonly<Props>) {
+export default function PersonDocumentPage({
+  data,
+  documentId,
+}: Readonly<Props>) {
   // get the document template
-
   const { data: documentTemplateData, isLoading } =
     useOne<DocumentTemplateResponse>({
       id: data.documentTemplateId,
@@ -61,6 +64,7 @@ export default function PersonDocumentPage({ data }: Readonly<Props>) {
     data: normalizedPerson,
     templateContent,
     person: personData?.data,
+    documentId: documentId,
   };
 
   if (isLoading || isLoadingPerson) {
