@@ -20,8 +20,9 @@ export default function Chapter({
   const [showEditor, setShowEditor] = useState(false);
   const { moveUp, moveDown, deleteChapter, updateNote } =
     useDocumentContentStore();
+
   const handleNoteChange = (value: string) => {
-    updateNote(order, value); // Actualizamos el estado con el valor del editor
+    updateNote(order, value);
   };
 
   return (
