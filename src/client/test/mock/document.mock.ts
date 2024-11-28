@@ -1,6 +1,4 @@
-import { DocumentCreationType } from "@/lib/ui-control/document/types/documentCreationType";
-
-export const mockDocument: DocumentCreationType = {
+export const mockDocument = {
   title: "Informe de Investigación: Everaldo Hernestino",
   subtitle: "Análisis Completo de Antecedentes y Situación Actual",
   date: "2024-09-07",
