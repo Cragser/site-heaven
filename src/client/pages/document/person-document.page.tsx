@@ -1,4 +1,3 @@
-import { useOne } from "@refinedev/core";
 import {
   DocumentTemplateChapterTemplate,
   DocumentTemplateType,
@@ -6,10 +5,9 @@ import {
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import { DocumentType } from "@lib/fields/document/document.fields";
 import DocumentComponent from "@components/data-display/document/document-component";
-import { normalizePerson } from "@components/data-display/document/util/normalize-person";
-
-import { DocumentCreationType } from "@/lib/ui-control/document/types/documentCreationType";
 import { createChapters } from "@components/data-display/document/util/create-chapters";
+import { useGetDocumentAndEntityData } from "@client/hooks/pages/read/use-get-document-and-entity-data";
+import getPersonData from "@client/pages/document/data/get-person-data";
 
 interface DocumentPersonResponse extends DocumentType {
   documentPerson: {
@@ -36,39 +34,33 @@ export default function PersonDocumentPage({
   documentId,
 }: Readonly<Props>) {
   // get the document template
-  const { data: documentTemplateData, isLoading } =
-    useOne<DocumentTemplateResponse>({
-      id: data.documentTemplateId,
-      resource: ResourceEnum.documentTemplate,
+
+  const { itemData, documentTemplateData, isLoading, isLoadingData } =
+    useGetDocumentAndEntityData({
+      data,
+      resource: ResourceEnum.person,
     });
 
-  const firstPerson = data.documentPerson[0];
-
-  const { data: personData, isLoading: isLoadingPerson } = useOne<any>({
-    id: firstPerson.personId,
-    resource: ResourceEnum.person,
-  });
-
-  const normalizedPerson = normalizePerson(personData?.data);
   const templateContent =
     documentTemplateData?.data.documentTemplateChapterTemplate.map(
-      (item) => item.chapterTemplate,
+      (item: any) => item.chapterTemplate,
     );
 
-  // for every chapter template create
-  const document: DocumentCreationType = {
-    date: "Today",
-    subtitle: "Desconocido uno",
-    title: documentTemplateData?.data.title as string,
-    chapters: createChapters(normalizedPerson, templateContent as any),
-    data: normalizedPerson,
-    templateContent,
-    person: personData?.data,
-    documentId: documentId,
-  };
-
-  if (isLoading || isLoadingPerson) {
+  if (isLoading || isLoadingData) {
     return <div>Loading...</div>;
   }
-  return <DocumentComponent {...document} />;
+
+  const dataToReplace = getPersonData(itemData?.data);
+
+  return (
+    <DocumentComponent
+      chapters={createChapters(dataToReplace, templateContent as any)}
+      dataToReplace={dataToReplace}
+      date={"Today"}
+      documentId={documentId}
+      subtitle={"Análisis Completo de Antecedentes y Situación Actual"}
+      templateContent={templateContent}
+      title={documentTemplateData?.data.title as string}
+    />
+  );
 }

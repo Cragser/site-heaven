@@ -20,10 +20,9 @@ export interface ChapterType {
 export interface DocumentCreationType {
   chapterData?: any;
   chapters: ChapterData[];
-  data: any;
+  dataToReplace: any;
   date: string;
   documentId: string;
-  person?: any;
   subtitle: string;
   templateContent: any;
   title: string;

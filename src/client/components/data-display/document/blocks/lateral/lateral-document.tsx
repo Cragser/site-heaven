@@ -20,10 +20,10 @@ export default function LateralDocument(props: Readonly<DocumentCreationType>) {
       <Divider orientation="left">
         Información del capítulo seleccionado
       </Divider>
+      <JsonViewer value={props?.dataToReplace} rootName="Datos" />
       <JsonViewer value={chapters} rootName="Capítulos" />
-      <JsonViewer value={props.templateContent} rootName="Plantilla" />
-      <JsonViewer value={props.data} rootName="Datos" />
-      <JsonViewer value={props?.person} rootName="Datos persona" />
+      {/* <JsonViewer value={props.data} rootName="Datos" /> */}
+      <JsonViewer value={props.templateContent} rootName="Plantilla vacía" />
     </DocumentSection>
   );
 }

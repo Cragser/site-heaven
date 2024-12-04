@@ -46,7 +46,7 @@ export const usePersonDocument = (data: DocumentPersonResponse) => {
       date: "Today",
       subtitle: "Desconocido uno",
       title: documentTemplateData?.data.title as string,
-      chapters: createChapters(normalizedPerson, templateContent as any),
+      chapters: createChapters(personData?.data, templateContent as any),
       data: normalizedPerson,
       templateContent,
     };

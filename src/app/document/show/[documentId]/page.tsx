@@ -8,6 +8,7 @@ import {
 } from "@lib/fields/document/document.fields";
 import { useOne } from "@refinedev/core";
 import PersonDocumentPage from "@client/pages/document/person-document.page";
+import CompanyDocumentPage from "@client/pages/document/company-document.page";
 
 interface Props {
   params: {
@@ -26,6 +27,12 @@ export default function Page({ params: { documentId } }: Readonly<Props>) {
     // @ts-ignore TODO: Check this
     return <PersonDocumentPage data={data.data} documentId={documentId} />;
   }
+
+  if (data?.data?.entityType === "company") {
+    // @ts-ignore TODO: Check this
+    return <CompanyDocumentPage data={data.data} documentId={documentId} />;
+  }
+
   // get the document template
   // get the document template fields
   // get the resource

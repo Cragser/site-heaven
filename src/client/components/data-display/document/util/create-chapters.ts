@@ -1,4 +1,3 @@
-import { ResponseDataNormalized } from "@components/data-display/document/util/normalize-person";
 import { fillTemplate } from "@/adapter/document-templating/main";
 import {
   ChapterData,
@@ -14,7 +13,7 @@ function localIndex() {
 }
 
 export function createChapters(
-  data: ResponseDataNormalized,
+  data: any,
   chapterTemplateCollection: ChapterResponse[],
 ): ChapterData[] {
   const chapters: ChapterData[] = [];
@@ -24,23 +23,21 @@ export function createChapters(
 
   for (const chapterTemplate of chapterTemplateCollection) {
     // SI no se repite, entonces crea un nuevo chapter
-    if (true) {
-      chapters.push({
-        note: "",
-        order: 0,
-        title: chapterTemplate.title,
-        content: fillTemplate(chapterTemplate.content, data),
-        id: chapterTemplate.id,
-        subchapters: chapterTemplate?.subchapterTemplate.map(
-          (subchapter, index) => ({
-            ...subchapter,
-            note: "",
-            order: index,
-          }),
-        ),
-      });
-      // salta a la siguiente
-    }
+    chapters.push({
+      note: "",
+      order: 0,
+      title: chapterTemplate.title,
+      content: fillTemplate(chapterTemplate.content, data),
+      id: chapterTemplate.id,
+      subchapters: chapterTemplate?.subchapterTemplate.map(
+        (subchapter, index) => ({
+          ...subchapter,
+          note: "",
+          order: index,
+        }),
+      ),
+    });
+    // salta a la siguiente
   }
   return chapters;
 }
