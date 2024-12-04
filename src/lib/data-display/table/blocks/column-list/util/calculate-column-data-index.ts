@@ -11,7 +11,11 @@ export function calculateDataIndex(
 export function calculateParentDataIndex(
   entityResource: ResourceEnum,
   dataIndex: string[],
+  override: boolean = false,
 ): string[] {
   const camelCaseEntity = camelCase(entityResource);
+  if (override) {
+    return dataIndex;
+  }
   return [camelCaseEntity, ...dataIndex];
 }

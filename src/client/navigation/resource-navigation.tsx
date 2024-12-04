@@ -101,6 +101,7 @@ export const resourceNavigation: Partial<Record<ResourceEnum, ResourceProps>> =
       create: "person/show/:personId/relation/create",
       edit: "person/show/:personId/relation/edit/:personRelationId",
       list: "person/show/:personId/relation",
+      show: "person/show/:personId",
       meta: {
         canDelete: true,
         hide: true,

@@ -22,8 +22,13 @@ export function generateColumnsForRelationTable({
   return columns.map((item) => {
     const key = generateColumnKey(item);
     const translateKey = generateTranslateKey(item, entityResource);
-    const dataIndex = calculateParentDataIndex(entityResource, item.dataIndex);
+    const dataIndex = calculateParentDataIndex(
+      entityResource,
+      item.dataIndex,
+      item.columnConfig?.overrideDataIndex,
+    );
     const render = generateColumnRender(item);
+    console.log({ dataIndex });
     return (
       <Column
         key={key}

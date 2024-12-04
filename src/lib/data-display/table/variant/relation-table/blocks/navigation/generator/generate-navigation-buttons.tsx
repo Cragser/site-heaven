@@ -30,13 +30,23 @@ export default function generateNavigationButtonForRelationTable({
 
   return useCallback(
     (_, record: BaseRecord) => {
-      const meta = {
-        [`${resourceNames.section}Id`]: sectionId,
-        [`${resourceNames.relation}Id`]: record.id as string,
-        [`${resourceNames.entity}Id`]: record[
+      console.log({ record });
+      const meta: Record<string, string> = {};
+
+      if (resourceNames.section && sectionId) {
+        meta[`${resourceNames.section}Id`] = sectionId;
+      }
+
+      if (resourceNames.relation && record?.id) {
+        meta[`${resourceNames.relation}Id`] = record.id as string;
+      }
+
+      if (resourceNames.entity && record?.[`${resourceNames.entity}Id`]) {
+        meta[`${resourceNames.entity}Id`] = record[
           `${resourceNames.entity}Id`
-        ] as string,
-      };
+        ] as string;
+      }
+      console.log({ meta });
       return (
         <Navigation
           defaultNavigation={defaultNavigation}

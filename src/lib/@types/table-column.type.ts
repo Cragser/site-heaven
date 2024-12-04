@@ -56,6 +56,9 @@ export interface ItemConfig {
     shouldRender?: (values?: Record<string, any>) => boolean;
   };
   // column is for Tables
+  columnConfig?: {
+    overrideDataIndex?: boolean;
+  };
 
   // row is for view
   rowConfig?: {

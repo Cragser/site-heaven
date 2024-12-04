@@ -40,6 +40,7 @@ export default function BlogPostShow({
     <StateManager
       isLoading={queryResult.isLoading}
       isError={record === undefined || queryResult.isError}
+      data={queryResult?.data}
     >
       <Show title={title} canEdit={false}>
         <DescriptionSimple items={items} />

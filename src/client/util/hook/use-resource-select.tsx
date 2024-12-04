@@ -23,7 +23,6 @@ export function useResourceSelect({
   filters = [],
   resource,
 }: Props): SelectProps {
-  console.log(excludeIds);
   const initialFilters: CrudFilters =
     excludeIds.length > 0
       ? [
