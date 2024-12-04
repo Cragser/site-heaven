@@ -11,7 +11,11 @@ interface Props {
   resource: ResourceEnum;
 }
 
-export default function EntityView({ items, resource, record }: Props) {
+export default function EntityView({
+  items,
+  resource,
+  record,
+}: Readonly<Props>) {
   const translate = useTranslate();
   const descriptionItems: DescriptionsProps["items"] = items.map((item) => {
     return {
@@ -21,6 +25,5 @@ export default function EntityView({ items, resource, record }: Props) {
       span: item?.rowConfig?.span ?? 1,
     };
   });
-
   return <DescriptionSimple items={descriptionItems} />;
 }

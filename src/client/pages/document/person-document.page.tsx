@@ -35,16 +35,16 @@ export default function PersonDocumentPage({
 }: Readonly<Props>) {
   // get the document template
 
-  const { itemData, documentTemplateData, isLoading, isLoadingData } =
-    useGetDocumentAndEntityData({
-      data,
-      resource: ResourceEnum.person,
-    });
-
-  const templateContent =
-    documentTemplateData?.data.documentTemplateChapterTemplate.map(
-      (item: any) => item.chapterTemplate,
-    );
+  const {
+    templateContent,
+    itemData,
+    documentTemplateData,
+    isLoading,
+    isLoadingData,
+  } = useGetDocumentAndEntityData({
+    data,
+    resource: ResourceEnum.person,
+  });
 
   const dataToReplace = getPersonData(itemData?.data);
 
@@ -54,7 +54,7 @@ export default function PersonDocumentPage({
 
   return (
     <DocumentComponent
-      chapters={createChapters(dataToReplace, templateContent as any)}
+      chapters={createChapters(dataToReplace, templateContent)}
       dataToReplace={dataToReplace}
       date={"Today"}
       documentId={documentId}

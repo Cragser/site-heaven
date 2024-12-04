@@ -28,10 +28,16 @@ export function useGetDocumentAndEntityData({
     resource: resource,
   });
 
+  const templateContent =
+    documentTemplateData?.data.documentTemplateChapterTemplate.map(
+      (item: any) => item.chapterTemplate,
+    );
+
   return {
     itemData,
     documentTemplateData,
     isLoading,
     isLoadingData,
+    templateContent,
   };
 }

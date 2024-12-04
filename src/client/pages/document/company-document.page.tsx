@@ -19,20 +19,20 @@ export default function CompanyDocumentPage({
   documentId,
   data,
 }: Readonly<Props>) {
-  const { itemData, documentTemplateData, isLoading, isLoadingData } =
-    useGetDocumentAndEntityData({
-      data,
-      resource: ResourceEnum.company,
-    });
+  const {
+    templateContent,
+    itemData,
+    documentTemplateData,
+    isLoading,
+    isLoadingData,
+  } = useGetDocumentAndEntityData({
+    data,
+    resource: ResourceEnum.company,
+  });
 
   if (isLoading || isLoadingData) {
     return <div>Loading...</div>;
   }
-
-  const templateContent =
-    documentTemplateData?.data.documentTemplateChapterTemplate.map(
-      (item: any) => item.chapterTemplate,
-    );
 
   const dataToReplace = itemData?.data;
 

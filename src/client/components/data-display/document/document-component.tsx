@@ -8,12 +8,20 @@ import useDocumentContentStore from "@components/data-display/document/state/use
 export default function DocumentComponent(
   props: Readonly<DocumentCreationType>,
 ) {
-  const { setChapters, setDocumentId, setName } = useDocumentContentStore();
+  const {
+    setChapters,
+    setDocumentId,
+    setName,
+    setDataToReplace,
+    setTemplateContent,
+  } = useDocumentContentStore();
 
   useEffect(() => {
     setChapters(props.chapters);
     setDocumentId(props.documentId);
     setName(props.title);
+    setDataToReplace(props.dataToReplace);
+    setTemplateContent(props.templateContent);
   }, []);
 
   return (

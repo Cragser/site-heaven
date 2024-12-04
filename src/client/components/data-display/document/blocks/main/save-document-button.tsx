@@ -26,9 +26,9 @@ export default function SaveDocumentButton() {
 
   useEffect(() => {
     // FIX: URGENTE
-    // if (query.data?.data?.[0]?.content) {
-    //   setChapters(query.data.data[0].content);
-    // }
+    if (query.data?.data?.[0]?.content) {
+      setChapters(query.data.data[0].content);
+    }
   }, [query.data]);
 
   const onClick = () => {
