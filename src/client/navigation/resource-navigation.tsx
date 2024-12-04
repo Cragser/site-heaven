@@ -189,10 +189,9 @@ export const resourceNavigation: Partial<Record<ResourceEnum, ResourceProps>> =
       list: "catalog/person-relation-type",
       create: "catalog/person-relation-type/create",
       show: "/",
-
       meta: {
         canDelete: true,
-        parent: "Catálogos",
+        parent: "catalog",
       },
       name: "person-relation-type",
     },
@@ -202,7 +201,7 @@ export const resourceNavigation: Partial<Record<ResourceEnum, ResourceProps>> =
       meta: {
         canDelete: true,
         canEdit: false,
-        parent: "Catálogos",
+        parent: "catalog",
       },
       name: "nationality",
     },

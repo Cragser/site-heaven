@@ -693,5 +693,29 @@
       "relatedRepeatingSection": "Sección",
       "contentRepeatingSection": "Plantilla de contenido"
     }
+  },
+  "person-relation-type": {
+    "person-relation-type": "Tipo de relación de persona",
+    "titles": {
+      "list": "Tipos de relación de persona",
+      "edit": "Editar tipo de relación de persona",
+      "create": "Crear tipo de relación de persona"
+    }
+  },
+  "nationality": {
+    "nationality": "Nacionalidad",
+    "titles": {
+      "list": "Nacionalidad",
+      "edit": "Editar nacionalidad",
+      "create": "Crear nacionalidad"
+    }
+  },
+  "catalog": {
+    "catalog": "Catálogos",
+    "titles": {
+      "list": "Catálogo",
+      "edit": "Editar catálogo",
+      "create": "Crear catálogo"
+    }
   }
 }
