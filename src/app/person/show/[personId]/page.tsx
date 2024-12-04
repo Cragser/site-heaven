@@ -52,11 +52,12 @@ export default function BlogPostShow({
   ];
 
   return (
-    <StateManager
-      isLoading={queryResult.isLoading}
-      isError={record === undefined || queryResult.isError}
-    >
-      <Show title={title}>
+    <Show title={title}>
+      <StateManager
+        isLoading={queryResult.isLoading}
+        isError={record === undefined || queryResult.isError}
+        data={queryResult.data}
+      >
         <DescriptionSimple items={items} />
         <CardList
           id={record?.id}
@@ -74,7 +75,7 @@ export default function BlogPostShow({
             ResourceEnum.personSocial,
           ]}
         />
-      </Show>
-    </StateManager>
+      </StateManager>
+    </Show>
   );
 }
