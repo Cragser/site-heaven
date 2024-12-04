@@ -136,34 +136,31 @@ export default function StakeholderPage({ params: { companyId } }: Props) {
             )}
           />
         </Table>
-        <Drawer {...drawerProps}>
-          <Create
-            saveButtonProps={saveButtonProps}
-            goBack={false}
-            title={"Relación con empresa"}
-          >
-            <CreateRelationFormAdvanced
-              parentEntityId={companyId}
-              entityResource={ResourceEnum.person}
-              excludeIds={excludeIds(camelEntity, tableQueryResult)}
-              formProps={formProps}
-              entityFieldName={ResourceEnum.person}
-              entityLabelName={"Persona"}
-              parentFieldName={"company"}
-              customFields={[
-                <Form.Item
-                  name={`relation`}
-                  initialValue={"other"}
-                  label="Tipo"
-                >
-                  {/*   Options: shareholder, other */}
-                  <Select options={getEnumOptions()} />
-                </Form.Item>,
-              ]}
-            />
-          </Create>
-        </Drawer>
       </StateManager>
+
+      <Drawer {...drawerProps}>
+        <Create
+          saveButtonProps={saveButtonProps}
+          goBack={false}
+          title={"Relación con empresa"}
+        >
+          <CreateRelationFormAdvanced
+            parentEntityId={companyId}
+            entityResource={ResourceEnum.person}
+            excludeIds={excludeIds(camelEntity, tableQueryResult)}
+            formProps={formProps}
+            entityFieldName={ResourceEnum.person}
+            entityLabelName={"Persona"}
+            parentFieldName={"company"}
+            customFields={[
+              <Form.Item name={`relation`} initialValue={"other"} label="Tipo">
+                {/*   Options: shareholder, other */}
+                <Select options={getEnumOptions()} />
+              </Form.Item>,
+            ]}
+          />
+        </Create>
+      </Drawer>
     </List>
   );
 }

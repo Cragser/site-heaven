@@ -14,6 +14,7 @@ import {CreateRelationPageProps} from "@/lib/pages/types/list-page.type";
 import useListParentRelation
   from "@/lib/pages/list/hooks/use-list-paren-relation";
 import {If, When} from "react-if";
+import excludeIds from "@client/util/forms/exclude-ids";
 
 /**
  * Para utilizar esta página, debe de tener una relación padre e hijo. Pero la tabla intermedia no debe de tener valores
@@ -51,6 +52,7 @@ function ListParentRelationPage({
     `${relationResource}.titles.add-relation-to-${parent}`,
   );
 
+  console.log({ relationResource });
   const headerButtons = renderHeaderToEntity({
     id: parentId,
     parent,
@@ -85,33 +87,27 @@ function ListParentRelationPage({
           columns={columns}
           parentId={parentId}
         />
-        <If condition={showDrawer}>
-          <Drawer {...drawerProps}>
-            <Create
-              saveButtonProps={saveButtonProps}
-              goBack={false}
-              title={titleToAdd}
-            >
-              <CreateRelationForm
-                parentEntityId={parentId}
-                entityResource={entityResource}
-                excludeIds={tableQueryResult?.data?.data
-                  ?.filter((item) => {
-                    return (
-                      item[camelEntity] !== null &&
-                      item[camelEntity] !== undefined
-                    );
-                  })
-                  .map((item) => item[camelEntity].id)}
-                formProps={formProps}
-                entityFieldName={entityResource}
-                entityLabelName={titleToAdd}
-                parentFieldName={parent}
-              />
-            </Create>
-          </Drawer>
-        </If>
       </StateManager>
+
+      <If condition={showDrawer}>
+        <Drawer {...drawerProps}>
+          <Create
+            saveButtonProps={saveButtonProps}
+            goBack={false}
+            title={titleToAdd}
+          >
+            <CreateRelationForm
+              parentEntityId={parentId}
+              entityResource={entityResource}
+              excludeIds={excludeIds(camelEntity, tableQueryResult)}
+              formProps={formProps}
+              entityFieldName={entityResource}
+              entityLabelName={titleToAdd}
+              parentFieldName={parent}
+            />
+          </Create>
+        </Drawer>
+      </If>
     </List>
   );
 }
