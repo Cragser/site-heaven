@@ -1,7 +1,7 @@
 import { DocumentCreationType } from "@/lib/ui-control/document/types/documentCreationType";
 import DocumentSection from "@/lib/surfaces/document-section";
 import Chapter from "@components/data-display/document/blocks/chapter/chapter";
-import { Divider, Space } from "antd";
+import { Space } from "antd";
 import SaveDocumentButton from "@components/data-display/document/blocks/main/save-document-button";
 import ReloadAllDataButton from "@components/data-display/document/blocks/main/reload-all-data-button";
 import useDocumentContentStore from "@components/data-display/document/state/use-document-content-store"; //
@@ -24,16 +24,9 @@ export default function MainDocument({
         <SaveDocumentButton />
         <ReloadAllDataButton />
       </Space>
-      <Space direction={"vertical"} split={<Divider />}>
-        {/* <ChapterCollection cards={cards} /> */}
+      <Space direction={"vertical"}>
         {chapters.map((chapter) => (
-          <Chapter
-            key={chapter.order}
-            {...chapter}
-            // moveCard={moveCard}
-            // id={index + "-" + chapter.title}
-            // index={index}
-          />
+          <Chapter key={chapter.order} {...chapter} />
         ))}
       </Space>
     </DocumentSection>

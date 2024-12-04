@@ -17,7 +17,7 @@ export default function DocumentSection({
       backgroundColor: token.colorBgContainer,
       border: `${token.lineWidth}px solid ${token.colorBorder}`,
       borderRadius: token.borderRadiusLG,
-      minWidth: "45rem",
+      minWidth: "35rem",
       display: "flex",
       flexDirection: "column" as const,
     },
