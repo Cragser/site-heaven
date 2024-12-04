@@ -10,7 +10,6 @@ export default function PersonTable({ parent = "", tableProps }: any) {
   const translate = useTranslate();
   const keys = ["name", "lastName", "rfc", "curp", "nss"];
   const dataIndex = createDataIndex(parent, keys);
-  console.log(dataIndex);
   const { renderActions } = useRenderActions({
     metaCreate: (record: BaseRecord, getId) => ({
       personId: getId(record),

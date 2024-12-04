@@ -15,6 +15,7 @@ interface Props {
   };
 }
 
+// NEXT - Use a page component
 export default function PersonRelationList({
   params: { companyId },
 }: Readonly<Props>) {

@@ -14,9 +14,14 @@ import { useTranslate } from "@refinedev/core";
 interface Props {
   columns: ItemConfig[];
   entityResource: ResourceEnum;
+  showButtons?: boolean;
 }
 
-export function generateColumns({ columns, entityResource }: Readonly<Props>) {
+export function generateColumns({
+  columns,
+  entityResource,
+  showButtons = true,
+}: Readonly<Props>) {
   const translate = useTranslate();
   const newColumns = columns.map((item) => {
     const key = generateColumnKey(item);
@@ -33,16 +38,18 @@ export function generateColumns({ columns, entityResource }: Readonly<Props>) {
     );
   });
 
-  newColumns.push(
-    <Column
-      key={"actions"}
-      dataIndex={["actions"]}
-      title={"Actions"}
-      render={generateActionButtons({
-        entityResource,
-      })}
-    />,
-  );
+  if (showButtons) {
+    newColumns.push(
+      <Column
+        key={"actions"}
+        dataIndex={["actions"]}
+        title={"Actions"}
+        render={generateActionButtons({
+          entityResource,
+        })}
+      />,
+    );
+  }
 
   return newColumns;
 }

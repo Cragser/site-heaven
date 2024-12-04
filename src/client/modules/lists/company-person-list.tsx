@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { List, useTable } from '@refinedev/antd';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import PersonTable from '@modules/tables/person-table';
+import { List, useTable } from "@refinedev/antd";
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import PersonTable from "@modules/tables/person-table";
 
 interface Props {
   companyId: string;
@@ -13,15 +13,15 @@ export default function CompanyPersonList({ companyId }: Props) {
     filters: {
       permanent: [
         {
-          field: 'filter',
-          operator: 'eq',
+          field: "filter",
+          operator: "eq",
           value: `companyId||$eq||${companyId}`,
         },
       ],
     },
     pagination: {
       current: 1,
-      mode: 'client',
+      mode: "client",
       pageSize: 10,
     },
     resource: ResourceEnum.personCompany,
@@ -37,7 +37,7 @@ export default function CompanyPersonList({ companyId }: Props) {
 
   return (
     <List title={`Personas en la companñia: ${companyName}`}>
-      <PersonTable tableProps={tableProps} parent={'person'} />
+      <PersonTable tableProps={tableProps} parent={"person"} />
     </List>
   );
 }

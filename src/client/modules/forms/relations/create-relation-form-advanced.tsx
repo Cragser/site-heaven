@@ -2,6 +2,7 @@ import { Form, FormProps, Input, Select } from "antd";
 import { useResourceSelect } from "@client/util/hook/use-resource-select";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import { camelCase } from "case-anything";
+import React from "react";
 
 interface Props {
   entityFieldName: string;
@@ -11,9 +12,10 @@ interface Props {
   formProps: FormProps;
   parentEntityId: string;
   parentFieldName: string;
+  customFields?: React.ReactNode[];
 }
 
-export default function EntityRelationForm({
+export default function CreateRelationFormAdvanced({
   entityFieldName,
   entityLabelName,
   entityResource,
@@ -21,6 +23,7 @@ export default function EntityRelationForm({
   formProps,
   parentEntityId,
   parentFieldName,
+  customFields = [],
 }: Readonly<Props>) {
   const { selectProps } = useResourceSelect({
     excludeIds,
@@ -29,6 +32,7 @@ export default function EntityRelationForm({
 
   const parentFieldNameCamelCase = camelCase(parentFieldName);
   const entityFieldCamelCase = camelCase(entityFieldName);
+
   return (
     <Form {...formProps}>
       <Form.Item
@@ -41,6 +45,9 @@ export default function EntityRelationForm({
       <Form.Item label={entityLabelName} name={`${entityFieldCamelCase}Id`}>
         <Select {...(selectProps as any)} />
       </Form.Item>
+      {customFields.map((customField, index) => (
+        <React.Fragment key={index}>{customField}</React.Fragment>
+      ))}
     </Form>
   );
 }
