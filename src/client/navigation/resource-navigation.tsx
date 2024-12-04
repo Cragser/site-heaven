@@ -184,4 +184,26 @@ export const resourceNavigation: Partial<Record<ResourceEnum, ResourceProps>> =
       },
       name: "chapter-template-subchapter-template",
     },
+    [ResourceEnum.personRelationType]: {
+      edit: "catalog/person-relation-type/edit/:personRelationTypeId",
+      list: "catalog/person-relation-type",
+      create: "catalog/person-relation-type/create",
+      show: "/",
+
+      meta: {
+        canDelete: true,
+        hide: true,
+      },
+      name: "person-relation-type",
+    },
+    [ResourceEnum.nationality]: {
+      list: "catalog/nationality",
+      create: "catalog/nationality/create",
+      meta: {
+        canDelete: true,
+        hide: true,
+        canEdit: false,
+      },
+      name: "nationality",
+    },
   };

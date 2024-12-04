@@ -66,6 +66,7 @@ export enum ResourceEnum {
 
   // Helpers
   nationalityHelper = "nationality-helper",
+  nationality = "nationality",
 
   // This only helps front
   creationDetails = "creation-details",
