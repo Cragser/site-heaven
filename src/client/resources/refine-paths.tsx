@@ -24,26 +24,16 @@ export function refinePaths(): ResourceProps[] {
     //   name: 'company',
     //   show: '/company/show/:id',
     // },
-    {
-      create: "catalog/nationality/create",
-      edit: "catalog/nationality/edit/:id",
-      list: "catalog/nationality",
-      meta: {
-        canDelete: true,
-        parent: "catalog",
-      },
-      name: "nationality",
-    },
-    {
-      create: "catalog/person-relation-type/create",
-      edit: "catalog/person-relation-type/edit/:personRelationTypeId",
-      list: "catalog/person-relation-type",
-      meta: {
-        canDelete: true,
-        parent: "catalog",
-      },
-      name: "person-relation-type",
-    },
+    // {
+    //   create: "catalog/nationality/create",
+    //   edit: "catalog/nationality/edit/:id",
+    //   list: "catalog/nationality",
+    //   meta: {
+    //     canDelete: true,
+    //     parent: "catalog",
+    //   },
+    //   name: "nationality",
+    // },
 
     // generateRouteObject("company", "address"),
     // generateRouteObject("company", "social"),
