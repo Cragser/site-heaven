@@ -11,6 +11,7 @@ export interface ChapterSlice {
   moveUp: (index: number) => void;
   setChapters: (newChapters: ChapterData[]) => void;
   updateNote: (index: number, newNote: string) => void;
+  updateChapter: (index: number, newChapter: ChapterData) => void;
 }
 
 const reorderChapters = (chapters: ChapterData[]): ChapterData[] =>
@@ -40,6 +41,18 @@ export const createChapterSlice = (set: any, get: any): ChapterSlice => {
         ),
       }));
     },
+    updateChapter: (index: number, newChapter: ChapterData) => {
+      set((state: ChapterSlice) => ({
+        ...state,
+        chapters: reorderChapters(
+          adjust(state.chapters, index, (chapter) => ({
+            ...chapter,
+            ...newChapter,
+          })),
+        ),
+      }));
+    },
+
     moveChapter: (dragIndex: number, hoverIndex: number) => {
       set((state: ChapterSlice) => ({
         ...state,

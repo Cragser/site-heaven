@@ -9,6 +9,7 @@ import "react-quill/dist/quill.bubble.css";
 
 import Subchapter from "@components/data-display/document/blocks/subchapter/subchapter";
 import { If, When } from "react-if";
+import { createChapters } from "@components/data-display/document/util/create-chapters";
 
 export default function Chapter({
   title,
@@ -16,13 +17,29 @@ export default function Chapter({
   order,
   note,
   subchapters,
+  id,
 }: Readonly<ChapterData>) {
   const [showEditor, setShowEditor] = useState(false);
-  const { moveUp, moveDown, deleteChapter, updateNote } =
-    useDocumentContentStore();
+  const {
+    moveUp,
+    dataToReplace,
+    deleteChapter,
+    moveDown,
+    templateContent,
+    updateNote,
+    updateChapter,
+  } = useDocumentContentStore();
 
   const handleNoteChange = (value: string) => {
     updateNote(order, value);
+  };
+
+  const handleChapterChange = () => {
+    const chapters = createChapters(dataToReplace, templateContent);
+    const chapter = chapters.find((chapter) => chapter.id === id);
+    if (chapter !== undefined) {
+      updateChapter(order, chapter);
+    }
   };
 
   return (
@@ -32,6 +49,8 @@ export default function Chapter({
         <Button onClick={() => deleteChapter(order)}>Eliminar</Button>
         <Button onClick={() => moveUp(order)}>Mover arriba</Button>
         <Button onClick={() => moveDown(order)}>Mover abajo</Button>
+        <Button onClick={() => handleChapterChange()}>Actualizar</Button>
+
         <Button onClick={() => setShowEditor(!showEditor)}>
           {showEditor ? "Ocultar" : "Mostrar"} editor
         </Button>

@@ -6,6 +6,7 @@ export default function ReloadAllDataButton() {
   const { setChapters, dataToReplace, templateContent } =
     useDocumentContentStore();
   const onClick = () => {
+    //
     setChapters(createChapters(dataToReplace, templateContent));
   };
   return <Button onClick={onClick}>Actualizar información</Button>;
