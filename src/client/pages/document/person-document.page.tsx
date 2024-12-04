@@ -46,11 +46,11 @@ export default function PersonDocumentPage({
       (item: any) => item.chapterTemplate,
     );
 
+  const dataToReplace = getPersonData(itemData?.data);
+
   if (isLoading || isLoadingData) {
     return <div>Loading...</div>;
   }
-
-  const dataToReplace = getPersonData(itemData?.data);
 
   return (
     <DocumentComponent
