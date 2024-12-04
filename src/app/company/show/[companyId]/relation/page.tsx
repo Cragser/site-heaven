@@ -63,25 +63,27 @@ export default function PersonRelationList({
   });
 
   return (
-    <StateManager
-      isLoading={tableQueryResult?.isLoading}
-      isError={tableQueryResult?.isError}
-      data={tableQueryResult?.data}
-    >
+    <>
       <List title={title} headerButtons={headerButtons}>
-        <CreateTableRelationItself
-          parent={"relatedCompany"}
-          parentName={"company"}
-          parentResource={ResourceEnum.company}
-          relationResource={ResourceEnum.companyRelation}
-          tableProps={tableProps}
-          columns={[
-            {
-              key: "name",
-              dataIndex: ["name"],
-            },
-          ]}
-        />
+        <StateManager
+          isLoading={tableQueryResult?.isLoading}
+          isError={tableQueryResult?.isError}
+          data={tableQueryResult?.data}
+        >
+          <CreateTableRelationItself
+            parent={"relatedCompany"}
+            parentName={"company"}
+            parentResource={ResourceEnum.company}
+            relationResource={ResourceEnum.companyRelation}
+            tableProps={tableProps}
+            columns={[
+              {
+                key: "name",
+                dataIndex: ["name"],
+              },
+            ]}
+          />
+        </StateManager>
       </List>
       <Drawer {...drawerProps}>
         <Create
@@ -103,6 +105,6 @@ export default function PersonRelationList({
           />
         </Create>
       </Drawer>
-    </StateManager>
+    </>
   );
 }
