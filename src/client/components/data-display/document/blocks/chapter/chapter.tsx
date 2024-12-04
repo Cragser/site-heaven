@@ -118,7 +118,7 @@ export default function Chapter({
           </Dropdown>
         }
       >
-        <Space direction={"vertical"}>
+        <Space direction={"vertical"} style={{ width: "100%" }}>
           <ReactQuill
             className={styles.content}
             theme="bubble"

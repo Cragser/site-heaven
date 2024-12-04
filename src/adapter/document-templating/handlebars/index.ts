@@ -13,7 +13,8 @@ export function handlebarsFillTemplate(
 function init() {
   Handlebars.registerHelper("sexAccordanceNoun", function (sex) {
     if (!sex) {
-      throw new Error("The sex must be provided.");
+      console.warn("The sex must be provided.");
+      return "";
     }
 
     // Return "o" for "Masculino" and "a" for "Femenino"
@@ -26,7 +27,8 @@ function init() {
 
   Handlebars.registerHelper("sexAccordanceArticle", function (sex) {
     if (!sex) {
-      throw new Error("The sex must be provided.");
+      console.warn("The sex must be provided.");
+      return "";
     }
 
     // Return "" (nothing) for "hombre" and "a" for "mujer"

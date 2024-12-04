@@ -6,6 +6,7 @@ import { SubchapterData } from "@components/data-display/types/chapter.type";
 import useDocumentContentStore from "@components/data-display/document/state/use-document-content-store";
 import ReactQuill from "react-quill";
 import { If } from "react-if";
+import { DownOutlined, UpOutlined } from "@ant-design/icons";
 
 export default function Subchapter({
   title,
@@ -43,19 +44,15 @@ export default function Subchapter({
     <List.Item
       actions={[
         <If condition={order !== 0}>
-          <a
+          <UpOutlined
             key="list-loadmore-edit"
             onClick={() => moveUpSubchapter(chapterIndex, order)}
-          >
-            Mover arriba
-          </a>
+          />
         </If>,
-        <a
+        <DownOutlined
           key="list-loadmore-edit"
           onClick={() => moveDownSubchapter(chapterIndex, order)}
-        >
-          Mover abajo
-        </a>,
+        />,
 
         <a key="list-loadmore-edit" onClick={showDrawer}>
           Modificar
