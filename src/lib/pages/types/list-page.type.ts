@@ -30,6 +30,7 @@ export interface CreateRelationPageProps {
   parent: SectionEntityType;
   columns: ItemConfig[];
   navigation?: NavigationCrud;
+  showDrawer?: boolean;
 }
 
 export interface ListRelationComplexPageProps {

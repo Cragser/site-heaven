@@ -1,6 +1,7 @@
 import { Form, FormProps, Input, Select } from "antd";
 import { useResourceSelect } from "@client/util/hook/use-resource-select";
 import { ResourceEnum } from "@lib/enums/resource.enum";
+import { camelCase } from "case-anything";
 
 interface Props {
   parentEntityId: string;
@@ -26,16 +27,18 @@ export default function EntityRelationForm({
     resource: entityResource,
   });
 
+  const parentFieldNameCamelCase = camelCase(parentFieldName);
+  const entityFieldCamelCase = camelCase(entityFieldName);
   return (
     <Form {...formProps}>
       <Form.Item
-        name={`${parentFieldName}Id`}
+        name={`${parentFieldNameCamelCase}Id`}
         initialValue={parentEntityId}
         hidden={true}
       >
         <Input />
       </Form.Item>
-      <Form.Item label={entityLabelName} name={`${entityFieldName}Id`}>
+      <Form.Item label={entityLabelName} name={`${entityFieldCamelCase}Id`}>
         <Select {...(selectProps as any)} />
       </Form.Item>
     </Form>
