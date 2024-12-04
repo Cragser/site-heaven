@@ -23,7 +23,7 @@ export const personFields: ItemConfig[] = [
   },
   {
     dataIndex: ["nationality", "name"],
-    selectDataIndex: ["nationality", "id"],
+    selectDataIndex: ["id"],
     key: "nationality",
     render: tagRender,
     type: "autocomplete",
