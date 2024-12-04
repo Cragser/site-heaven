@@ -11,7 +11,7 @@ export function refinePaths(): ResourceProps[] {
       meta: {
         icon: <BookOutlined />,
       },
-      name: "catalog",
+      name: "Catálogos",
     },
     // {
     //   create: '/company/create',
