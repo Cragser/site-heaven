@@ -47,6 +47,9 @@ importers:
       '@textea/json-viewer':
         specifier: ^4.0.0
         version: 4.0.0(@emotion/react@11.13.3(@types/react@18.2.33)(react@18.3.1))(@emotion/styled@11.13.0(@emotion/react@11.13.3(@types/react@18.2.33)(react@18.3.1))(@types/react@18.2.33)(react@18.3.1))(@mui/material@6.1.2(@emotion/react@11.13.3(@types/react@18.2.33)(react@18.3.1))(@emotion/styled@11.13.0(@emotion/react@11.13.3(@types/react@18.2.33)(react@18.3.1))(@types/react@18.2.33)(react@18.3.1))(@types/react@18.2.33)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@types/react@18.2.33)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@types/file-saver':
+        specifier: ^2.0.7
+        version: 2.0.7
       antd:
         specifier: 5.21.2
         version: 5.21.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -1566,6 +1569,9 @@ packages:
 
   '@types/estree@1.0.6':
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
+
+  '@types/file-saver@2.0.7':
+    resolution: {integrity: sha512-dNKVfHd/jk0SkR/exKGj2ggkB45MAkzvWCaqLUUgkyjITkGNzH8H+yUwr+BLJUBjZOe9w8X3wgmXhZDRg1ED6A==}
 
   '@types/graceful-fs@4.1.9':
     resolution: {integrity: sha512-olP3sd1qOEe5dXTSaFvQG+02VdRXcdytWLAZsAq1PecU8uqQAhkrnbli7DagjtXKW/Bl7YJbUsa8MPcuc8LHEQ==}
@@ -7521,6 +7527,8 @@ snapshots:
   '@types/css-font-loading-module@0.0.7': {}
 
   '@types/estree@1.0.6': {}
+
+  '@types/file-saver@2.0.7': {}
 
   '@types/graceful-fs@4.1.9':
     dependencies:
