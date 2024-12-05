@@ -1,25 +1,33 @@
-'use client';
+"use client";
 
-import { Edit, useForm } from '@refinedev/antd';
-import { HttpError } from '@refinedev/core';
-import { PersonType } from '@lib/types/person.type';
-import { PersonAndChildPageType } from '@page/types/person-and-child-page.type';
-import RelationForm from '@modules/forms/relation-form';
-import { ResourceEnum } from '@lib/enums/resource.enum';
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { EditFormPage } from "@/lib/pages/edit/edit-form.page";
 
-export default function RelationEditPage(
-  props: Readonly<PersonAndChildPageType>
-) {
-  const id = props?.params?.id;
-  const personId = props?.params?.personId;
-  const { formProps, saveButtonProps } = useForm<PersonType, HttpError>({
-    id,
-    resource: ResourceEnum.personRelation,
-  });
+interface Props {
+  params: {
+    companyId: string;
+    id: string;
+  };
+}
 
+export default function RelationEditPage({ params: { companyId, id } }: Props) {
   return (
-    <Edit saveButtonProps={saveButtonProps}>
-      <RelationForm personId={personId} formProps={formProps} />
-    </Edit>
+    <EditFormPage
+      id={id}
+      entityResource={ResourceEnum.companyRelation}
+      meta={{
+        companyId,
+      }}
+      columns={[
+        {
+          key: "comment",
+          dataIndex: ["comment"],
+          type: "textarea",
+          columnConfig: {
+            overrideDataIndex: true,
+          },
+        },
+      ]}
+    />
   );
 }

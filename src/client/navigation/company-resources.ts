@@ -10,11 +10,14 @@ export const companyResources: Partial<Record<ResourceEnum, ResourceProps>> = {
   [ResourceEnum.companyAsset]: createCompanyResource(ResourceEnum.asset),
   [ResourceEnum.companySocial]: createCompanyResource(ResourceEnum.social),
 
-  [ResourceEnum.companyRelation]: createCompanyResource(ResourceEnum.relation),
   [ResourceEnum.companyCreationDetails]: createCompanyResource(
-    ResourceEnum.creationDetails
+    ResourceEnum.creationDetails,
   ),
   [ResourceEnum.companyAudit]: createCompanyResource(ResourceEnum.audit),
   [ResourceEnum.companyContract]: createCompanyResource(ResourceEnum.contract),
   [ResourceEnum.companyLegal]: createCompanyResource(ResourceEnum.legal),
+  [ResourceEnum.companyRelation]: {
+    ...createCompanyResource(ResourceEnum.relation),
+    edit: "/company/show/:companyId/relation/edit/:id",
+  },
 };
