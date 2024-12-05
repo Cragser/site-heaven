@@ -9,7 +9,7 @@ export type Filter = (search: string) => {
 };
 
 interface Props {
-  filters?: Filter[];
+  filters?: never[];
   excludeIds?: string[];
   resource: ResourceEnum;
 }
@@ -20,7 +20,7 @@ interface SelectProps {
 
 export function useResourceSelect({
   excludeIds = [],
-  filters = [],
+  // filters = [],
   resource,
 }: Props): SelectProps {
   const initialFilters: CrudFilters =
@@ -46,7 +46,8 @@ export function useResourceSelect({
     filters: [...initialFilters, ...searchFilter],
     onSearch: (search: string) => {
       if (!search) return [];
-      return filters.map((filter) => filter(search));
+      // @ts-ignore
+      return propsToSelect.filters.map((filter) => filter(search));
     },
     optionLabel: (item: any) => {
       return item.name ?? item.role;
