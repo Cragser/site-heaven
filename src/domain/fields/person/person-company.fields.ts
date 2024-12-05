@@ -16,3 +16,20 @@ export const personCompanyFields: ItemConfig[] = [
     dataIndex: ["relation"],
   },
 ];
+
+export const companyPersonFields: ItemConfig[] = [
+  {
+    key: "company.name",
+    dataIndex: ["company", "name"],
+    translateKey: "company.fields.name",
+  },
+  {
+    key: "company.nickname",
+    dataIndex: ["company", "nickname"],
+    translateKey: "company.fields.nickname",
+  },
+  {
+    key: "relation",
+    dataIndex: ["relation"],
+  },
+];

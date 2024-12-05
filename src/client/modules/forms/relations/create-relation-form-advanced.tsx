@@ -5,44 +5,44 @@ import { camelCase } from "case-anything";
 import React from "react";
 
 interface Props {
-  entityFieldName: string;
-  entityLabelName: string;
-  entityResource: ResourceEnum;
+  selectName: string;
+  selectLabel: string;
+  selectSourceResource: ResourceEnum;
   excludeIds?: string[];
   formProps: FormProps;
-  parentEntityId: string;
-  parentFieldName: string;
+  hiddenEntityId: string;
+  hiddenFieldName: string;
   customFields?: React.ReactNode[];
 }
 
 export default function CreateRelationFormAdvanced({
-  entityFieldName,
-  entityLabelName,
-  entityResource,
+  selectName,
+  selectLabel,
+  selectSourceResource,
   excludeIds = [] as string[],
   formProps,
-  parentEntityId,
-  parentFieldName,
+  hiddenEntityId,
+  hiddenFieldName,
   customFields = [],
 }: Readonly<Props>) {
   const { selectProps } = useResourceSelect({
     excludeIds,
-    resource: entityResource,
+    resource: selectSourceResource,
   });
 
-  const parentFieldNameCamelCase = camelCase(parentFieldName);
-  const entityFieldCamelCase = camelCase(entityFieldName);
+  const parentFieldNameCamelCase = camelCase(hiddenFieldName);
+  const entityFieldCamelCase = camelCase(selectName);
 
   return (
     <Form {...formProps}>
       <Form.Item
         name={`${parentFieldNameCamelCase}Id`}
-        initialValue={parentEntityId}
+        initialValue={hiddenEntityId}
         hidden={true}
       >
         <Input />
       </Form.Item>
-      <Form.Item label={entityLabelName} name={`${entityFieldCamelCase}Id`}>
+      <Form.Item label={selectLabel} name={`${entityFieldCamelCase}Id`}>
         <Select {...(selectProps as any)} />
       </Form.Item>
       {customFields.map((customField, index) => (
