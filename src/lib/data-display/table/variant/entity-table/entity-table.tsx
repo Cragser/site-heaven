@@ -22,7 +22,6 @@ export default function EntityTable({
         position: ["bottomCenter"],
         size: "small",
       }}
-      // showHeader={false}
     >
       {generateColumns({
         columns,

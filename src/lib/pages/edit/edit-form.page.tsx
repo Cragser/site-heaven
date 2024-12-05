@@ -19,10 +19,14 @@ export function EditFormPage({
     resource: entityResource,
     action: "edit",
     id: id,
+    redirect: false,
   });
   const setValues = useFormStore((state) => state.setValues);
   useEffect(() => {
-    setValues({ ...formProps.initialValues, parentId });
+    setValues({
+      ...formProps.initialValues,
+      parentId,
+    });
   }, []);
 
   return (
@@ -31,7 +35,10 @@ export function EditFormPage({
         {...formProps}
         layout="vertical"
         onValuesChange={(_, allValues) => {
-          setValues({ ...allValues, parentId });
+          setValues({
+            ...allValues,
+            parentId,
+          });
         }}
       >
         {meta && createHiddenFields({ meta })}

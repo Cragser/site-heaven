@@ -15,6 +15,7 @@ export const personFields: ItemConfig[] = [
     "rfc",
     "curp",
     "nss",
+    "birthPlace",
   ]),
   {
     ...createItemConfig("sex"),

@@ -71,6 +71,17 @@ function switchRender(
     );
   }
 
+  if (column?.type === "date") {
+    return (
+      <Form.Item
+        label={translate(`${resource}.fields.${column.key}`)}
+        name={column.key}
+      >
+        <Input type={"date"} />
+      </Form.Item>
+    );
+  }
+
   return (
     <Form.Item
       label={translate(`${resource}.fields.${column.key}`)}

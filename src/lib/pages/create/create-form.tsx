@@ -13,6 +13,7 @@ export function CreateForm({
 }: Readonly<MutationPageType>) {
   const { formProps, saveButtonProps } = useForm<any, HttpError>({
     resource: entityResource,
+    redirect: false,
   });
 
   return (

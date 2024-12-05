@@ -39,7 +39,13 @@ export function SimpleUniqueResource({ resource, record, meta }: Props) {
       </div>
     );
   }
-  const fields = ["initialCapital", "initialShares"];
+  const fields = [
+    "initialCapital",
+    "initialShares",
+    "creationPlace",
+    "creationRegistrarDetails",
+    "creationDate",
+  ];
 
   const items: DescriptionsProps["items"] = fields.map((field) => ({
     children: data?.[field],
