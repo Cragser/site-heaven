@@ -14,4 +14,10 @@ export const governmentFields: ItemConfig[] = [
   {
     ...createItemConfig("period"),
   },
+  {
+    ...createItemConfig("position"),
+  },
+  {
+    ...createItemConfig("level"),
+  },
 ];
