@@ -52,7 +52,6 @@ function ListParentRelationPage({
     `${relationResource}.titles.add-relation-to-${parent}`,
   );
 
-  console.log({ relationResource });
   const headerButtons = renderHeaderToEntity({
     id: parentId,
     parent,

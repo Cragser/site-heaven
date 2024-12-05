@@ -24,4 +24,9 @@ export const personCompanyTimeFrameFields: ItemConfig[] = [
     ...createItemConfig("money"),
     type: "number",
   },
+  {
+    ...createItemConfig("initialRegistration"),
+    type: "boolean",
+  },
+  createItemConfig("comments"),
 ];
