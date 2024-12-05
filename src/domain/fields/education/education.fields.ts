@@ -13,6 +13,7 @@ export const educationFields: ItemConfig[] = [
   {
     ...createItemConfig("validated"),
     render: booleanRender,
+    type: "boolean",
   },
   {
     key: "initialDate",
