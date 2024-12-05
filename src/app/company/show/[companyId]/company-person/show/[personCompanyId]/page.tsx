@@ -17,7 +17,7 @@ interface Props {
   };
 }
 
-export default function StakeholderPage({
+export default function StakeholderTimeFrameListPage({
   params: { companyId, personCompanyId },
 }: Readonly<Props>) {
   const { queryResult } = useShow<any, HttpError>({
@@ -29,6 +29,7 @@ export default function StakeholderPage({
     <StateManager
       isLoading={queryResult.isLoading}
       isError={queryResult.isError}
+      data={queryResult.data}
     >
       <Show canEdit={false}>
         <EntityView

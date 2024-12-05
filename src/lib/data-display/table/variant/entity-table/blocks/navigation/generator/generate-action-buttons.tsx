@@ -24,9 +24,9 @@ export default function generateActionButtons({
       return (
         <Navigation
           defaultNavigation={true}
-          record={record}
           entityResource={entityResource}
           meta={meta}
+          record={record}
         />
       );
     },

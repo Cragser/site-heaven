@@ -147,6 +147,7 @@ export const resourceNavigation: Partial<Record<ResourceEnum, ResourceProps>> =
         "/person/show/:personId/company/show/:companyId/time-frame/create",
       edit: "/person/show/:personId/company/show/:companyId/time-frame/edit/:timeFrameId",
       show: "/person/show/:personId/company/show/:companyId/time-frame/show/:timeFrameId",
+      list: "/person/show/:personId/company/show/:companyId/time-frame",
       meta: {
         canDelete: true,
         hide: true,
@@ -156,6 +157,7 @@ export const resourceNavigation: Partial<Record<ResourceEnum, ResourceProps>> =
     [ResourceEnum.companyPersonTimeFrame]: {
       create:
         "/company/show/:companyId/company-person/show/:personCompanyId/time-frame/create",
+      list: "/company/show/:companyId/company-person/show/:personCompanyId/time-frame",
       meta: {
         canDelete: true,
         hide: true,

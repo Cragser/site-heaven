@@ -15,6 +15,8 @@ interface Props {
   columns: ItemConfig[];
   entityResource: ResourceEnum;
   showButtons?: boolean;
+  navigation?: any;
+  defaultNavigation?: boolean;
 }
 
 export function generateColumns({

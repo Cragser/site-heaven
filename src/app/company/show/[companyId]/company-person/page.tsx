@@ -41,7 +41,7 @@ export default function StakeholderPage({ params: { companyId } }: Props) {
     resource: ResourceEnum.personCompany,
     syncWithLocation: false,
     filters: {
-      initial: [equalFilter("personCompany.companyId", companyId)],
+      initial: [equalFilter("companyId", companyId)],
     },
   });
 
@@ -119,9 +119,10 @@ export default function StakeholderPage({ params: { companyId } }: Props) {
                   onClick={() => {
                     goTo({
                       action: "show",
-                      resource: ResourceEnum.person,
+                      resource: ResourceEnum.companyPerson,
                       meta: {
                         personId: record.personId,
+                        personCompanyId: record.id as string,
                       },
                     });
                   }}
