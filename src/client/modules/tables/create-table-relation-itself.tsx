@@ -12,6 +12,7 @@ import React from "react";
 import { SectionEntityType } from "@page/types/section-entity.type";
 import { ItemConfig } from "@/lib/@types/table-column.type";
 import { resourceNavigation } from "@client/navigation/resource-navigation";
+import { useGoTo } from "@client/hooks/navigation/use-go-to";
 
 interface Props {
   // entityResource: ResourceEnum;
@@ -21,6 +22,7 @@ interface Props {
   parentName: SectionEntityType;
   tableProps: any;
   columns: ItemConfig[];
+  meta?: Record<string, any>;
 }
 
 function CreateTableRelationItself({
@@ -34,17 +36,22 @@ function CreateTableRelationItself({
   tableProps,
   // company
   columns,
+  meta,
 }: Readonly<Props>) {
   const translate = useTranslate();
   const getToPath = useGetToPath();
   const go = useGo();
+  const goTo = useGoTo();
 
   const columnsRender = columns.map((item) => {
     const key = item.key ?? item.dataIndex.join(".");
+    const dataIndex = item.columnConfig?.overrideDataIndex
+      ? item.dataIndex
+      : [entityName, ...item.dataIndex];
     return (
       <Table.Column
         key={key}
-        dataIndex={[entityName, ...item.dataIndex]}
+        dataIndex={dataIndex}
         title={translate(`${entityName}.fields.${key}`)}
         render={item.render || ((text: string) => text)}
       />
@@ -66,9 +73,11 @@ function CreateTableRelationItself({
         title={"Actions"}
         dataIndex="actions"
         render={(_, record: BaseRecord) => {
-          const meta = {
+          const localMeta = {
             [`${entityName}Id`]: record[`${entityName}Id`],
             [`${parentName}Id`]: record[`${parentName}Id`],
+            id: record.id,
+            ...meta,
           };
 
           const handleClick = (action: Action) => {
@@ -76,7 +85,7 @@ function CreateTableRelationItself({
             const to = getToPath({
               resource: resourceNavigation[parentResource],
               action,
-              meta,
+              meta: localMeta,
             });
             go({
               to,
@@ -87,8 +96,15 @@ function CreateTableRelationItself({
               <EditButton
                 hideText
                 size="middle"
+                recordItemId={record.id}
+                resource={relationResource}
                 onClick={() => {
-                  handleClick("edit");
+                  // handleClick("edit");
+                  goTo({
+                    action: "edit",
+                    resource: relationResource,
+                    meta: localMeta,
+                  });
                 }}
               />
               <ShowButton

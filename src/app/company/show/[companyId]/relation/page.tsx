@@ -1,13 +1,17 @@
 "use client";
 
-import { Create, List, useDrawerForm, useTable } from "@refinedev/antd";
+import { Create, List, useDrawerForm } from "@refinedev/antd";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import { useEntityTitle } from "@client/hooks/titles/use-person-title";
 import { StateManager } from "@components/feedback/state-manager/state-manager";
-import { Button, Drawer } from "antd";
-import EntityRelationForm from "@modules/forms/relations/create-relation-form";
+import { Button, Drawer, Form } from "antd";
 import { renderHeaderWithoutDefault } from "@client/util/ant/list/renderHeaderToPerson";
 import CreateTableRelationItself from "@modules/tables/create-table-relation-itself";
+import useTableSimple from "@client/hooks/pages/list/use-table-simple";
+import excludeIds from "@client/util/forms/exclude-ids";
+import CreateRelationFormAdvanced from "@modules/forms/relations/create-relation-form-advanced";
+import { companyFields } from "@lib/fields/company/company.fields";
+import TextArea from "antd/es/input/TextArea";
 
 interface Props {
   params: {
@@ -19,25 +23,13 @@ interface Props {
 export default function PersonRelationList({
   params: { companyId },
 }: Readonly<Props>) {
-  // TODO: Add translation
-  const { tableProps, tableQueryResult } = useTable({
-    filters: {
-      permanent: [
-        {
-          field: "filter",
-          operator: "eq",
-          value: `companyId||$eq||${companyId}`,
-        },
-      ],
-    },
-    pagination: {
-      current: 1,
-      mode: "client",
-      pageSize: 10,
-    },
+  const { tableProps, tableQuery } = useTableSimple({
     resource: ResourceEnum.companyRelation,
-    syncWithLocation: true,
+    filterId: companyId,
+    filterIdName: "companyId",
   });
+  // TODO: Add translation
+
   const { title } = useEntityTitle(
     companyId,
     "company-relation.titles.list",
@@ -67,9 +59,9 @@ export default function PersonRelationList({
     <>
       <List title={title} headerButtons={headerButtons}>
         <StateManager
-          isLoading={tableQueryResult?.isLoading}
-          isError={tableQueryResult?.isError}
-          data={tableQueryResult?.data}
+          isLoading={tableQuery?.isLoading}
+          isError={tableQuery?.isError}
+          data={tableQuery?.data}
         >
           <CreateTableRelationItself
             parent={"relatedCompany"}
@@ -78,11 +70,17 @@ export default function PersonRelationList({
             relationResource={ResourceEnum.companyRelation}
             tableProps={tableProps}
             columns={[
+              ...companyFields,
               {
-                key: "name",
-                dataIndex: ["name"],
+                key: "comment",
+                dataIndex: ["comment"],
+                type: "textarea",
+                columnConfig: {
+                  overrideDataIndex: true,
+                },
               },
             ]}
+            meta={{}}
           />
         </StateManager>
       </List>
@@ -92,17 +90,19 @@ export default function PersonRelationList({
           goBack={false}
           title={titleToAdd}
         >
-          <EntityRelationForm
-            parentEntityId={companyId}
-            entityResource={ResourceEnum.company}
-            excludeIds={tableQueryResult?.data?.data.map(
-              (item) => item["relatedCompany"].id,
-            )}
-            // excludeIds={[]}
+          <CreateRelationFormAdvanced
+            hiddenFieldName={"company"}
+            hiddenEntityId={companyId}
+            selectName={"relatedCompany"}
+            selectLabel={"Compañia"}
+            selectSourceResource={ResourceEnum.company}
+            excludeIds={excludeIds("relatedCompany", tableQuery)}
             formProps={formProps}
-            entityFieldName={"relatedCompany"}
-            entityLabelName={titleToAdd}
-            parentFieldName={"company"}
+            customFields={[
+              <Form.Item name={`comment`} label="Comentarios">
+                <TextArea />
+              </Form.Item>,
+            ]}
           />
         </Create>
       </Drawer>
