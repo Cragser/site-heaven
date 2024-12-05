@@ -5,10 +5,12 @@ import EntityView from "@components/data-display/entity-view/entity-view";
 import { StateManager } from "@components/feedback/state-manager/state-manager";
 import { HttpError, useShow } from "@refinedev/core";
 import { personCompanyFields } from "@lib/fields/person/person-company.fields";
-import { Divider } from "antd";
-import ListPage from "@/lib/pages/list/list-page";
+import { Divider, Table } from "antd";
 import { personCompanyTimeFrameFields } from "@lib/fields/person/person-company-time-frame.fields";
-import { Show } from "@refinedev/antd";
+import { List, Show } from "@refinedev/antd";
+import { generateColumns } from "@/lib/data-display/table/variant/entity-table/blocks/column-list/generate-columns";
+import React from "react";
+import useTableSimple from "@client/hooks/pages/list/use-table-simple";
 
 interface Props {
   params: {
@@ -25,6 +27,12 @@ export default function StakeholderTimeFrameListPage({
     resource: ResourceEnum.personCompany,
   });
 
+  const { tableProps } = useTableSimple({
+    resource: ResourceEnum.personCompanyTimeFrame,
+    filterId: personCompanyId,
+    filterIdName: "personCompanyId",
+  });
+
   return (
     <StateManager
       isLoading={queryResult.isLoading}
@@ -38,20 +46,22 @@ export default function StakeholderTimeFrameListPage({
           record={queryResult.data?.data}
         />
         <Divider />
-        <ListPage
-          columns={personCompanyTimeFrameFields}
-          entityResource={ResourceEnum.personCompanyTimeFrame}
-          defaultNavigation={false}
-          navigation={{
-            create: {
-              resource: ResourceEnum.companyPersonTimeFrame,
-              createMeta: () => ({
-                companyId,
-                personCompanyId,
-              }),
-            },
-          }}
-        />
+        <List breadcrumb={false} title="Time Frame">
+          <Table
+            {...tableProps}
+            rowKey="id"
+            pagination={{
+              ...tableProps.pagination,
+              position: ["bottomCenter"],
+              size: "small",
+            }}
+          >
+            {generateColumns({
+              columns: personCompanyTimeFrameFields,
+              entityResource: ResourceEnum.personCompanyTimeFrame,
+            })}
+          </Table>
+        </List>
       </Show>
     </StateManager>
   );
