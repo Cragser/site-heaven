@@ -5,12 +5,13 @@ import EntityView from "@components/data-display/entity-view/entity-view";
 import { StateManager } from "@components/feedback/state-manager/state-manager";
 import { HttpError, useShow } from "@refinedev/core";
 import { personCompanyFields } from "@lib/fields/person/person-company.fields";
-import { Divider, Table } from "antd";
+import { Button, Divider, Space, Table } from "antd";
 import { personCompanyTimeFrameFields } from "@lib/fields/person/person-company-time-frame.fields";
-import { List, Show } from "@refinedev/antd";
+import { DeleteButton, List, Show } from "@refinedev/antd";
 import { generateColumns } from "@/lib/data-display/table/variant/entity-table/blocks/column-list/generate-columns";
 import React from "react";
 import useTableSimple from "@client/hooks/pages/list/use-table-simple";
+import { useGoTo } from "@client/hooks/navigation/use-go-to";
 
 interface Props {
   params: {
@@ -33,6 +34,8 @@ export default function StakeholderTimeFrameListPage({
     filterIdName: "personCompanyId",
   });
 
+  const goTo = useGoTo();
+
   return (
     <StateManager
       isLoading={queryResult.isLoading}
@@ -46,7 +49,26 @@ export default function StakeholderTimeFrameListPage({
           record={queryResult.data?.data}
         />
         <Divider />
-        <List breadcrumb={false} title="Time Frame">
+        <List
+          breadcrumb={false}
+          title="Time Frame"
+          headerButtons={[
+            <Button
+              onClick={() =>
+                goTo({
+                  resource: ResourceEnum.companyPersonTimeFrame,
+                  action: "create",
+                  meta: {
+                    personCompanyId: queryResult.data?.data?.id,
+                    companyId: companyId,
+                  },
+                })
+              }
+            >
+              Add Time Frame
+            </Button>,
+          ]}
+        >
           <Table
             {...tableProps}
             rowKey="id"
@@ -59,7 +81,22 @@ export default function StakeholderTimeFrameListPage({
             {generateColumns({
               columns: personCompanyTimeFrameFields,
               entityResource: ResourceEnum.personCompanyTimeFrame,
+              showButtons: false,
             })}
+            <Table.Column
+              title="Actions"
+              dataIndex="actions"
+              render={(_, record) => (
+                <Space>
+                  <DeleteButton
+                    hideText
+                    size="middle"
+                    recordItemId={record.id}
+                    resource={ResourceEnum.personCompanyTimeFrame}
+                  />
+                </Space>
+              )}
+            />
           </Table>
         </List>
       </Show>
