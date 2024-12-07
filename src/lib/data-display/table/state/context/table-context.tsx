@@ -17,7 +17,11 @@ export const useTableStore = () => {
   return store;
 };
 
-const TableProvider = ({ children }: { children: ReactNode }) => {
+interface TableProviderProps {
+  children: ReactNode;
+}
+
+export const TableProvider = ({ children }: TableProviderProps) => {
   const storeRef = useRef(createTableStore());
 
   return (

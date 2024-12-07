@@ -28,7 +28,6 @@ export function generateColumnsForRelationTable({
       item.columnConfig?.overrideDataIndex,
     );
     const render = generateColumnRender(item);
-    console.log({ dataIndex });
     return (
       <Column
         key={key}

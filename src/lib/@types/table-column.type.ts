@@ -4,6 +4,13 @@
 
 import { ReactNode } from "react";
 import { ResourceEnum } from "@lib/enums/resource.enum";
+import { RecordType } from "@/lib/@types/record.type";
+
+export type ColumnRenderType = (
+  value: any,
+  record: RecordType,
+  index: number,
+) => ReactNode;
 
 type ItemConfigType =
   // | "button"

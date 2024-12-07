@@ -24,12 +24,14 @@ export function generateColumns({
   entityResource,
   showButtons = true,
 }: Readonly<Props>) {
+  console.log("generateColumns");
   const translate = useTranslate();
   const newColumns = columns.map((item) => {
     const key = generateColumnKey(item);
     const translateKey = generateTranslateKey(item, entityResource);
     const dataIndex = calculateDataIndex(entityResource, item.dataIndex);
     const render = generateColumnRender(item);
+
     return (
       <Column
         key={key}
