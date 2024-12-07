@@ -24,7 +24,9 @@ export const personFields: ItemConfig[] = [
   },
   {
     dataIndex: ["nationality", "name"],
-    selectDataIndex: ["id"],
+    // la base de datos necesita guardar nationalityId.
+    // Al
+    selectDataIndex: ["nationality"],
     key: "nationality",
     render: tagRender,
     type: "autocomplete",

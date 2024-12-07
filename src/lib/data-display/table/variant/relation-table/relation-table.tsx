@@ -6,6 +6,7 @@ import { ItemConfig } from "@/lib/@types/table-column.type";
 import { NavigationCrud } from "@/lib/pages/types/list-page.type";
 import { generateColumnsForRelationTable } from "@/lib/data-display/table/variant/relation-table/blocks/column-list/generator/generate-columns";
 import generateNavigationButtonForRelationTable from "@/lib/data-display/table/variant/relation-table/blocks/navigation/generator/generate-navigation-buttons";
+import AntTable from "@/lib/data-display/table/wraps/ant-table";
 
 interface Props {
   entityResource: ResourceEnum;
@@ -45,19 +46,7 @@ function RelationTable({
     />,
   );
 
-  return (
-    <Table
-      {...tableProps}
-      rowKey="id"
-      pagination={{
-        ...tableProps.pagination,
-        position: ["bottomCenter"],
-        size: "small",
-      }}
-    >
-      {columnsNode}
-    </Table>
-  );
+  return <AntTable tableProps={tableProps}>{columnsNode}</AntTable>;
 }
 
 export default RelationTable;

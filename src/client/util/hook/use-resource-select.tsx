@@ -62,8 +62,11 @@ export function useResourceSelect({
   };
 
   // TODO: Arreglar los tipos
-  const { selectProps } = useSelect(propsToSelect as any);
+  const { selectProps, query } = useSelect(propsToSelect as any);
 
+  console.log({
+    query,
+  });
   return {
     selectProps,
   };

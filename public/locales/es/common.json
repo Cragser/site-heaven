@@ -377,7 +377,10 @@
       "nationality": "Nacionalidad",
       "name": "Nickname",
       "firstName": "Nombre(s)",
-      "lastName": "Apellido(s)"
+      "lastName": "Apellido(s)",
+      "birthDate": "Fecha de nacimiento",
+      "birthPlace": "Lugar de nacimiento",
+      "sex": "Género"
     },
     "titles": {
       "create": "Crear persona",

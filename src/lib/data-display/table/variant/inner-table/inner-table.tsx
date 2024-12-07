@@ -4,6 +4,7 @@ import React from "react";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import { generateColumnsForInnerTable } from "@/lib/data-display/table/variant/inner-table/blocks/column-list/generator/generate-columns";
 import generateNavigationButtonForInnerTable from "@/lib/data-display/table/variant/inner-table/blocks/navigation/generator/generate-navigation-buttons";
+import AntTable from "@/lib/data-display/table/wraps/ant-table";
 
 interface Props {
   entityResource: ResourceEnum;
@@ -37,17 +38,5 @@ export default function InnerTable({
     />,
   );
 
-  return (
-    <Table
-      {...tableProps}
-      rowKey="id"
-      pagination={{
-        ...tableProps.pagination,
-        position: ["bottomCenter"],
-        size: "small",
-      }}
-    >
-      {columnsNode}
-    </Table>
-  );
+  return <AntTable tableProps={tableProps}>{columnsNode}</AntTable>;
 }

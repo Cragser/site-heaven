@@ -15,10 +15,14 @@ export default function SelectItem({ column, resource }: Props) {
   const { selectProps } = useResourceSelect({
     resource: column.selectResource,
   });
+
   return (
     <Form.Item
       label={translate(`${resource}.fields.${column.key}`)}
       name={column.selectDataIndex}
+      getValueProps={(value) => ({
+        value: value?.id || value, // This handles both object and ID scenarios
+      })}
     >
       <Select {...(selectProps as any)} />
     </Form.Item>
