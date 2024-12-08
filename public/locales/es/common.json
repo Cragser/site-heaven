@@ -402,7 +402,7 @@
       "edit": "Editar domicilio",
       "list": "Domicilios relacionados",
       "show": "Mostrar domicilios relacionados",
-      "add-relation-to-address": "Añadir a domicilio"
+      "add-relation-to-person": "Añadir domicilio"
     }
   },
   "person-asset": {
@@ -565,6 +565,12 @@
   },
   "address": {
     "address": "Direción",
+    "titles": {
+      "create": "Crear dirección",
+      "edit": "Editar dirección",
+      "list": "Direcciones",
+      "show": "Detalles de la dirección"
+    },
     "fields": {
       "id": "id",
       "name": "Nombre",

@@ -33,3 +33,10 @@ export const personFields: ItemConfig[] = [
     selectResource: ResourceEnum.nationalityHelper,
   },
 ];
+
+const personNavigation = {
+  create: true,
+  edit: true,
+  list: true,
+  show: true,
+};

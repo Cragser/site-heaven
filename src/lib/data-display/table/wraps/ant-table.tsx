@@ -6,13 +6,19 @@ import { TableProvider } from "@/lib/data-display/table/state/context/table-cont
 interface Props {
   tableProps: TableProps;
   columns: TableColumnsType;
+  // temporal field
+  type: "entity" | "relation" | "inner";
 }
 
-export default function AntTable({ tableProps, columns }: Readonly<Props>) {
+export default function AntTable({
+  tableProps,
+  columns,
+  type,
+}: Readonly<Props>) {
   return (
     <TableProvider>
       <Alert
-        message="Esta tabla fue revisada"
+        message={`Esta tabla fue revisada ${type}`}
         type="warning"
         showIcon
         closable

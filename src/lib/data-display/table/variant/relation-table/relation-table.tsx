@@ -12,6 +12,7 @@ import {
   generateTranslateKey,
 } from "@/lib/data-display/table/blocks/column-list/util/helper";
 import { calculateParentDataIndex } from "@/lib/data-display/table/blocks/column-list/util/calculate-column-data-index";
+import { useTranslate } from "@refinedev/core";
 
 interface Props {
   entityResource: ResourceEnum;
@@ -33,6 +34,7 @@ function RelationTable({
   columns,
   parentId,
 }: Readonly<Props>) {
+  const translate = useTranslate();
   const newColumns: TableColumnsType<any> = columns.map((item) => {
     return {
       key: generateColumnKey(item),
@@ -41,7 +43,7 @@ function RelationTable({
         item.dataIndex,
         item.columnConfig?.overrideDataIndex,
       ),
-      title: generateTranslateKey(item, entityResource),
+      title: translate(generateTranslateKey(item, entityResource)),
       render: generateColumnRender(item),
     };
   });
@@ -57,7 +59,9 @@ function RelationTable({
     }),
   });
 
-  return <AntTable tableProps={tableProps} columns={newColumns} />;
+  return (
+    <AntTable tableProps={tableProps} columns={newColumns} type="relation" />
+  );
 }
 
 export default RelationTable;

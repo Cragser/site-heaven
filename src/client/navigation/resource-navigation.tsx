@@ -10,16 +10,16 @@ import { documentTemplateResources } from "@client/navigation/document-template-
 
 export const resourceNavigation: Partial<Record<ResourceEnum, ResourceProps>> =
   {
-    [ResourceEnum.company]: generateCrudSimple(
-      ResourceEnum.company,
-      <ShopOutlined />,
-    ),
-    ...companyResources,
     [ResourceEnum.person]: generateCrudSimple(
       ResourceEnum.person,
       <UserOutlined />,
     ),
     ...personResources,
+    [ResourceEnum.company]: generateCrudSimple(
+      ResourceEnum.company,
+      <ShopOutlined />,
+    ),
+    ...companyResources,
 
     [ResourceEnum.government]: generateCrudSimple(
       ResourceEnum.government,
@@ -34,40 +34,7 @@ export const resourceNavigation: Partial<Record<ResourceEnum, ResourceProps>> =
     },
     // TODO: This is person-judicial-process
     // ResourceEnum.person, ResourceEnum.legal, ResourceEnum.judicialProcess
-    [ResourceEnum.personJudicialProcess]: {
-      create:
-        "/person/show/:personId/legal/show/:legalId/judicial-process/create",
-      edit: "/person/show/:personId/legal/show/:legalId/judicial-process/edit/:judicialProcessId",
-      meta: {
-        canDelete: true,
-        hide: true,
-      },
-      name: "judicial-process",
-      show: "/person/show/:personId/legal/show/:legalId/judicial-process/show/:judicialProcessId",
-    },
-    [ResourceEnum.personTrial]: {
-      create:
-        "/person/show/:personId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/create",
-      edit: "/person/show/:personId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/edit/:trialId",
-      meta: {
-        canDelete: true,
-        hide: true,
-      },
-      name: "trial",
-      show: "/person/show/:personId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/show/:trialId",
-    },
-    [ResourceEnum.personTrialNotification]: {
-      create:
-        "/person/show/:personId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/show/:trialId/trial-notification/create",
-      edit: "/person/show/:personId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/show/:trialId/trial-notification/edit/:trialNotificationId",
-      name: "trial-notification",
-    },
-    [ResourceEnum.personTrialRelation]: {
-      create:
-        "/person/show/:personId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/show/:trialId/trial-relation/create",
-      edit: "/person/show/:personId/legal/show/:legalId/judicial-process/show/:judicialProcessId/trial/show/:trialId/trial-relation/edit/:trialRelationId",
-      name: "trial-relation",
-    },
+
     [ResourceEnum.companyJudicialProcess]: {
       create:
         "/company/show/:companyId/legal/show/:legalId/judicial-process/create",
@@ -208,3 +175,5 @@ export const resourceNavigation: Partial<Record<ResourceEnum, ResourceProps>> =
       name: "nationality",
     },
   };
+
+console.log({ resourceNavigation });

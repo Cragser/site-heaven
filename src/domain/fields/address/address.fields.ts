@@ -3,6 +3,7 @@ import { createColumnsFromArray } from "@client/util/fields/create-columns-from-
 
 export const addressFields: ItemConfig[] = [
   ...createColumnsFromArray([
+    "name",
     "country",
     "state",
     "city",

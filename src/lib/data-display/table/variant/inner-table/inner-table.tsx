@@ -50,5 +50,5 @@ export default function InnerTable({
     }),
   });
 
-  return <AntTable tableProps={tableProps} columns={newColumns} />;
+  return <AntTable tableProps={tableProps} columns={newColumns} type="inner" />;
 }

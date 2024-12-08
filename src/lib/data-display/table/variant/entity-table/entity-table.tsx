@@ -41,5 +41,7 @@ export default function EntityTable({
       entityResource,
     }),
   });
-  return <AntTable tableProps={tableProps} columns={newColumns} />;
+  return (
+    <AntTable tableProps={tableProps} columns={newColumns} type="entity" />
+  );
 }
