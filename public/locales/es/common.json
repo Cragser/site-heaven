@@ -416,7 +416,7 @@
       "create": "Añadir activo personal de [person.name person.lastName (person.rfc)]",
       "edit": "Editar activo",
       "list": "Activos personales de [person.name person.lastName (person.rfc)]",
-      "show": "Mostrar activos",
+      "show": "Detalles de activos de {{firstName}} {{lastName}} ({{rfc}})",
       "add-relation-to-person": "Añadir activo"
     }
   },

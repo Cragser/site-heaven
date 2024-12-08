@@ -17,6 +17,7 @@ export default function EntityView({
   record,
 }: Readonly<Props>) {
   const translate = useTranslate();
+
   const descriptionItems: DescriptionsProps["items"] = items.map((item) => {
     return {
       // children: item.children,

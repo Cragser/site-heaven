@@ -1,13 +1,11 @@
 "use client";
 
-import { Show } from "@refinedev/antd";
-import { HttpError, useShow } from "@refinedev/core";
 import { Divider } from "antd";
 import { ResourceEnum } from "@lib/enums/resource.enum";
-import { AssetType } from "@lib/types/asset.type";
 import { AssetValueHistoryList } from "@modules/lists/asset-value-history-list";
-import EntityView from "@components/data-display/entity-view/entity-view";
 import { assetFields } from "@lib/fields/asset/assetFields";
+import EntityViewLoader from "@/lib/loaders/components/entity-view/entity-view-loader";
+import { useGetTitleEntity } from "@/lib/loaders/hooks/title/use-get-title-entity";
 
 interface Props {
   params: {
@@ -16,29 +14,24 @@ interface Props {
   };
 }
 
-export default function AssetShowPage({ params: { assetId } }: Props) {
-  const { queryResult } = useShow<AssetType, HttpError>({
-    id: assetId,
-    resource: ResourceEnum.asset,
+export default function AssetShowPage({
+  params: { assetId, personId },
+}: Props) {
+  const title = useGetTitleEntity({
+    dataId: personId,
+    dataResource: ResourceEnum.person,
+    titleResource: ResourceEnum.personAsset,
   });
-
-  const { data, isError, isLoading } = queryResult;
-  const record = data?.data;
-
-  if (isError || !record) {
-    return null;
-  }
-
   return (
-    <Show isLoading={isLoading}>
-      <EntityView
-        items={assetFields}
+    <div>
+      <EntityViewLoader
+        fields={assetFields}
         resource={ResourceEnum.asset}
-        record={record}
+        id={assetId}
+        title={title}
       />
-
       <Divider />
-      <AssetValueHistoryList assetId={record.id} />
-    </Show>
+      <AssetValueHistoryList assetId={assetId} />
+    </div>
   );
 }
