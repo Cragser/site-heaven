@@ -1,5 +1,11 @@
 import { ResponseDataNormalized } from "@components/data-display/document/util/normalize-person";
 import Handlebars from "handlebars";
+import { compare } from "@/adapter/document-templating/handlebars/helpers/comparison";
+import { logical } from "@/adapter/document-templating/handlebars/helpers/logical";
+import {
+  sexAccordanceArticle,
+  sexAccordanceNoun,
+} from "@/adapter/document-templating/handlebars/custom/text-custom";
 
 export function handlebarsFillTemplate(
   template: string,
@@ -11,31 +17,8 @@ export function handlebarsFillTemplate(
 }
 
 function init() {
-  Handlebars.registerHelper("sexAccordanceNoun", function (sex) {
-    if (!sex) {
-      console.warn("The sex must be provided.");
-      return "";
-    }
-
-    // Return "o" for "Masculino" and "a" for "Femenino"
-    return sex.toLowerCase() === "hombre"
-      ? "o"
-      : sex.toLowerCase() === "mujer"
-        ? "a"
-        : "";
-  });
-
-  Handlebars.registerHelper("sexAccordanceArticle", function (sex) {
-    if (!sex) {
-      console.warn("The sex must be provided.");
-      return "";
-    }
-
-    // Return "" (nothing) for "hombre" and "a" for "mujer"
-    return sex.toLowerCase() === "hombre"
-      ? ""
-      : sex.toLowerCase() === "mujer"
-        ? "a"
-        : "null";
-  });
+  Handlebars.registerHelper("sexAccordanceNoun", sexAccordanceNoun);
+  Handlebars.registerHelper("sexAccordanceArticle", sexAccordanceArticle);
+  Handlebars.registerHelper("compare", compare);
+  Handlebars.registerHelper("logical", logical);
 }
