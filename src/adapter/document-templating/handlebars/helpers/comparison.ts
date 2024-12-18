@@ -12,11 +12,6 @@ type CompareOperator =
   | "&lt;";
 
 export function compare(a: any, operator: CompareOperator, b: any): any {
-  console.log({
-    a,
-    operator,
-    b,
-  });
   if (arguments.length < 4) {
     throw new Error("handlebars Helper {{compare}} expects 4 arguments");
   }
