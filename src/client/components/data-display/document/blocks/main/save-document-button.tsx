@@ -3,7 +3,7 @@ import useDocumentContentStore from "@components/data-display/document/state/use
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import { useSelect } from "@refinedev/antd";
 import { useCreate, useUpdate } from "@refinedev/core";
-import { useEffect } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 
 export default function SaveDocumentButton() {
   const { chapters, documentId, name, setChapters } = useDocumentContentStore();
@@ -22,16 +22,19 @@ export default function SaveDocumentButton() {
   const { mutate: mutateCreate } = useCreate();
   const { mutate: mutateUpdate } = useUpdate();
 
-  const canSave = query.data?.total === 0;
+  const canSave = useMemo(() => query.data?.total === 0, [query.data]);
 
   useEffect(() => {
     // FIX: URGENTE
-    if (query.data?.data?.[0]?.content) {
+    if (
+      query.data?.data?.[0]?.content &&
+      query.data.data[0].content !== chapters
+    ) {
       setChapters(query.data.data[0].content);
     }
-  }, [query.data]);
+  }, [query.data, chapters, setChapters]);
 
-  const onClick = () => {
+  const onClick = useCallback(() => {
     const values = {
       name,
       documentId,
@@ -50,7 +53,15 @@ export default function SaveDocumentButton() {
         values,
       });
     }
-  };
+  }, [
+    canSave,
+    mutateCreate,
+    mutateUpdate,
+    name,
+    documentId,
+    chapters,
+    query.data,
+  ]);
 
   if (query.isLoading) return null;
 
