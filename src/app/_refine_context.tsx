@@ -1,5 +1,5 @@
 "use client";
-import React, { PropsWithChildren } from "react";
+import React, { memo, PropsWithChildren } from "react";
 import { ColorModeContextProvider } from "@contexts/color-mode";
 import { DevtoolsProvider } from "@providers/devtools";
 import { Refine } from "@refinedev/core";
@@ -33,7 +33,7 @@ export const RefineContext = (
 type Props = {
   themeMode?: string;
 };
-const App = ({ children, themeMode }: PropsWithChildren<Props>) => {
+const App = memo(({ children, themeMode }: PropsWithChildren<Props>) => {
   const { i18n, t } = useTranslation();
   const i18nProvider = {
     changeLocale: (lang: string) => i18n.changeLanguage(lang),
@@ -63,4 +63,4 @@ const App = ({ children, themeMode }: PropsWithChildren<Props>) => {
       </DevtoolsProvider>
     </ColorModeContextProvider>
   );
-};
+});
