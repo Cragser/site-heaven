@@ -18,8 +18,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.1(@ant-design/cssinjs@1.21.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(antd@5.21.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@14.2.14(@babel/core@7.25.7)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@million/lint':
-        specifier: ^1.0.13
-        version: 1.0.13
+        specifier: ^1.0.14
+        version: 1.0.14
       '@react-buddy/ide-toolbox':
         specifier: ^2.4.0
         version: 2.4.0(react@18.3.1)
@@ -666,9 +666,6 @@ packages:
   '@bcoe/v8-coverage@0.2.3':
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
 
-  '@clack/core@0.3.4':
-    resolution: {integrity: sha512-H4hxZDXgHtWTwV3RAVenqcC4VbJZNegbBjlPvzOzCouXtS2y3sDvlO3IsbrPNWuLWPPlYVYPghQdSF64683Ldw==}
-
   '@clack/core@0.3.5':
     resolution: {integrity: sha512-5cfhQNH+1VQ2xLQlmzXMqUoiaH0lRBq9/CLW9lTyMbuKLC3+xEK01tHVvyut++mLOn5urSHmkm6I0Lg9MaJSTQ==}
 
@@ -1025,12 +1022,12 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@million/install@1.0.13':
-    resolution: {integrity: sha512-gFslYuzCem83FHMo4ZIWXmRWmyABXmTBQxodwnP4AeWtLjdvymOp8JB5+b/A4eZX79heFZuw9eqBpERo9zgvtg==}
+  '@million/install@1.0.14':
+    resolution: {integrity: sha512-xZvj4AEHc5hyn8RCiLl9dYNqggj2fa0lgNvUkCiJyhRJPNE2hZrUa/Ka0Weu82VpBaO//zujG0YErk7osjNXPA==}
     hasBin: true
 
-  '@million/lint@1.0.13':
-    resolution: {integrity: sha512-jYQMz0GK5FzfwsQZDxs58V2GeUPqma9af7vkLVrdKHzXTpV1cVXxIjSL8+rvDM8iuzVA2BEtunZ0k3bIYAmvIA==}
+  '@million/lint@1.0.14':
+    resolution: {integrity: sha512-u6/kglVwZRu5+GMmtkNlGLqJVkgTl0TtM+hLa9rBg7pldx+5NG5bk45NvL37uZmAr2Xfa1C6qHb7GrFwfP372g==}
     hasBin: true
 
   '@mui/core-downloads-tracker@6.1.2':
@@ -6519,11 +6516,6 @@ snapshots:
 
   '@bcoe/v8-coverage@0.2.3': {}
 
-  '@clack/core@0.3.4':
-    dependencies:
-      picocolors: 1.1.0
-      sisteransi: 1.0.5
-
   '@clack/core@0.3.5':
     dependencies:
       picocolors: 1.1.0
@@ -6531,7 +6523,7 @@ snapshots:
 
   '@clack/prompts@0.7.0':
     dependencies:
-      '@clack/core': 0.3.4
+      '@clack/core': 0.3.5
       picocolors: 1.1.0
       sisteransi: 1.0.5
 
@@ -6947,7 +6939,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@million/install@1.0.13':
+  '@million/install@1.0.14':
     dependencies:
       '@antfu/ni': 0.21.12
       '@axiomhq/js': 1.0.0-rc.3
@@ -6962,13 +6954,13 @@ snapshots:
       recast: 0.23.9
       xycolors: 0.1.2
 
-  '@million/lint@1.0.13':
+  '@million/lint@1.0.14':
     dependencies:
       '@axiomhq/js': 1.0.0-rc.3
       '@babel/core': 7.26.0
       '@babel/types': 7.26.0
       '@hono/node-server': 1.13.1(hono@4.6.3)
-      '@million/install': 1.0.13
+      '@million/install': 1.0.14
       '@rollup/pluginutils': 5.1.2
       '@rrweb/types': 2.0.0-alpha.16
       babel-plugin-syntax-hermes-parser: 0.21.1

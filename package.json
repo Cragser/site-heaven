@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -13,7 +13,7 @@
     "@anatine/zod-openapi": "^2.2.6",
     "@ant-design/icons": "5.5.1",
     "@ant-design/nextjs-registry": "^1.0.0",
-    "@million/lint": "^1.0.13",
+    "@million/lint": "^1.0.14",
     "@react-buddy/ide-toolbox": "^2.4.0",
     "@react-buddy/palette-antd": "^5.3.1",
     "@refinedev/antd": "5.43.1",
