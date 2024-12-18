@@ -34,7 +34,6 @@ function ListParentRelationPage({
     sectionId: parentId,
     sectionResource: parentResource,
     relationResource,
-    columns,
   });
 
   const { title } = useEntityTitle(

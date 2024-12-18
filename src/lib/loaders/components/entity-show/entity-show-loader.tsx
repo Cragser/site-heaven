@@ -13,7 +13,7 @@ interface Props {
   title?: string;
 }
 
-export default function EntityViewLoader({
+export default function EntityShowLoader({
   id,
   resource,
   fields,

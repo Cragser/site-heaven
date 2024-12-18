@@ -1,6 +1,5 @@
 import { useTable } from "@refinedev/antd";
 import { ResourceEnum } from "@lib/enums/resource.enum";
-import { ItemConfig } from "@/lib/@types/table-column.type";
 import { camelCase } from "case-anything";
 import { useMemo } from "react";
 
@@ -8,8 +7,6 @@ interface Props {
   sectionId: string;
   relationResource: ResourceEnum;
   sectionResource: ResourceEnum;
-
-  columns: ItemConfig[];
 }
 
 export default function useListParentRelation({
@@ -22,6 +19,7 @@ export default function useListParentRelation({
     () => camelCase(sectionResource),
     [sectionResource],
   );
+
   const { tableProps, tableQueryResult } = useTable({
     filters: {
       mode: "server",
