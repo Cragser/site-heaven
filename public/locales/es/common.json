@@ -354,7 +354,7 @@
     "fields": {
       "id": "Número de cédula",
       "name": "Nombre del grado",
-      "institution": "Nombre de la institución",
+      "institution": "Nombre de la institución (añadir artículo que la precede en minúscula: la Autónoma de Chapingo, el Tecnológico...)",
       "license": "Número de cédula",
       "validated": "¿Estudios validados oficialmente?",
       "initialDate": "Fecha de inicio",
