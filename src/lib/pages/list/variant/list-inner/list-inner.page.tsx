@@ -30,7 +30,7 @@ export default function ListInnerPage({
     sectionId: parentId,
     sectionResource: parentResource,
     relationResource,
-    columns,
+    // columns,
   });
   return (
     <List
