@@ -36,6 +36,7 @@ export default function Page({ params: { documentId } }: Readonly<Props>) {
   // get the document template
   // get the document template fields
   // get the resource
+  return <div>Loading...</div>;
   return (
     <ShowEntityPage
       fields={documentFields}

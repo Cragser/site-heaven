@@ -32,7 +32,7 @@ export default function SaveDocumentButton() {
     ) {
       setChapters(query.data.data[0].content);
     }
-  }, [query.data, chapters, setChapters]);
+  }, [query.data?.data]);
 
   const onClick = useCallback(() => {
     const values = {
