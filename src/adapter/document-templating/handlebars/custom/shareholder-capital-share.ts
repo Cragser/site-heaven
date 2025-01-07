@@ -1,54 +1,77 @@
-export function shareholderCapitalShare(
-  personCompany:
-    | {
-        relation: string;
-        personCompanyTimeFrame: {
-          name: string;
-          startDate: string;
-          share: number;
-        }[];
-        company?: { name?: string };
-      }[]
-    | unknown,
-): string {
-  if (!Array.isArray(personCompany)) {
-    return ""; // Return an empty string if input is not an array
+// Interfaces para los tipos de datos
+interface TimeFrame {
+  name: string;
+  startDate: string;
+  share: number;
+}
+
+interface Company {
+  name?: string;
+}
+
+interface PersonCompanyEntry {
+  relation: string;
+  personCompanyTimeFrame: TimeFrame[];
+  company?: Company;
+}
+
+// Type guard para validar la estructura del objeto
+function isPersonCompanyValid(entry: unknown): entry is PersonCompanyEntry {
+  return (
+    typeof entry === "object" &&
+    entry !== null &&
+    typeof (entry as PersonCompanyEntry).relation === "string" &&
+    Array.isArray((entry as PersonCompanyEntry).personCompanyTimeFrame) &&
+    (entry as PersonCompanyEntry).personCompanyTimeFrame.every(
+      (frame): frame is TimeFrame =>
+        typeof frame.name === "string" &&
+        typeof frame.startDate === "string" &&
+        typeof frame.share === "number",
+    )
+  );
+}
+
+function isShareholder(entry: { relation: string }): boolean {
+  return entry.relation === "shareholder";
+}
+
+function getLatestCapitalMovement(movements: TimeFrame[]): TimeFrame | null {
+  if (movements.length === 0) return null;
+
+  return movements.reduce((maxDate, current) => {
+    const currentStartDate = new Date(current.startDate);
+    const maxStartDate = new Date(maxDate.startDate);
+
+    if (
+      currentStartDate > maxStartDate ||
+      (currentStartDate.getTime() === maxStartDate.getTime() &&
+        movements.indexOf(current) > movements.indexOf(maxDate))
+    ) {
+      return current;
+    }
+    return maxDate;
+  }, movements[0]);
+}
+
+export function shareholderCapitalShare(entry: unknown): string {
+  if (!isPersonCompanyValid(entry)) {
+    return ""; // Skip invalid entries
   }
 
-  // Iterate over personCompany entries to find the required data
-  return personCompany
-    .filter((entry) => entry.relation === "shareholder") // Filter by relation "shareholder"
-    .map((entry) => {
-      const capitalMovements = entry.personCompanyTimeFrame.filter(
-        (frame: any) => frame.name === "movimiento capital",
-      ); // Filter for "movimiento capital"
+  if (!isShareholder(entry)) {
+    return ""; // Only process if relation is "shareholder"
+  }
 
-      if (capitalMovements.length > 0) {
-        // Find the largest startDate and then pick the entry with the greatest index
-        const largestDate = capitalMovements.reduce(
-          (maxDate: any, current: any) => {
-            const currentStartDate = new Date(current.startDate);
-            const maxStartDate = new Date(maxDate.startDate);
+  const capitalMovements = entry.personCompanyTimeFrame.filter(
+    (frame) => frame.name === "movimiento capital",
+  );
 
-            // If the current date is larger OR equal (allowing index precedence), use current
-            if (
-              currentStartDate > maxStartDate ||
-              (currentStartDate.getTime() === maxStartDate.getTime() &&
-                capitalMovements.indexOf(current) >
-                  capitalMovements.indexOf(maxDate))
-            ) {
-              return current;
-            }
-            return maxDate;
-          },
-          capitalMovements[0],
-        );
+  const latestMovement = getLatestCapitalMovement(capitalMovements);
 
-        return `${entry.company?.name || "N/A"}    ${largestDate.share} %`;
-      }
+  if (latestMovement) {
+    const companyName = entry.company?.name ?? "Sociedad desconocida";
+    return `${companyName}: ${latestMovement.share}%`;
+  }
 
-      return ""; // If no valid entry, return an empty string
-    })
-    .filter(Boolean) // Remove empty strings from the map result
-    .join("\n"); // Join results with newlines
+  return ""; // If no valid entry, return an empty string
 }
