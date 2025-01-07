@@ -2,7 +2,7 @@
 interface TimeFrame {
   name: string;
   startDate: string;
-  share: number;
+  share: string;
 }
 
 interface Company {
@@ -15,18 +15,27 @@ interface PersonCompanyEntry {
   company?: Company;
 }
 
+interface ShareholderContext {
+  companyName: string;
+  share: string;
+}
+
+interface ShareholderCapitalShareOptions {
+  fn: (context: ShareholderContext) => string;
+}
+
 // Type guard para validar la estructura del objeto
-function isPersonCompanyValid(entry: unknown): entry is PersonCompanyEntry {
+function isPersonCompanyValid(entry: any): entry is PersonCompanyEntry {
   return (
     typeof entry === "object" &&
     entry !== null &&
-    typeof (entry as PersonCompanyEntry).relation === "string" &&
-    Array.isArray((entry as PersonCompanyEntry).personCompanyTimeFrame) &&
-    (entry as PersonCompanyEntry).personCompanyTimeFrame.every(
-      (frame): frame is TimeFrame =>
-        typeof frame.name === "string" &&
-        typeof frame.startDate === "string" &&
-        typeof frame.share === "number",
+    typeof entry.relation === "string" &&
+    Array.isArray(entry.personCompanyTimeFrame) &&
+    entry.personCompanyTimeFrame.every(
+      (frame: any): frame is TimeFrame =>
+        typeof frame?.name === "string" &&
+        typeof frame?.startDate === "string" &&
+        typeof frame?.share === "string",
     )
   );
 }
@@ -53,25 +62,44 @@ function getLatestCapitalMovement(movements: TimeFrame[]): TimeFrame | null {
   }, movements[0]);
 }
 
-export function shareholderCapitalShare(entry: unknown): string {
-  if (!isPersonCompanyValid(entry)) {
-    return ""; // Skip invalid entries
+// Adaptación para usar `this` directamente
+export function shareholderCapitalShare(
+  entries: unknown[],
+  options: ShareholderCapitalShareOptions,
+): string {
+  const result: string[] = [];
+  if (!Array.isArray(entries)) return "";
+
+  for (const entry of entries) {
+    if (!isPersonCompanyValid(entry)) {
+      console.log({ entry });
+      console.log("Entrada no válida");
+      continue;
+    }
+
+    if (!isShareholder(entry)) {
+      continue;
+    }
+
+    const capitalMovements = entry.personCompanyTimeFrame.filter(
+      (frame) => frame.name === "movimiento capital",
+    );
+
+    const latestMovement = getLatestCapitalMovement(capitalMovements);
+
+    if (latestMovement) {
+      const companyName = entry.company?.name ?? "Sociedad desconocida";
+      const share = `${latestMovement.share}%`;
+
+      // Renderizar cada contexto usando `options.fn`
+      result.push(
+        options.fn({
+          companyName,
+          share,
+        }),
+      );
+    }
   }
 
-  if (!isShareholder(entry)) {
-    return ""; // Only process if relation is "shareholder"
-  }
-
-  const capitalMovements = entry.personCompanyTimeFrame.filter(
-    (frame) => frame.name === "movimiento capital",
-  );
-
-  const latestMovement = getLatestCapitalMovement(capitalMovements);
-
-  if (latestMovement) {
-    const companyName = entry.company?.name ?? "Sociedad desconocida";
-    return `${companyName}: ${latestMovement.share}%`;
-  }
-
-  return ""; // If no valid entry, return an empty string
+  return result.join("");
 }
