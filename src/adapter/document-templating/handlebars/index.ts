@@ -8,6 +8,7 @@ import {
 } from "@/adapter/document-templating/handlebars/custom/text-custom";
 import { countUniqueCompaniesByRelation } from "@/adapter/document-templating/handlebars/custom/count-unique-companies-by-relation";
 import { shareholderCapitalShare } from "@/adapter/document-templating/handlebars/custom/shareholder-capital-share";
+import { calculate } from "@/adapter/document-templating/handlebars/helpers/calculate";
 
 export function handlebarsFillTemplate(
   template: string,
@@ -23,6 +24,7 @@ function init() {
   Handlebars.registerHelper("sexAccordanceArticle", sexAccordanceArticle);
   Handlebars.registerHelper("compare", compare);
   Handlebars.registerHelper("logical", logical);
+  Handlebars.registerHelper("calculate", calculate);
   Handlebars.registerHelper("shareholderCapitalShare", shareholderCapitalShare);
 
   Handlebars.registerHelper(
