@@ -1,10 +1,9 @@
 type SortOrder = "asc" | "desc";
 
-// is this needed?
-// interface SortOptions {
-//   fn: (context: any) => string;
-//   inverse?: (context?: any) => any;
-// }
+interface SortOptions {
+  fn: (context: any) => string;
+  inverse?: (context?: any) => any;
+}
 
 // Validation functions
 function isValidArray(array: any[]): boolean {
@@ -31,19 +30,24 @@ function compareValues(valueA: any, valueB: any, order: SortOrder): number {
 }
 
 // Main function
-export function sortEach(array: any[], key: string, order: SortOrder): string {
-  // Guard clauses using validation functions
+export function sortEach(
+  array: any[],
+  key: string,
+  order: SortOrder,
+  options: SortOptions,
+): string {
+  // Validaciones
   if (!isValidArray(array)) return "";
   if (!isValidKey(key)) return "";
   if (!isValidOrder(order)) return "";
 
-  // Clone and sort the array
+  // Ordenar el arreglo
   const sortedArray = [...array].sort((a, b) => {
     const [valueA, valueB] = [a[key], b[key]];
     if (hasNullableValues(valueA, valueB)) return 0;
     return compareValues(valueA, valueB, order);
   });
 
-  // Map and join the sorted array
-  return sortedArray.join("");
+  // Renderizar cada elemento usando el bloque `options.fn`
+  return sortedArray.map((item) => options.fn(item)).join("");
 }
