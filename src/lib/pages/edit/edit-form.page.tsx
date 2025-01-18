@@ -5,7 +5,7 @@ import { HttpError } from "@refinedev/core";
 import createHiddenFields from "@/lib/mutate/util/create-hidden-fields";
 import { MutationPageType } from "@/lib/pages/types/mutation-page.type";
 import useFormStore from "@/lib/states/use-form-store";
-import { useEffect } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 
 export function EditFormPage({
   columns,
@@ -21,27 +21,43 @@ export function EditFormPage({
     id: id,
     redirect: false,
   });
+
+  const memoizedSaveButtonProps = useMemo(
+    () => saveButtonProps,
+    [saveButtonProps],
+  );
+
   const setValues = useFormStore((state) => state.setValues);
+
+  const memoizedHiddenFields = useMemo(() => {
+    return meta ? createHiddenFields({ meta }) : null;
+  }, [meta]);
+
+  const handleValuesChange = useCallback(
+    (_, allValues) => {
+      setValues({
+        ...allValues,
+        parentId,
+      });
+    },
+    [setValues, parentId],
+  );
+
   useEffect(() => {
     setValues({
       ...formProps.initialValues,
       parentId,
     });
-  }, []);
+  }, [formProps.initialValues, parentId, setValues]);
 
   return (
-    <Edit saveButtonProps={saveButtonProps} title={title}>
+    <Edit saveButtonProps={memoizedSaveButtonProps} title={title}>
       <Form
         {...formProps}
         layout="vertical"
-        onValuesChange={(_, allValues) => {
-          setValues({
-            ...allValues,
-            parentId,
-          });
-        }}
+        onValuesChange={handleValuesChange}
       >
-        {meta && createHiddenFields({ meta })}
+        {memoizedHiddenFields}
         {useCreateFields(columns, entityResource, formProps)}
       </Form>
     </Edit>
