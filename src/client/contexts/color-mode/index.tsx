@@ -5,9 +5,10 @@ import { App as AntdApp, ConfigProvider, theme } from "antd";
 import Cookies from "js-cookie";
 import React, {
   createContext,
+  memo,
   PropsWithChildren,
   useEffect,
-  useLayoutEffect,
+  useMemo,
   useState,
 } from "react";
 // import esES from 'antd/locale/es_Es';
@@ -17,7 +18,7 @@ type ColorModeContextType = {
 };
 
 export const ColorModeContext = createContext<ColorModeContextType>(
-  {} as ColorModeContextType
+  {} as ColorModeContextType,
 );
 
 type ColorModeContextProviderProps = {
@@ -26,20 +27,15 @@ type ColorModeContextProviderProps = {
 
 export const ColorModeContextProvider: React.FC<
   PropsWithChildren<ColorModeContextProviderProps>
-> = ({ children, defaultMode }) => {
+> = memo(({ children, defaultMode }) => {
   const [isMounted, setIsMounted] = useState(false);
   const [mode, setMode] = useState(defaultMode || "light");
 
   useEffect(() => {
     setIsMounted(true);
+    const theme = Cookies.get("theme") || "light";
+    setMode(theme);
   }, []);
-
-  useLayoutEffect(() => {
-    if (isMounted) {
-      const theme = Cookies.get("theme") || "light";
-      setMode(theme);
-    }
-  }, [isMounted]);
 
   const setColorMode = () => {
     if (mode === "light") {
@@ -53,23 +49,33 @@ export const ColorModeContextProvider: React.FC<
 
   const { darkAlgorithm, defaultAlgorithm } = theme;
 
+  const themeMemo = useMemo(
+    () => ({
+      ...(RefineThemes.Blue as any),
+      algorithm: mode === "light" ? defaultAlgorithm : darkAlgorithm,
+    }),
+    [mode, defaultAlgorithm, darkAlgorithm],
+  );
+
+  const valueMemo = useMemo(
+    () => ({
+      mode,
+      setMode: setColorMode,
+    }),
+    [mode],
+  );
+
+  const AntdAppMemo = useMemo(() => <AntdApp>{children}</AntdApp>, [children]);
+
   return (
-    <ColorModeContext.Provider
-      value={{
-        mode,
-        setMode: setColorMode,
-      }}
-    >
+    <ColorModeContext.Provider value={valueMemo}>
       <ConfigProvider
         // you can change the theme colors here. example: ...RefineThemes.Magenta,
-        theme={{
-          ...(RefineThemes.Blue as any),
-          algorithm: mode === "light" ? defaultAlgorithm : darkAlgorithm,
-        }}
+        theme={themeMemo}
         // locale={esES}
       >
-        <AntdApp>{children}</AntdApp>
+        {AntdAppMemo}
       </ConfigProvider>
     </ColorModeContext.Provider>
   );
-};
+});
