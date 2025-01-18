@@ -3,9 +3,6 @@ import { createItemConfig } from "@client/util/fields/create-columns-from-array"
 
 export const governmentFields: ItemConfig[] = [
   {
-    ...createItemConfig("id"),
-  },
-  {
     ...createItemConfig("name"),
   },
   {

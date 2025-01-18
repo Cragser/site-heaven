@@ -13,6 +13,10 @@ export const documentFields: ItemConfig[] = [
     ...createItemConfig("name"),
   },
   {
+    ...createItemConfig("description"),
+    type: "textarea",
+  },
+  {
     ...createItemConfig("entityType"),
     type: "hidden",
     render: tagRender,
@@ -21,5 +25,11 @@ export const documentFields: ItemConfig[] = [
     ...createItemConfig("documentTemplateId"),
     type: "hidden",
     render: false,
+    columnConfig: {
+      link: {
+        url: "document-template/show/{{documentTemplateId}}",
+        name: "name",
+      },
+    },
   },
 ];

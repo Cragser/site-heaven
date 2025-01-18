@@ -4,7 +4,6 @@ import TableShowButton from "@/lib/data-display/table/blocks/button/table-show-b
 import { DeleteButton } from "@refinedev/antd";
 import React from "react";
 import { ResourceEnum } from "@lib/enums/resource.enum";
-import { useTableStore } from "@/lib/data-display/table/state/context/table-context";
 
 interface Props {
   defaultNavigation: boolean;
@@ -22,9 +21,9 @@ export default function Navigation({
   deleteResource,
 }: Readonly<Props>) {
   const relationResource = deleteResource ?? entityResource;
-  const store = useTableStore();
-  const { selectedRows } = store();
-  console.log({ selectedRows });
+  // const store = useTableStore();
+  //const { selectedRows } = store();
+  //console.log({ selectedRows });
   return (
     <Space>
       <TableEditButton

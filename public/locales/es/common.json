@@ -243,7 +243,10 @@
     "fields": {
       "companyId": "companyId",
       "initialCapital": "Capital inicial",
-      "initialShares": "Acciones iniciales"
+      "initialShares": "Acciones iniciales",
+      "creationPlace": "Lugar de constitución",
+      "creationRegistrarDetails": "Detalles del registrador",
+      "creationDate": "Fecha de constitución"
     }
   },
   "company-social": {
@@ -341,12 +344,21 @@
   },
   "career": {
     "career": "Laborales",
+    "titles": {
+      "create": "Crear laboral",
+      "edit": "Editar laboral",
+      "list": "Laborales",
+      "show": "Mostrar antecedente laboral"
+    },
     "fields": {
       "id": "id",
       "role": "Nombre del puesto",
       "startDate": "Fecha de inicio",
       "endDate": "Fecha de término",
-      "contractType": "Régimen de contratación"
+      "contractType": "Régimen de contratación",
+      "company": {
+        "name": "Nombre de la compañía"
+      }
     }
   },
   "education": {
@@ -380,7 +392,9 @@
       "lastName": "Apellido(s)",
       "birthDate": "Fecha de nacimiento",
       "birthPlace": "Lugar de nacimiento",
-      "sex": "Género"
+      "sex": "Género",
+      "period": "Período",
+      "description": "Descripción"
     },
     "titles": {
       "create": "Crear persona",
@@ -534,6 +548,30 @@
       "show": "Mostrar redes sociales"
     }
   },
+  "person-company-time-frame": {
+    "person-company-time-frame": "Movimientos de compañía",
+    "fields": {
+      "name": "Nombre",
+      "startDate": "Fecha de inicio",
+      "endDate": "Fecha de término",
+      "share": "Acción",
+      "money": "Dinero",
+      "initialRegistration": "Registro inicial",
+      "comments": "Comentarios",
+      "position": "Posición",
+      "relation": "Relación",
+      "person": {
+        "name": "Nombre de la persona",
+        "lastName": "Apellido de la persona"
+      }
+    },
+    "titles": {
+      "create": "Crear movimiento de compañía",
+      "edit": "Editar movimiento de compañía",
+      "list": "Movimientos de compañía",
+      "show": "Mostrar movimiento de compañía"
+    }
+  },
   "social": {
     "social": "Social",
     "fields": {
@@ -654,7 +692,30 @@
     }
   },
   "government": {
-    "government": "Gobierno"
+    "government": "Gobierno",
+    "titles": {
+      "create": "Crear gobierno",
+      "edit": "Editar gobierno",
+      "list": "Gobierno",
+      "show": "Mostrar antecedentes gobierno"
+    },
+    "fields": {
+      "id": "id",
+      "name": "Nombre",
+      "description": "Descripción",
+      "period": "Período",
+      "position": "Posición",
+      "level": "Nivel",
+      "contract": {
+        "name": "Nombre del contrato",
+        "concept": "Concepto",
+        "startDate": "Fecha de inicio",
+        "contractor": "Contratista",
+        "notes": "Notas",
+        "value": "Valor",
+        "typeOfProcedureAndLinks": "Tipo de procedimiento y enlaces"
+      }
+    }
   },
   "document-template": {
     "document-template": "Plantilla de documento",
@@ -725,6 +786,52 @@
       "list": "Catálogo",
       "edit": "Editar catálogo",
       "create": "Crear catálogo"
+    }
+  },
+  "government-contract": {
+    "government-contract": "Contratos de gobierno",
+    "titles": {
+      "create": "Crear contrato de gobierno",
+      "edit": "Editar contrato de gobierno",
+      "list": "Contratos de gobierno",
+      "show": "Mostrar contrato de gobierno"
+    }
+  },
+  "government-audit": {
+    "government-audit": "Auditorias de gobierno",
+    "titles": {
+      "create": "Crear auditoria de gobierno",
+      "edit": "Editar auditoria de gobierno",
+      "list": "Auditorias de gobierno",
+      "show": "Mostrar auditoria de gobierno"
+    }
+  },
+  "government-observation": {
+    "government-observation": "Observaciones de gobierno",
+    "titles": {
+      "create": "Crear observación de gobierno",
+      "edit": "Editar observación de gobierno",
+      "list": "Observaciones de gobierno",
+      "show": "Mostrar observación de gobierno"
+    }
+  },
+  "document": {
+    "document": "Documentos",
+    "titles": {
+      "create": "Crear documento",
+      "edit": "Editar documento",
+      "list": "Documentos",
+      "show": "Mostrar documento"
+    },
+    "fields": {
+      "name": "Nombre",
+      "description": "Descripción",
+      "entityType": "Sección relacionada",
+      "documentTemplateId": "Plantilla de documento",
+      "documentTemplate": {
+        "title": "Título de la plantilla de documento",
+        "entityType": "Sección relacionada"
+      }
     }
   }
 }

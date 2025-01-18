@@ -29,7 +29,7 @@ export const EditFormPage = memo(function EditFormPage({
   }, [meta]);
 
   const handleValuesChange = useCallback(
-    (_, allValues) => {
+    (_: unknown, allValues: any) => {
       setValues({
         ...allValues,
         parentId,

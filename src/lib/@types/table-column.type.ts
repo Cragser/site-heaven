@@ -65,6 +65,10 @@ export interface ItemConfig {
   // column is for Tables
   columnConfig?: {
     overrideDataIndex?: boolean;
+    link?: {
+      url: string;
+      name?: string;
+    };
   };
 
   // row is for view
