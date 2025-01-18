@@ -5,9 +5,9 @@ import { HttpError } from "@refinedev/core";
 import createHiddenFields from "@/lib/mutate/util/create-hidden-fields";
 import { MutationPageType } from "@/lib/pages/types/mutation-page.type";
 import useFormStore from "@/lib/states/use-form-store";
-import { useCallback, useEffect, useMemo } from "react";
+import { memo, useCallback, useEffect, useMemo } from "react";
 
-export function EditFormPage({
+export const EditFormPage = memo(function EditFormPage({
   columns,
   entityResource,
   id,
@@ -21,11 +21,6 @@ export function EditFormPage({
     id: id,
     redirect: false,
   });
-
-  const memoizedSaveButtonProps = useMemo(
-    () => saveButtonProps,
-    [saveButtonProps],
-  );
 
   const setValues = useFormStore((state) => state.setValues);
 
@@ -51,7 +46,7 @@ export function EditFormPage({
   }, [formProps.initialValues, parentId, setValues]);
 
   return (
-    <Edit saveButtonProps={memoizedSaveButtonProps} title={title}>
+    <Edit saveButtonProps={saveButtonProps} title={title}>
       <Form
         {...formProps}
         layout="vertical"
@@ -62,4 +57,4 @@ export function EditFormPage({
       </Form>
     </Edit>
   );
-}
+});
