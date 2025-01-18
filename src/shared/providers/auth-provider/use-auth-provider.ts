@@ -1,16 +1,18 @@
-import { AuthBindings } from '@refinedev/core';
-import { signIn, signOut, useSession } from 'next-auth/react';
-import { usePathname } from 'next/navigation';
+import { AuthProvider } from "@refinedev/core";
+import { signOut, useSession } from "next-auth/react";
+import { usePathname } from "next/navigation";
+import { loginService } from "@providers/auth-provider/util/login-service";
 
-export const useAuthProvider = (): AuthBindings => {
+export const useAuthProvider = (): AuthProvider => {
   const { data, status } = useSession();
   const to = usePathname();
+
   return {
     check: async () => {
-      if (status === 'unauthenticated') {
+      if (status === "unauthenticated") {
         return {
           authenticated: false,
-          redirectTo: '/login',
+          redirectTo: "/login",
         };
       }
 
@@ -32,49 +34,13 @@ export const useAuthProvider = (): AuthBindings => {
     getPermissions: async () => {
       return null;
     },
-    login: async ({ email, password, providerName }: any) => {
-      console.log({ email, password, providerName });
-      if (providerName) {
-        signIn(providerName, {
-          callbackUrl: to ? to.toString() : '/',
-          redirect: true,
-        });
-
-        return {
-          success: true,
-        };
-      }
-
-      const signUpResponse = await signIn('CredentialsSignUp', {
-        callbackUrl: to ? to.toString() : '/',
-        email,
-        password,
-        redirect: false,
-      });
-
-      if (!signUpResponse) {
-        return {
-          success: false,
-        };
-      }
-
-      const { error, ok } = signUpResponse;
-
-      if (ok) {
-        return {
-          redirectTo: '/',
-          success: true,
-        };
-      }
-
-      return {
-        error: new Error(error?.toString()),
-        success: false,
-      };
+    login: async (credentials: any) => {
+      const login = loginService(to);
+      return login(credentials);
     },
     logout: async () => {
       signOut({
-        callbackUrl: '/login',
+        callbackUrl: "/login",
         redirect: true,
       });
 

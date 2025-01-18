@@ -1,12 +1,12 @@
 "use client";
 import React, { memo, PropsWithChildren } from "react";
 import { ColorModeContextProvider } from "@contexts/color-mode";
-import { DevtoolsProvider } from "@providers/devtools";
 import { Refine } from "@refinedev/core";
 import routerProvider from "@refinedev/nextjs-router";
 import { dataProvider } from "@providers/data-provider";
 import { useNotificationProvider } from "@refinedev/antd";
 // import { RefineKbar, RefineKbarProvider } from '@refinedev/kbar';
+//<DevtoolsProvider>
 import { useTranslation } from "react-i18next";
 import "../shared/i18n";
 import "dayjs/locale/es-mx";
@@ -44,23 +44,21 @@ const App = memo(({ children, themeMode }: PropsWithChildren<Props>) => {
   const authProvider = useAuthProvider();
   return (
     <ColorModeContextProvider defaultMode={themeMode}>
-      <DevtoolsProvider>
-        <Refine
-          i18nProvider={i18nProvider}
-          routerProvider={routerProvider}
-          dataProvider={dataProvider}
-          notificationProvider={useNotificationProvider}
-          authProvider={authProvider}
-          resources={refinePaths()}
-          options={{
-            syncWithLocation: true,
-            useNewQueryKeys: true,
-            warnWhenUnsavedChanges: true,
-          }}
-        >
-          {children}
-        </Refine>
-      </DevtoolsProvider>
+      <Refine
+        i18nProvider={i18nProvider}
+        routerProvider={routerProvider}
+        dataProvider={dataProvider}
+        notificationProvider={useNotificationProvider}
+        authProvider={authProvider}
+        resources={refinePaths()}
+        options={{
+          syncWithLocation: true,
+          useNewQueryKeys: true,
+          warnWhenUnsavedChanges: true,
+        }}
+      >
+        {children}
+      </Refine>
     </ColorModeContextProvider>
   );
 });
