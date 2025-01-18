@@ -15,6 +15,7 @@ import useListParentRelation
   from "@/lib/pages/list/hooks/use-list-paren-relation";
 import {If, When} from "react-if";
 import excludeIds from "@client/util/forms/exclude-ids";
+import {useCallback, useMemo} from "react";
 
 /**
  * Para utilizar esta página, debe de tener una relación padre e hijo. Pero la tabla intermedia no debe de tener valores
@@ -47,46 +48,65 @@ function ListParentRelationPage({
     resource: relationResource,
   });
 
-  const titleToAdd = translate(
-    `${relationResource}.titles.add-relation-to-${parent}`,
+  const titleToAdd = useMemo(
+    () => translate(`${relationResource}.titles.add-relation-to-${parent}`),
+    [translate, relationResource, parent],
   );
 
-  const headerButtons = renderHeaderToEntity({
-    id: parentId,
-    parent,
-    customButtons: [
-      <When condition={showDrawer}>
-        <Button
-          key="1"
-          onClick={() => {
-            show();
-          }}
-        >
-          {titleToAdd}
-        </Button>
-      </When>,
-    ],
-  });
-  const camelEntity = camelCase(entityResource);
-  return (
-    <List title={title} headerButtons={headerButtons}>
-      <StateManager
-        isLoading={tableQueryResult?.isLoading}
-        isError={tableQueryResult?.isError}
-        data={tableQueryResult?.data}
-      >
-        <RelationTable
-          parent={entityResource}
-          parentResource={parentResource}
-          entityResource={entityResource}
-          tableProps={tableProps}
-          parentName={parent}
-          relationResource={relationResource}
-          columns={columns}
-          parentId={parentId}
-        />
-      </StateManager>
+  const handleShow = useCallback(() => {
+    show();
+  }, [show]);
 
+  const headerButtons = useMemo(
+    () =>
+      renderHeaderToEntity({
+        id: parentId,
+        parent,
+        customButtons: [
+          <When condition={showDrawer}>
+            <Button key="1" onClick={handleShow}>
+              {titleToAdd}
+            </Button>
+          </When>,
+        ],
+      }),
+    [parentId, parent, showDrawer, handleShow, titleToAdd],
+  );
+
+  const camelEntity = useMemo(
+    () => camelCase(entityResource),
+    [entityResource],
+  );
+
+  const excludedIds = useMemo(
+    () => excludeIds(camelEntity, tableQueryResult),
+    [camelEntity, tableQueryResult],
+  );
+
+  const relationTableProps = useMemo(
+    () => ({
+      parent: entityResource,
+      parentResource,
+      entityResource,
+      tableProps,
+      parentName: parent,
+      relationResource,
+      columns,
+      parentId,
+    }),
+    [
+      entityResource,
+      parentResource,
+      tableProps,
+      parent,
+      relationResource,
+      columns,
+      parentId,
+    ],
+  );
+
+  const memoizedIf = useMemo(
+    () => (
       <If condition={showDrawer}>
         <Drawer {...drawerProps}>
           <Create
@@ -97,7 +117,7 @@ function ListParentRelationPage({
             <CreateRelationForm
               parentEntityId={parentId}
               entityResource={entityResource}
-              excludeIds={excludeIds(camelEntity, tableQueryResult)}
+              excludeIds={excludedIds}
               formProps={formProps}
               entityFieldName={entityResource}
               entityLabelName={titleToAdd}
@@ -106,6 +126,31 @@ function ListParentRelationPage({
           </Create>
         </Drawer>
       </If>
+    ),
+    [
+      showDrawer,
+      drawerProps,
+      saveButtonProps,
+      titleToAdd,
+      parentId,
+      entityResource,
+      excludedIds,
+      formProps,
+      parent,
+    ],
+  );
+
+  return (
+    <List title={title} headerButtons={headerButtons}>
+      <StateManager
+        isLoading={tableQueryResult?.isLoading}
+        isError={tableQueryResult?.isError}
+        data={tableQueryResult?.data}
+      >
+        <RelationTable {...relationTableProps} />
+      </StateManager>
+
+      {memoizedIf}
     </List>
   );
 }
