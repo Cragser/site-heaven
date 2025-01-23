@@ -11,6 +11,7 @@ interface Props {
 
 export default function EnumItem({ column, resource }: Readonly<Props>) {
   const translate = useTranslate();
+
   return (
     <Form.Item
       label={translate(`${resource}.fields.${column.key}`)}
@@ -19,7 +20,7 @@ export default function EnumItem({ column, resource }: Readonly<Props>) {
       <Select>
         {(Object.values(column.enum) as string[]).map((value: string) => (
           <Select.Option key={value} value={value}>
-            {value} | {translate(`${resource}.fields.${column.key}.${value}`)}
+            {translate(`${resource}.enum.${column.key}.${value}`) || value}
           </Select.Option>
         ))}
       </Select>

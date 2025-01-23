@@ -394,7 +394,14 @@
       "birthPlace": "Lugar de nacimiento",
       "sex": "Género",
       "period": "Período",
-      "description": "Descripción"
+      "description": "Descripción",
+      "isInvestigated": "Investigado (si no lo marcas como verdadero, no aparecerá en la lista)"
+    },
+    "enum": {
+      "sex": {
+        "Hombre": "Hombre",
+        "Mujer": "Mujer"
+      }
     },
     "titles": {
       "create": "Crear persona",
@@ -770,6 +777,11 @@
       "list": "Tipos de relación de persona",
       "edit": "Editar tipo de relación de persona",
       "create": "Crear tipo de relación de persona"
+    },
+    "fields": {
+      "name": "Nombre",
+      "nameES": "Nombre en español",
+      "description": "Descripción"
     }
   },
   "nationality": {

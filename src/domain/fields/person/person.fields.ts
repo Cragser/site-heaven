@@ -23,6 +23,10 @@ export const personFields: ItemConfig[] = [
     enum: SexEnum,
   },
   {
+    ...createItemConfig("isInvestigated"),
+    type: "boolean",
+  },
+  {
     dataIndex: ["nationality", "name"],
     // la base de datos necesita guardar nationalityId.
     // Al
