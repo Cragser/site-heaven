@@ -38,7 +38,8 @@ type ItemConfigType =
   | "time"
   | "url"
   | "textarea"
-  | "rich-text";
+  | "rich-text"
+  | "rich-text-editor";
 
 // TODO: Considera migrar los elementos de tipo fields y tipo column.
 export interface ItemConfig {

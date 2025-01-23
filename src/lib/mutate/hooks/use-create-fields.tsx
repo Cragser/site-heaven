@@ -5,10 +5,12 @@ import { Form, FormProps, Input, Switch } from "antd";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import SelectItem from "@/lib/mutate/form-item/select-item";
 import "react-quill/dist/quill.snow.css";
+import "highlight.js/styles/nnfx-light.min.css";
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import EnumItem from "@/lib/mutate/form-item/enum-item";
 import useFormStore from "@/lib/states/use-form-store";
 import RichText from "@/lib/mutate/rich-text/rich-text";
+import RichTextEditor from "@/lib/mutate/rich-text/rich-text-editor";
 
 function switchRender(
   column: ItemConfig,
@@ -61,6 +63,10 @@ function switchRender(
 
   if (column?.type === "rich-text") {
     return <RichText column={column} resource={resource} />;
+  }
+
+  if (column?.type === "rich-text-editor") {
+    return <RichTextEditor column={column} resource={resource} />;
   }
 
   if (column?.type === "hidden") {

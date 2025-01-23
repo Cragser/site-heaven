@@ -12,7 +12,7 @@ export const chapterTemplateFields: ItemConfig[] = [
   },
   {
     ...createItemConfig("content"),
-    type: "rich-text",
+    type: "rich-text-editor",
     render: richTextRender,
   },
 ];
