@@ -11,8 +11,7 @@ import Subchapter from "@components/data-display/document/blocks/subchapter/subc
 import { If, When } from "react-if";
 import { createChapters } from "@components/data-display/document/util/create-chapters";
 import { SettingOutlined } from "@ant-design/icons";
-
-const { Panel } = Collapse;
+import RichTextViewer from "@/adapter/rich-text/react-quill/RichTextViewer";
 
 export default function Chapter({
   title,
@@ -50,6 +49,7 @@ export default function Chapter({
   };
 
   const showEditorLabel = showEditor ? "Ocultar" : "Mostrar";
+  const [showNoteAtTheEnd, setShowNoteAtTheEnd] = useState(false);
 
   const dropdownMenu = (
     <Menu
@@ -99,6 +99,15 @@ export default function Chapter({
             handleShowEditor();
           },
         },
+        {
+          key: "6",
+          label: `Ver nota ${showNoteAtTheEnd ? "al inicio" : "al final"}`,
+          onClick: (event) => {
+            event.domEvent.preventDefault();
+            event.domEvent.stopPropagation();
+            setShowNoteAtTheEnd(!showNoteAtTheEnd);
+          },
+        },
       ]}
     />
   );
@@ -119,15 +128,11 @@ export default function Chapter({
         }
       >
         <Space direction={"vertical"} style={{ width: "100%" }}>
-          <ReactQuill
-            className={styles.content}
-            theme="bubble"
-            modules={{
-              toolbar: false,
-            }}
-            value={content}
-            readOnly={true}
-          />
+          <If condition={!showEditor && !showNoteAtTheEnd}>
+            <RichTextViewer note={note} />
+          </If>
+          <RichTextViewer note={content} />
+
           <If condition={showEditor}>
             <ReactQuill
               theme="snow"
@@ -135,16 +140,8 @@ export default function Chapter({
               onChange={handleNoteChange} // Actualizamos el estado con el cambio
             />
           </If>
-          <If condition={!showEditor}>
-            <ReactQuill
-              className={styles.content}
-              theme="bubble"
-              modules={{
-                toolbar: false,
-              }}
-              value={note}
-              readOnly={true}
-            />
+          <If condition={!showEditor && showNoteAtTheEnd}>
+            <RichTextViewer note={note} />
           </If>
 
           <When

@@ -1,10 +1,8 @@
-'use client';
+"use client";
 
-import { Edit, useForm } from '@refinedev/antd';
-import { HttpError } from '@refinedev/core';
-import { ResourceEnum } from '@lib/enums/resource.enum';
-import { PersonType } from '@lib/types/person.type';
-import CompanyForm from '@modules/forms/company-form';
+import { ResourceEnum } from "@lib/enums/resource.enum";
+import { EditFormPage } from "@/lib/pages/edit/edit-form.page";
+import { companyFields } from "@lib/fields/company/company.fields";
 
 interface CompanyPage {
   params: {
@@ -15,14 +13,11 @@ interface CompanyPage {
 export default function PersonEditPage({
   params: { companyId },
 }: Readonly<CompanyPage>) {
-  const { formProps, saveButtonProps } = useForm<PersonType, HttpError>({
-    id: companyId,
-    resource: ResourceEnum.company,
-  });
-
   return (
-    <Edit saveButtonProps={saveButtonProps}>
-      <CompanyForm {...formProps} />
-    </Edit>
+    <EditFormPage
+      entityResource={ResourceEnum.company}
+      columns={companyFields}
+      id={companyId}
+    />
   );
 }

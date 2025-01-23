@@ -6,12 +6,17 @@ export const companyFields: ItemConfig[] = [
     ...createItemConfig("name"),
   },
   {
-    ...createItemConfig("goal"),
-  },
-  {
     ...createItemConfig("nickname"),
   },
   {
     ...createItemConfig("rfc"),
+  },
+  {
+    ...createItemConfig("goal"),
+    type: "textarea",
+  },
+  {
+    ...createItemConfig("notes"),
+    type: "textarea",
   },
 ];

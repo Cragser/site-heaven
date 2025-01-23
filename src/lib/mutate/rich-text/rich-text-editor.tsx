@@ -1,43 +1,37 @@
-// src/components/EditorComponent.jsx
 import React from "react";
-
 import { Form } from "antd";
 import { useTranslate } from "@refinedev/core";
-import ReactQuill from "react-quill";
-import useFormStore from "@/lib/states/use-form-store";
-import HighlightedCode from "@/lib/data-display/code/highlighted-code";
 import { ItemConfig } from "@/lib/@types/table-column.type";
 import { ResourceEnum } from "@lib/enums/resource.enum";
+import AceCodeEditor from "@/adapter/ace-editor/ace-editor";
 
-interface Props {
+const EditorComponent: React.FC<{
   resource: ResourceEnum;
   column: ItemConfig;
-}
-
-const EditorComponent = ({ resource, column }: Readonly<Props>) => {
-  const data = useFormStore((state) => state.values);
+}> = React.memo(({ resource, column }) => {
   const translate = useTranslate();
 
   return (
     <div
       style={{
         display: "grid",
-        gridTemplateColumns: "70ch 70ch",
+        gridTemplateColumns:
+          "minmax(60ch, 70ch) minmax(60ch, 70ch) minmax(60ch, 70ch)",
+        gap: "1rem",
       }}
     >
       <Form.Item
         label={translate(`${resource}.fields.${column.key}`)}
         name={column.key}
-        getValueFromEvent={(content, delta, source, editor) => content}
+        getValueFromEvent={(value) => value}
         getValueProps={(value) => ({
           value: value || "",
         })}
       >
-        <ReactQuill theme="snow" />
+        <AceCodeEditor />
       </Form.Item>
-      <HighlightedCode code={data.content} />
     </div>
   );
-};
+});
 
 export default EditorComponent;

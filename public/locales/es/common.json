@@ -180,7 +180,8 @@
       "rfc": "RFC",
       "creationUbication": "Lugar de constitución",
       "goal": "Objeto social",
-      "nickname": "Apodo"
+      "nickname": "Apodo",
+      "notes": "Notas"
     },
     "titles": {
       "create": "Crear empresa",
