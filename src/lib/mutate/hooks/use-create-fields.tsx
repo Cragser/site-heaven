@@ -1,15 +1,15 @@
 import React, { ReactNode } from "react";
 import { ItemConfig } from "@/lib/@types/table-column.type";
 import { useTranslate } from "@refinedev/core";
-import { Form, FormProps, Input, Switch } from "antd";
+import { Form, FormProps, Input } from "antd";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import SelectItem from "@/lib/mutate/form-item/select-item";
 import "react-quill/dist/quill.snow.css";
 import "highlight.js/styles/nnfx-light.min.css";
-import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import EnumItem from "@/lib/mutate/form-item/enum-item";
 import useFormStore from "@/lib/states/use-form-store";
 import dynamic from "next/dynamic";
+import SwitchItem from "@/lib/mutate/form-item/switch-item";
 
 const RichText = dynamic(() => import("@/lib/mutate/rich-text/rich-text"), {
   ssr: false,
@@ -55,18 +55,7 @@ function switchRender(
   }
 
   if (column?.type === "boolean") {
-    return (
-      <Form.Item
-        label={translate(`${resource}.fields.${column.key}`)}
-        name={column.key}
-      >
-        <Switch
-          checkedChildren={<CheckOutlined />}
-          unCheckedChildren={<CloseOutlined />}
-          defaultChecked
-        />
-      </Form.Item>
-    );
+    return <SwitchItem column={column} resource={resource} />;
   }
 
   if (column?.type === "rich-text") {
