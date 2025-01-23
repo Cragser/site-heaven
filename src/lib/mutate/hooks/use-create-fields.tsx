@@ -9,8 +9,16 @@ import "highlight.js/styles/nnfx-light.min.css";
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import EnumItem from "@/lib/mutate/form-item/enum-item";
 import useFormStore from "@/lib/states/use-form-store";
-import RichText from "@/lib/mutate/rich-text/rich-text";
-import RichTextEditor from "@/lib/mutate/rich-text/rich-text-editor";
+import dynamic from "next/dynamic";
+
+const RichText = dynamic(() => import("@/lib/mutate/rich-text/rich-text"), {
+  ssr: false,
+});
+
+const RichTextEditor = dynamic(
+  () => import("@/lib/mutate/rich-text/rich-text-editor"),
+  { ssr: false },
+);
 
 function switchRender(
   column: ItemConfig,
