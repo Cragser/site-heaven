@@ -1,19 +1,13 @@
 import { useTranslate } from "@refinedev/core";
-import { Card, Divider, List, Space, Statistic, Typography } from "antd";
-import { UnorderedListOutlined } from "@ant-design/icons";
+import { Divider, List, Space, Typography } from "antd";
 import { ResourceEnum } from "@lib/enums/resource.enum";
 import { camelCase } from "case-anything";
 import { SectionEntityType } from "@page/types/section-entity.type";
 import { useGoTo } from "@client/hooks/navigation/use-go-to";
+import { CardProps } from "@/lib/@types/data-display/card-props";
+import CardItem from "@/lib/data-display/card-list/card-item";
 
 const { Title } = Typography;
-
-interface CardProps {
-  title: string;
-  key: string;
-  total: number;
-  handleClick: () => void;
-}
 
 interface CardListProps {
   resources: ResourceEnum[];
@@ -82,23 +76,7 @@ function CardList({ id, parent, record, resources }: Readonly<CardListProps>) {
           xxl: 6,
         }}
         dataSource={data}
-        renderItem={(item: CardProps) => (
-          <List.Item>
-            <Card
-              title={item.title}
-              actions={[
-                <UnorderedListOutlined
-                  key="setting"
-                  onClick={item.handleClick}
-                />,
-                // <EditOutlined key="edit" />,
-                // <EllipsisOutlined key="ellipsis" />,
-              ]}
-            >
-              <Statistic title="Relacionados" value={item.total} />
-            </Card>
-          </List.Item>
-        )}
+        renderItem={(item: CardProps) => <CardItem {...item} />}
       />
     </>
   );
