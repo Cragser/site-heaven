@@ -10,14 +10,20 @@ import { countUniqueCompaniesByRelation } from "@/adapter/document-templating/ha
 import { shareholderCapitalShare } from "@/adapter/document-templating/handlebars/custom/shareholder-capital-share";
 import { calculate } from "@/adapter/document-templating/handlebars/helpers/calculate";
 import { sortEach } from "@/adapter/document-templating/handlebars/helpers/sort-options";
+import { eq } from "@/adapter/document-templating/handlebars/helpers/eq";
 
 export function handlebarsFillTemplate(
   template: string,
   data: ResponseDataNormalized,
 ) {
   init();
-  const templateFunction = Handlebars.compile(template);
-  return templateFunction(data);
+  try {
+    const templateFunction = Handlebars.compile(template);
+    return templateFunction(data);
+  } catch (error) {
+    console.log(error);
+    return template;
+  }
 }
 
 function init() {
@@ -25,6 +31,7 @@ function init() {
   Handlebars.registerHelper("sexAccordanceArticle", sexAccordanceArticle);
   Handlebars.registerHelper("compare", compare);
   Handlebars.registerHelper("logical", logical);
+  Handlebars.registerHelper("eq", eq);
   Handlebars.registerHelper("calculate", calculate);
   Handlebars.registerHelper("sortEach", sortEach);
   Handlebars.registerHelper("shareholderCapitalShare", shareholderCapitalShare);

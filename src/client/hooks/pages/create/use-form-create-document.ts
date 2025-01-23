@@ -49,6 +49,16 @@ export function useFormCreateDocument() {
           },
         });
       }
+      console.log({ data });
+
+      mutate({
+        resource: ResourceEnum.documentFilled,
+        values: {
+          documentId: id,
+          name: "Sin definir",
+          content: [],
+        },
+      });
 
       // content?
     },

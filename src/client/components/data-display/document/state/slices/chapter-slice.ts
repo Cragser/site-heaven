@@ -1,5 +1,5 @@
 import { ChapterData } from "@components/data-display/types/chapter.type";
-import { map, pipe, sortBy } from "remeda";
+import { sortBy } from "remeda";
 import { adjust, move, removeAtIndex } from "@/lib/remeda-extend/remeda-extend";
 import { debounce } from "lodash";
 
@@ -14,13 +14,18 @@ export interface ChapterSlice {
   updateChapter: (index: number, newChapter: ChapterData) => void;
 }
 
-const reorderChapters = (chapters: ChapterData[]): ChapterData[] =>
-  pipe(chapters, (chs) =>
-    map(chs, (chapter, index) => ({
-      ...chapter,
-      order: index,
-    })),
-  );
+// Función para reordenar capítulos
+const reorderChapters = (chapters?: ChapterData[]): ChapterData[] => {
+  // Si chapters es undefined o no es un arreglo, devolvemos un arreglo vacío
+  if (!chapters || !Array.isArray(chapters)) {
+    return [];
+  }
+
+  return chapters.map((chapter, index) => ({
+    ...chapter,
+    order: index,
+  }));
+};
 
 export const createChapterSlice = (set: any, get: any): ChapterSlice => {
   // Creamos una versión debounced de la función de actualización
@@ -34,6 +39,10 @@ export const createChapterSlice = (set: any, get: any): ChapterSlice => {
   return {
     chapters: [],
     setChapters: (newChapters: ChapterData[]) => {
+      // Verificamos que newChapters sea un arreglo
+      if (!newChapters || !Array.isArray(newChapters)) {
+        newChapters = [];
+      }
       set((state: ChapterSlice) => ({
         ...state,
         chapters: reorderChapters(
@@ -52,7 +61,6 @@ export const createChapterSlice = (set: any, get: any): ChapterSlice => {
         ),
       }));
     },
-
     moveChapter: (dragIndex: number, hoverIndex: number) => {
       set((state: ChapterSlice) => ({
         ...state,
@@ -93,7 +101,6 @@ export const createChapterSlice = (set: any, get: any): ChapterSlice => {
           note: newNote,
         }),
       );
-
       debouncedSetState({
         chapters: reorderChapters(newChapters),
       });

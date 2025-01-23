@@ -1,7 +1,6 @@
 import React, { ReactNode } from "react";
 import { useTranslate } from "@refinedev/core";
 import { Table } from "antd";
-import { useTableStore } from "@/lib/data-display/table/state/context/table-context";
 
 interface TableColumnProps {
   key: string;
@@ -27,10 +26,10 @@ export default function Column({
   render,
 }: Readonly<TableColumnProps>) {
   const translate = useTranslate();
-  const store = useTableStore();
-  const { selectedRows } = store();
-  console.log(`Row ${key} selected`);
-  console.log({ selectedRows });
+  // const store = useTableStore();
+  // const { selectedRows } = store();
+  // console.log(`Row ${key} selected`);
+  // console.log({ selectedRows });
 
   return (
     <Table.Column
