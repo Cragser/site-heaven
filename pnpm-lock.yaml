@@ -17,9 +17,6 @@ importers:
       '@ant-design/nextjs-registry':
         specifier: ^1.0.0
         version: 1.0.1(@ant-design/cssinjs@1.21.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(antd@5.21.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(next@14.2.14(@babel/core@7.25.7)(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@cragser/core-heaven':
-        specifier: git+https://github.com/Cragser/core-heaven.git?1.0.1
-        version: '@heaven/core@git+https://git@github.com:Cragser/core-heaven.git#bb48d2394a2dffbefefe304db84367d697d466a8(typescript@5.6.2)'
       '@editorjs/code':
         specifier: ^2.9.3
         version: 2.9.3
@@ -942,12 +939,6 @@ packages:
   '@eslint/js@8.57.1':
     resolution: {integrity: sha512-d9zaMRSTIKDLhctzH12MtXvJKSSUhaHcjV+2Z+GK+EEY7XKpP5yR4x+N3TAcHTcu963nIr+TMcCb4DBCYX1z6Q==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-
-  '@heaven/core@git+https://git@github.com:Cragser/core-heaven.git#bb48d2394a2dffbefefe304db84367d697d466a8':
-    resolution: {commit: bb48d2394a2dffbefefe304db84367d697d466a8, repo: git@github.com:Cragser/core-heaven.git, type: git}
-    version: 1.0.1
-    peerDependencies:
-      typescript: ^5.0.0
 
   '@hono/node-server@1.13.1':
     resolution: {integrity: sha512-TSxE6cT5RHnawbjnveexVN7H2Dpn1YaLxQrCOLCUwD+hFbqbFsnJBgdWcYtASqtWVjA+Qgi8uqFug39GsHjo5A==}
@@ -6823,10 +6814,6 @@ snapshots:
       - supports-color
 
   '@eslint/js@8.57.1': {}
-
-  '@heaven/core@git+https://git@github.com:Cragser/core-heaven.git#bb48d2394a2dffbefefe304db84367d697d466a8(typescript@5.6.2)':
-    dependencies:
-      typescript: 5.6.2
 
   '@hono/node-server@1.13.1(hono@4.6.3)':
     dependencies:
