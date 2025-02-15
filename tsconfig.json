@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -19,16 +23,42 @@
     ],
     "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"],
-      "@client/*": ["src/client/*"],
-      "@components/*": ["src/client/components/*"],
-      "@contexts/*": ["src/client/contexts/*"],
-      "@providers/*": ["src/shared/providers/*"],
-      "@lib/*": ["src/domain/*"],
-      "@modules/*": ["src/client/modules/*"],
-      "@page/types/*": ["src/client/types/*"],
+      "@/*": [
+        "./src/*"
+      ],
+      "@client/*": [
+        "src/client/*"
+      ],
+      "@components/*": [
+        "src/client/components/*"
+      ],
+      "@contexts/*": [
+        "src/client/contexts/*"
+      ],
+      "@providers/*": [
+        "src/shared/providers/*"
+      ],
+      "@lib/*": [
+        "src/domain/*"
+      ],
+      "@modules/*": [
+        "src/client/modules/*"
+      ],
+      "@page/types/*": [
+        "src/client/types/*"
+      ],
+      "@core-heaven/*": [
+        "src/libs/core-heaven/src/libs/*"
+      ]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
